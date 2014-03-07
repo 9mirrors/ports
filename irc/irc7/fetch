@@ -1,0 +1,16 @@
+#!/bin/rc
+
+rfork ne
+
+9fs sources
+
+. /sys/ports/Config/ports.conf
+
+mkdir work ; cd work
+
+# you usually will run mk install here
+cp /n/sources/contrib/andrey/irc7.tgz work.tgz
+
+tar xzvf work.tgz
+rm work.tgz
+

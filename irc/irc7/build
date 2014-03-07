@@ -1,0 +1,15 @@
+#!/bin/rc
+
+rfork ne
+
+. /sys/ports/Config/ports.conf
+
+# you usually will run mk install here
+
+cd work/irc7
+
+for(i in $BUILDFOR){
+	objtype=$i
+	mk all
+}
+
