@@ -1,0 +1,9 @@
+#!/bin/rc
+
+rfork ne
+webfs
+
+hg clone https://bitbucket.org/mveety/9front-ports /sys/ports
+cd /sys/ports/sys-ports/portupdate ; rc install
+echo 'Be sure to edit /sys/ports/Config/ports.conf'
+echo 'run portupdate to keep the ports tree up to date.'
