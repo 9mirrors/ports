@@ -1,0 +1,10 @@
+#!/bin/rc
+
+if(test -e /sys/ports) {
+	cd /sys/ports
+	hg pull
+	hg update
+	exit
+}
+
+hg clone https://bitbucket.org/mveety/9front-ports /sys/ports
