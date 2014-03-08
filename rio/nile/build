@@ -1,0 +1,17 @@
+#!/bin/rc
+
+rfork ne
+
+. /sys/ports/Config/ports.conf
+
+# you usually will run mk install here
+
+cp files/* work/
+
+cd work
+
+for(i in $BUILDFOR){
+	objtype=$i
+	mk
+}
+

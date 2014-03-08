@@ -1,0 +1,15 @@
+#!/bin/rc
+
+rfork ne
+
+. /sys/ports/Config/ports.conf
+
+mkdir work
+
+# you usually will run mk install here
+
+9fs sources
+
+dircp /n/sources/contrib/anothy/src/cmd/nile work/
+
+
