@@ -1,6 +1,6 @@
 if(~ ENABLEOVERLAY 1){
 	for(i in $BUILDFOR){
 		bind -bc $PORTS/Overlays/$i/bin /$i/bin
-		bind -bc $PORTS/Overlays/$i/lib /$i/bin
+		bind -bc $PORTS/Overlays/$i/lib /$i/lib
 	}
 }
