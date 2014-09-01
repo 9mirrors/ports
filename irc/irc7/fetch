@@ -2,14 +2,16 @@
 
 rfork ne
 
-9fs sources
+# 9fs sources
+webfs
 
 . /sys/ports/Config/ports.conf
 
 mkdir work ; cd work
 
 # you usually will run mk install here
-cp /n/sources/contrib/andrey/irc7.tgz work.tgz
+# cp /n/sources/contrib/andrey/irc7.tgz work.tgz
+hget http://plan9.stanleylieber.com/src/irc7.tgz >work.tgz
 
 tar xzvf work.tgz
 rm work.tgz
