@@ -1,5 +1,7 @@
 #!/bin/rc
 
+rfork ne
+
 if(test -e /sys/ports) {
 	cd /sys/ports
 	hg pull
