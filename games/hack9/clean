@@ -12,3 +12,5 @@ for(i in $BUILDFOR){
 	mk clean
 }
 
+cd ..
+rm -rf work/

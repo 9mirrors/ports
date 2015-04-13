@@ -5,10 +5,11 @@ rfork ne
 . /sys/ports/Config/ports.conf
 
 # you usually will run mk install here
-cd work/
+
+cd work
 
 for(i in $BUILDFOR){
 	objtype=$i
-	mk clean
+	mk
 }
 
