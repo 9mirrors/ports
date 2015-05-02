@@ -1,0 +1,37 @@
+
+info:V:
+	echo 'Name: '^$PORTNAME
+	echo 'Description: '^$DESCRIPTION
+	echo 'Complain to: '^$OWNER
+
+fetch:V:
+	webfs
+	. /sys/ports/Config/ports.conf
+	mkdir work
+	hget $WEBSOURCE > work/$WORKFILE
+	$EXTRACTCOMMAND work/$WORKFILE
+
+build:V: fetch
+	. /sys/ports/Config/ports.conf
+	cd $BUILDPATH
+	for(i in $BUILDFOR){
+		objtype=$i
+		$BUILDCOMMAND
+	}
+
+install:V: fetch build
+	. /sys/ports/Config/ports.conf
+	cd $BUILDPATH
+	for(i in $BUILDFOR){
+		objtype=$i
+		$INSTALLCOMMAND
+	}
+
+clean:V:
+	. /sys/ports/Config/ports.conf
+	cd $BUILDPATH
+	$CLEANCOMMAND
+
+nuke:V:
+	. /sys/ports/Config/ports.conf
+	rm -rf work/
