@@ -6,7 +6,7 @@ DESCRIPTION='File based irc client'
 
 WEBSOURCE='http://plan9.stanleylieber.com/src/irc7.tgz'
 WORKFILE='irc7.tgz'
-EXTRACTCOMMAND='tar xzvf'
+EXTRACTCOMMAND='/bin/tar xzvf'
 BUILDPATH='work/irc7'
 BUILDCOMMAND='mk'
 INSTALLCOMMAND='mk install'
