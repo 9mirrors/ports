@@ -43,7 +43,7 @@ build:VQE:
 		dircp $PATCHES $BUILDPATH
 	}
 	cd $BUILDPATH
-	for(i in (arm 386 amd64)){
+	for(i in $BUILDFOR){
 		{
 			rfork ne
 			objtype=$i
@@ -54,15 +54,34 @@ build:VQE:
 install:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
+	if(! checkport $PORTNAME){
+		cd $BUILDPATH
+		for(i in $BUILDFOR){
+			{
+				rfork ne
+				objtype=$i
+				eval $BUILDCOMMAND
+			}
+		}
+		register $PORTNAME
+		if(! ~ $*MESSAGE 0){
+			for(i in $MESSAGE){
+				echo $i
+			}
+		}
+	}
+
+reinstall:VQE:
+	. /sys/ports/Config/ports.conf
+	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
-	for(i in (arm 386 amd64)){
+	for (i in $BUILDFOR){
 		{
 			rfork ne
 			objtype=$i
 			eval $BUILDCOMMAND
 		}
 	}
-	register $PORTNAME
 	if(! ~ $*MESSAGE 0){
 		for(i in $MESSAGE){
 			echo $i
