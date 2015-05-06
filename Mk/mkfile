@@ -26,6 +26,7 @@ fetch:VQ:
 
 build:VQ:
 	. /sys/ports/Config/ports.conf
+	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#PATCHES 0){
 		dircp $PATCHES $BUILDPATH
 	}
@@ -40,6 +41,7 @@ build:VQ:
 
 install:VQ:
 	. /sys/ports/Config/ports.conf
+	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
 	for(i in (arm 386 amd64)){
 		{
@@ -48,6 +50,7 @@ install:VQ:
 			eval $BUILDCOMMAND
 		}
 	}
+	register $PORTNAME
 	if(! ~ $*MESSAGE 0){
 		for(i in $MESSAGE){
 			echo $i
@@ -62,3 +65,12 @@ clean:VQ:
 nuke:VQ:
 	. /sys/ports/Config/ports.conf
 	rm -rf work/
+
+uninstall:VQ:
+	. /sys/ports/Config/ports.conf
+	. /sys/ports/Mk/pkg.rc
+	if(test -e $PORTS^$PORTNAME^'/uninstall'){
+		rc $PORTS^$PORTNAME^/'uninstall'
+		deregister $PORTNAME
+	}
+}
