@@ -1,0 +1,6 @@
+rfork ne
+. /sys/ports/Config/ports.conf
+for(i in $BUILDFOR){
+	echo 'deleting: /'^$i^'/nile'
+	rm -f /$i/nile
+}

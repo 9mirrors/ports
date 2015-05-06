@@ -7,8 +7,7 @@ info:VQ:
 
 fetch:VQ:
 	. /sys/ports/Config/ports.conf
-	if(! test -e work/)
-		mkdir work/
+	mkdir -p work/
 	if(! ~ $#WEBSOURCE 0){
 		webfs
 		hget $WEBSOURCE > work/$WORKFILE
@@ -27,6 +26,19 @@ fetch:VQ:
 build:VQ:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
+	if(! ~ $#DEPS 0){
+		for(i in $DEPS){
+			{
+				rfork ne
+				if(! checkport $i){
+					cd /sys/ports/$i
+					mk fetch
+					mk build
+					mk install
+				}
+			}
+		}
+	}
 	if(! ~ $#PATCHES 0){
 		dircp $PATCHES $BUILDPATH
 	}
@@ -73,4 +85,9 @@ uninstall:VQ:
 		rc $PORTS^$PORTNAME^/'uninstall'
 		deregister $PORTNAME
 	}
-}
+	if(! test -e $PORTS^$PORTNAME^'/uninstall'){
+		echo 'unable to uninstall port'
+		echo 'please send a bug report to '^$OWNER^' about this'
+		echo 'If '^$OWNER^' does not respond or fix the port please'
+		echo 'email mveety@gmail.com, and he will remove the port.'
+	}
