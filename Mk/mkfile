@@ -5,7 +5,7 @@ info:VQ:
 	echo 'Description: '^$DESCRIPTION
 	echo 'Complain to: '^$OWNER
 
-fetch:VQ:
+fetch:VQE:
 	. /sys/ports/Config/ports.conf
 	mkdir -p work/
 	if(! ~ $#WEBSOURCE 0){
@@ -23,7 +23,7 @@ fetch:VQ:
 		hg clone $HGSOURCE work/
 	}
 
-build:VQ:
+build:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#DEPS 0){
@@ -51,7 +51,7 @@ build:VQ:
 		}
 	}
 
-install:VQ:
+install:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
@@ -69,16 +69,16 @@ install:VQ:
 		}
 	}
 
-clean:VQ:
+clean:VQE:
 	. /sys/ports/Config/ports.conf
 	cd $BUILDPATH
 	eval $CLEANCOMMAND
 
-nuke:VQ:
+nuke:VQE:
 	. /sys/ports/Config/ports.conf
 	rm -rf work/
 
-uninstall:VQ:
+uninstall:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(test -e $PORTS^$PORTNAME^'/uninstall'){
