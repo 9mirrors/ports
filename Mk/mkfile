@@ -60,7 +60,7 @@ install:VQE:
 			{
 				rfork ne
 				objtype=$i
-				eval $BUILDCOMMAND
+				eval $INSTALLCOMMAND
 			}
 		}
 		register $PORTNAME
@@ -79,7 +79,7 @@ reinstall:VQE:
 		{
 			rfork ne
 			objtype=$i
-			eval $BUILDCOMMAND
+			eval $INSTALLCOMMAND
 		}
 	}
 	if(! ~ $*MESSAGE 0){
