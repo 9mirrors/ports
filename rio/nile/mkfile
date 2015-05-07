@@ -10,3 +10,5 @@ PATCHES='files/*'
 BUILDCOMMAND='mk'
 INSTALLCOMMAND=('mk' 'clean')
 CLEANCOMMAND=('mk' 'clean')
+
+</sys/ports/Config/mkfile
