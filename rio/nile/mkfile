@@ -1,0 +1,12 @@
+</$objtype/mkfile
+
+PORTNAME='rio/nile'
+OWNER='Matthew Veety <mveety@gmail.com>'
+DESCRIPTION='Modified rio'
+
+CONTRIBSOURCE='/n/sources/contrib/anothy/src/cmd/nile'
+BUILDPATH='work/'
+PATCHES='files/*'
+BUILDCOMMAND='mk'
+INSTALLCOMMAND=('mk' 'clean')
+CLEANCOMMAND=('mk' 'clean')
