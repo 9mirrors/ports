@@ -1,9 +1,0 @@
-#!/bin/rc
-
-rfork ne
-
-. /sys/ports/Config/ports.conf
-
-mkdir work
-
-hg clone https://bitbucket.org/mischief/hack9 work/

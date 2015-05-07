@@ -6,6 +6,7 @@ DESCRIPTION='Hack and slash game'
 
 HGSOURCE='https://bitbucket.org/mischief/hack9'
 BUILDPATH='work/'
+PATCHES='files/'
 BUILDCOMMAND='mk'
 INSTALLCOMMAND=('mk' 'install')
 CLEANCOMMAND=('mk' 'clean')
