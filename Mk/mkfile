@@ -7,14 +7,14 @@ info:VQ:
 fetch:VQ:
 	if(! test -e work/)
 		mkdir work/
-	if(test -e /env/WEBSOURCE){
+	if(! ~ $#WEBSOURCE 0){
 		webfs
 		. /sys/ports/Config/ports.conf
 		hget $WEBSOURCE > work/$WORKFILE
 		$EXTRACTCOMMAND=($EXTRACTCOMMAND 'work/'^$WORKFILE)
 		eval $EXTRACTCOMMAND
 	}
-	if(test -e /env/CONTRIBSOURCE){
+	if(! ~ $#CONTRIBSOURCE 0){
 		9fs sources
 		dircp $CONTRIBSOURCE work/
 	}
@@ -24,7 +24,7 @@ fetch:VQ:
 	}
 
 build:VQ:
-	if(test -e /env/PATCHES){
+	if(! ~ $#PATCHES 0){
 		dircp $PATCHES $BUILDPATH
 	}
 	. /sys/ports/Config/ports.conf
