@@ -1,10 +1,12 @@
 . /sys/ports/Config/ports.conf
-
-for(i in $BUILDFOR){
-	{
-		rfork ne
-		objtype=$i
-		cd work
-		mk uninstall
+rfork ne
+if(test -e work/){
+	cd work/
+	for(i in $BUILDFOR){
+		{
+			rfork ne
+			objtype=$i
+			mk uninstall
+		}
 	}
 }
