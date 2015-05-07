@@ -1,4 +1,3 @@
-</sys/ports/Config/ports.mk.conf
 
 info:VQ:
 	echo 'Name: '^$PORTNAME
@@ -26,7 +25,7 @@ build:VQ:
 	}
 	. /sys/ports/Config/ports.conf
 	cd $BUILDPATH
-	for(i in $BUILDFOR){
+	for(i in (arm 386 amd64)){
 		{
 			rfork ne
 			objtype=$i
@@ -37,7 +36,7 @@ build:VQ:
 install:VQ:
 	. /sys/ports/Config/ports.conf
 	cd $BUILDPATH
-	for(i in $BUILDFOR){
+	for(i in (arm 386 amd64)){
 		{
 			rfork ne
 			objtype=$i

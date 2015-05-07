@@ -11,4 +11,4 @@ BUILDCOMMAND='mk'
 INSTALLCOMMAND=('mk' 'install')
 CLEANCOMMAND=('mk' 'clean')
 
-</sys/ports/Config/mkfile
+</sys/ports/Mk/mkfile
