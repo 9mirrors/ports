@@ -5,7 +5,7 @@ info:VQ:
 	echo 'Complain to: '^$OWNER
 
 fetch:VQ:
-	if(! ~ $WEBSOURCE 0){
+	if(test -e /env/WEBSOURCE){
 		webfs
 		. /sys/ports/Config/ports.conf
 		mkdir work
@@ -13,13 +13,13 @@ fetch:VQ:
 		$EXTRACTCOMMAND=($EXTRACTCOMMAND 'work/'^$WORKFILE)
 		$EXTRACTCOMMAND
 	}
-	if(! ~ $CONTRIBSOURCE 0){
+	if(test -e /env/CONTRIBSOURCE){
 		9fs sources
 		dircp $CONTRIBSOURCE work/
 	}
 
 build:VQ: fetch
-	if(! ~ $PATCHES 0){
+	if(test -e /env/PATCHES){
 		cp $PATCHES $BUILDPATH
 	}
 	. /sys/ports/Config/ports.conf
