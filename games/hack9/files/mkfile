@@ -1,6 +1,6 @@
 </$objtype/mkfile
 
-BIN=/bin/$objtype
+BIN=/$objtype/bin
 
 <mk.common
 
