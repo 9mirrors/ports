@@ -5,9 +5,6 @@ info:VQ:
 	echo 'Complain to: '^$OWNER
 
 fetch:VQ:
-	fn runvar {
-		$*
-	}
 	if(! test -e work/)
 		mkdir work/
 	if(test -e /env/WEBSOURCE){
@@ -15,7 +12,7 @@ fetch:VQ:
 		. /sys/ports/Config/ports.conf
 		hget $WEBSOURCE > work/$WORKFILE
 		$EXTRACTCOMMAND=($EXTRACTCOMMAND 'work/'^$WORKFILE)
-		runvar $EXTRACTCOMMAND
+		eval $EXTRACTCOMMAND
 	}
 	if(test -e /env/CONTRIBSOURCE){
 		9fs sources
@@ -23,9 +20,6 @@ fetch:VQ:
 	}
 
 build:VQ:
-	fn runvar {
-		$*
-	}
 	if(test -e /env/PATCHES){
 		dircp $PATCHES $BUILDPATH
 	}
@@ -33,27 +27,21 @@ build:VQ:
 	cd $BUILDPATH
 	for(i in $BUILDFOR){
 		objtype=$i
-		runvar $BUILDCOMMAND
+		eval $BUILDCOMMAND
 	}
 
 install:VQ:
-	fn runvar {
-		$*
-	}
 	. /sys/ports/Config/ports.conf
 	cd $BUILDPATH
 	for(i in $BUILDFOR){
 		objtype=$i
-		runvar $INSTALLCOMMAND
+		eval $INSTALLCOMMAND
 	}
 
 clean:VQ:
-	fn runvar {
-		$*
-	}
 	. /sys/ports/Config/ports.conf
 	cd $BUILDPATH
-	runvar $CLEANCOMMAND
+	eval $CLEANCOMMAND
 
 nuke:VQ:
 	. /sys/ports/Config/ports.conf
