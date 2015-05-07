@@ -48,6 +48,11 @@ install:VQ:
 			eval $BUILDCOMMAND
 		}
 	}
+	if(! ~ $*MESSAGE 0){
+		for(i in $MESSAGE){
+			echo $i
+		}
+	}
 
 clean:VQ:
 	. /sys/ports/Config/ports.conf
