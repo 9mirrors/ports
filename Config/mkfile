@@ -25,17 +25,23 @@ build:VQ:
 	}
 	. /sys/ports/Config/ports.conf
 	cd $BUILDPATH
-	for(i in $BUILDFOR){
-		objtype=$i
-		eval $BUILDCOMMAND
+	for(i in (arm 386 amd64)){
+		{
+			rfork ne
+			objtype=$i
+			eval $BUILDCOMMAND
+		}
 	}
 
 install:VQ:
 	. /sys/ports/Config/ports.conf
 	cd $BUILDPATH
-	for(i in $BUILDFOR){
-		objtype=$i
-		eval $INSTALLCOMMAND
+	for(i in (arm 386 amd64)){
+		{
+			rfork ne
+			objtype=$i
+			eval $BUILDCOMMAND
+		}
 	}
 
 clean:VQ:
