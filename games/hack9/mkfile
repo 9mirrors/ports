@@ -1,0 +1,13 @@
+</$objtype/mkfile
+
+PORTNAME='games/hack9'
+OWNER='(Adopt this port)'
+DESCRIPTION='Hack and slash game'
+
+HGSOURCE='https://bitbucket.org/mischief/hack9'
+BUILDPATH='work/'
+BUILDCOMMAND='mk'
+INSTALLCOMMAND=('mk' 'install')
+CLEANCOMMAND=('mk' 'clean')
+
+</sys/ports/Mk/mkfile

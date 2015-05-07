@@ -19,6 +19,10 @@ fetch:VQ:
 		9fs sources
 		dircp $CONTRIBSOURCE work/
 	}
+	if(test -e /env/HGSOURCE){
+		webfs
+		hg clone $HGSOURCE $BUILDPATH
+	}
 
 build:VQ:
 	if(test -e /env/PATCHES){
