@@ -1,3 +1,4 @@
+</sys/ports/Config/ports.mk.conf
 
 info:VQ:
 	echo 'Name: '^$PORTNAME
@@ -5,11 +6,11 @@ info:VQ:
 	echo 'Complain to: '^$OWNER
 
 fetch:VQ:
+	. /sys/ports/Config/ports.conf
 	if(! test -e work/)
 		mkdir work/
 	if(! ~ $#WEBSOURCE 0){
 		webfs
-		. /sys/ports/Config/ports.conf
 		hget $WEBSOURCE > work/$WORKFILE
 		$EXTRACTCOMMAND=($EXTRACTCOMMAND 'work/'^$WORKFILE)
 		eval $EXTRACTCOMMAND
