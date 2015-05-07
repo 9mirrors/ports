@@ -8,7 +8,7 @@ CONTRIBSOURCE='/n/sources/contrib/anothy/src/cmd/nile'
 BUILDPATH='work/'
 PATCHES='files/'
 BUILDCOMMAND='mk'
-INSTALLCOMMAND=('mk' 'clean')
+INSTALLCOMMAND=('mk' 'install')
 CLEANCOMMAND=('mk' 'clean')
 
 </sys/ports/Config/mkfile
