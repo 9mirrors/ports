@@ -1,5 +1,7 @@
 </sys/ports/Config/ports.mk.conf
 
+all:VQE: fetch build install
+
 info:VQ:
 	echo 'Name: '^$PORTNAME
 	echo 'Description: '^$DESCRIPTION
@@ -23,7 +25,7 @@ fetch:VQE:
 		hg clone $HGSOURCE work/
 	}
 
-build:VQE: fetch
+build:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#DEPS 0){
@@ -51,7 +53,7 @@ build:VQE: fetch
 		}
 	}
 
-install:VQE: build
+install:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! checkport $PORTNAME){
@@ -71,7 +73,7 @@ install:VQE: build
 		}
 	}
 
-reinstall:VQE: build
+reinstall:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
@@ -110,5 +112,3 @@ uninstall:VQE:
 		echo 'If '^$OWNER^' does not respond or fix the port please'
 		echo 'email mveety@gmail.com, and he will remove the port.'
 	}
-
-all:VQE: install
