@@ -4,10 +4,9 @@ PORTNAME='media-sound/volctl'
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='graphical volume controller'
 
+WEBSOURCE=http://9.offblast.org/stuff/volctl.c
 BUILDPATH=work/
-INSTALLCOMMAND=/bin/rc -c 's=volctl; hget http://9.offblast.org/stuff/$s.c > $s.c \
-	&& $CC $s.c \
-	&& $LD -o $O.$s $s.$O \
-	&& cp $O.$s /$objtype/bin/$s'
+BUILDCOMMAND=/bin/rc -c 's=volctl; $CC $s.c && $LD -o $O.$s $s.$O'
+INSTALLCOMMAND=/bin/rc -c 's=volctl; cp $O.$s /$objtype/bin/$s'
 
 </sys/ports/Mk/mkfile
