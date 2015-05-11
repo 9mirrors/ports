@@ -2,8 +2,8 @@
 
 rfork ne
 
-pass=''
-fail=''
+pass=()
+fail=()
 
 mkdir -p /sys/ports
 bind -bc . /sys/ports
@@ -16,7 +16,7 @@ fn quiet {
 
 fn testone {
 	port=$1
-	echo -n building $port^': '
+	echo $port | awk '{printf("%-30s", $1)}'
 	cd /sys/ports/$port
 	echo -n 'fetch.. '; quiet mk fetch || exit fetch
 	echo -n 'build.. '; quiet mk build || exit build
@@ -41,5 +41,5 @@ for (c in $CATEGORY) {
 	}	
 }
 
-echo 'pass:	' $pass
-echo 'fail:	' $fail
+echo pass: $pass
+echo fail: $fail
