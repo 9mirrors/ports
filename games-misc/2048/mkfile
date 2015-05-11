@@ -1,0 +1,12 @@
+</$objtype/mkfile
+
+PORTNAME='games-misc/2048'
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='2048'
+
+WEBSOURCE=http://9.offblast.org/stuff/2048.c
+BUILDPATH=work/
+BUILDCOMMAND=/bin/rc -c 's=2048; $CC $s.c && $LD -o $O.$s $s.$O'
+INSTALLCOMMAND=/bin/rc -c 's=2048; cp $O.$s /$objtype/bin/games/$s'
+
+</sys/ports/Mk/mkfile
