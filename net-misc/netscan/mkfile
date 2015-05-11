@@ -1,0 +1,12 @@
+</$objtype/mkfile
+
+PORTNAME='net-misc/netscan'
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='concurrent tcp port scanner'
+
+WEBSOURCE=http://9.offblast.org/stuff/netscan.c
+BUILDPATH=work/
+BUILDCOMMAND=/bin/rc -c 's=netscan; $CC $s.c && $LD -o $O.$s $s.$O'
+INSTALLCOMMAND=/bin/rc -c 's=netscan; cp $O.$s /$objtype/bin/$s'
+
+</sys/ports/Mk/mkfile
