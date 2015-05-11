@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+PORTNAME=dev-lang/go
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='Google Go language'
+
+WEBSOURCE=https://storage.googleapis.com/golang/go1.4.2.src.tar.gz
+WORKFILE=go1.4.2.src.tar.gz
+EXTRACTCOMMAND=/bin/tar xzvf
+BUILDPATH=work/go/src
+BUILDCOMMAND=./make.rc
+INSTALLCOMMAND=fortune /lib/rob
+CLEANCOMMAND=./clean.rc
+MESSAGE='To make use of go you must bind '`{pwd}'/go/bin over /bin and set $GOPATH'.
+
+</sys/ports/Mk/mkfile
