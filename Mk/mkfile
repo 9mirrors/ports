@@ -11,10 +11,14 @@ fetch:VQE:
 	. /sys/ports/Config/ports.conf
 	mkdir -p work/
 	if(! ~ $#WEBSOURCE 0){
-		webfs
-		hget $WEBSOURCE > work/$WORKFILE
-		$EXTRACTCOMMAND=($EXTRACTCOMMAND 'work/'^$WORKFILE)
-		eval $EXTRACTCOMMAND
+		@{
+			rfork ne
+			webfs
+			hget $WEBSOURCE > work/$WORKFILE
+			EXTRACTCOMMAND=($EXTRACTCOMMAND `{pwd}^'/work/'^$WORKFILE)
+			cd work
+			$EXTRACTCOMMAND
+		}
 	}
 	if(! ~ $#CONTRIBSOURCE 0){
 		9fs sources
@@ -24,6 +28,7 @@ fetch:VQE:
 		webfs
 		hg clone $HGSOURCE work/
 	}
+	status=''
 
 build:VQE:
 	. /sys/ports/Config/ports.conf
@@ -46,10 +51,15 @@ build:VQE:
 	}
 	cd $BUILDPATH
 	for(i in $BUILDFOR){
-		{
+		@{
 			rfork ne
 			objtype=$i
-			eval $BUILDCOMMAND
+			if(! ~ $BUILDCOMMAND ''){
+				$BUILDCOMMAND
+			}
+			if not {
+				status=''
+			}
 		}
 	}
 
@@ -62,7 +72,7 @@ install:VQE:
 			{
 				rfork ne
 				objtype=$i
-				eval $INSTALLCOMMAND
+				$INSTALLCOMMAND
 			}
 		}
 		register $PORTNAME
@@ -78,10 +88,10 @@ reinstall:VQE:
 	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
 	for (i in $BUILDFOR){
-		{
+		@{
 			rfork ne
 			objtype=$i
-			eval $INSTALLCOMMAND
+			$INSTALLCOMMAND
 		}
 	}
 	if(! ~ $*MESSAGE 0){
@@ -99,14 +109,14 @@ nuke:VQE:
 	. /sys/ports/Config/ports.conf
 	rm -rf work/
 
-uninstall:VQE:
+uninstall:VQ:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(test -e $PORTS^$PORTNAME^'/uninstall'){
 		rc $PORTS^$PORTNAME^/'uninstall'
 		deregister $PORTNAME
 	}
-	if(! test -e $PORTS^$PORTNAME^'/uninstall'){
+	if not {
 		echo 'unable to uninstall port'
 		echo 'please send a bug report to '^$OWNER^' about this'
 		echo 'If '^$OWNER^' does not respond or fix the port please'

@@ -8,7 +8,8 @@ fn register {
 fn deregister {
 	echo 'removing installed port...'
 	if(test -e /sys/ports/Config/ports.db){
-		grep -v $1 /sys/ports/Config/ports.db > /sys/ports/Config/ports2.db
+		# grep returns non-nil status when no lines matched.
+		grep -v $1 /sys/ports/Config/ports.db > /sys/ports/Config/ports2.db || status=''
 		cp /sys/ports/Config/ports2.db /sys/ports/Config/ports.db
 	}
 }

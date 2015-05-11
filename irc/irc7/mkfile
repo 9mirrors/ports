@@ -1,15 +1,15 @@
 </$objtype/mkfile
 
-PORTNAME='irc/irc7'
+PORTNAME=irc/irc7
 OWNER='Matthew Veety <mveety@gmail.com>'
 DESCRIPTION='File based irc client'
 
-WEBSOURCE='http://plan9.stanleylieber.com/src/irc7.tgz'
-WORKFILE='irc7.tgz'
-EXTRACTCOMMAND=('/bin/tar' 'xzvf')
-BUILDPATH='work/irc7'
-BUILDCOMMAND='mk'
-INSTALLCOMMAND=('mk' 'install')
-CLEANCOMMAND=('mk' 'clean')
+WEBSOURCE=http://plan9.stanleylieber.com/src/irc7.tgz
+WORKFILE=irc7.tgz
+EXTRACTCOMMAND=/bin/tar xzvf
+BUILDPATH=work/irc7
+BUILDCOMMAND=mk all
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
 
 </sys/ports/Mk/mkfile

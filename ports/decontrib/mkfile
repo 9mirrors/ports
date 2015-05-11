@@ -1,0 +1,9 @@
+</$objtype/mkfile
+
+PORTNAME='ports/decontrib'
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='decontrib'
+
+INSTALLCOMMAND=rc -c '9fs sources && cp /n/sources/contrib/john/decontrib /rc/bin/decontrib && chmod +x /rc/bin/decontrib'
+
+</sys/ports/Mk/mkfile
