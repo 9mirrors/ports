@@ -17,7 +17,6 @@ install:VQE:
 	}
 
 info:VQE:
-	echo $CATEGORY
 	for(i in $CATEGORY){
 		@{
 			rfork ne
@@ -86,5 +85,19 @@ uninstall:VQE:
 			rfork ne
 			cd $i
 			mk uninstall
+		}
+	}
+
+update:VQE:
+	@{
+		rfork ne
+		if(test -e /sys/ports) {
+			cd /sys/ports
+			hg pull
+			hg update
+			exit
+		}
+		if not {
+			hg clone https://bitbucket.org/mveety/9front-ports /sys/ports
 		}
 	}
