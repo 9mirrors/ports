@@ -6,12 +6,12 @@ BUILDFOR=$objtype
 all:VQE: fetch build install
 
 info:VQE:
-	echo 'Name: '^$PORTNAME
+	echo 'Name: ' $PORTNAME
 	if(! ~ $VERSION 0){
-		echo 'Port Version: '^$VERSION
+		echo 'Port Version: ' $VERSION
 	}
-	echo 'Description: '^$DESCRIPTION
-	echo 'Complain to: '^$OWNER
+	echo 'Description: ' $DESCRIPTION
+	echo 'Complain to: ' $OWNER
 
 fetch:VQE:
 	. /sys/ports/Config/ports.conf
