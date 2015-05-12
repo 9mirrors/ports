@@ -41,5 +41,7 @@ for (c in $CATEGORY) {
 	}	
 }
 
-echo pass: $pass
-echo fail: $fail
+if(! ~ $#fail 0){
+	echo
+	echo fail: $fail
+}
