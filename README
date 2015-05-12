@@ -18,4 +18,25 @@ Bug Reports:
 	Post bugs on http://bitbucket.org/mveety/9front-ports/issues.
 Patches can be included and are highly encouraged.
 
+Working with ports:
+	Installation:
+		go to where the port you want to install resides.
+		run mk all.
+		you're done.
+	Uninstallation:
+		go to where the port you want to uninstall resides.
+		run mk uninstall.
+		you're done.
 
+Developing for ports:
+	Testing:
+		run mk test.
+		you're done.
+	Adding a port:
+		make a directory with the port name in the desired category.
+		Create a mkfile with the required vars defined.
+		test the port.
+		you're done.
+
+Be sure to read Mk/README.* for more information on specific portions of
+the ports system.
