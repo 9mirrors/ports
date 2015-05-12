@@ -1,0 +1,18 @@
+Port files:
+	mkfile -- port configuration and installation
+	uninstall -- rc script to uninstall all files in the port (run by mk)
+	patches/ -- place where replacement files go
+	work/ -- root where all the downloading and building happens
+	other files are port specific or deprecated.
+
+Core files:
+	install.rc -- installed ports tree
+	Config/ports.conf -- global ports configuration
+	Config/ports.mk.conf -- mk only configuration
+	Config/ports.db -- installed ports database
+	Mk/mkfile -- core mkfile included in all ports. Has logic for
+				install, build, and removal.
+	Mk/pkg.rc -- The package management end of the ports tree
+	Mk/Examples/* -- example files (mostly deprecated)
+	Mk/README -- the old readme
+	Mk/README.* -- specific documentation
