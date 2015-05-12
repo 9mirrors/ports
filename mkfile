@@ -4,6 +4,9 @@
 test:VQ:
 	rc Mk/test
 
+db:VQ:
+	touch Config/ports.db
+
 install:VQE:
 	for(i in $CATEGORY){
 		{
