@@ -1,6 +1,6 @@
 </$objtype/mkfile
 
-PORTNAME=irc/irc7
+PORTNAME=net-irc/irc7
 OWNER='Matthew Veety <mveety@gmail.com>'
 DESCRIPTION='File based irc client'
 
