@@ -1,6 +1,6 @@
 </$objtype/mkfile
 
-PORTNAME='rio/nile'
+PORTNAME=rio/nile
 OWNER='Matthew Veety <mveety@gmail.com>'
 DESCRIPTION='Modified rio'
 VERSION='1'
@@ -9,7 +9,7 @@ CONTRIBSOURCE='/n/sources/contrib/anothy/src/cmd/nile'
 BUILDPATH='work/'
 PATCHES='files/'
 BUILDCOMMAND='mk'
-INSTALLCOMMAND=('mk' 'portinstall')
-CLEANCOMMAND=('mk' 'clean')
+INSTALLCOMMAND=mk portinstall
+CLEANCOMMAND=mk clean
 
 </sys/ports/Mk/mkfile
