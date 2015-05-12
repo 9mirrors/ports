@@ -47,7 +47,7 @@ build:VQE:
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#DEPS 0){
 		for(i in $DEPS){
-			{
+			@{
 				rfork ne
 				if(! checkport $i){
 					cd /sys/ports/$i
@@ -81,7 +81,7 @@ install:VQE:
 			rfork ne
 			$INSTALLCOMMAND
 		}
-		if(! ~ $VERSION 0){
+		if(! ~ $#VERSION 0){
 			register $PORTNAME $VERSION
 		}
 		if not {
