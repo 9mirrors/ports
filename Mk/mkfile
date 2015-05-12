@@ -15,7 +15,7 @@ fetch:VQE:
 			rfork ne
 			webfs
 			hget $WEBSOURCE > work/$WORKFILE
-			if(! ! $#EXTRACTCOMMAND 0){
+			if(! ~ $#EXTRACTCOMMAND 0){
 				EXTRACTCOMMAND=($EXTRACTCOMMAND `{pwd}^'/work/'^$WORKFILE)
 				cd work
 				$EXTRACTCOMMAND
