@@ -4,7 +4,7 @@ fn register {
 	if(~ $#2 0){
 		vers=0
 	}
-	if false {
+	if not {
 		vers=$2
 	}
 	echo 'adding installed port...'

@@ -87,7 +87,7 @@ install:VQE:
 		if(! ~ $VERSION 0){
 			register $PORTNAME $VERSION
 		}
-		if true {
+		if not {
 			register $PORTNAME '0'
 		}
 		if(! ~ $*MESSAGE 0){
