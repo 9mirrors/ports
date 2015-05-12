@@ -5,6 +5,7 @@ OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='graphical volume controller'
 
 WEBSOURCE=http://9.offblast.org/stuff/volctl.c
+WORKFILE=volctl.c
 BUILDPATH=work/
 BUILDCOMMAND=/bin/rc -c 's=volctl; $CC $s.c && $LD -o $O.$s $s.$O'
 INSTALLCOMMAND=/bin/rc -c 's=volctl; cp $O.$s /$objtype/bin/$s'
