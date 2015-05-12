@@ -1,4 +1,5 @@
 </$objtype/mkfile
+</sys/ports/Config/ports.mk.conf
 
 test:VQ:
 	rc Mk/test
@@ -7,7 +8,6 @@ db:VQ:
 	touch Config/ports.db
 
 install:VQE:
-	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
 		@{
 			rfork ne
@@ -17,7 +17,6 @@ install:VQE:
 	}
 
 info:VQE:
-	. /sys/ports/Config/ports.conf
 	echo $CATEGORY
 	for(i in $CATEGORY){
 		@{
@@ -28,7 +27,6 @@ info:VQE:
 	}
 
 fetch:VQE:
-	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
 		@{
 			rfork ne
@@ -38,7 +36,6 @@ fetch:VQE:
 	}
 
 build:VQE:
-	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
 		@{
 			rfork ne
@@ -48,7 +45,6 @@ build:VQE:
 	}
 
 install:VQE:
-	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
 		@{
 			rfork ne
@@ -58,7 +54,6 @@ install:VQE:
 	}
 
 reinstall:VQE:
-	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
 		@{
 			rfork ne
@@ -68,7 +63,6 @@ reinstall:VQE:
 	}
 
 clean:VQE:
-	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
 		@{
 			rfork ne
@@ -78,7 +72,6 @@ clean:VQE:
 	}
 
 nuke:VQE:
-	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
 		@{
 			rfork ne
@@ -88,7 +81,6 @@ nuke:VQE:
 	}
 
 uninstall:VQE:
-	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
 		@{
 			rfork ne
