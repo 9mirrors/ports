@@ -1,5 +1,8 @@
 </sys/ports/Config/ports.mk.conf
 
+# for compatibility
+BUILDFOR=$objtype
+
 all:VQE: fetch build install
 
 info:VQE:
@@ -59,16 +62,13 @@ build:VQE:
 		dircp $PATCHES $BUILDPATH
 	}
 	cd $BUILDPATH
-	for(i in $BUILDFOR){
-		@{
-			rfork ne
-			objtype=$i
-			if(! ~ $BUILDCOMMAND ''){
-				$BUILDCOMMAND
-			}
-			if not {
-				status=''
-			}
+	@{
+		rfork ne
+		if(! ~ $BUILDCOMMAND ''){
+			$BUILDCOMMAND
+		}
+		if not {
+			status=''
 		}
 	}
 
@@ -77,12 +77,9 @@ install:VQE:
 	. /sys/ports/Mk/pkg.rc
 	if(! checkport $PORTNAME){
 		cd $BUILDPATH
-		for(i in $BUILDFOR){
-			{
-				rfork ne
-				objtype=$i
-				$INSTALLCOMMAND
-			}
+		@{
+			rfork ne
+			$INSTALLCOMMAND
 		}
 		if(! ~ $VERSION 0){
 			register $PORTNAME $VERSION
@@ -101,12 +98,9 @@ reinstall:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
-	for (i in $BUILDFOR){
-		@{
-			rfork ne
-			objtype=$i
-			$INSTALLCOMMAND
-		}
+	@{
+		rfork ne
+		$INSTALLCOMMAND
 	}
 	if(! ~ $*MESSAGE 0){
 		for(i in $MESSAGE){
