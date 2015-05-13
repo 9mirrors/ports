@@ -8,5 +8,6 @@ WORKFILE=netscan.c
 BUILDPATH=work/
 BUILDCOMMAND=/bin/rc -c 's=netscan; $CC $s.c && $LD -o $O.$s $s.$O'
 INSTALLCOMMAND=/bin/rc -c 's=netscan; cp $O.$s /$objtype/bin/$s'
+UNINSTALL=/$objtype/bin/netscan
 
 </sys/ports/Mk/mkfile

@@ -1,6 +1,0 @@
-rfork ne
-. /sys/ports/Config/ports.conf
-for(i in $BUILDFOR){
-	echo 'deleting: /'^$i^'/bin/nile'
-	rm -f /$i/bin/nile
-}

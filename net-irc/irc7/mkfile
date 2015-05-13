@@ -4,9 +4,10 @@ OWNER='Matthew Veety <mveety@gmail.com>'
 DESCRIPTION='File based irc client'
 VERSION='1'
 
-WEBSOURCE=http://plan9.stanleylieber.com/src/irc7.tgz
+9PSERVER=9front.org
+9PFILE=/n/9front.org/extra/irc7.tgz
 WORKFILE=irc7.tgz
-EXTRACTCOMMAND=/bin/tar xzvf
+EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/irc7
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install

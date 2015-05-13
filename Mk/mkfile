@@ -20,25 +20,20 @@ fetch:VQE:
 	. /sys/ports/Config/ports.conf
 	mkdir -p work/
 	if(! ~ $#WEBSOURCE 0){
-		rfork ne
-		test -e work/$WORKFILE && exit alreadyfetched
-		{ webfs && hget $WEBSOURCE > work/$WORKFILE } || exit $status
-		if(! ~ $#EXTRACTCOMMAND 0){
-			EXTRACTCOMMAND=($EXTRACTCOMMAND `{pwd}^'/work/'^$WORKFILE)
-			cd work
-			$EXTRACTCOMMAND || exit $status
+		@{ rfork ne; webfs && hget $WEBSOURCE > work/$WORKFILE } || exit $status
+	}
+	if(! ~ $#9PSERVER 0){
+		if(! ~ $#9PFILE 0){
+			@{ rfork ne; 9fs $9PSERVER && fcp $9PFILE work/$WORKFILE } || exit $status
 		}
-		exit ''
+		if(! ~ $#9PDIR 0){
+			@{ rfork ne; 9fs $9PSERVER && dircp $9PDIR work/ } || exit $status
+		}
 	}
-	if(! ~ $#CONTRIBSOURCE 0){
-		rfork ne
-		{ 9fs sources && dircp $CONTRIBSOURCE work/ } || exit $status
-		exit
-	}
-	if(! ~ $#FCONTRIBSOURCE 0){
-		rfork ne
-		{ 9fs contrib.9front.org && dircp $FCONTRIBSOURCE work/ } || exit $status
-		exit
+	if(! ~ $#EXTRACTCOMMAND 0){
+		EXTRACTCOMMAND=($EXTRACTCOMMAND `{pwd}^'/work/'^$WORKFILE)
+		cd work
+		$EXTRACTCOMMAND || exit $status
 	}
 	if(! ~ $#HGSOURCE 0){
 		rfork ne
@@ -65,6 +60,9 @@ build:VQE: # fetch
 	}
 	if(! ~ $#PATCHES 0){
 		dircp $PATCHES $BUILDPATH
+	}
+	if(~ $#BUILDPATH 0){
+		BUILDPATH=work
 	}
 	cd $BUILDPATH
 	@{
