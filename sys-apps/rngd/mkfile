@@ -1,6 +1,6 @@
 </$objtype/mkfile
 
-PORTNAME=system/rngd
+PORTNAME=sys-apps/rngd
 OWNER='Matthew Veety <mveety@mveety.com>'
 DESCRIPTION='Random number generator filesystem'
 
