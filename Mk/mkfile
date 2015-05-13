@@ -16,33 +16,34 @@ info:VQE:
 
 fetch:VQE:
 	. /sys/ports/Config/ports.conf
-#	touch fetch
 	mkdir -p work/
 	if(! ~ $#WEBSOURCE 0){
-		@{
-			rfork ne
-			webfs
-			hget $WEBSOURCE > work/$WORKFILE
-			if(! ~ $#EXTRACTCOMMAND 0){
-				EXTRACTCOMMAND=($EXTRACTCOMMAND `{pwd}^'/work/'^$WORKFILE)
-				cd work
-				$EXTRACTCOMMAND
-			}
+		rfork ne
+		test -e work/$WORKFILE && exit alreadyfetched
+		{ webfs && hget $WEBSOURCE > work/$WORKFILE } || exit $status
+		if(! ~ $#EXTRACTCOMMAND 0){
+			EXTRACTCOMMAND=($EXTRACTCOMMAND `{pwd}^'/work/'^$WORKFILE)
+			cd work
+			$EXTRACTCOMMAND || exit $status
 		}
+		exit ''
 	}
 	if(! ~ $#CONTRIBSOURCE 0){
-		9fs sources
-		dircp $CONTRIBSOURCE work/
+		rfork ne
+		{ 9fs sources && dircp $CONTRIBSOURCE work/ } || exit $status
+		exit
 	}
 	if(! ~ $#FCONTRIBSOURCE 0){
-		9fs contrib.9front.org
-		dircp $FCONTRIBSOURCE work/
+		rfork ne
+		{ 9fs contrib.9front.org && dircp $FCONTRIBSOURCE work/ } || exit $status
+		exit
 	}
 	if(! ~ $#HGSOURCE 0){
-		webfs
-		hg clone $HGSOURCE work/
+		rfork ne
+		{ webfs && hg clone $HGSOURCE/work } || exit $status
+		exit
 	}
-	status=''
+	exit ''
 
 build:VQE: # fetch
 	. /sys/ports/Config/ports.conf
@@ -85,6 +86,7 @@ install:VQE: # build fetch
 			rfork ne
 			$INSTALLCOMMAND
 		}
+		echo $status
 		if(! ~ $#VERSION 0){
 			register $PORTNAME $VERSION
 		}
@@ -96,6 +98,10 @@ install:VQE: # build fetch
 				echo $i
 			}
 		}
+	}
+	if not {
+		echo $PORTNAME is already installed
+		status='already installed'
 	}
 
 reinstall:VQE: # build fetch
@@ -114,22 +120,23 @@ reinstall:VQE: # build fetch
 
 clean:VQE: # build fetch
 	. /sys/ports/Config/ports.conf
-	cd $BUILDPATH
-#	rm -f build fetch install
+	cd $BUILDPATH || exit notfetched
 	if(! ~ $#CLEANCOMMAND 0){
-		$CLEANCOMMAND
+		$CLEANCOMMAND || exit $status
 	}
-	status=''
+	exit ''
 
 nuke:VQE:
-	. /sys/ports/Config/ports.conf
-#	rm -f build fetch install
 	rm -rf work/
 
 uninstall:VQ: # fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 #	rm -f build fetch install
+	if(! checkport $PORTNAME){
+		echo $PORTNAME is not installed
+		exit notinstalled
+	}
 	if(~ $#UNINSTALL 0 && ~ $#UNINSTALLCMD 0){
 		if(test -e $PORTS^$PORTNAME^'/uninstall'){
 			rc $PORTS^$PORTNAME^/'uninstall'
