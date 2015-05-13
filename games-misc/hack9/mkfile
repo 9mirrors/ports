@@ -4,10 +4,11 @@ OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Hack and slash game'
 
 HGSOURCE=https://bitbucket.org/mischief/hack9
-BUILDPATH=work/
+BUILDPATH=work/hack9
 PATCHES=files/
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk uninstall
 
 </sys/ports/Mk/mkfile
