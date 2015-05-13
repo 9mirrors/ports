@@ -8,5 +8,6 @@ WEBSOURCE=http://plan9.stanleylieber.com/rc/mother
 WORKFILE=mother
 BUILDPATH=work
 INSTALLCOMMAND=/bin/rc -c 'cp mother /rc/bin/mother && chmod +x /rc/bin/mother'
+UNINSTALL=/rc/bin/mother
 
 </sys/ports/Mk/mkfile
