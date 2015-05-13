@@ -1,7 +1,7 @@
 . /sys/ports/Config/ports.conf
 
 fn register {
-	if(~ $2 0){
+	if(~ $#2 0){
 		vers=0
 	}
 	if false {
@@ -46,9 +46,6 @@ fn portversion {
 	if(test -e $PORTS/Config/ports.db){
 		if(grep -s $1 $PORTS/Config/ports.db){
 			vers=`{grep $1 $PORTS/Config/ports.db | awk '{print $2}'}
-		}
-		if false {
-			vers=0
 		}
 	}
 	if(~ $vers 0){

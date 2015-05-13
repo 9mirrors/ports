@@ -29,6 +29,10 @@ fetch:VQE:
 		9fs sources
 		dircp $CONTRIBSOURCE work/
 	}
+	if(! ~ $#FCONTRIBSOURCE 0){
+		9fs contrib.9front.org
+		dircp $FCONTRIBSOURCE work/
+	}
 	if(! ~ $#HGSOURCE 0){
 		webfs
 		hg clone $HGSOURCE work/
