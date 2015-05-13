@@ -1,6 +1,5 @@
 </$objtype/mkfile
 
-PORTNAME='games-misc/2048'
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='2048'
 

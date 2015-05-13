@@ -1,6 +1,5 @@
 </$objtype/mkfile
 
-PORTNAME=rio/nile
 OWNER='Matthew Veety <mveety@gmail.com>'
 DESCRIPTION='Modified rio'
 VERSION='1'

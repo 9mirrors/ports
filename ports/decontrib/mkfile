@@ -1,6 +1,5 @@
 </$objtype/mkfile
 
-PORTNAME='ports/decontrib'
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='decontrib'
 

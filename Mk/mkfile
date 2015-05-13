@@ -3,6 +3,8 @@
 # for compatibility
 BUILDFOR=$objtype
 PORTID=`{echo $PORTNAME | md5sum}
+PORTCAT=`{basename -d `{pwd} | sed 's,.*/,,'}
+PORTNAME=$PORTCAT/`{basename `{pwd}}
 
 all:VQE: fetch build install
 
@@ -48,7 +50,6 @@ fetch:VQE:
 build:VQE: # fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
-#	touch build
 	if(! ~ $#DEPS 0){
 		for(i in $DEPS){
 			@{

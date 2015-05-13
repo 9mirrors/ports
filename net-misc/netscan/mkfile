@@ -1,6 +1,5 @@
 </$objtype/mkfile
 
-PORTNAME='net-misc/netscan'
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='concurrent tcp port scanner'
 

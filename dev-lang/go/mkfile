@@ -1,6 +1,5 @@
 </$objtype/mkfile
 
-PORTNAME=dev-lang/go
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Google Go language'
 

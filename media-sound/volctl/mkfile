@@ -1,6 +1,5 @@
 </$objtype/mkfile
 
-PORTNAME='media-sound/volctl'
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='graphical volume controller'
 

@@ -1,6 +1,5 @@
 </$objtype/mkfile
 
-PORTNAME=games-misc/hack9
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Hack and slash game'
 

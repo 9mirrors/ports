@@ -1,6 +1,5 @@
 </$objtype/mkfile
 
-PORTNAME='ports/portupdate'
 OWNER='Matthew Veety <mveety@gmail.com>'
 DESCRIPTION='portupdate'
 
