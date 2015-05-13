@@ -9,7 +9,7 @@ db:VQ:
 install:VQE:
 	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk install
@@ -18,8 +18,9 @@ install:VQE:
 
 info:VQE:
 	. /sys/ports/Config/ports.conf
+	echo $CATEGORY
 	for(i in $CATEGORY){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk info
@@ -29,7 +30,7 @@ info:VQE:
 fetch:VQE:
 	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk fetch
@@ -39,7 +40,7 @@ fetch:VQE:
 build:VQE:
 	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk build
@@ -49,7 +50,7 @@ build:VQE:
 install:VQE:
 	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk install
@@ -59,7 +60,7 @@ install:VQE:
 reinstall:VQE:
 	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk reinstall
@@ -69,7 +70,7 @@ reinstall:VQE:
 clean:VQE:
 	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk clean
@@ -79,7 +80,7 @@ clean:VQE:
 nuke:VQE:
 	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk nuke
@@ -89,7 +90,7 @@ nuke:VQE:
 uninstall:VQE:
 	. /sys/ports/Config/ports.conf
 	for(i in $CATEGORY){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk uninstall

@@ -3,7 +3,7 @@
 
 install:VQE:
 	for(i in `{lc}){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk install
@@ -12,7 +12,7 @@ install:VQE:
 
 info:VQE:
 	for(i in `{lc}){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk info
@@ -21,7 +21,7 @@ info:VQE:
 
 fetch:VQE:
 	for(i in `{lc}){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk fetch
@@ -30,7 +30,7 @@ fetch:VQE:
 
 build:VQE:
 	for(i in `{lc}){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk build
@@ -39,7 +39,7 @@ build:VQE:
 
 install:VQE:
 	for(i in `{lc}){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk install
@@ -48,7 +48,7 @@ install:VQE:
 
 reinstall:VQE:
 	for(i in `{lc}){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk reinstall
@@ -57,7 +57,7 @@ reinstall:VQE:
 
 clean:VQE:
 	for(i in `{lc}){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk clean
@@ -66,7 +66,7 @@ clean:VQE:
 
 nuke:VQE:
 	for(i in `{lc}){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk nuke
@@ -75,7 +75,7 @@ nuke:VQE:
 
 uninstall:VQE:
 	for(i in `{lc}){
-		{
+		@{
 			rfork ne
 			cd $i
 			mk uninstall
