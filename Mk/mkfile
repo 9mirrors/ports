@@ -2,8 +2,11 @@
 
 all:VQE: fetch build install
 
-info:VQ:
+info:VQE:
 	echo 'Name: '^$PORTNAME
+	if(! ~ $VERSION 0){
+		echo 'Port Version: '^$VERSION
+	}
 	echo 'Description: '^$DESCRIPTION
 	echo 'Complain to: '^$OWNER
 
