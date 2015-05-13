@@ -2,7 +2,7 @@
 </sys/ports/Config/ports.conf
 
 install:VQE:
-	for(i in `{lc}){
+	for(i in `{ls -l | grep '^d' | awk '{ print $10 }'}){
 		@{
 			rfork ne
 			cd $i
@@ -11,7 +11,7 @@ install:VQE:
 	}
 
 info:VQE:
-	for(i in `{lc}){
+	for(i in `{ls -l | grep '^d' | awk '{ print $10 }'}){
 		@{
 			rfork ne
 			cd $i
@@ -20,7 +20,7 @@ info:VQE:
 	}
 
 fetch:VQE:
-	for(i in `{lc}){
+	for(i in `{ls -l | grep '^d' | awk '{ print $10 }'}){
 		@{
 			rfork ne
 			cd $i
@@ -29,7 +29,7 @@ fetch:VQE:
 	}
 
 build:VQE:
-	for(i in `{lc}){
+	for(i in `{ls -l | grep '^d' | awk '{ print $10 }'}){
 		@{
 			rfork ne
 			cd $i
@@ -38,7 +38,7 @@ build:VQE:
 	}
 
 install:VQE:
-	for(i in `{lc}){
+	for(i in `{ls -l | grep '^d' | awk '{ print $10 }'}){
 		@{
 			rfork ne
 			cd $i
@@ -47,7 +47,7 @@ install:VQE:
 	}
 
 reinstall:VQE:
-	for(i in `{lc}){
+	for(i in `{ls -l | grep '^d' | awk '{ print $10 }'}){
 		@{
 			rfork ne
 			cd $i
@@ -56,7 +56,7 @@ reinstall:VQE:
 	}
 
 clean:VQE:
-	for(i in `{lc}){
+	for(i in `{ls -l | grep '^d' | awk '{ print $10 }'}){
 		@{
 			rfork ne
 			cd $i
@@ -65,7 +65,7 @@ clean:VQE:
 	}
 
 nuke:VQE:
-	for(i in `{lc}){
+	for(i in `{ls -l | grep '^d' | awk '{ print $10 }'}){
 		@{
 			rfork ne
 			cd $i
@@ -74,7 +74,7 @@ nuke:VQE:
 	}
 
 uninstall:VQE:
-	for(i in `{lc}){
+	for(i in `{ls -l | grep '^d' | awk '{ print $10 }'}){
 		@{
 			rfork ne
 			cd $i
