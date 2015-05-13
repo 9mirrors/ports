@@ -1,0 +1,4 @@
+#!/bin/rc
+. /sys/ports/Config/ports.conf
+cd /sys/ports
+mk update
