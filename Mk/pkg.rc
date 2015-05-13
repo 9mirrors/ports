@@ -1,31 +1,33 @@
+. /sys/ports/Config/ports.conf
+
 fn register {
 	echo 'adding installed port...'
-	if(test -e /sys/ports/Config/ports.db){
-		echo $1 >> /sys/ports/Config/ports.db
+	if(test -e $PORTS/Config/ports.db){
+		echo $1 >> $PORTS/Config/ports.db
 	}
 }
 
 fn deregister {
 	echo 'removing installed port...'
-	if(test -e /sys/ports/Config/ports.db){
+	if(test -e $PORTS/Config/ports.db){
 		# grep returns non-nil status when no lines matched.
-		grep -v $1 /sys/ports/Config/ports.db > /sys/ports/Config/ports2.db || status=''
-		cp /sys/ports/Config/ports2.db /sys/ports/Config/ports.db
+		grep -v $1 $PORTS/Config/ports.db > $PORTS/Config/ports2.db || status=''
+		cp $PORTS/Config/ports2.db $PORTS/Config/ports.db
 	}
 }
 
 fn checkport {
 	s=''
 	echo 'checking for port: '^$1
-	if(test -e /sys/ports/Config/ports.db){
-		if(grep -s $1 /sys/ports/Config/ports.db){
+	if(test -e $PORTS/Config/ports.db){
+		if(grep -s $1 $PORTS/Config/ports.db){
 			s=''
 		}
-		if(! grep -s $1 /sys/ports/Config/ports.db){
+		if(! grep -s $1 $PORTS/Config/ports.db){
 			s='checkport: not installed'
 		}
 	}
-	if(! test -e /sys/ports/Config/ports.db){
+	if(! test -e $PORTS/Config/ports.db){
 		s='checkport: no database'
 	}
 	status=$s
