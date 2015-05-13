@@ -151,4 +151,5 @@ uninstall:VQ: # fetch
 		if not {
 			$UNINSTALLCMD
 		}
+		deregister $PORTNAME
 	}
