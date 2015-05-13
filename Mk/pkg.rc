@@ -1,9 +1,15 @@
 . /sys/ports/Config/ports.conf
 
 fn register {
+	if(~ $2 0){
+		vers=0
+	}
+	if false {
+		vers=$2
+	}
 	echo 'adding installed port...'
 	if(test -e $PORTS/Config/ports.db){
-		echo $1 >> $PORTS/Config/ports.db
+		echo $1^' '^$2 >> $PORTS/Config/ports.db
 	}
 }
 
@@ -30,5 +36,24 @@ fn checkport {
 	if(! test -e $PORTS/Config/ports.db){
 		s='checkport: no database'
 	}
+	status=$s
+}
+
+fn portversion {
+	s=''
+	vers=0
+	echo 'checking port version: '^$1
+	if(test -e $PORTS/Config/ports.db){
+		if(grep -s $1 $PORTS/Config/ports.db){
+			vers=`{grep $1 $PORTS/Config/ports.db | awk '{print $2}'}
+		}
+		if false {
+			vers=0
+		}
+	}
+	if(~ $vers 0){
+		s='not found or no version'
+	}
+	echo $vers
 	status=$s
 }
