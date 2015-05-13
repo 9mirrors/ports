@@ -120,13 +120,25 @@ nuke:VQE:
 uninstall:VQ:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
-	if(test -e $PORTS^$PORTNAME^'/uninstall'){
-		rc $PORTS^$PORTNAME^/'uninstall'
-		deregister $PORTNAME
+	if(~ $#UNINSTALL 0 && ~ $#UNINSTALLCMD 0){
+		if(test -e $PORTS^$PORTNAME^'/uninstall'){
+			rc $PORTS^$PORTNAME^/'uninstall'
+			deregister $PORTNAME
+		}
+		if not {
+			echo 'unable to uninstall port'
+			echo 'please send a bug report to '^$OWNER^' about this'
+			echo 'If '^$OWNER^' does not respond or fix the port please'
+			echo 'email mveety@gmail.com, and he will remove the port.'
+		}
 	}
 	if not {
-		echo 'unable to uninstall port'
-		echo 'please send a bug report to '^$OWNER^' about this'
-		echo 'If '^$OWNER^' does not respond or fix the port please'
-		echo 'email mveety@gmail.com, and he will remove the port.'
+		if(~ $#UNINSTALLCMD 0){
+			for(i in $UNINSTALL){
+				rm -f $i
+			}
+		}
+		if not {
+			$UNINSTALLCMD
+		}
 	}
