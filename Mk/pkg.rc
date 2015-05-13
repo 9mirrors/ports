@@ -1,5 +1,22 @@
 . /sys/ports/Config/ports.conf
 
+fn checkport {
+	s=''
+	echo 'checking for port: '^$1
+	if(test -e $PORTS/Config/ports.db){
+		if(grep -s $1 $PORTS/Config/ports.db){
+			s=''
+		}
+		if(! grep -s $1 $PORTS/Config/ports.db){
+			s='checkport: not installed'
+		}
+	}
+	if(! test -e $PORTS/Config/ports.db){
+		s='checkport: no database'
+	}
+	status=$s
+}
+
 fn register {
 	if(~ $#2 0){
 		vers=0
@@ -17,26 +34,10 @@ fn deregister {
 	echo 'removing installed port...'
 	if(test -e $PORTS/Config/ports.db){
 		# grep returns non-nil status when no lines matched.
-		grep -v $1 $PORTS/Config/ports.db > $PORTS/Config/ports2.db || status=''
-		cp $PORTS/Config/ports2.db $PORTS/Config/ports.db
+		ptmp=/tmp/ports.$pid
+		grep -v $1 $PORTS/Config/ports.db > $ptmp || status=''
+		cp $ptmp $PORTS/Config/ports.db && rm $ptmp
 	}
-}
-
-fn checkport {
-	s=''
-	echo 'checking for port: '^$1
-	if(test -e $PORTS/Config/ports.db){
-		if(grep -s $1 $PORTS/Config/ports.db){
-			s=''
-		}
-		if(! grep -s $1 $PORTS/Config/ports.db){
-			s='checkport: not installed'
-		}
-	}
-	if(! test -e $PORTS/Config/ports.db){
-		s='checkport: no database'
-	}
-	status=$s
 }
 
 fn portversion {
