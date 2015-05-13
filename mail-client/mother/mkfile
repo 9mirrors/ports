@@ -1,8 +1,7 @@
 </$objtype/mkfile
 
-PORTNAME='mail-client/mother'
 OWNER='Nick Owens <mischief@offblast.org>'
-DESCRIPTION='mother'
+DESCRIPTION='mother mail client'
 
 WEBSOURCE=http://plan9.stanleylieber.com/rc/mother
 WORKFILE=mother
