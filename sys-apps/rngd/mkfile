@@ -6,7 +6,7 @@ DESCRIPTION='Random number generator filesystem'
 
 HGSOURCE='https://bitbucket.org/mischief/rngd'
 BUILDPATH=work/
-BUILDCOMMAND=mk
+BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
 UNINSTALL=/$objtype/bin/rngd
