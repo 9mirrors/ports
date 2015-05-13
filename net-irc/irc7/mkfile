@@ -3,6 +3,7 @@
 PORTNAME=net-irc/irc7
 OWNER='Matthew Veety <mveety@gmail.com>'
 DESCRIPTION='File based irc client'
+VERSION='1'
 
 WEBSOURCE=http://plan9.stanleylieber.com/src/irc7.tgz
 WORKFILE=irc7.tgz

@@ -3,6 +3,7 @@
 PORTNAME='rio/nile'
 OWNER='Matthew Veety <mveety@gmail.com>'
 DESCRIPTION='Modified rio'
+VERSION='1'
 
 CONTRIBSOURCE='/n/sources/contrib/anothy/src/cmd/nile'
 BUILDPATH='work/'
