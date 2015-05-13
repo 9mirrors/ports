@@ -36,9 +36,7 @@ fetch:VQE:
 		$EXTRACTCOMMAND || exit $status
 	}
 	if(! ~ $#HGSOURCE 0){
-		rfork ne
-		{ webfs && hg clone $HGSOURCE/work } || exit $status
-		exit
+		@{ rfork ne; cd work; webfs && hg clone $HGSOURCE } || exit $status
 	}
 	exit ''
 
@@ -131,31 +129,30 @@ nuke:VQE:
 uninstall:VQ: # fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
-#	rm -f build fetch install
 	if(! checkport $PORTNAME){
 		echo $PORTNAME is not installed
 		exit notinstalled
 	}
-	if(~ $#UNINSTALL 0 && ~ $#UNINSTALLCMD 0){
+	echo removing $PORTNAME...
+	if(~ $#UNINSTALL 0 && ~ $#UNINSTALLCOMMAND 0){
 		if(test -e $PORTS^$PORTNAME^'/uninstall'){
-			rc $PORTS^$PORTNAME^/'uninstall'
-			deregister $PORTNAME
+			UINSTALLCOMMAND=$PORTS^$PORTNAME^/'uninstall'
 		}
 		if not {
 			echo 'unable to uninstall port'
 			echo 'please send a bug report to '^$OWNER^' about this'
 			echo 'If '^$OWNER^' does not respond or fix the port please'
 			echo 'email mveety@gmail.com, and he will remove the port.'
+			exit nouninstall
+		}
+	}
+	if(~ $#UNINSTALLCOMMAND 0){
+		for(i in $UNINSTALL){
+			rm -f $i
 		}
 	}
 	if not {
-		if(~ $#UNINSTALLCMD 0){
-			for(i in $UNINSTALL){
-				rm -f $i
-			}
-		}
-		if not {
-			$UNINSTALLCMD
-		}
-		deregister $PORTNAME
+		@{ rfork ne; cd $BUILDPATH; $UNINSTALLCOMMAND } || exit $status
 	}
+	deregister $PORTNAME
+

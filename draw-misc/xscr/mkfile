@@ -11,6 +11,6 @@ BUILDPATH=work/xscr
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
-UNINSTALLCMD=rm -rf /$objtype/bin/xscr
+UNINSTALLCOMMAND=rm -rf /$objtype/bin/xscr
 
 </sys/ports/Mk/mkfile
