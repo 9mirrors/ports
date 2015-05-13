@@ -2,6 +2,7 @@
 
 # for compatibility
 BUILDFOR=$objtype
+PORTID=`{echo $PORTNAME | md5sum}
 
 all:VQE: fetch build install
 
@@ -15,6 +16,7 @@ info:VQE:
 
 fetch:VQE:
 	. /sys/ports/Config/ports.conf
+	touch fetch
 	mkdir -p work/
 	if(! ~ $#WEBSOURCE 0){
 		@{
@@ -42,9 +44,10 @@ fetch:VQE:
 	}
 	status=''
 
-build:VQE:
+build:VQE: fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
+	touch build
 	if(! ~ $#DEPS 0){
 		for(i in $DEPS){
 			@{
@@ -72,9 +75,10 @@ build:VQE:
 		}
 	}
 
-install:VQE:
+install:VQE: build fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
+	touch install
 	if(! checkport $PORTNAME){
 		cd $BUILDPATH
 		@{
@@ -94,7 +98,7 @@ install:VQE:
 		}
 	}
 
-reinstall:VQE:
+reinstall:VQE: build fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
@@ -108,18 +112,24 @@ reinstall:VQE:
 		}
 	}
 
-clean:VQE:
+clean:VQE: build fetch
 	. /sys/ports/Config/ports.conf
 	cd $BUILDPATH
-	eval $CLEANCOMMAND
+	rm -f build fetch install
+	if(! ~ $#CLEANCOMMAND 0){
+		$CLEANCOMMAND
+	}
+	status=''
 
 nuke:VQE:
 	. /sys/ports/Config/ports.conf
+	rm -f build fetch install
 	rm -rf work/
 
-uninstall:VQ:
+uninstall:VQ: fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
+	rm -f build fetch install
 	if(~ $#UNINSTALL 0 && ~ $#UNINSTALLCMD 0){
 		if(test -e $PORTS^$PORTNAME^'/uninstall'){
 			rc $PORTS^$PORTNAME^/'uninstall'
