@@ -16,18 +16,18 @@ fn quiet {
 
 fn bail {
 	quiet mk nuke
-	exit $1
+	exit $"*
 }
 
 fn testone {
 	port=$1
 	echo $port | awk '{printf("%-30s", $1)}'
 	cd /sys/ports/$port
-	echo -n 'fetch.. '; quiet mk fetch || bail fetch
-	echo -n 'build.. '; quiet mk build || bail build
-	echo -n 'install.. '; quiet mk install || bail install
-	echo -n 'uninstall.. '; quiet mk uninstall || bail uninstall
-	echo -n 'nuke.. '; quiet mk nuke || exit nuke
+	echo -n 'fetch.. '; quiet mk fetch || bail fetch: $status
+	echo -n 'build.. '; quiet mk build || bail build: $status
+	echo -n 'install.. '; quiet mk install || bail install: $status
+	echo -n 'uninstall.. '; quiet mk uninstall || bail uninstall: $status
+	echo -n 'nuke.. '; quiet mk nuke || exit 'nuke: '^$status
 }
 
 for (c in $CATEGORY) {
@@ -50,3 +50,4 @@ if(! ~ $#fail 0){
 	echo
 	echo fail: $fail
 }
+exit ''
