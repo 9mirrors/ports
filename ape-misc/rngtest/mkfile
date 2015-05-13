@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='random number generator test'
+
+9PSERVER=sources
+9PFILE=/n/sources/contrib/bakul/rngtest.tar.gz
+WORKFILE=rngtest.tar.gz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/rngtest/src
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALL=/$objtype/bin/ape/rngtest
+
+</sys/ports/Mk/mkfile
