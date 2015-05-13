@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='simple http server without cgi support for plan9'
+VERSION='1'
+
+9PSERVER=9front.org
+9PFILE=/n/9front.org/extra/tcp80.tgz
+WORKFILE=tcp80.tgz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/tcp80
+BUILDCOMMAND=mk all
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALL=/$objtype/bin/tcp80
+
+</sys/ports/Mk/mkfile
