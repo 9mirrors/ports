@@ -9,11 +9,11 @@ WORKFILE=mksh-R50f.tgz
 EXTRACTCOMMAND=/bin/tar xzvf
 BUILDPATH=work/mksh
 CC=cc
-CFLAGS="-DMKSH_NOPROSPECTOFWORK"
+CFLAGS=-DMKSH_NOPROSPECTOFWORK
 BUILDCOMMAND=ape/psh Build.sh
 INSTALLCOMMAND=/bin/rc -c 'cp mksh /$objtype/bin/ && cp mksh.1 /sys/man/1/mksh'
-UNINSTALLCMD=/bin/rc -c 'rm /$objtype/bin/mksh && rm /sys/man/1/mksh'
 CLEANCOMMAND=rm *.o
+UNINSTALLCOMMAND=/bin/rc -c 'rm /$objtype/bin/mksh && rm /sys/man/1/mksh'
 MESSAGE='to use as default APE shell, install ape-utils/mksh-sh'
 
 </sys/ports/Mk/mkfile
