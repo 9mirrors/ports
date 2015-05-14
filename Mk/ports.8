@@ -1,0 +1,179 @@
+.TH PORTS 8
+.SH NAME
+/sys/ports/, ports/install, ports/update \- Contributed programs and management
+.SH SYNOPSIS
+.B ports/install
+[
+.B -p
+]
+.I root
+.PP
+.B ports/update
+.PP
+.B /sys/ports/*
+.SH DESCRIPTION
+.I Ports
+and related programs allow users and administrators to install, manage, and fetch programs and sources to programs. Each port contains whats needed to fetch, build, install, and uninstall each program automatically. Ports keeps track of dependencies that need to be installed before a port is installed and what ports are installed on the system. Ports also keep a short synopsis and versioning information for each port ease finding and upgrading programs.
+.SH TARGETS
+Some of the targets work recursively through the subdirectories of the ports tree or each category. This lets you install the entire ports tree, or all of the ports in a single category automatically. The targets that do this are
+.B fetch, build, install, reinstall,
+and
+.B uninstall
+.PP
+The following targets are available for all mkfiles in the ports tree. The order that they're in is the order they should be run in to install or reinstall a program:
+.TP
+.B fetch
+Fetch all of the files needed to build and install the port.
+.TP
+.B build
+Compiles the port and does other things required to install the port.
+.TP
+.B install
+Installs the port and registers it in the ports database. It will fail if the port already exists in the database.
+.TP
+.B reinstall
+Installs the port but does not register it in the ports database. It will not fail if the port already exists in the database.
+.TP
+.B clean
+Cleans the port, usually removing object files and files generated during the build and installation.
+.TP
+.B nuke
+Removes all downloaded files and all files generated during build an install. After a port is nuked, fetch should be run before running any other target.
+.TP
+.B uninstall
+Uninstalls all files installed during the install. Requires that the port defines $UNINSTALL, $UNINSTALLCMD, or has an uninstall file.
+.PP
+Targets the only exist in the root mkfile or category mkfiles:
+.TP
+.B test
+Runs the ports tree test scripts.
+.TP
+.B db
+Creates the ports database (must be run after you install the ports tree).
+.TP
+.B update
+Updates the ports tree against the ports mercurial repository.
+.SH ENVIRONMENT
+The ports tree's environment is defined by
+.I ports.conf
+,
+.I ports.mk.conf
+, and each port's 
+.I mkfile
+.
+.PP
+Variables that are available in
+.I ports.conf
+.TP
+.B BINFILES
+Defines where executable binaries are installed.
+.TP
+.B LIBFILES
+Defines where library binaries and archives are installed.
+.TP
+.B PORTS
+Defines where the root of the ports tree is.
+.TP
+.B CATEGORY
+Defines the available categories in the ports tree.
+.PP
+Variables that are available in
+.I ports.mk.conf
+:
+.TP
+.B CATEGORY
+Mirror of
+.B CATEGORY
+in
+.I ports.conf
+.PP
+Variables that are available in a port's
+.I mkfile
+:
+.TP
+.B PORTNAME
+Name of the port
+.TP
+.B DESCRIPTION
+Some short information about the port, usually info about what it does.
+.TP
+.B OWNER
+The port's maintainer. If the port is orphaned then this has information about being orphaned
+.TP
+.B WEBSOURCE
+URL to download the ports files
+.TP
+.B WORKFILE
+Filename that $WEBSOURCE outputs to.
+.TP
+.B EXTRACTCOMMAND
+Command to extract the $WORKFILE.
+.TP
+.B CONTRIBSOURCE
+A directory in Plan 9's contrib. Must be full path including /n/sources/. Copied to work/ using dircp.
+.TP
+.B FCONTRIBSOURCE
+Exactly the same as $CONTRIBSOURCE, but gets the files from 9front's contrib (contrib.9front.org).
+.TP
+.B HGSOURCE
+Mercurial repository containing the port's files.
+.TP
+.B DEPS
+Ports that this ports depends on. These will be installed before this port.
+.TP
+.B PATCHES
+Directory where patches are (if any).
+.TP
+.B BUILDPATH
+The path where $BUILDCOMMAND, $INSTALLCOMMAND, and $CLEANCOMMAND get executed.
+.TP
+.B BUILDCOMMAND
+Command run to build the port.
+.TP
+.B INSTALLCOMMAND
+Command run to install the port.
+.TP
+.B MESSAGE
+List of strings that are output to the user at the end of installation.
+.TP
+.B CLEANCOMMAND
+Command run to clean the port
+.TP
+.B VERSION
+Identifier to differentiate between version of a port.
+.TP
+.B UNINSTALL
+List of files that the port installs.
+.TP
+.B UNINSTALLCMD
+Command to run that will uninstall the port.
+.SH FILES
+.B /sys/ports
+\- The ports root
+.br
+.B /sys/ports/Config/ports.conf
+\- rc config file
+.br
+.B /sys/ports/Config/ports.mk.conf
+\- mk config file
+.br
+.B /sys/ports/Config/ports.db
+\- Installed port database
+.br
+.B /sys/ports/Mk/*
+\- Global ports files
+.SH "SEE ALSO"
+.IR pkg(1),
+.IR mk(1),
+.IR rc(1),
+.IR regexp(6)
+.SH HISTORY
+Ports initially appeared in BSD. We stole the idea.
+.br
+Appeared in 9front around June 2015.
+.SH AUTHORS
+Matthew Veety <mveety@mveety.com>
+.br
+Nick Owens <mischief@offblast.org>
+.SH BUGS
+Yes.
