@@ -14,15 +14,20 @@ fn quiet {
 	$* >/dev/null >[2=1]
 }
 
+fn bail {
+	quiet mk nuke
+	exit $1
+}
+
 fn testone {
 	port=$1
 	echo $port | awk '{printf("%-30s", $1)}'
 	cd /sys/ports/$port
-	echo -n 'fetch.. '; quiet mk fetch || exit fetch
-	echo -n 'build.. '; quiet mk build || exit build
-	echo -n 'install.. '; quiet mk install || exit install
-	echo -n 'uninstall.. '; quiet mk uninstall || exit uninstall
-	echo -n 'nuke..'; quiet mk nuke || exit nuke
+	echo -n 'fetch.. '; quiet mk fetch || bail fetch
+	echo -n 'build.. '; quiet mk build || bail build
+	echo -n 'install.. '; quiet mk install || bail install
+	echo -n 'uninstall.. '; quiet mk uninstall || bail uninstall
+	echo -n 'nuke.. '; quiet mk nuke || exit nuke
 }
 
 for (c in $CATEGORY) {
@@ -31,11 +36,11 @@ for (c in $CATEGORY) {
 		@{ testone $c/$port }
 		st=`{ echo $status | sed 's/.*: //g'}
 		if(~ $st ''){
-			echo ' ok.'
+			echo 'ok.'
 			pass=($pass $c/$port)
 		}
 		if not {
-			echo ' failed at' $st.
+			echo 'failed at' $st.
 			fail=($fail $c/$port)
 		}
 	}	
