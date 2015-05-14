@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='wake on lan for plan9. uses ndb(2) to resolve mac and ip broadcast.'
+VERSION='1'
+
+WEBSOURCE=http://felloff.net/usr/cinap_lenrek/wol.tgz
+WORKFILE=wol.tgz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/wol
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALL=/$objtype/bin/wol
+
+</sys/ports/Mk/mkfile
