@@ -5,6 +5,7 @@ BUILDFOR=$objtype
 PORTID=`{echo $PORTNAME | md5sum}
 PORTCAT=`{basename -d `{pwd} | sed 's,.*/,,'}
 PORTNAME=$PORTCAT/`{basename `{pwd}}
+files=`{pwd}/files
 
 all:VQE: fetch build install
 
@@ -19,6 +20,7 @@ info:VQE:
 fetch:VQE:
 	. /sys/ports/Config/ports.conf
 	mkdir -p work/
+	test -e work/.patched && rm work/.patched
 	if(! ~ $#WEBSOURCE 0){
 		@{ rfork ne; webfs && hget $WEBSOURCE > work/$WORKFILE } || exit $status
 	}
@@ -40,7 +42,7 @@ fetch:VQE:
 	}
 	exit ''
 
-build:VQE: # fetch
+build:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#DEPS 0){
@@ -56,11 +58,17 @@ build:VQE: # fetch
 			}
 		}
 	}
-	if(! ~ $#PATCHES 0){
-		dircp $PATCHES $BUILDPATH
-	}
 	if(~ $#BUILDPATH 0){
 		BUILDPATH=work
+	}
+	if(! test -e work/.patched){
+		for(p in `{ls $files/*.patch}){
+			@{ cd $BUILDPATH && apply $p } || exit 'applying '^$p^' failed'
+		}
+		touch work/.patched || exit $status
+	}
+	if(! ~ $#PATCHES 0){
+		dircp $PATCHES $BUILDPATH
 	}
 	cd $BUILDPATH
 	@{
