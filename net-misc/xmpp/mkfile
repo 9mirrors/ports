@@ -1,0 +1,13 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='xmpp is a simple XMPP client'
+
+HGSOURCE=https://bitbucket.org/ftrvxmtrx/xmpp
+BUILDPATH=work/xmpp
+BUILDCOMMAND=mk all
+INSTALLCOMMAND=rc -c 'mk install && mk -a man'
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=rm -f /$objtype/bin/xmpp /sys/man/1/xmpp
+
+</sys/ports/Mk/mkfile
