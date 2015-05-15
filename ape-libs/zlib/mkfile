@@ -1,6 +1,5 @@
 </$objtype/mkfile
 
-PORTNAME=ape-libs/zlib
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='zlib compression library for APE'
 VERSION=1.2.8-1

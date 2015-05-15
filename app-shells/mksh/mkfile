@@ -1,6 +1,5 @@
 </$objtype/mkfile
 
-PORTNAME=shells/mksh
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='MirBSD Korn shell'
 VERSION=50f-1

@@ -1,6 +1,5 @@
 </$objtype/mkfile
 
-PORTNAME=ape-utils/mksh-sh
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='Optionally use mksh as default /bin/sh in APE'
 DEPS=shells/mksh
