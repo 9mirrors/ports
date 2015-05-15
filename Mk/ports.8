@@ -41,7 +41,7 @@ Cleans the port, usually removing object files and files generated during the bu
 Removes all downloaded files and all files generated during build an install. After a port is nuked, fetch should be run before running any other target.
 .TP
 .B uninstall
-Uninstalls all files installed during the install. Requires that the port defines $UNINSTALL, $UNINSTALLCMD, or has an uninstall file.
+Uninstalls all files installed during the install. Requires that the port defines $UNINSTALL, $UNINSTALLCOMMAND, or has an uninstall file.
 .PP
 Targets the only exist in the root mkfile or category mkfiles:
 .TP
@@ -145,7 +145,7 @@ Identifier to differentiate between version of a port.
 .B UNINSTALL
 List of files that the port installs.
 .TP
-.B UNINSTALLCMD
+.B UNINSTALLCOMMAND
 Command to run that will uninstall the port.
 .SH FILES
 .B /sys/ports
