@@ -1,0 +1,15 @@
+</$objtype/mkfile
+
+PORTNAME=ape-utils/mksh-sh
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='Optionally use mksh as default /bin/sh in APE'
+DEPS=shells/mksh
+
+BUILDPATH=work/
+PATCHES=patches
+BUILDCOMMAND=
+INSTALLCOMMAND=cp sh.rc /rc/bin/ape/sh && chmod +x /rc/bin/ape/sh
+CLEANCOMMAND=rm sh.rc
+UNINSTALLCMD=rm /rc/bin/ape/sh
+
+</sys/ports/Mk/mkfile
