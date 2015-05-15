@@ -1,0 +1,20 @@
+</$objtype/mkfile
+
+PORTNAME=shells/mksh
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='MirBSD Korn shell'
+VERSION=50f-1
+
+WEBSOURCE=https://www.mirbsd.org/MirOS/dist/mir/mksh/mksh-R50f.tgz
+WORKFILE=mksh-R50f.tgz
+EXTRACTCOMMAND=/bin/tar xzvf
+BUILDPATH=work/mksh
+CC=cc
+CFLAGS="-DMKSH_NOPROSPECTOFWORK"
+BUILDCOMMAND=ape/psh Build.sh
+INSTALLCOMMAND=cp mksh /$objtype/bin/ && cp mksh.1 /sys/man/1/mksh
+UNINSTALLCMD=rm /$objtype/bin/mksh && rm /sys/man/1/mksh
+CLEANCOMMAND=rm *.o
+MESSAGE='to use as default APE shell, install ape-utils/mksh-sh'
+
+</sys/ports/Mk/mkfile
