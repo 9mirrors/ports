@@ -14,7 +14,7 @@ fn bail {
 }
 
 if(~ $#1 0){
-	echo 'Usage: ports/install [portname]'
+	echo 'Usage: port/install [portname]'
 	exit 'no args'
 }
 

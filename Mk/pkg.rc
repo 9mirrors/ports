@@ -52,6 +52,8 @@ fn portversion {
 	if(~ $vers 0){
 		s='not found or no version'
 	}
-	echo $vers
+	if not {
+		echo $vers
+	}
 	status=$s
 }
