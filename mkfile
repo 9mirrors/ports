@@ -7,6 +7,11 @@ test:VQ:
 db:VQ:
 	touch Config/ports.db
 
+utils:VQ:
+	mkdir -p /rc/bin/port
+	dircp Mk/utils /rc/bin/port/
+	exit ''
+
 install:VQE:
 	for(i in $CATEGORY){
 		@{

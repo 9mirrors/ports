@@ -1,19 +1,43 @@
 #!/bin/rc
 rfork ne
-webfs
-if(test -e /bin/hg){
-	hg clone https://bitbucket.org/mveety/9front-ports /sys/ports
-	touch /sys/ports/Config/ports.db
-	echo 'Be sure to edit /sys/ports/Config/ports.conf'
-	echo 'run portupdate to keep the ports tree up to date.'
+
+. /sys/ports/Config/ports.conf
+. /sys/ports/Mk/pkg.rc
+
+fn quiet {
+	$* >/dev/null >[2=1]
+}
+
+fn bail {
+	quiet mk nuke
+	exit $"*
+}
+
+if(~ $#1 0){
+	echo 'Usage: ports/install [portname]'
+	exit 'no args'
+}
+
+PORTNAME=$1
+if (! cd $PORTS^''^$PORTNAME) {
+	echo 'Port not found'
+	exit 'bad portname'
+}
+if(! checkport $PORTNAME){
+	echo -n 'Installing '^$PORTNAME^' '
+	echo -n 'fetch.. '; quiet mk fetch || bail 'fetch: '^$status
+	echo -n 'build.. '; quiet mk build || bail 'build: '^$status
+	echo -n 'install.. '; quiet mk install || bail 'install: '^$status
+	if(! $status){
+		echo 'done.'
+		exit ''
+	}
+	if not {
+		echo 'port '^$PORTNAME^' failed to install'
+		exit 'failed to install'
+	}
 }
 if not {
-	mkdir -p /sys/ports
-	hget http://mveety.com/raw/ports.tgz > /tmp/ports.tgz
-	cd /sys/ports
-	tar xzvf /tmp/ports.tgz
-	touch /sys/ports/Config/ports.db
-	echo 'Please note:'
-	echo 'The installer couldn't find mercurial. Many ports and the ports tree update'
-	echo 'target require mercurial to function properly. Please install it.'
+	echo 'Port '^$PORTNAME^' is already installed'
+	exit 'Port installed'
 }
