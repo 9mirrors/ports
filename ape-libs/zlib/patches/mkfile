@@ -1,5 +1,5 @@
 </$objtype/mkfile
-LIB=libz.a
+LIB=libz.a$O
 OFILES=adler32.$O compress.$O crc32.$O deflate.$O gzclose.$O gzlib.$O gzread.$O \
 	gzwrite.$O infback.$O inffast.$O inflate.$O inftrees.$O trees.$O uncompr.$O \
 	zutil.$O 
@@ -35,7 +35,7 @@ nuke:V:
 	rm -f /sys/include/ape/zconf.h
 
 install:V:
-	cp libz.a /$objtype/lib/ape/libz.a
+	cp libz.a$O /$objtype/lib/ape/libz.a
 	cp zlib.3 /sys/man/3/zlib
 	cp zconf.h /sys/include/ape/
 	cp zlib.h /sys/include/ape/
