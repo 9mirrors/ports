@@ -31,9 +31,9 @@ fetch:VQE:
 		}
 	}
 	if(! ~ $#EXTRACTCOMMAND 0){
-		EXTRACTCOMMAND=($EXTRACTCOMMAND `{pwd}^'/work/'^$WORKFILE)
+		file=`{pwd}^/work/^$WORKFILE
 		cd work
-		$EXTRACTCOMMAND || exit $status
+		$EXTRACTCOMMAND $file || exit $status
 	}
 	if(! ~ $#HGSOURCE 0){
 		@{ rfork ne; cd work; webfs && hg clone $HGSOURCE } || exit $status

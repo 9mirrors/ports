@@ -6,12 +6,12 @@ VERSION=1.2.8-1
 
 WEBSOURCE=http://zlib.net/zlib-1.2.8.tar.gz
 WORKFILE=zlib-1.2.8.tar.gz
-EXTRACTCOMMAND=/bin/tar xzvf
+EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/zlib-1.2.8
 PATCHES=patches
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
-UNINSTALLCMD=mk nuke
+UNINSTALLCOMMAND=mk nuke
 
 </sys/ports/Mk/mkfile
