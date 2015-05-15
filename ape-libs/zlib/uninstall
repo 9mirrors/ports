@@ -1,0 +1,1 @@
+rm -rf /$objtype/ape/lib/libz.a /sys/include/ape/zlib.h /sys/include/ape/zconf.h /sys/man/3/zlib

@@ -1,0 +1,42 @@
+</$objtype/mkfile
+LIB=libz.a
+OFILES=adler32.$O compress.$O crc32.$O deflate.$O gzclose.$O gzlib.$O gzread.$O \
+	gzwrite.$O infback.$O inffast.$O inflate.$O inftrees.$O trees.$O uncompr.$O \
+	zutil.$O 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -B -D_POSIX_SOURCE -DHAVE_UNISTD_H -DHAVE_STDARG_H -DHAVE_MEMCPY -DHAVE_VSNPRINTF -DHAS_vsnprintf_void
+
+zutil.$O: zlib.h gzguts.h zutil.h 
+uncompr.$O: zlib.h 
+trees.$O: trees.h deflate.h 
+inftrees.$O: inftrees.h zutil.h 
+inflate.$O: inffixed.h inffast.h inflate.h inftrees.h zutil.h
+inffast.$O: inffast.h inflate.h inftrees.h zutil.h 
+infback.$O: inffixed.h inffast.h inflate.h inftrees.h zutil.h 
+gzwrite.$O: zlib.h gzguts.h 
+gzread.$O: zlib.h gzguts.h 
+gzlib.$O: zlib.h gzguts.h 
+gzclose.$O: zlib.h gzguts.h 
+deflate.$O: zutil.h deflate.h 
+crc32.$O: crc32.h zutil.h 
+compress.$O: zlib.h 
+adler32.$O: zconf.h zlib.h zutil.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -f /$objtype/lib/ape/libz.a
+	rm -f /sys/man/3/zlib
+	rm -f /sys/include/ape/zlib.h
+	rm -f /sys/include/ape/zconf.h
+
+install:V:
+	cp libz.a /$objtype/lib/ape/libz.a
+	cp zlib.3 /sys/man/3/zlib
+	cp zconf.h /sys/include/ape/
+	cp zlib.h /sys/include/ape/
+

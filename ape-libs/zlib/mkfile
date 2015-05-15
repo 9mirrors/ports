@@ -1,0 +1,19 @@
+</$objtype/mkfile
+
+PORTNAME=ape-libs/zlib
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='zlib compression library for APE'
+VERSION=1.2.8-1
+
+WEBSOURCE=http://zlib.net/zlib-1.2.8.tar.gz
+WORKFILE=zlib-1.2.8.tar.gz
+EXTRACTCOMMAND=/bin/tar xzvf
+BUILDPATH=work/zlib-1.2.8
+PATCHES=patches
+BUILDCOMMAND='mk'
+INSTALLCOMMAND='mk install'
+CLEANCOMMAND='mk clean'
+UNINSTALLCMD='mk nuke'
+#MESSAGE=''
+
+</sys/ports/Mk/mkfile
