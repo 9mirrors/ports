@@ -1,5 +1,4 @@
 #!/bin/rc
-
 . /sys/ports/Config/ports.conf
 . /sys/ports/Mk/pkg.rc
 
