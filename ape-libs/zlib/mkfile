@@ -10,10 +10,9 @@ WORKFILE=zlib-1.2.8.tar.gz
 EXTRACTCOMMAND=/bin/tar xzvf
 BUILDPATH=work/zlib-1.2.8
 PATCHES=patches
-BUILDCOMMAND='mk'
-INSTALLCOMMAND='mk install'
-CLEANCOMMAND='mk clean'
-UNINSTALLCMD='mk nuke'
-#MESSAGE=''
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCMD=mk nuke
 
 </sys/ports/Mk/mkfile
