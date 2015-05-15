@@ -12,8 +12,8 @@ BUILDPATH=work/mksh
 CC=cc
 CFLAGS="-DMKSH_NOPROSPECTOFWORK"
 BUILDCOMMAND=ape/psh Build.sh
-INSTALLCOMMAND=cp mksh /$objtype/bin/ && cp mksh.1 /sys/man/1/mksh
-UNINSTALLCMD=rm /$objtype/bin/mksh && rm /sys/man/1/mksh
+INSTALLCOMMAND=/bin/rc -c 'cp mksh /$objtype/bin/ && cp mksh.1 /sys/man/1/mksh'
+UNINSTALLCMD=/bin/rc -c 'rm /$objtype/bin/mksh && rm /sys/man/1/mksh'
 CLEANCOMMAND=rm *.o
 MESSAGE='to use as default APE shell, install ape-utils/mksh-sh'
 

@@ -8,7 +8,7 @@ DEPS=shells/mksh
 BUILDPATH=work/
 PATCHES=patches
 BUILDCOMMAND=
-INSTALLCOMMAND=cp sh.rc /rc/bin/ape/sh && chmod +x /rc/bin/ape/sh
+INSTALLCOMMAND=/bin/rc -c 'cp sh.rc /rc/bin/ape/sh && chmod +x /rc/bin/ape/sh'
 CLEANCOMMAND=rm sh.rc
 UNINSTALLCMD=rm /rc/bin/ape/sh
 
