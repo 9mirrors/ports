@@ -2,7 +2,7 @@
 
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='Optionally use mksh as default /bin/sh in APE'
-DEPS=shells/mksh
+DEPS=app-shells/mksh
 
 BUILDPATH=work/
 PATCHES=patches
