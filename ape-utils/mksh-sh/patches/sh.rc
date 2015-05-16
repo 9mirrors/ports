@@ -1,4 +1,0 @@
-#!/bin/rc
-# use mksh as default sh
-/bin/mksh $*
-

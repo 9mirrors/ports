@@ -5,10 +5,8 @@ DESCRIPTION='Optionally use mksh as default /bin/sh in APE'
 DEPS=app-shells/mksh
 
 BUILDPATH=work/
-PATCHES=patches
 BUILDCOMMAND=fortune
-INSTALLCOMMAND=/bin/rc -c 'cp sh.rc /rc/bin/ape/sh && chmod +x /rc/bin/ape/sh'
-CLEANCOMMAND=rm sh.rc
-UNINSTALLCOMMAND=rm /rc/bin/ape/sh
+INSTALLCOMMAND=cp /$objtype/bin/mksh /$objtype/bin/ape/sh
+UNINSTALLCOMMAND=/bin/rc -c 'cd /sys/src/ape/cmd/pdksh && mk install'
 
 </sys/ports/Mk/mkfile
