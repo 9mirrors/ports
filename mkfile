@@ -1,5 +1,5 @@
 </$objtype/mkfile
-</sys/ports/Config/ports.mk.conf
+<Config/ports.mk.conf
 
 test:VQ:
 	rc Mk/test
@@ -106,3 +106,5 @@ update:VQE:
 			hg clone https://bitbucket.org/mveety/9front-ports /sys/ports
 		}
 	}
+
+portinstall:VQE: update
