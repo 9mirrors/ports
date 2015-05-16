@@ -1,8 +1,0 @@
-</$objtype/mkfile
-
-OWNER='Matthew Veety <mveety@gmail.com>'
-DESCRIPTION='portupdate'
-
-INSTALLCOMMAND=rc -c 'cp /sys/ports/ports/portupdate/files/portupdate /rc/bin/portupdate && chmod +x /rc/bin/portupdate'
-
-</sys/ports/Mk/mkfile
