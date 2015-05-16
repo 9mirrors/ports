@@ -2,9 +2,7 @@
 
 rfork ne
 webfs
-
 hg clone https://bitbucket.org/mveety/9front-ports /sys/ports
 touch /sys/ports/Config/ports.db
-cd /sys/ports/ports/portupdate ; mk install
 echo 'Be sure to edit /sys/ports/Config/ports.conf'
 echo 'run portupdate to keep the ports tree up to date.'
