@@ -1,4 +1,5 @@
 </sys/ports/Config/ports.mk.conf
+# </sys/ports/Mk/newvars.mk  # For Aram
 
 # for compatibility
 BUILDFOR=$objtype

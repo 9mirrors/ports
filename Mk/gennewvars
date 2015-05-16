@@ -1,0 +1,12 @@
+#!/bin/rc
+
+newvars=(portname version description owner websource workfile 9pserver 9pfile 9pdir extractcommand hgsource buildonly deps buildpath patches buildcommand message installcommand cleancommand uninstall uninstallcommand)
+
+echo '# AUTOMATICALLY GENERATED FILE -- DO NOT EDIT'
+
+for(i in $newvars){
+	oldvar = `{echo $i | sed -e 'y/[abcdefghijklmnopqrstuvwxyz]/[ABCDEFGHIJKLMNOPQRSTUVWXYZ]/'}
+	echo 'if(! ~ $#'^$i^' 0){'
+	echo '	'^$oldvar^'=$'^$i
+	echo '}'
+}
