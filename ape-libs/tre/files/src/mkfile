@@ -2,7 +2,7 @@
 TARG=agrep
 OFILES=agrep.$O 
 BIN=/$objtype/bin
-LIB=../lib/tre.a$O
+LIB=/$objtype/lib/ape/libtre.a
 
 </sys/src/cmd/mkone
 
@@ -11,3 +11,6 @@ LD=pcc
 CFLAGS=-c -B -I.. -I../lib -DHAVE_CONFIG_H -D_POSIX_SOURCE -D_BSD_EXTENSION
 
 agrep.$O: 
+
+nuke:V:
+	rm -f $BIN/agrep

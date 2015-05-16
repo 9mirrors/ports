@@ -1,11 +1,11 @@
 </$objtype/mkfile
-LIB=tre.a$O
+LIB=/$objtype/lib/ape/libtre.a
 OFILES=tre-match-backtrack.$O tre-parse.$O tre-stack.$O xmalloc.$O tre-match-approx.$O \
 	regerror.$O tre-compile.$O regcomp.$O regexec.$O tre-ast.$O tre-mem.$O \
 	tre-match-parallel.$O 
 HFILES=xmalloc.h tre-internal.h 
 
-</sys/src/cmd/mklib
+</sys/src/cmd/mksyslib
 
 CC=pcc
 LD=pcc
@@ -25,14 +25,12 @@ tre-parse.$O: tre-parse.h tre.h tre-stack.h tre-compile.h tre-mem.h tre-ast.h tr
 tre-match-backtrack.$O: tre.h tre-match-utils.h tre-mem.h
 
 install:V:
-	cp tre.a$O /$objtype/lib/ape/libtre.a
 	cp tre-config.h /sys/include/ape/
 	cp ../apelibs/*.h /sys/include/ape/
 
 nuke:V:
 	mk clean
 	rm -f $LIB
-	rm -f /$objtype/lib/ape/libtre.a
 	rm -f /sys/include/ape/tre-config.a
 	rm -f /sys/incude/ape/regex.h
 	rm -f /sys/include/ape/tre.h
