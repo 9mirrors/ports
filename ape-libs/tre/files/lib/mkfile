@@ -1,0 +1,38 @@
+</$objtype/mkfile
+LIB=tre.a$O
+OFILES=tre-match-backtrack.$O tre-parse.$O tre-stack.$O xmalloc.$O tre-match-approx.$O \
+	regerror.$O tre-compile.$O regcomp.$O regexec.$O tre-ast.$O tre-mem.$O \
+	tre-match-parallel.$O 
+HFILES=xmalloc.h tre-internal.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I.. -B -DHAVE_CONFIG_H
+
+tre-match-parallel.$O: tre.h tre-match-utils.h 
+tre-mem.$O: tre-mem.h 
+tre-ast.$O: tre-mem.h tre-ast.h 
+regexec.$O: tre.h 
+regcomp.$O: tre.h 
+tre-compile.$O: tre.h tre-compile.h tre-parse.h tre-ast.h tre-stack.h tre-mem.h 
+regerror.$O: tre.h 
+tre-match-approx.$O: tre.h tre-match-utils.h 
+xmalloc.$O: 
+tre-stack.$O: tre-stack.h 
+tre-parse.$O: tre-parse.h tre.h tre-stack.h tre-compile.h tre-mem.h tre-ast.h tre-mem.h 
+tre-match-backtrack.$O: tre.h tre-match-utils.h tre-mem.h
+
+install:V:
+	cp tre.a$O /$objtype/lib/ape/libtre.a
+	cp tre-config.h /sys/include/ape/
+	cp ../apelibs/*.h /sys/include/ape/
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -f /$objtype/lib/ape/libtre.a
+	rm -f /sys/include/ape/tre-config.a
+	rm -f /sys/incude/ape/regex.h
+	rm -f /sys/include/ape/tre.h

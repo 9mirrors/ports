@@ -1,0 +1,13 @@
+</$objtype/mkfile
+TARG=agrep
+OFILES=agrep.$O 
+BIN=/$objtype/bin
+LIB=../lib/tre.a$O
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -B -I.. -I../lib -DHAVE_CONFIG_H -D_POSIX_SOURCE -D_BSD_EXTENSION
+
+agrep.$O: 
