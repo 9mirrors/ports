@@ -45,6 +45,13 @@ fetch:VQE:
 build:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
+	if(! ~ $#BUILDONLY 0){
+		for(i in $BUILDONLY){
+			if(~ $i $objtype){
+				exit 'objtype '^$"objtype^' is not supported.'
+			}
+		}
+	}
 	if(! ~ $#DEPS 0){
 		for(i in $DEPS){
 			@{
@@ -84,7 +91,13 @@ build:VQE:
 install:VQE: # build fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
-#	touch install
+	if(! ~ $#BUILDONLY 0){
+		for(i in $BUILDONLY){
+			if(~ $i $objtype){
+				exit 'objtype '^$"objtype^' is not supported.'
+			}
+		}
+	}
 	if(! checkport $PORTNAME){
 		cd $BUILDPATH
 		@{
