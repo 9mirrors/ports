@@ -1,0 +1,209 @@
+</$objtype/mkfile
+
+#Targets not possible to build
+#or don't make sense on Plan9 even in compat mode
+# chroot cols ln
+#
+#compilation issues
+# cron (syslog.h), du (blkcnt_t), expr (variable array size)
+# find (fnmatch...), grep (fmemopen), hostname (variable array size)
+# logger (syslog.h), nice renice (sys/resource.h)
+# nohup (no return main), sed (fmemopen), setsid (getpgrp setsid)
+# touch (sys/stat.h missing union members)
+#
+#linking issues
+# 
+
+TARG=basename cal cat chgrp chmod chown cmp \
+	cksum col comm cp cut date dirname echo \
+	env expand false fold head \
+	join kill link logname ls md5sum mkdir \
+	mkfifo mktemp mv nl paste printenv printf \
+	pwd readlink rm rmdir seq sha1sum \
+	sha256sum sha512sum sleep sort split sponge strings \
+	sync tail tar tee test time tr true tty \
+	uname unexpand uniq unlink uudecode uuencode wc which \
+	xargs yes 
+
+BIN=/$objtype/bin/ape
+HFILES=util.h compat.h arg.h
+LIB=libsbase_utf$O.a libsbase_util$O.a
+
+</sys/src/cmd/mkmany
+
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_C99_SNPRINTF_EXTENSION -Dpid_t=int
+
+yes.$O: 
+xargs.$O: stdint.h 
+which.$O: 
+wc.$O: utf.h 
+uuencode.$O: 
+uudecode.$O: 
+unlink.$O: 
+uniq.$O: 
+unexpand.$O: utf.h stdint.h 
+uname.$O: 
+tty.$O: 
+tr.$O: utf.h 
+touch.$O: 
+time.$O: 
+test.$O: 
+tee.$O: 
+tar.$O: fs.h 
+tail.$O: utf.h text.h stdint.h 
+sync.$O: 
+strings.$O: utf.h 
+sponge.$O: text.h 
+split.$O: stdint.h 
+sort.$O: text.h 
+sleep.$O: 
+sha512sum.$O: sha512.h crypt.h stdint.h 
+sha1sum.$O: sha1.h crypt.h stdint.h 
+setsid.$O: 
+seq.$O: 
+sed.$O: utf.h 
+rmdir.$O:
+rm.$O: fs.h 
+renice.$O: 
+readlink.$O: 
+pwd.$O: 
+printf.$O: utf.h 
+printenv.$O: 
+paste.$O: utf.h 
+nohup.$O: 
+nl.$O: utf.h text.h stdint.h 
+nice.$O: 
+mv.$O: fs.h 
+mktemp.$O: 
+mkfifo.$O: 
+mkdir.$O: 
+md5sum.$O: md5.h crypt.h stdint.h 
+ls.$O: utf.h 
+logname.$O: 
+logger.$O: syslog.h strings.h 
+ln.$O: 
+link.$O: 
+kill.$O: strings.h 
+join.$O: utf.h text.h stdint.h 
+hostname.$O: 
+head.$O: stdint.h 
+grep.$O: queue.h strings.h 
+fold.$O: stdint.h 
+find.$O: stdint.h fnmatch.h 
+expr.$O: utf.h 
+expand.$O: utf.h stdint.h 
+env.$O: 
+echo.$O: 
+du.$O: fs.h stdint.h 
+dirname.$O: 
+date.$O: 
+cut.$O: utf.h 
+cron.$O: queue.h syslog.h 
+cp.$O: fs.h 
+comm.$O: 
+cols.$O: utf.h text.h stdint.h 
+col.$O: utf.h stdint.h 
+cmp.$O: 
+cksum.$O: 
+chroot.$O: 
+chown.$O: fs.h 
+chmod.$O: fs.h 
+chgrp.$O: fs.h 
+cat.$O: text.h 
+cal.$O: stdint.h 
+basename.$O: 
+
+clean:V:
+	rm -f [$OS].* *.[$OS] $CLEANFILES
+
+nuke:V:
+	rm -f *.[$OS] y.tab.? y.debug y.output [$OS].$TARG $TARG
+
+install:V:
+	mkdir -p /sys/man/1ape
+	cp basename.1 /sys/man/1ape/basename
+	cp cal.1 /sys/man/1ape/cal
+	cp cat.1 /sys/man/1ape/cat
+	cp chgrp.1 /sys/man/1ape/chgrp
+	cp chmod.1 /sys/man/1ape/chmod
+	cp chown.1 /sys/man/1ape/chown
+	cp chroot.1 /sys/man/1ape/chroot
+	cp cksum.1 /sys/man/1ape/cksum
+	cp cmp.1 /sys/man/1ape/cmp
+	cp col.1 /sys/man/1ape/col
+	cp cols.1 /sys/man/1ape/cols
+	cp comm.1 /sys/man/1ape/comm
+	cp cp.1 /sys/man/1ape/cp
+	cp cron.1 /sys/man/1ape/cron
+	cp cut.1 /sys/man/1ape/cut
+	cp date.1 /sys/man/1ape/date
+	cp dirname.1 /sys/man/1ape/dirname
+	cp du.1 /sys/man/1ape/du
+	cp echo.1 /sys/man/1ape/echo
+	cp env.1 /sys/man/1ape/env
+	cp expand.1 /sys/man/1ape/expand
+	cp expr.1 /sys/man/1ape/expr
+	cp false.1 /sys/man/1ape/false
+	cp find.1 /sys/man/1ape/find
+	cp fold.1 /sys/man/1ape/fold
+	cp grep.1 /sys/man/1ape/grep
+	cp head.1 /sys/man/1ape/head
+	cp hostname.1 /sys/man/1ape/hostname
+	cp join.1 /sys/man/1ape/join
+	cp kill.1 /sys/man/1ape/kill
+	cp link.1 /sys/man/1ape/link
+	cp ln.1 /sys/man/1ape/ln
+	cp logger.1 /sys/man/1ape/logger
+	cp logname.1 /sys/man/1ape/logname
+	cp ls.1 /sys/man/1ape/ls
+	cp md5sum.1 /sys/man/1ape/md5sum
+	cp mkdir.1 /sys/man/1ape/mkdir
+	cp mkfifo.1 /sys/man/1ape/mkfifo
+	cp mktemp.1 /sys/man/1ape/mktemp
+	cp mv.1 /sys/man/1ape/mv
+	cp nice.1 /sys/man/1ape/nice
+	cp nl.1 /sys/man/1ape/nl
+	cp nohup.1 /sys/man/1ape/nohup
+	cp paste.1 /sys/man/1ape/paste
+	cp printenv.1 /sys/man/1ape/printenv
+	cp printf.1 /sys/man/1ape/printf
+	cp pwd.1 /sys/man/1ape/pwd
+	cp readlink.1 /sys/man/1ape/readlink
+	cp renice.1 /sys/man/1ape/renice
+	cp rm.1 /sys/man/1ape/rm
+	cp rmdir.1 /sys/man/1ape/rmdir
+	cp sed.1 /sys/man/1ape/sed
+	cp seq.1 /sys/man/1ape/seq
+	cp setsid.1 /sys/man/1ape/setsid
+	cp sha1sum.1 /sys/man/1ape/sha1sum
+	cp sha256sum.1 /sys/man/1ape/sha256sum
+	cp sha512sum.1 /sys/man/1ape/sha512sum
+	cp sleep.1 /sys/man/1ape/sleep
+	cp sort.1 /sys/man/1ape/sort
+	cp split.1 /sys/man/1ape/split
+	cp sponge.1 /sys/man/1ape/sponge
+	cp strings.1 /sys/man/1ape/strings
+	cp sync.1 /sys/man/1ape/sync
+	cp tail.1 /sys/man/1ape/tail
+	cp tar.1 /sys/man/1ape/tar
+	cp tee.1 /sys/man/1ape/tee
+	cp test.1 /sys/man/1ape/test
+	cp time.1 /sys/man/1ape/time
+	cp touch.1 /sys/man/1ape/touch
+	cp tr.1 /sys/man/1ape/tr
+	cp true.1 /sys/man/1ape/true
+	cp tty.1 /sys/man/1ape/tty
+	cp uname.1 /sys/man/1ape/uname
+	cp unexpand.1 /sys/man/1ape/unexpand
+	cp uniq.1 /sys/man/1ape/uniq
+	cp unlink.1 /sys/man/1ape/unlink
+	cp uudecode.1 /sys/man/1ape/uudecode
+	cp uuencode.1 /sys/man/1ape/uuencode
+	cp wc.1 /sys/man/1ape/wc
+	cp which.1 /sys/man/1ape/which
+	cp xargs.1 /sys/man/1ape/xargs
+	cp yes.1 /sys/man/1ape/yes
+

@@ -1,0 +1,16 @@
+WARNING: EXPERIMENTAL
+
+This package provides an extensive set of unix utilities from suckless.org. Some utilities are excluded from the build due to either missing dependencies or that they don't make sense on Plan9 even on APE.
+
+External dependencies:
+ape-libs/tre : <regex.h>
+ape-libs/newlib-libgen : <libgen.h>
+
+TODO:
+* solve compilation issues for as complete as possible set of utilities
+* replace stubs with useful functions
+* make patches against "unixisms" (hard-coded /etc and so on)
+
+find/make libraries for:
+* <fnmatch.h>
+* <syslog.h>

@@ -1,0 +1,47 @@
+</$objtype/mkfile
+LIB=../libsbase_util$O.a
+OFILES=concat.$O cp.$O crypt.$O ealloc.$O enmasse.$O eprintf.$O eregcomp.$O estrtod.$O \
+	fnck.$O fshut.$O getlines.$O human.$O md5.$O mkdirp.$O mode.$O putword.$O \
+	reallocarray.$O recurse.$O rm.$O sha1.$O sha256.$O sha512.$O strcasestr.$O \
+	strlcat.$O strlcpy.$O strsep.$O strtonum.$O unescape.$O stubs.$O
+
+HFILES=../util.h ../compat.h ../arg.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -B -I. -I.. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_C99_SNPRINTF_EXTENSION
+
+unescape.$O: 
+strtonum.$O: 
+strsep.$O: 
+strlcpy.$O: 
+strlcat.$O: 
+strcasestr.$O: ../strings.h 
+sha512.$O: ../sha512.h ../stdint.h 
+sha256.$O: ../sha256.h ../stdint.h 
+sha1.$O: ../sha1.h ../stdint.h 
+rm.$O: ../fs.h 
+recurse.$O: ../fs.h 
+reallocarray.$O: ../stdint.h 
+putword.$O: 
+mode.$O: 
+mkdirp.$O: 
+md5.$O: ../md5.h ../stdint.h 
+human.$O: ../stdint.h 
+getlines.$O: ../text.h 
+fshut.$O: 
+fnck.$O: 
+estrtod.$O: 
+eregcomp.$O: 
+eprintf.$O: 
+enmasse.$O: 
+ealloc.$O: 
+crypt.$O: ../text.h ../crypt.h ../stdint.h 
+cp.$O: ../text.h ../fs.h 
+concat.$O: ../text.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

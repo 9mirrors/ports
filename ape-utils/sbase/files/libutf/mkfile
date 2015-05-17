@@ -1,0 +1,34 @@
+</$objtype/mkfile
+LIB=../libsbase_utf$O.a
+OFILES=fgetrune.$O fputrune.$O isalnumrune.$O isalpharune.$O isblankrune.$O iscntrlrune.$O \
+	isdigitrune.$O isgraphrune.$O isprintrune.$O ispunctrune.$O isspacerune.$O \
+	istitlerune.$O isxdigitrune.$O lowerrune.$O rune.$O runetype.$O upperrune.$O \
+	utf.$O utftorunestr.$O 
+HFILES=../utf.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -D_POSIX_SOURCE 
+
+utf.$O: 
+upperrune.$O: runetype.h 
+lowerrune.$O: runetype.h 
+isxdigitrune.$O: runetype.h 
+istitlerune.$O: runetype.h 
+isspacerune.$O: runetype.h 
+ispunctrune.$O: runetype.h 
+isprintrune.$O: runetype.h 
+isgraphrune.$O: runetype.h 
+isdigitrune.$O: runetype.h 
+iscntrlrune.$O: runetype.h 
+isblankrune.$O: runetype.h 
+isalpharune.$O: runetype.h 
+isalnumrune.$O: runetype.h 
+fputrune.$O: 
+fgetrune.$O: 
+
+nuke:V:
+	mk clean
+	rm -f $LIB
