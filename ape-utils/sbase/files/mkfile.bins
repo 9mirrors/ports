@@ -121,6 +121,8 @@ clean:V:
 
 nuke:V:
 	rm -f *.[$OS] y.tab.? y.debug y.output [$OS].$TARG $TARG
+	for (i in $TARG)
+		{ rm -f /$objtype/bin/ape/$i }
 
 install:V:
 	for (i in $TARG)
