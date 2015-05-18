@@ -1,0 +1,41 @@
+diff -ur orig/libutil/cp.c sbase-master/libutil/cp.c
+--- orig/libutil/cp.c	Mon May 18 20:42:37 2015
++++ sbase-master/libutil/cp.c	Mon May 18 20:46:33 2015
+@@ -154,9 +154,9 @@
+ 	if (cp_aflag || cp_pflag) {
+ 		/* timestamp and owner*/
+ 		if (!S_ISLNK(st.st_mode)) {
+-			times[0] = st.st_atim;
++			/* times[0] = st.st_atim;
+ 			times[1] = st.st_mtim;
+-			utimensat(AT_FDCWD, s2, times, 0);
++			utimensat(AT_FDCWD, s2, times, 0); */
+ 
+ 			if (chown(s2, st.st_uid, st.st_gid) < 0) {
+ 				weprintf("chown %s:", s2);
+diff -ur orig/touch.c sbase-master/touch.c
+--- orig/touch.c	Mon May 18 20:42:39 2015
++++ sbase-master/touch.c	Mon May 18 20:45:33 2015
+@@ -30,9 +30,9 @@
+ 			return;
+ 	} else if (!r) {
+ 		if (!aflag)
+-			times[0] = st.st_atim;
++			/* times[0] = st.st_atim; */
+ 		if (!mflag)
+-			times[1] = st.st_mtim;
++			/* times[1] = st.st_mtim; */
+ 		if (utimensat(AT_FDCWD, file, times, 0) < 0)
+ 			eprintf("utimensat %s:", file);
+ 		return;
+@@ -139,8 +139,8 @@
+ 		ref = EARGF(usage());
+ 		if (stat(ref, &st) < 0)
+ 			eprintf("stat '%s':", ref);
+-		times[0] = st.st_atim;
+-		times[1] = st.st_mtim;
++		/* times[0] = st.st_atim;
++		times[1] = st.st_mtim; */
+ 		break;
+ 	case 'T':
+ 		times[0].tv_sec = estrtonum(EARGF(usage()), 0, LLONG_MAX);

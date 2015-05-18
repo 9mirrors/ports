@@ -1,4 +1,5 @@
 #include <sys/stat.h>
+#include <sys/time.h>
 #include <stdio.h>
 #include <errno.h>
 
@@ -45,6 +46,11 @@ int faccessat(int, const char *, int, int) {
 	return -1;
 }
 
+
+int utimensat(int, const char *, const struct timespec *, int) {
+	errno=ENOSYS;
+	return -1;
+}
 
 /* useful functions below */
 

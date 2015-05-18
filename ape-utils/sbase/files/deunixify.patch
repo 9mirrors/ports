@@ -1,0 +1,21 @@
+diff -u sbase-master.orig/cron.c sbase-master/cron.c
+--- sbase-master.orig/cron.c	Sun May 17 21:00:40 2015
++++ sbase-master/cron.c	Mon May 18 19:32:31 2015
+@@ -1,4 +1,4 @@
+-/* See LICENSE file for copyright and license details. */
++/* See LICENSE file for copyright and license details. *
+ #include <sys/wait.h>
+ 
+ #include <errno.h>
+@@ -43,8 +43,8 @@
+ static sig_atomic_t quit;
+ static TAILQ_HEAD(, ctabentry) ctabhead = TAILQ_HEAD_INITIALIZER(ctabhead);
+ static TAILQ_HEAD(, jobentry) jobhead = TAILQ_HEAD_INITIALIZER(jobhead);
+-static char *config = "/etc/crontab";
+-static char *pidfile = "/var/run/crond.pid";
++static char *config = "/sys/lib/ape/crontab";
++static char *pidfile = "/usr/$user/cron";
+ static int nflag;
+ 
+ static void
+

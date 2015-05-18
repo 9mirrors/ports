@@ -37,6 +37,11 @@ void sync(void);
 int fstatat(int, const char *, struct stat *, int);
 int faccessat(int, const char *, int, int);
 
+#define strndup(s, n) strdup(s)
+#define AT_FDCWD -100
+
+int utimensat(int, const char *, const struct timespec *, int);
+
 
 
 

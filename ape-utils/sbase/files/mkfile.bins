@@ -9,7 +9,7 @@
 # find (fnmatch...), grep (fmemopen), hostname (variable array size)
 # logger (syslog.h), nice renice (sys/resource.h)
 # nohup (no return main), sed (fmemopen), setsid (getpgrp setsid)
-# touch (sys/stat.h missing union members)
+# touch
 #
 #linking issues
 # 
@@ -123,6 +123,8 @@ nuke:V:
 	rm -f *.[$OS] y.tab.? y.debug y.output [$OS].$TARG $TARG
 	for (i in $TARG)
 		{ rm -f /$objtype/bin/ape/$i }
+	for (j in $TARG)
+		{ rm -f $j.1 /sys/man/1ape/$j }
 
 install:V:
 	for (i in $TARG)
