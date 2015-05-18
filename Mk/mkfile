@@ -100,12 +100,7 @@ install:VQE: # build fetch
 		}
 	}
 	if(! checkport $PORTNAME){
-		cd $BUILDPATH
-		@{
-			rfork ne
-			$INSTALLCOMMAND
-		}
-		echo $status
+		@{ rfork ne; cd $BUILDPATH && $INSTALLCOMMAND } || exit $status
 		if(! ~ $#VERSION 0){
 			register $PORTNAME $VERSION
 		}
