@@ -4,11 +4,10 @@ OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='newlib libgen as a library in APE'
 VERSION=1
 
-WEBSOURCE=http://plan9.bell-labs.com/sources/contrib/staal1978/pkg/newlib-libgen.tbz
-WORKFILE=newlib-libgen.tbz
+WEBSOURCE=http://plan9.bell-labs.com/sources/contrib/staal1978/ports/src/newlib-libgen.src.tbz
+WORKFILE=newlib-libgen.src.tbz
 EXTRACTCOMMAND=tar xzvf
-BUILDPATH=work/sys/src/pkg/newlib/libgen
-PATCHES=files
+BUILDPATH=work/libgen
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
