@@ -1,0 +1,3 @@
+The ape-utils group consists of packages providing utilities specifically for the APE environment. 
+
+In cases where the utilities overwrite the original APE utilities, the uninstall command will ensure that they are re-installed when the ape-utils program is uninstalled.

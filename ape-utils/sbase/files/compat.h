@@ -41,7 +41,11 @@ int faccessat(int, const char *, int, int);
 #define AT_FDCWD -100
 
 int utimensat(int, const char *, const struct timespec *, int);
-
+/* struct stat does not have atim and mtim */
+#include <time.h>
+#include <sys/stat.h>
+struct timespec _atim;
+struct timespec _mtim;
 
 
 
