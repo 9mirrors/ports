@@ -1,0 +1,20 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libpoll.a
+OFILES=poll.$O 
+HFILES=poll.h 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_BSD_EXTENSION 
+
+poll.$O: 
+
+install:V:
+	cp poll.h.ape /sys/include/ape/poll.h
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -f /sys/include/ape/poll.h

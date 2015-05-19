@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='libpoll for APE'
+VERSION=1
+
+WEBSOURCE=http://plan9.bell-labs.com/sources/contrib/fgb/tar/poll.tgz
+WORKFILE=poll.tgz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/poll
+PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile
