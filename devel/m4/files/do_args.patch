@@ -1,0 +1,25 @@
+diff -ur old/extern.h m4-2/extern.h
+--- old/extern.h	Wed May 20 21:10:21 2015
++++ m4-2/extern.h	Wed May 20 21:11:22 2015
+@@ -55,8 +55,8 @@
+ 
+ extern void doesyscmd(const char *);
+ extern char *prefix_dup(const char *);
+-extern void do_freeze();
+-extern void do_restore();
++extern void do_freeze(void);
++extern void do_restore(void);
+ 
+ 
+ /* look.c */
+diff -ur old/main.c m4-2/main.c
+--- old/main.c	Wed May 20 21:10:21 2015
++++ m4-2/main.c	Wed May 20 21:14:21 2015
+@@ -280,6 +280,7 @@
+ 	}
+ 
+ 	exit(rval);
++	return rval;
+ }
+ 
+ /*

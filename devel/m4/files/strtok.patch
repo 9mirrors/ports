@@ -1,0 +1,12 @@
+diff -ur old/gnum4.c m4-2/gnum4.c
+--- old/gnum4.c	Wed May 20 19:44:22 2015
++++ m4-2/gnum4.c	Wed May 20 20:35:38 2015
+@@ -116,7 +116,7 @@
+ 	if (!envpath)
+ 		errx(1, "out of memory");
+ 	for (sweep = envpath;
+-	    (path = strsep(&sweep, ":")) != NULL;)
++	    (path = strtok(sweep, ":")) != NULL;)
+ 	    addtoincludepath(path);
+ 	free(envpath);
+ }
