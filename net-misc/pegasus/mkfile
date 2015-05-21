@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='Pegasus is another httpd that runs on Plan9 4ed.'
+VERSION='2.8e'
+
+WEBSOURCE=http://plan9.aichi-u.ac.jp/netlib/pegasus/pegasus-2.8e.tgz
+WORKFILE=pegasus-2.8e.tar
+EXTRACTCOMMAND=tar xvf
+BUILDPATH=work/pegasus-2.8e/httpd
+BUILDCOMMAND=mk all
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALL=/$objtype/bin/httpd
+
+</sys/ports/Mk/mkfile

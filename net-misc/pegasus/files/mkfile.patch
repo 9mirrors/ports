@@ -1,0 +1,10 @@
+--- a/mkfile	2014-09-05 05:30:14.000000000 -0700
++++ b/mkfile	2015-05-20 23:30:25.033661230 -0700
+@@ -6,7 +6,7 @@
+ OFILES=${SRC:%.c=%.$O}
+ HFILES=httpd.h hauth.h libhttpd/httpsrv.h libhttpd/misc.h
+ LIB=libhttpd.a
+-BIN=/usr/local/bin/$objtype
++BIN=/$objtype/bin
+ #CFLAGS= -Ilibhttpd -DWIN2000DAV
+ CFLAGS= -Ilibhttpd
