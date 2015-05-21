@@ -1,0 +1,34 @@
+</$objtype/mkfile
+TARG=msgfmt msgmerge
+LIB=/$objtype/lib/ape/libintl.a
+PARSEROBJS=poparser.$O StringEscape.$O
+BIN=/$objtype/bin/ape
+HFILES=poparser.h 
+
+</sys/src/cmd/mkmany
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -D_POSIX_SOURCE 
+
+poparser.$O: StringEscape.h 
+msgmerge.$O: StringEscape.h 
+msgfmt.$O: 
+StringEscape.$O: 
+
+$O.msgfmt: msgfmt.$O $PARSEROBJS
+$O.msgmerge: msgmerge.$O $PARSEROBJS
+
+install:V:
+	cp xgettext.sh /rc/bin/ape/xgettext
+	chmod +x /rc/bin/ape/xgettext
+
+installall:V:
+	cp xgettext.sh /rc/bin/ape/xgettext
+	chmod +x /rc/bin/ape/xgettext
+
+nuke:V:
+	rm -f /rc/bin/ape/xgettext
+
+
+

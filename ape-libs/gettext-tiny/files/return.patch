@@ -1,0 +1,11 @@
+diff -ur old/src/msgmerge.c gettext-tiny-master/src/msgmerge.c
+--- old/src/msgmerge.c	Thu May 21 15:44:41 2015
++++ gettext-tiny-master/src/msgmerge.c	Thu May 21 16:11:22 2015
+@@ -84,6 +84,7 @@
+ 	else if(streq(str, "simple") || streq(str, "never"))
+ 		return 3;
+ 	else syntax();
++		return 0;
+ }
+ 
+ int main(int argc, char**argv) {

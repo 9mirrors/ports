@@ -1,0 +1,36 @@
+diff -ur old/src/msgfmt.c gettext-tiny-master/src/msgfmt.c
+--- old/src/msgfmt.c	Thu May 21 11:52:22 2015
++++ gettext-tiny-master/src/msgfmt.c	Thu May 21 15:15:34 2015
+@@ -11,14 +11,12 @@
+ // TODO: maybe make it write "" instead of echoing the msgid.
+ //#define DO_NOTHING
+ 
+-__attribute__((noreturn))
+ static void syntax(void) {
+ 	fprintf(stdout,
+ 	"Usage: msgfmt [OPTION] filename.po ...\n");
+ 	exit(1);
+ }
+ 
+-__attribute__((noreturn))
+ static void version(void) {
+ 	fprintf(stdout,
+ 		"these are not (GNU gettext-tools) 99.9999.9999\n");
+diff -ur old/src/msgmerge.c gettext-tiny-master/src/msgmerge.c
+--- old/src/msgmerge.c	Thu May 21 11:52:22 2015
++++ gettext-tiny-master/src/msgmerge.c	Thu May 21 15:15:59 2015
+@@ -8,14 +8,12 @@
+ #include "poparser.h"
+ #include "StringEscape.h"
+ 
+-__attribute__((noreturn))
+ static void syntax(void) {
+ 	fprintf(stdout,
+ 	"Usage: msgmerge [OPTION] def.po ref.pot\n");
+ 	exit(1);
+ }
+ 
+-__attribute__((noreturn))
+ static void version(void) {
+ 	fprintf(stdout,
+ 		"these are not (GNU gettext-tools) 99.9999.9999\n");

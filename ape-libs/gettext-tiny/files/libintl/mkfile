@@ -1,0 +1,19 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libintl.a
+OFILES=libintl.$O 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -D_POSIX_SOURCE 
+
+libintl.$O: 
+
+install:V:
+	cp libintl.h.ape /sys/include/ape/libintl.h
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -f /sys/include/ape/libintl.h
