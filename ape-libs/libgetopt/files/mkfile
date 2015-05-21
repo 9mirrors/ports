@@ -1,0 +1,22 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/libgetopt.a
+OFILES=gnu_getopt.$O 
+HFILES=getopt.h gnu_getopt.h 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -+ -I. -D_POSIX_SOURCE -D_SUSV2_EXTENSION -D_BSD_EXTENSION 
+
+gnu_getopt.$O: 
+
+install:V:
+	cp getopt.h /sys/include/ape/
+	cp gnu_getopt.h /sys/include/ape/
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -f /sys/include/ape/getopt.h
+	rm -f /sys/include/ape/gnu_getopt.h

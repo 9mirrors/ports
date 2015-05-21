@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='getopt for APE'
+VERSION=1
+
+WEBSOURCE=https://github.com/sabotage-linux/gnu-getopt/archive/master.zip
+WORKFILE=master.zip
+EXTRACTCOMMAND=unzip -f
+BUILDPATH=work/gnu-getopt-master/
+PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile
