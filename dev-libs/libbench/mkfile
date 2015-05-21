@@ -1,0 +1,13 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='benchmarking library'
+
+HGSOURCE=https://bitbucket.org/mischief/libbench
+BUILDPATH=work/libbench
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk uninstall
+
+</sys/ports/Mk/mkfile
