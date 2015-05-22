@@ -1,0 +1,2 @@
+At first sight, it seems strange to port an utf8 library to Plan9. Many packages do however depend on or expect functions in the <wchar.h> and <wctypes.h> headers that are not available in the same form on Plan9 or APE.
+

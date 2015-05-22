@@ -1,0 +1,94 @@
+</$objtype/mkfile
+default:VQ:
+	;
+
+install:VQ:
+	;
+
+clean:VQ:
+	;
+
+nuke:VQ:
+	;
+
+install:V:
+	mkdir -p /sys/man/3ape
+	cp wcpncpy.3 /sys/man/3ape/wcpncpy
+	cp wcscmp.3 /sys/man/3ape/wcscmp
+	cp wctob.3 /sys/man/3ape/wctob
+	cp iswprint.3 /sys/man/3ape/iswprint
+	cp wcscspn.3 /sys/man/3ape/wcscspn
+	cp iswblank.3 /sys/man/3ape/iswblank
+	cp fgetws.3 /sys/man/3ape/fgetws
+	cp wmemcmp.3 /sys/man/3ape/wmemcmp
+	cp mbstowcs.3 /sys/man/3ape/mbstowcs
+	cp iswalpha.3 /sys/man/3ape/iswalpha
+	cp wcscpy.3 /sys/man/3ape/wcscpy
+	cp MB_CUR_MAX.3 /sys/man/3ape/MB_CUR_MAX
+	cp wmemchr.3 /sys/man/3ape/wmemchr
+	cp vfwprintf.3 /sys/man/3ape/vfwprintf
+	cp wcsspn.3 /sys/man/3ape/wcsspn
+	cp iswcntrl.3 /sys/man/3ape/iswcntrl
+	cp wcsnlen.3 /sys/man/3ape/wcsnlen
+	cp wmemset.3 /sys/man/3ape/wmemset
+	cp wcschr.3 /sys/man/3ape/wcschr
+	cp fputwc.3 /sys/man/3ape/fputwc
+	cp wcsncmp.3 /sys/man/3ape/wcsncmp
+	cp iswgraph.3 /sys/man/3ape/iswgraph
+	cp wcsncpy.3 /sys/man/3ape/wcsncpy
+	cp wcpcpy.3 /sys/man/3ape/wcpcpy
+	cp vswprintf.3 /sys/man/3ape/vswprintf
+	cp wprintf.3 /sys/man/3ape/wprintf
+	cp wcsncasecmp.3 /sys/man/3ape/wcsncasecmp
+	cp iswspace.3 /sys/man/3ape/iswspace
+	cp iswpunct.3 /sys/man/3ape/iswpunct
+	cp fputws.3 /sys/man/3ape/fputws
+	cp wctomb.3 /sys/man/3ape/wctomb
+	cp wcscat.3 /sys/man/3ape/wcscat
+	cp towctrans.3 /sys/man/3ape/towctrans
+	cp mbsnrtowcs.3 /sys/man/3ape/mbsnrtowcs
+	cp vwprintf.3 /sys/man/3ape/vwprintf
+	cp printf.3 /sys/man/3ape/printf
+	cp wcrtomb.3 /sys/man/3ape/wcrtomb
+	cp wmemmove.3 /sys/man/3ape/wmemmove
+	cp wcslen.3 /sys/man/3ape/wcslen
+	cp mbrlen.3 /sys/man/3ape/mbrlen
+	cp iswlower.3 /sys/man/3ape/iswlower
+	cp iswctype.3 /sys/man/3ape/iswctype
+	cp wcsstr.3 /sys/man/3ape/wcsstr
+	cp putwchar.3 /sys/man/3ape/putwchar
+	cp iswupper.3 /sys/man/3ape/iswupper
+	cp wcsrchr.3 /sys/man/3ape/wcsrchr
+	cp fgetwc.3 /sys/man/3ape/fgetwc
+	cp fwide.3 /sys/man/3ape/fwide
+	cp iswalnum.3 /sys/man/3ape/iswalnum
+	cp mblen.3 /sys/man/3ape/mblen
+	cp wcwidth.3 /sys/man/3ape/wcwidth
+	cp wmemcpy.3 /sys/man/3ape/wmemcpy
+	cp iswxdigit.3 /sys/man/3ape/iswxdigit
+	cp wctrans.3 /sys/man/3ape/wctrans
+	cp wcsncat.3 /sys/man/3ape/wcsncat
+	cp mbtowc.3 /sys/man/3ape/mbtowc
+	cp wcstok.3 /sys/man/3ape/wcstok
+	cp getwchar.3 /sys/man/3ape/getwchar
+	cp wcsrtombs.3 /sys/man/3ape/wcsrtombs
+	cp setlocale.3 /sys/man/3ape/setlocale
+	cp iswdigit.3 /sys/man/3ape/iswdigit
+	cp ungetwc.3 /sys/man/3ape/ungetwc
+	cp wctype.3 /sys/man/3ape/wctype
+	cp MB_LEN_MAX.3 /sys/man/3ape/MB_LEN_MAX
+	cp wcspbrk.3 /sys/man/3ape/wcspbrk
+	cp btowc.3 /sys/man/3ape/btowc
+	cp swprintf.3 /sys/man/3ape/swprintf
+	cp mbsinit.3 /sys/man/3ape/mbsinit
+	cp mbsrtowcs.3 /sys/man/3ape/mbsrtowcs
+	cp towlower.3 /sys/man/3ape/towlower
+	cp wcsnrtombs.3 /sys/man/3ape/wcsnrtombs
+	cp fwprintf.3 /sys/man/3ape/fwprintf
+	cp mbrtowc.3 /sys/man/3ape/mbrtowc
+	cp wcscasecmp.3 /sys/man/3ape/wcscasecmp
+	cp wcswidth.3 /sys/man/3ape/wcswidth
+	cp wcsdup.3 /sys/man/3ape/wcsdup
+	cp wcstombs.3 /sys/man/3ape/wcstombs
+	cp towupper.3 /sys/man/3ape/towupper
+

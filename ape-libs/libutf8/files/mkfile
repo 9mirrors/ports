@@ -1,0 +1,25 @@
+</$objtype/mkfile 
+
+all:V:
+	ape/psh build.sh
+
+install:V:
+	ape/psh build.sh
+	cp src/.libs/libutf8.a /$objtype/lib/ape/
+	mkdir /sys/include/ape/utf8
+	cp include/utf8/*.h /sys/include/ape/utf8/
+	cp apeheaders/libutf8.h /sys/include/ape/
+	cd man && mk install
+
+clean:V:
+	ape/psh clean.sh
+
+nuke:V:
+	ape/psh clean.sh
+	rm -rf /sys/include/ape/utf8
+	rm -f /sys/include/ape/libutf8.h
+	rm -f /$objtype/lib/ape/libutf8.a
+
+
+
+
