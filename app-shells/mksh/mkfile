@@ -1,5 +1,7 @@
 </$objtype/mkfile
 
+archmask=amd64
+
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='MirBSD Korn shell'
 VERSION=50f-1
