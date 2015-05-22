@@ -5,7 +5,7 @@
    definitions here and definitions included from somewhere else. */
 
 /* Define to 1 if you have the <libutf8.h> header file. */
-/* #undef HAVE_LIBUTF8_H */
+#define HAVE_LIBUTF8_H 1
 
 /* Define to 1 if the system has the type `reg_errcode_t'. */
 /* #undef HAVE_REG_ERRCODE_T */
@@ -14,13 +14,13 @@
 #define HAVE_SYS_TYPES_H 1
 
 /* Define to 1 if you have the <wchar.h> header file. */
-/* #undef HAVE_WCHAR_H */
+#define HAVE_WCHAR_H 1
 
 /* Define if you want to enable approximate matching functionality. */
 #define TRE_APPROX 1
 
 /* Define to enable multibyte character set support. */
-/* #undef TRE_MULTIBYTE */
+/* #define TRE_MULTIBYTE 1 */
 
 /* Define to the absolute path to the system tre.h */
 /* #undef TRE_SYSTEM_REGEX_H_PATH */
@@ -29,7 +29,8 @@
 /* #undef TRE_USE_SYSTEM_REGEX_H */
 
 /* Define to enable wide character (wchar_t) support. */
-/* #define TRE_WCHAR 1 */
+
+#define TRE_WCHAR 1
 
 /* TRE version string. */
 #define TRE_VERSION ".."
@@ -46,5 +47,4 @@
 /*hacks*/
 #define _SUSV2_SOURCE 1
 #include <inttypes.h>
-#define wint_t int32_t
 

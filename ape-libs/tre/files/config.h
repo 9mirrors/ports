@@ -1,5 +1,5 @@
 /* config.h.  Generated from config.h.in by configure.  */
-/* config.h.in.  Generated from configure.ac by autoheader.  */
+/* config.h.in.  Generated from configure.ac by autoheader. */
 
 /* Define to one of `_getb67', `GETB67', `getb67' for Cray-2 and Cray-YMP
    systems. This function is required for `alloca.c' support on those systems.
@@ -36,10 +36,10 @@
 /* #undef HAVE_DLFCN_H */
 
 /* Define to 1 if you have the <getopt.h> header file. */
-/* #undef HAVE_GETOPT_H */
+#define HAVE_GETOPT_H 1
 
 /* Define to 1 if you have the `getopt_long' function. */
-/* #undef HAVE_GETOPT_LONG */
+/* #define HAVE_GETOPT_LONG 1 */
 
 /* Define if the GNU gettext() function is already present or preinstalled. */
 /* #undef HAVE_GETTEXT */
@@ -60,10 +60,10 @@
 /* #undef HAVE_ISWASCII */
 
 /* Define to 1 if you have the `iswblank' function or macro. */
-/* #undef HAVE_ISWBLANK */
+#define HAVE_ISWBLANK 1
 
 /* Define to 1 if you have the `iswctype' function or macro. */
-/* #undef HAVE_ISWCTYPE */
+#define HAVE_ISWCTYPE 1
 
 /* Define to 1 if you have the `iswlower' function or macro. */
 #define HAVE_ISWLOWER 1
@@ -72,10 +72,10 @@
 #define HAVE_ISWUPPER 1
 
 /* Define to 1 if you have the <libutf8.h> header file. */
-/* #undef HAVE_LIBUTF8_H */
+#define HAVE_LIBUTF8_H 1
 
 /* Define to 1 if you have the `mbrtowc' function or macro. */
-/* #undef HAVE_MBRTOWC */
+#define HAVE_MBRTOWC 1
 
 /* Define to 1 if the system has the type `mbstate_t'. */
 #define HAVE_MBSTATE_T 1
@@ -120,34 +120,34 @@
 #define HAVE_UNISTD_H 1
 
 /* Define to 1 if you have the <wchar.h> header file. */
-/* #undef HAVE_WCHAR_H */
+#define HAVE_WCHAR_H 1
 
 /* Define to 1 if the system has the type `wchar_t'. */
 #define HAVE_WCHAR_T 1
 
 /* Define to 1 if you have the `wcschr' function or macro. */
-/* #undef HAVE_WCSCHR */
+#define HAVE_WCSCHR 1
 
 /* Define to 1 if you have the `wcscpy' function or macro. */
-/* #undef HAVE_WCSCPY */
+#define HAVE_WCSCPY 1
 
 /* Define to 1 if you have the `wcslen' function or macro. */
-/* #undef HAVE_WCSLEN */
+#define HAVE_WCSLEN 1
 
 /* Define to 1 if you have the `wcsncpy' function or macro. */
-/* #undef HAVE_WCSNCPY */
+#define HAVE_WCSNCPY 
 
 /* Define to 1 if you have the `wcsrtombs' function or macro. */
-/* #undef HAVE_WCSRTOMBS */
+#define HAVE_WCSRTOMBS 1
 
 /* Define to 1 if you have the `wcstombs' function or macro. */
 #define HAVE_WCSTOMBS 1
 
 /* Define to 1 if you have the `wctype' function or macro. */
-/* #undef HAVE_WCTYPE */
+#define HAVE_WCTYPE 1
 
 /* Define to 1 if you have the <wctype.h> header file. */
-/* #undef HAVE_WCTYPE_H */
+#define HAVE_WCTYPE_H 1
 
 /* Define to 1 if the system has the type `wint_t'. */
 /* #undef HAVE_WINT_T */
@@ -194,7 +194,7 @@
 /* #undef TRE_DEBUG */
 
 /* Define to enable multibyte character set support. */
-/* #undef TRE_MULTIBYTE */
+#define TRE_MULTIBYTE 1
 
 /* Define to a field in the regex_t struct where TRE should store a pointer to
    the internal tre_tnfa_t structure */

@@ -9,7 +9,7 @@ HFILES=xmalloc.h tre-internal.h
 
 CC=pcc
 LD=pcc
-CFLAGS=-c -I. -I.. -B -DHAVE_CONFIG_H
+CFLAGS=-c -I. -I.. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -DHAVE_CONFIG_H
 
 tre-match-parallel.$O: tre.h tre-match-utils.h 
 tre-mem.$O: tre-mem.h 

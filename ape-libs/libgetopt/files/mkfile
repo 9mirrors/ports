@@ -1,5 +1,5 @@
 </$objtype/mkfile
-LIB=/$objtype/lib/libgetopt.a
+LIB=/$objtype/lib/ape/libgetopt.a
 OFILES=gnu_getopt.$O 
 HFILES=getopt.h gnu_getopt.h 
 
