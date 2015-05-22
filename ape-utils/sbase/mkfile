@@ -3,7 +3,7 @@
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='Suckless.org base utilities for APE'
 VERSION=1
-#DEPS ape-libs/tre ape-libs/newlib-libgen
+DEPS=ape-libs/tre ape-libs/newlib-libgen
 
 WEBSOURCE=http://git.suckless.org/sbase/snapshot/sbase-master.tar.bz2
 WORKFILE=sbase-master.tar.bz2
