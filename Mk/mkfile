@@ -46,14 +46,16 @@ fetch:VQE:
 build:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
-	if(! ~ $#BUILDONLY 0){
-		for(i in $BUILDONLY){
+	if(! ~ $#archmask 0){
+		for(i in $archmask){
 			if(~ $i $objtype){
 				exit 'objtype '^$"objtype^' is not supported.'
 			}
 		}
 	}
 	if(! ~ $#DEPS 0){
+		echo 'dependencies are broke at the moment. sorry.'
+		exit 'depsbroken'
 		for(i in $DEPS){
 			@{
 				rfork ne
