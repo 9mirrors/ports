@@ -1,0 +1,18 @@
+</$objtype/mkfile
+
+archmask=amd64
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='linux binary emulator for plan9.'
+
+9PSERVER=9front.org
+9PFILE=/n/9front.org/extra/linuxemu3.tgz
+WORKFILE=linuxemu3.tgz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/linuxemu3
+BUILDCOMMAND=mk all
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=rm -f /$objtype/bin/linuxemu /rc/bin/linux
+
+</sys/ports/Mk/mkfile

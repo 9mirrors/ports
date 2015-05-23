@@ -1,0 +1,13 @@
+--- a/mkfile	Sat May 23 15:05:46 2015
++++ b/mkfile	Sat May 23 15:08:00 2015
+@@ -1,8 +1,8 @@
+ </$objtype/mkfile
+ 
+ TARG=linuxemu
+-BIN=$home/bin/$objtype
+-RCBIN=$home/bin/rc
++BIN=/$objtype/bin
++RCBIN=/rc/bin
+ CFLAGS=-FTVw
+ 
+ OFILES=\
