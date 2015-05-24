@@ -106,6 +106,7 @@
 #define _GL_FUNCDECL_SYS(func, rettype, parameters) rettype func parameters
 #define _GL_FUNCDECL_RPL(rpl_func, rettype, parameters) rettype rpl_func parameters 
 #define _GL_CXXALIAS_SYS_CAST(func, rettype, parameters) _gl_cxxalias_dummy
+#define _GL_CXXALIAS_SYS(func, rettype, parameters) rettype func parameters
 
 /* The definition of _GL_ARG_NONNULL is copied here.  */
 #define _GL_ARG_NONNULL(params) /* ? */
@@ -452,10 +453,10 @@ _GL_EXTERN_C const char *_gl_directory_name (int fd);
 
 # else
 #  if !HAVE_DECL_FCHDIR
-_GL_FUNCDECL_SYS (fchdir, int, (int /*fd*/));
+_GL_FUNCDECL_SYS (fchdir, int, (int));
 #  endif
 # endif
-_GL_CXXALIAS_SYS (fchdir, int, (int /*fd*/));
+_GL_CXXALIAS_SYS (fchdir, int, (int));
 _GL_CXXALIASWARN (fchdir);
 #elif defined GNULIB_POSIXCHECK
 # undef fchdir
@@ -1505,7 +1506,5 @@ _GL_CXXALIAS_SYS_CAST (write, ssize_t, (int fd, const void *buf, size_t count));
 # endif
 _GL_CXXALIASWARN (write);
 #endif
-
-_GL_INLINE_HEADER_END
 
 #endif /* GNULIB_UNISTD_H */

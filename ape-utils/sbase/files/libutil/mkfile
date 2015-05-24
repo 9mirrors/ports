@@ -11,7 +11,7 @@ HFILES=../util.h ../compat.h ../arg.h
 
 CC=pcc
 LD=pcc
-CFLAGS=-c -B -I. -I.. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_C99_SNPRINTF_EXTENSION
+CFLAGS=-c -B -I. -I.. -I/sys/include/ape/gnulib -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_C99_SNPRINTF_EXTENSION
 
 unescape.$O: 
 strtonum.$O: 

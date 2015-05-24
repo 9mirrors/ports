@@ -6,10 +6,10 @@ As a general guideline, the gnulib library will contain functions
 
 
 Current contents:
-
-- mkstemp/mkdtemp
-- fnmatch
-- 
+read files/mkfile for the current objects included
 
 
 If more functionality is needed, please just send me a request for the features to include.
+
+TODO:
+re-write or clean up/trim the installed gnulib headers (too messy to read right now)

@@ -34,7 +34,7 @@ LIB=libsbase_utf$O.a libsbase_util$O.a
 
 CC=pcc
 LD=pcc
-CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_C99_SNPRINTF_EXTENSION -Dpid_t=int
+CFLAGS=-c -I. -I/sys/include/ape/gnulib -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_C99_SNPRINTF_EXTENSION -Dpid_t=int
 
 yes.$O: 
 xargs.$O: stdint.h 

@@ -2,6 +2,10 @@
 
 #define _POSIX_SOURCE 1
 #define _SUSV2_SOURCE 1
+#define _RESEARCH_SOURCE 1
+#define _BSD_EXTENSION 1
+#define _LIMITS_EXTENSION 1
+#define _C99_SNPRINTF_EXTENSION 1
 
 /* headers provided by APE */
 #define HAVE_AR_H 1
@@ -57,6 +61,7 @@
 #undef HAVE_GETOPT_LONG_ONLY
 #undef HAVE_STRNDUP
 #undef HAVE_STRSEP
+#define HAVE_DECL_STRERROR_R 1
 #undef restrict
 #define _Restrict
 #define _UNUSED_PARAMETER_
@@ -65,13 +70,27 @@
 /* hacks */
 #include <limits.h>
 #define SIZE_MAX LONG_MAX
+#ifndef PATH_MAX
+#define PATH_MAX _POSIX_PATH_MAX
+#endif
 #include <errno.h>
 #define EOVERFLOW ENOMEM
 
 
 /* gnulib options */
 #define GNULIB_ENVIRON 1
-
+#define GNULIB_FCHDIR 1
+#define GNULIB_OPENAT 1
+#define GNULIB_MEMRCHR 1
+#define GNULIB_ALLOCA 1
+#define GNULIB_FNMATCH 1
+#define GNULIB_GETDELIM 1
+#define GNULIB_GETLINE 1
+#define GNULIB_ISBLANK 1
+#define GNULIB_MKNOD 1
+#define GNULIB_MKSTEMP 1
+#define GNULIB_MKDTEMP 1
+#define GNULIB_UNSETENV 1
 
 
 
