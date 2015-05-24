@@ -1,0 +1,31 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libgnu.a
+OFILES=alloca.$O faccessat.$O fnmatch.$O fstatat.$O getdelim.$O getline.$O isblank.$O mknod.$O mkstemp.$O mkdtemp.$O unsetenv.$O 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c - -I. -I./apelibs -D_POSIX_SOURCE -D_SUSV2_SOURCE -DHAVE_CONFIG_H 
+
+alloca.$O:
+faccessat.$O:
+fnmatch.$O:
+fstatat.$O:
+getdelim.$O:
+getline.$O:
+isblank.$O:
+mknod.$O:
+mkdtemp.$O: 
+mkstemp.$O:
+unsetenv.$O:
+
+
+install:V:
+	mkdir -p /sys/include/ape/gnulib
+	cp apelibs/*.h /sys/include/ape/gnulib/
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -rf /sys/include/ape/gnulib

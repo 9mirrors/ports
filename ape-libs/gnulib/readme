@@ -1,0 +1,15 @@
+This package complements missing parts in APE with object files from gnulib.
+
+As a general guideline, the gnulib library will contain functions
+* not present in APE (and hopefully APE will improve so that this library can shrink)
+* not present in other specialized 3rd party libraries
+
+
+Current contents:
+
+- mkstemp/mkdtemp
+- fnmatch
+- 
+
+
+If more functionality is needed, please just send me a request for the features to include.

@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='gnulib complement for APE'
+VERSION=1
+
+WEBSOURCE=http://erislabs.net/ianb/projects/gnulib/gnulib-20140202-stable.tar.gz
+WORKFILE=gnulib-20140202-stable.tar.gz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/gnulib-20140202-stable/lib/
+PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile
