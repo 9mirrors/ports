@@ -20,6 +20,8 @@
 #ifndef GL_TEMPNAME_H
 # define GL_TEMPNAME_H
 
+#pragma lib "/$M/lib/ape/libgnu.a"
+
 # include <stdio.h>
 
 # ifdef __GT_FILE

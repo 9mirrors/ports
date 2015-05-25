@@ -91,6 +91,7 @@
 #define GNULIB_MKSTEMP 1
 #define GNULIB_MKDTEMP 1
 #define GNULIB_UNSETENV 1
+#define GNULIB_GROUP_MEMBER 1
 
 
 

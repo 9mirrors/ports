@@ -19,17 +19,17 @@ strsep.$O:
 strlcpy.$O: 
 strlcat.$O: 
 strcasestr.$O: ../strings.h 
-sha512.$O: ../sha512.h ../stdint.h 
-sha256.$O: ../sha256.h ../stdint.h 
-sha1.$O: ../sha1.h ../stdint.h 
+sha512.$O: ../sha512.h 
+sha256.$O: ../sha256.h 
+sha1.$O: ../sha1.h 
 rm.$O: ../fs.h 
 recurse.$O: ../fs.h 
-reallocarray.$O: ../stdint.h 
+reallocarray.$O: 
 putword.$O: 
 mode.$O: 
 mkdirp.$O: 
-md5.$O: ../md5.h ../stdint.h 
-human.$O: ../stdint.h 
+md5.$O: ../md5.h 
+human.$O: 
 getlines.$O: ../text.h 
 fshut.$O: 
 fnck.$O: 
@@ -38,7 +38,7 @@ eregcomp.$O:
 eprintf.$O: 
 enmasse.$O: 
 ealloc.$O: 
-crypt.$O: ../text.h ../crypt.h ../stdint.h 
+crypt.$O: ../text.h ../crypt.h
 cp.$O: ../text.h ../fs.h 
 concat.$O: ../text.h 
 

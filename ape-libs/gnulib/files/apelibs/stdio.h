@@ -25,6 +25,7 @@
      provide the C++ aliases.  */
 
 #include "/sys/include/ape/stdio.h"
+#pragma lib "/$M/lib/ape/libgnu.a"
 
 #else
 /* Normal invocation convention.  */
@@ -113,6 +114,7 @@
 #define _GL_FUNCDECL_SYS(func, rettype, parameters) rettype func parameters
 #define _GL_FUNCDECL_RPL(rpl_func, rettype, parameters) rettype rpl_func parameters 
 #define _GL_CXXALIAS_SYS_CAST(func, rettype, parameters) _gl_cxxalias_dummy
+#define _GL_CXXALIAS_SYS(func, rettype, parameters) rettype func parameters
 
 /* The definition of _GL_ARG_NONNULL is copied here.  */
 #define _GL_ARG_NONNULL(params) /* ? */

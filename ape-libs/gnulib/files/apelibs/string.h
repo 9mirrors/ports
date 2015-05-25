@@ -19,6 +19,7 @@
 
 /* The include_next requires a split double-inclusion guard.  */
 #include "/sys/include/ape/string.h"
+#pragma lib "/$M/lib/ape/libgnu.a"
 
 #ifndef GNULIB_STRING_H
 #define GNULIB_STRING_H

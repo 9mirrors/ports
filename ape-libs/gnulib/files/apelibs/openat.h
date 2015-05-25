@@ -19,6 +19,8 @@
 #ifndef _GL_HEADER_OPENAT
 #define _GL_HEADER_OPENAT
 
+#pragma lib "/$M/lib/ape/libgnu.a"
+
 #include <fcntl.h>
 
 #include <sys/types.h>

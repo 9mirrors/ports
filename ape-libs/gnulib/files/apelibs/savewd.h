@@ -20,6 +20,8 @@
 #ifndef SAVEWD_H
 # define SAVEWD_H 1
 
+#pragma lib "/$M/lib/ape/libgnu.a"
+
 #include <stdbool.h>
 #include <sys/types.h>
 

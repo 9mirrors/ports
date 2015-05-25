@@ -6,7 +6,7 @@
 #
 #compilation issues
 # cron (syslog.h), du (blkcnt_t), expr (variable array size)
-# find (fnmatch...), grep (fmemopen), hostname (variable array size)
+# find (variable array size), grep (fmemopen), hostname (variable array size)
 # logger (syslog.h), nice renice (sys/resource.h)
 # nohup (no return main), sed (fmemopen), setsid (getpgrp setsid)
 # touch
@@ -31,20 +31,19 @@ LIB=libsbase_utf$O.a libsbase_util$O.a
 
 </sys/src/cmd/mkmany
 
-
 CC=pcc
 LD=pcc
-CFLAGS=-c -I. -I/sys/include/ape/gnulib -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_C99_SNPRINTF_EXTENSION -Dpid_t=int
+CFLAGS=-c -B -I'/sys/include/ape/gnulib' -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_C99_SNPRINTF_EXTENSION -Dpid_t=int
 
 yes.$O: 
-xargs.$O: stdint.h 
+xargs.$O:
 which.$O: 
 wc.$O: utf.h 
 uuencode.$O: 
 uudecode.$O: 
 unlink.$O: 
 uniq.$O: 
-unexpand.$O: utf.h stdint.h 
+unexpand.$O: utf.h
 uname.$O: 
 tty.$O: 
 tr.$O: utf.h 
@@ -53,15 +52,15 @@ time.$O:
 test.$O: 
 tee.$O: 
 tar.$O: fs.h 
-tail.$O: utf.h text.h stdint.h 
+tail.$O: utf.h text.h
 sync.$O: 
 strings.$O: utf.h 
 sponge.$O: text.h 
-split.$O: stdint.h 
+split.$O: 
 sort.$O: text.h 
 sleep.$O: 
-sha512sum.$O: sha512.h crypt.h stdint.h 
-sha1sum.$O: sha1.h crypt.h stdint.h 
+sha512sum.$O: sha512.h crypt.h
+sha1sum.$O: sha1.h crypt.h 
 setsid.$O: 
 seq.$O: 
 sed.$O: utf.h 
@@ -74,38 +73,38 @@ printf.$O: utf.h
 printenv.$O: 
 paste.$O: utf.h 
 nohup.$O: 
-nl.$O: utf.h text.h stdint.h 
+nl.$O: utf.h text.h
 nice.$O: 
 mv.$O: fs.h 
 mktemp.$O: 
 mkfifo.$O: 
 mkdir.$O: 
-md5sum.$O: md5.h crypt.h stdint.h 
+md5sum.$O: md5.h crypt.h
 ls.$O: utf.h 
 logname.$O: 
 logger.$O: syslog.h strings.h 
 ln.$O: 
 link.$O: 
 kill.$O: strings.h 
-join.$O: utf.h text.h stdint.h 
+join.$O: utf.h text.h
 hostname.$O: 
-head.$O: stdint.h 
+head.$O: 
 grep.$O: queue.h strings.h 
-fold.$O: stdint.h 
-find.$O: stdint.h fnmatch.h 
+fold.$O: 
+find.$O: 
 expr.$O: utf.h 
-expand.$O: utf.h stdint.h 
+expand.$O: utf.h
 env.$O: 
 echo.$O: 
-du.$O: fs.h stdint.h 
+du.$O: fs.h 
 dirname.$O: 
 date.$O: 
 cut.$O: utf.h 
-cron.$O: queue.h syslog.h 
+cron.$O: queue.h
 cp.$O: fs.h 
 comm.$O: 
-cols.$O: utf.h text.h stdint.h 
-col.$O: utf.h stdint.h 
+cols.$O: utf.h text.h
+col.$O: utf.h
 cmp.$O: 
 cksum.$O: 
 chroot.$O: 
@@ -113,7 +112,7 @@ chown.$O: fs.h
 chmod.$O: fs.h 
 chgrp.$O: fs.h 
 cat.$O: text.h 
-cal.$O: stdint.h 
+cal.$O: 
 basename.$O: 
 
 clean:V:

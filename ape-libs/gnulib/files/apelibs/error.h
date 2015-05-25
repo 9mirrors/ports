@@ -19,6 +19,8 @@
 #ifndef _ERROR_H
 #define _ERROR_H 1
 
+#pragma lib "/$M/lib/ape/libgnu.a"
+
 /* The __attribute__ feature is available in gcc versions 2.5 and later.
    The __-protected variants of the attributes 'format' and 'printf' are
    accepted by gcc versions 2.6.4 (effectively 2.7) and later.
