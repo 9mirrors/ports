@@ -10,6 +10,7 @@ BUILDPATH=work/go/src
 BUILDCOMMAND=./make.rc
 INSTALLCOMMAND=fortune /lib/rob
 CLEANCOMMAND=./clean.rc
-MESSAGE='To make use of go you must bind '`{pwd}'/go/bin over /bin and set $GOPATH'.
+MESSAGE='To make use of go you must bind '`{pwd}'/work/go/bin over /bin and set $GOPATH.' \
+	'The Go net/http package also needs app-misc/ca-certificates to verify server certificates.'
 
 </sys/ports/Mk/mkfile
