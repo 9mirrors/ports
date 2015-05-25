@@ -8,9 +8,5 @@ void warnx(const char *, ...) {}
 
 void warn(const char *, ...) {}
 
-int mkstemp(char *template) {
-	errno=ENOSYS;
-	return -1;
-}
 
 

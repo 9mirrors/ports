@@ -2,17 +2,18 @@
 TARG=m4
 OFILES=misc.$O look.$O expr.$O gnum4.$O main.$O eval.$O trace.$O stub.$O
 BIN=/$objtype/bin
+LIB=/$objtype/lib/ape/libgnu.a
 HFILES=extern.h stdd.h mdef.h err.h 
 
 </sys/src/cmd/mkone
 
 CC=pcc
 LD=pcc
-CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -D__inline=  
+CFLAGS=-c -I. -I/sys/include/ape/gnu -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -D__inline= -DGNULIB_MKSTEMP
 
 trace.$O: 
 eval.$O: pathnames.h 
-main.$O: pathnames.h stdint.h 
+main.$O: pathnames.h
 gnum4.$O: paths.h 
 expr.$O: 
 look.$O: 
