@@ -1,0 +1,12 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='CA certificate bundle'
+
+WEBSOURCE=https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt
+WORKFILE=ca-bundle.crt
+BUILDPATH=work/
+INSTALLCOMMAND=/bin/rc -c 'cp $WORKFILE /sys/lib/tls/ca.pem'
+UNINSTALL=/sys/lib/tls/ca.pem
+
+</sys/ports/Mk/mkfile
