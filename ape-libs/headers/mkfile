@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='shim headers for APE'
+VERSION=1
+
+WORKFILE=fortune
+EXTRACTCOMMAND=fortune
+BUILDPATH=work/
+PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile

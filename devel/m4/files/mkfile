@@ -1,15 +1,15 @@
 </$objtype/mkfile
 TARG=m4
-OFILES=misc.$O look.$O expr.$O gnum4.$O main.$O eval.$O trace.$O stub.$O
+OFILES=misc.$O look.$O expr.$O gnum4.$O main.$O eval.$O trace.$O
 BIN=/$objtype/bin
 LIB=/$objtype/lib/ape/libgnu.a
-HFILES=extern.h stdd.h mdef.h err.h 
+HFILES=extern.h stdd.h mdef.h
 
 </sys/src/cmd/mkone
 
 CC=pcc
 LD=pcc
-CFLAGS=-c -I. -I/sys/include/ape/gnu -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -D__inline= -DGNULIB_MKSTEMP
+CFLAGS=-c -B -I. -I/sys/include/ape/gnu -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -D__inline=  
 
 trace.$O: 
 eval.$O: pathnames.h 

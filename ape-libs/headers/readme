@@ -1,0 +1,1 @@
+This is a collection of compatibility (shim) headers for APE. No library is associated to these headers and they utilize the native functions provided by other headers and libraries.

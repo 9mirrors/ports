@@ -1,0 +1,24 @@
+</$objtype/mkfile
+
+HFILES=err stdint
+
+default:VQ:
+	for (i in $HFILES)
+	{cp $i.h /sys/include/ape/}
+	;
+
+install:VQ:
+	for (i in $HFILES)
+	{cp $i.h /sys/include/ape/}
+	;
+
+clean:VQ:
+	for (i in $HFILES)
+	{rm -f $i.h /sys/include/ape/}
+	;
+
+nuke:VQ:
+	for (i in $HFILES)
+	{rm -f $i.h /sys/include/ape/}
+	;
+
