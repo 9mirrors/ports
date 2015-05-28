@@ -1,0 +1,2 @@
+This package is made by extracting the sources from newlib needed for a mini-library providing fmemopen() functionality. Fmemopen is usually defined in <stdio.h> so this package overwrites the standard APE header with a modified variant.
+
