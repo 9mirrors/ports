@@ -7,9 +7,9 @@ DESCRIPTION='Inferno® is a distributed operating system'
 
 HGSOURCE=https://bitbucket.org/inferno-os/inferno-os /usr/inferno
 BUILDPATH=/usr/inferno
-BUILDCOMMAND=mk all
-INSTALLCOMMAND=mk install
+BUILDCOMMAND=rc -c 'mk mkdirs && path=($path /usr/inferno/Plan9/$objtype/bin) mk install'
+INSTALLCOMMAND=fortune
 CLEANCOMMAND=mk clean
-UNINSTALLCOMMAND=rm -rf /usr/inferno
+UNINSTALLCOMMAND=rc -c 'chmod u+w /usr/inferno/^(* */* */*/*) && rm -rf /usr/inferno'
 
 </sys/ports/Mk/mkfile
