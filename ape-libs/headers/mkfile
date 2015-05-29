@@ -4,8 +4,6 @@ OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='shim headers for APE'
 VERSION=1
 
-WORKFILE=fortune
-EXTRACTCOMMAND=fortune
 BUILDPATH=work/
 PATCHES=files
 BUILDCOMMAND=mk
