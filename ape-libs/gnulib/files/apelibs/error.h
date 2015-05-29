@@ -19,6 +19,7 @@
 #ifndef _ERROR_H
 #define _ERROR_H 1
 
+#include "gnulib_config.h"
 #pragma lib "/$M/lib/ape/libgnu.a"
 
 /* The __attribute__ feature is available in gcc versions 2.5 and later.

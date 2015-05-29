@@ -1,6 +1,6 @@
 </$objtype/mkfile
 LIB=/$objtype/lib/ape/libgnu.a
-OFILES=alloca.$O basename-lgpl.$O dup-safer.$O chdir-long.$O cloexec.$O euidaccess.$O error.$O exitfail.$O faccessat.$O fchdir.$O fchown-stub.$O fd-safer.$O filenamecat-lgpl.$O fnmatch.$O fstatat.$O getdelim.$O getline.$O group-member.$O isblank.$O memrchr.$O mknod.$O mkstemp.$O mkdtemp.$O progname.$O openat.$O openat-die.$O openat-proc.$O save-cwd.$O tempname.$O unsetenv.$O 
+OFILES=alloca.$O basename-lgpl.$O dup-safer.$O canonicalize-lgpl.$O chdir-long.$O cloexec.$O euidaccess.$O error.$O exitfail.$O faccessat.$O fchdir.$O fchown-stub.$O fd-safer.$O filenamecat-lgpl.$O fnmatch.$O fstatat.$O getdelim.$O getline.$O group-member.$O isblank.$O memrchr.$O mknod.$O mkstemp.$O mkdtemp.$O malloca.$O progname.$O openat.$O openat-die.$O openat-proc.$O save-cwd.$O tempname.$O unsetenv.$O 
 
 </sys/src/cmd/mksyslib
 
@@ -11,6 +11,7 @@ CFLAGS=-c - -I. -I./apelibs -D_POSIX_SOURCE -D_SUSV2_SOURCE -DHAVE_CONFIG_H
 alloca.$O:
 basename-lgpl.$O:
 dup-safer.$O:
+canonicalize-lgpl.$O:
 chdir-long.$O:
 cloexec.$O:
 euidaccess.$O:
@@ -31,6 +32,7 @@ memrchr.$O:
 mknod.$O:
 mkdtemp.$O: 
 mkstemp.$O:
+malloca.$O:
 progname.$O:
 openat.$O:
 openat-die.$O:

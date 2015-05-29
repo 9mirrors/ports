@@ -32,8 +32,9 @@
 #if !(defined __GLIBC__ || defined __UCLIBC__) || (defined __cplusplus && defined GNULIB_NAMESPACE && !(__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 3)))
 # include <sys/stat.h>
 #endif
-#include "/sys/include/ape/fcntl.h"
 
+#include "/sys/include/ape/fcntl.h"
+#include "gnulib_config.h"
 #pragma lib "/$M/lib/ape/libgnu.a"
 
 #else

@@ -25,6 +25,7 @@
      provide the C++ aliases.  */
 
 #include "/sys/include/ape/stdio.h"
+#include "gnulib_config.h"
 #pragma lib "/$M/lib/ape/libgnu.a"
 
 #else

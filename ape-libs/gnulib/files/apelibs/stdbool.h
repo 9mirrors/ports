@@ -17,6 +17,7 @@
 #ifndef _GL_STDBOOL_H
 #define _GL_STDBOOL_H
 
+#include "gnulib_config.h"
 #pragma lib "/$M/lib/ape/libgnu.a"
 
 /* ISO C 99 <stdbool.h> for platforms that lack it.  */

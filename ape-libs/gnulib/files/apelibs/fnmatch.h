@@ -19,6 +19,7 @@
 #ifndef _FNMATCH_H
 #define _FNMATCH_H      1
 
+#include "gnulib_config.h"
 #pragma lib "/$M/lib/ape/libgnu.a"
 
 /* The definition of _GL_ARG_NONNULL is copied here.  */

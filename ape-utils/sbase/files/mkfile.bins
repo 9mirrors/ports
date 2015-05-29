@@ -6,10 +6,10 @@
 #
 #compilation issues
 # cron (syslog.h), du (blkcnt_t), expr (variable array size)
-# find (variable array size), grep (fmemopen), hostname (variable array size)
+# find (variable array size), grep, hostname (variable array size)
 # logger (syslog.h), nice renice (sys/resource.h)
-# nohup (no return main), sed (fmemopen), setsid (getpgrp setsid)
-# touch
+# nohup (no return main), sed (1715 not an l-value), setsid (getpgrp setsid)
+# touch (tm_gmtoff etc)
 #
 #linking issues
 # 

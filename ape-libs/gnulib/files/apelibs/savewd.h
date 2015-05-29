@@ -21,6 +21,7 @@
 # define SAVEWD_H 1
 
 #pragma lib "/$M/lib/ape/libgnu.a"
+#include "gnulib_config.h"
 
 #include <stdbool.h>
 #include <sys/types.h>

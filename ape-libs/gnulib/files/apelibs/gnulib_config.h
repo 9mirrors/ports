@@ -1,3 +1,5 @@
+#ifndef GNULIB_CONFIG_H
+
 /* Manually edited file */
 
 #define _POSIX_SOURCE 1
@@ -61,6 +63,7 @@
 #undef HAVE_GETOPT_LONG_ONLY
 #undef HAVE_STRNDUP
 #undef HAVE_STRSEP
+#define HAVE_GETCWD 1
 #define HAVE_DECL_STRERROR_R 1
 #undef restrict
 #define _Restrict
@@ -75,6 +78,7 @@
 #endif
 #include <errno.h>
 #define EOVERFLOW ENOMEM
+#define ELOOP ENOENT
 
 
 /* gnulib options */
@@ -92,6 +96,13 @@
 #define GNULIB_MKDTEMP 1
 #define GNULIB_UNSETENV 1
 #define GNULIB_GROUP_MEMBER 1
+
+
+
+#endif /* GNULIB_CONFIG_H */
+
+
+
 
 
 

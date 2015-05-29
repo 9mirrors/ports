@@ -20,6 +20,7 @@
 #define _GL_HEADER_OPENAT
 
 #pragma lib "/$M/lib/ape/libgnu.a"
+#include "gnulib_config.h"
 
 #include <fcntl.h>
 

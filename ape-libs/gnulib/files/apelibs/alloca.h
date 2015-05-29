@@ -23,6 +23,7 @@
 #ifndef _GL_ALLOCA_H
 #define _GL_ALLOCA_H
 
+#include "gnulib_config.h"
 #pragma lib "/$M/lib/ape/libgnu.a"
 
 /* alloca (N) returns a pointer to N bytes of memory

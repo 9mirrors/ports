@@ -20,6 +20,7 @@
 #ifndef GL_TEMPNAME_H
 # define GL_TEMPNAME_H
 
+#include "gnulib_config.h"
 #pragma lib "/$M/lib/ape/libgnu.a"
 
 # include <stdio.h>

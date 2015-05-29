@@ -16,6 +16,7 @@
 
 #ifndef GNULIB_UNISTD_H
 
+#include "gnulib_config.h"
 #pragma lib "/$M/lib/ape/libgnu.a"
 
 /* The include_next requires a split double-inclusion guard.  */
