@@ -6,17 +6,18 @@
 #
 #compilation issues
 # cron (syslog.h), du (blkcnt_t), expr (variable array size)
-# find (variable array size), grep, hostname (variable array size)
+# find (variable array size), hostname (variable array size)
 # logger (syslog.h), nice renice (sys/resource.h)
 # nohup (no return main), sed (1715 not an l-value), setsid (getpgrp setsid)
 # touch (tm_gmtoff etc)
-#
-#linking issues
-# 
+
+RC_APE=cat chown egrep false fgrep grep ln ls true printf
+
+RC_SBASE=egrep fgrep ln
 
 TARG=basename cal cat chgrp chmod chown cmp \
 	cksum col comm cp cut date dirname echo \
-	env expand false fold head \
+	env expand false fold grep head \
 	join kill link logname ls md5sum mkdir \
 	mkfifo mktemp mv nl paste printenv printf \
 	pwd readlink rm rmdir seq sha1sum \
@@ -124,6 +125,8 @@ nuke:V:
 		{ rm -f /$objtype/bin/ape/$i }
 	for (j in $TARG)
 		{ rm -f $j.1 /sys/man/1ape/$j }
+	for (k in $RC_APE)
+		{ cp rc_ape/$k /rc/bin/ape/ }
 
 install:V:
 	for (i in $TARG)
@@ -131,6 +134,10 @@ install:V:
 	mkdir -p /sys/man/1ape
 	for (j in $TARG)
 		{ cp $j.1 /sys/man/1ape/$j }
+	for (k in $RC_APE)
+		{ rm -f /rc/bin/ape/$k }
+	for (l in $RC_SBASE)
+		{ cp rc_sbase/$l /rc/bin/ape/ }
 
 installall:V:
 	for (i in $TARG)
@@ -138,3 +145,7 @@ installall:V:
 	mkdir -p /sys/man/1ape
 	for (j in $TARG)
 		{ cp $j.1 /sys/man/1ape/$j }
+	for (k in $RC_APE)
+		{ rm -f /rc/bin/ape/$k }
+	for (l in $RC_SBASE)
+		{ cp rc_sbase/$l /rc/bin/ape/ }

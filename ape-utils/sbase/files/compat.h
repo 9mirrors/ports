@@ -8,6 +8,7 @@
 /* Plan9 hacks */
 
 #include <gnulib_config.h>
+#include <fmemopen.h>
 
 #define PATH_MAX _POSIX_PATH_MAX
 #define NAME_MAX _POSIX_NAME_MAX
