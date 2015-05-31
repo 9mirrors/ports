@@ -1,0 +1,36 @@
+--- a/lua_cjson.c	Mon Jun  1 05:48:07 2015
++++ b/lua_cjson.c	Mon Jun  1 05:47:40 2015
+@@ -593,18 +593,18 @@
+ 
+     if (cfg->encode_invalid_numbers == 0) {
+         /* Prevent encoding invalid numbers */
+-        if (isinf(num) || isnan(num))
++        if (isInf(num, 0) || isNaN(num))
+             json_encode_exception(l, cfg, json, lindex, "must not be NaN or Inf");
+     } else if (cfg->encode_invalid_numbers == 1) {
+         /* Encode invalid numbers, but handle "nan" separately
+          * since some platforms may encode as "-nan". */
+-        if (isnan(num)) {
++        if (isNaN(num)) {
+             strbuf_append_mem(json, "nan", 3);
+             return;
+         }
+     } else {
+         /* Encode invalid numbers as "null" */
+-        if (isinf(num) || isnan(num)) {
++        if (isInf(num, 0) || isNaN(num)) {
+             strbuf_append_mem(json, "null", 4);
+             return;
+         }
+
+--- a/lua_cmsgpack.c	Mon Jun  1 05:48:07 2015
++++ b/lua_cmsgpack.c	Mon Jun  1 05:47:52 2015
+@@ -19,7 +19,7 @@
+ #endif
+ 
+ /* Check if float or double can be an integer without loss of precision */
+-#define IS_INT_TYPE_EQUIVALENT(x, T) (!isinf(x) && (T)(x) == (x))
++#define IS_INT_TYPE_EQUIVALENT(x, T) (!isInf(x, 0) && (T)(x) == (x))
+ 
+ #define IS_INT64_EQUIVALENT(x) IS_INT_TYPE_EQUIVALENT(x, int64_t)
+ #define IS_INT_EQUIVALENT(x) IS_INT_TYPE_EQUIVALENT(x, int)
