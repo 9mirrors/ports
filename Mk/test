@@ -34,7 +34,7 @@ for (c in $CATEGORY) {
 	cd /sys/ports/$c
 	for (port in `{ls -l | grep '^d' | awk '{ print $10 }'}) {
 		@{ testone $c/$port }
-		st=`{ echo $status | sed 's/.*: //g'}
+		st=$status # `{ echo $status | sed 's/.*: //g'}
 		if(~ $st ''){
 			echo 'ok.'
 			pass=($pass $c/$port)

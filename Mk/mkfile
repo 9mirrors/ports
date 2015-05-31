@@ -49,7 +49,7 @@ build:VQE:
 	if(! ~ $#archmask 0){
 		for(i in $archmask){
 			if(~ $i $objtype){
-				exit 'objtype '^$"objtype^' is not supported.'
+				exit 'objtype '^$"objtype^' is not supported'
 			}
 		}
 	}
