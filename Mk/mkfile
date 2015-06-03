@@ -43,6 +43,31 @@ fetch:VQE:
 	}
 	exit ''
 
+patch:VQE:
+	. /sys/ports/Config/ports.conf
+	. /sys/ports/Mk/pkg.rc
+	if(test -e work/.patched){
+		exit 'already patched'
+	}
+	for(p in `{ls $files/*.patch >[2]/dev/null}){
+		@{ cd $BUILDPATH && apply $p } || exit 'applying '^$p^' failed'
+	}
+	if(! ~ $#PATCHES 0){
+		dircp $PATCHES $BUILDPATH
+	}
+	touch work/.patched || exit $status
+
+unpatch:VQE:
+	. /sys/ports/Config/ports.conf
+	. /sys/ports/Mk/pkg.rc
+	if(! test -e work/.patched){
+		exit 'not patched'
+	}
+	for(p in `{ls $files/*.patch >[2]/dev/null}){
+		@{ cd $BUILDPATH && unapply $p } || exit 'unapplying '^$p^' failed'
+	}
+	rm work/.patched || exit $status
+
 build:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
@@ -68,17 +93,8 @@ build:VQE:
 			}
 		}
 	}
-	if(~ $#BUILDPATH 0){
-		BUILDPATH=work
-	}
 	if(! test -e work/.patched){
-		for(p in `{ls $files/*.patch}){
-			@{ cd $BUILDPATH && apply $p } || exit 'applying '^$p^' failed'
-		}
-		touch work/.patched || exit $status
-	}
-	if(! ~ $#PATCHES 0){
-		dircp $PATCHES $BUILDPATH
+		mk patch || exit $status
 	}
 	cd $BUILDPATH
 	@{

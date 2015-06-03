@@ -1,5 +1,10 @@
 . /sys/ports/Config/ports.conf
 
+# setup some sane defaults.
+if(~ $#BUILDPATH 0){
+	BUILDPATH=work
+}
+
 fn checkport {
 	s=''
 	echo 'checking for port: '^$1
@@ -62,4 +67,10 @@ fn apply {
 	file=$1
 	echo applying `{basename $file}
 	ape/patch -p1 < $file
+}
+
+fn unapply {
+	file=$1
+	echo unapplying `{basename $file}
+	ape/patch -R -p1 < $file
 }
