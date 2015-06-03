@@ -1,19 +1,6 @@
---- a/linit.c	Mon Jun  1 04:42:02 2015
-+++ b/linit.c	Mon Jun  1 05:23:59 2015
-@@ -23,6 +23,10 @@
-   {LUA_STRLIBNAME, luaopen_string},
-   {LUA_MATHLIBNAME, luaopen_math},
-   {LUA_DBLIBNAME, luaopen_debug},
-+  {LUA_BITLIBNAME, luaopen_bit},
-+  {LUA_CJSONLIBNAME, luaopen_cjson},
-+  {LUA_CMSGPACKLIBNAME, luaopen_cmsgpack},
-+  {LUA_STRUCTLIBNAME, luaopen_struct},
-   {NULL, NULL}
- };
- 
---- a/lualib.h	Mon Jun  1 04:42:02 2015
-+++ b/lualib.h	Mon Jun  1 05:23:00 2015
-@@ -39,11 +39,20 @@
+--- a/lualib.h	Thu Jun  4 00:21:56 2015
++++ b/lualib.h	Thu Jun  4 01:06:48 2015
+@@ -39,11 +39,23 @@
  #define LUA_LOADLIBNAME	"package"
  LUALIB_API int (luaopen_package) (lua_State *L);
  
@@ -31,8 +18,25 @@
 +#define LUA_STRUCTLIBNAME "struct"
 +LUALIB_API int (luaopen_struct) (lua_State *L);
  
++#define LUA_P9LIBNAME "p9"
++LUALIB_API int (lua_p9lib) (lua_State *L);
++
 +/* open all previous libraries */
 +LUALIB_API void (luaL_openlibs) (lua_State *L); 
  
  #ifndef lua_assert
  #define lua_assert(x)	((void)0)
+--- a/linit.c	Thu Jun  4 00:21:56 2015
++++ b/linit.c	Thu Jun  4 01:05:29 2015
+@@ -23,6 +23,11 @@
+   {LUA_STRLIBNAME, luaopen_string},
+   {LUA_MATHLIBNAME, luaopen_math},
+   {LUA_DBLIBNAME, luaopen_debug},
++  {LUA_BITLIBNAME, luaopen_bit},
++  {LUA_CJSONLIBNAME, luaopen_cjson},
++  {LUA_CMSGPACKLIBNAME, luaopen_cmsgpack},
++  {LUA_STRUCTLIBNAME, luaopen_struct},
++  {LUA_P9LIBNAME, lua_p9lib},
+   {NULL, NULL}
+ };
+ 
