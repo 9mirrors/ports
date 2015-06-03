@@ -161,7 +161,7 @@ clean:VQE: # build fetch
 nuke:VQE:
 	rm -rf work/
 
-uninstall:VQ: # fetch
+uninstall:VQE: # fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! checkport $PORTNAME){
