@@ -9,7 +9,7 @@ HFILES=extern.h stdd.h mdef.h
 
 CC=pcc
 LD=pcc
-CFLAGS=-c -B -I. -I/sys/include/ape/gnu -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -D__inline=  
+CFLAGS=-c -B -I. -I/sys/include/ape/gnulib -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -D__inline=  
 
 trace.$O: 
 eval.$O: pathnames.h 

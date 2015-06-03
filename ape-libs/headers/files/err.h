@@ -1,8 +1,9 @@
 /* 
  * Public domain 
  * err.h compatibility stub
- * libressl has a nice shim header
- * but the redefinitions do not work on Plan9
+ * libressl has a nice shim header 
+ * TODO: to make a similar shim compatible
+ * with Plan9 cpp
  */ 
 
 #ifndef ERR_H
@@ -13,13 +14,13 @@
 #include <stdio.h> 
 #include <string.h> 
 
-#define err(...)  /* ? */
+#define err(...)  /* */
 
-#define errx(...) /* ? */ 
+#define errx(...) /* */
 
-#define warn(...) /* ? */
+#define warn(...) /* */
 
-#define warnx(...) /* ? */
+#define warnx(...) /* */
 
 #endif /* COMPAT_ERR_H */
 #endif /* ERR_H */
