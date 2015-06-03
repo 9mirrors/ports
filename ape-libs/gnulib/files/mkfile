@@ -1,46 +1,12 @@
 </$objtype/mkfile
 LIB=/$objtype/lib/ape/libgnu.a
-OFILES=alloca.$O basename-lgpl.$O dup-safer.$O canonicalize-lgpl.$O chdir-long.$O cloexec.$O euidaccess.$O error.$O exitfail.$O faccessat.$O fchdir.$O fchown-stub.$O fd-safer.$O filenamecat-lgpl.$O fnmatch.$O fstatat.$O getdelim.$O getline.$O group-member.$O isblank.$O memrchr.$O mknod.$O mkstemp.$O mkdtemp.$O malloca.$O progname.$O openat.$O openat-die.$O openat-proc.$O save-cwd.$O tempname.$O unsetenv.$O 
+OFILES=alloca.$O basename-lgpl.$O dup-safer.$O canonicalize-lgpl.$O chdir-long.$O cloexec.$O euidaccess.$O error.$O exitfail.$O faccessat.$O fchdir.$O fchown-stub.$O fd-safer.$O filenamecat-lgpl.$O fnmatch.$O freadable.$O freadahead.$O freading.$O freadptr.$O freadseek.$O fstatat.$O getdelim.$O getline.$O getopt.$O group-member.$O iconv.$O iconv_close.$O isblank.$O localcharset.$O mbrlen.$O mbrtowc.$O mbsinit.$O mbsnrtowcs.$O mbsrtowcs.$O mbswidth.$O mbtowc.$O memrchr.$O mknod.$O mkostemp.$O mkostemps.$O mkstemp.$O mkstemps.$O mkdtemp.$O mkfifo.$O malloca.$O nl_langinfo.$O progname.$O openat.$O openat-die.$O openat-proc.$O poll.$O random.$O random_r.$O readline.$O regex.$O save-cwd.$O secure_getenv.$O setenv.$O strndup.$O strnlen.$O tempname.$O tmpdir.$O unsetenv.$O utimens.$O utimens.$O wcpcpy.$O wcpncpy.$O wcrtomb.$O wcscat.$O wcschr.$O wcscmp.$O wcscoll.$O wcscpy.$O wcscspn.$O wcsdup.$O wcslen.$O wcsncasecmp.$O wcsncat.$O wcsncmp.$O wcsncpy.$O wcsnlen.$O wcsnrtombs.$O wcspbrk.$O wcsrchr.$O wcsrtombs.$O wcsspn.$O wcsstr.$O wcstok.$O wcswidth.$O wmemchr.$O wmemcpy.$O wmemmove.$O wmemset.$O
 
 </sys/src/cmd/mksyslib
 
 CC=pcc
 LD=pcc
-CFLAGS=-c - -I. -I./apelibs -D_POSIX_SOURCE -D_SUSV2_SOURCE -DHAVE_CONFIG_H 
-
-alloca.$O:
-basename-lgpl.$O:
-dup-safer.$O:
-canonicalize-lgpl.$O:
-chdir-long.$O:
-cloexec.$O:
-euidaccess.$O:
-error.$O:
-exitfail.$O:
-faccessat.$O:
-fchdir.$O:
-fchown-stub.$O:
-fd-safer.$O:
-filenamecat-lgpl.$O:
-fnmatch.$O:
-fstatat.$O:
-getdelim.$O:
-getline.$O:
-group-member.$O:
-isblank.$O:
-memrchr.$O:
-mknod.$O:
-mkdtemp.$O: 
-mkstemp.$O:
-malloca.$O:
-progname.$O:
-openat.$O:
-openat-die.$O:
-openat-proc.$O:
-save-cwd.$O:
-tempname.$O:
-unsetenv.$O:
-
+CFLAGS=-c - -I. -I./apelibs -D_POSIX_SOURCE -D_SUSV2_SOURCE -DHAVE_CONFIG_H
 
 install:V:
 	mkdir -p /sys/include/ape/gnulib

@@ -1,12 +1,15 @@
 This package complements missing parts in APE with object files from gnulib.
+Gnulib will act as a strict superset of APE for a more complete libc,
+ so libraries for APE will work also when gnulib is included.
 
 As a general guideline, the gnulib library will contain functions
 * not present in APE (and hopefully APE will improve so that this library can shrink)
-* not present in other specialized 3rd party libraries
+* 3rd party libraries built with gnulib will have their headers in the 
+/sys/include/ape/gnulib directory to avoid dependency pollution.
 
 
 Current contents:
-read files/mkfile for the current objects included
+read files/mkfile or files/apelibs/gnulib_config.h for the current objects/features included
 
 
 If more functionality is needed, please just send me a request for the features to include.

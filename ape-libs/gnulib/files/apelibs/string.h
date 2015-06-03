@@ -48,20 +48,6 @@
 # include <unistd.h>
 #endif
 
-/* The definitions of _GL_FUNCDECL_RPL etc. are copied here.  */
-#define _GL_EXTERN_C extern
-#define _GL_FUNCDECL_SYS(func, rettype, parameters) rettype func parameters
-#define _GL_FUNCDECL_RPL(rpl_func, rettype, parameters) rettype rpl_func parameters 
-#define _GL_CXXALIAS_SYS_CAST(func, rettype, parameters) _gl_cxxalias_dummy
-#define _GL_CXXALIAS_SYS(func, rettype, parameters) rettype func parameters
-#define _GL_CXXALIAS_SYS_CAST2(func, rettype, parameters, retype2, parameters2) _gl_cxxalias_dummy
-
-/* The definition of _GL_ARG_NONNULL is copied here.  */
-#define _GL_ARG_NONNULL(params) /* ? */
-
-/* The definition of _GL_WARN_ON_USE is copied here.  */
-#define _GL_WARN_ON_USE(func, message) /* ? */
-
 
 /* Find the index of the least-significant set bit.  */
 #if GNULIB_FFSL
