@@ -1,0 +1,18 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libpthread.a
+OFILES=pthread.$O pth_vers.$O 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE \
+	-D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION \
+	-D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS 
+
+pth_vers.$O: pth_vers.c 
+pthread.$O: pth_acmac.h pth_acdef.h pth.h pth_vers.c pth_p.h pthread.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

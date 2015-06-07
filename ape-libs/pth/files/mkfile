@@ -1,0 +1,57 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libpth.a
+OFILES=pth_attr.$O pth_cancel.$O pth_clean.$O pth_compat.$O pth_data.$O pth_debug.$O \
+	pth_errno.$O pth_event.$O pth_ext.$O pth_fork.$O pth_high.$O pth_lib.$O \
+	pth_mctx.$O pth_msg.$O pth_pqueue.$O pth_ring.$O pth_sched.$O pth_string.$O \
+	pth_sync.$O pth_syscall.$O pth_tcb.$O pth_time.$O pth_uctx.$O pth_util.$O \
+	pth_vers.$O 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE \
+	-D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION \
+	-D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS 
+
+pth_vers.$O: pth_vers.c 
+pth_util.$O: pth_p.h 
+pth_uctx.$O: pth_p.h 
+pth_time.$O: pth_p.h 
+pth_tcb.$O: pth_p.h 
+pth_syscall.$O: pth_p.h 
+pth_sync.$O: pth_p.h 
+pth_string.$O: pth_p.h 
+pth_sched.$O: pth_p.h 
+pth_ring.$O: pth_p.h 
+pth_pqueue.$O: pth_p.h 
+pth_msg.$O: pth_p.h 
+pth_mctx.$O: pth_p.h 
+pth_lib.$O: pth_p.h 
+pth_high.$O: pth_p.h 
+pth_fork.$O: pth_p.h 
+pth_ext.$O: pth_p.h 
+pth_event.$O: pth_p.h 
+pth_errno.$O: pth_p.h 
+pth_debug.$O: pth_p.h 
+pth_data.$O: pth_p.h 
+pth_compat.$O: pth_p.h 
+pth_clean.$O: pth_p.h 
+pth_cancel.$O: pth_p.h 
+pth_attr.$O: pth_acmac.h pth_acdef.h pth.h pth_vers.c pth_p.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+install:V:
+	mk -f mkfile.pthread $target
+	cp pth-config.1 /sys/man/1/pth-config
+	cp pth.3 /sys/man/3/pth
+	cp pthread-config.1 /sys/man/1/pthread-config
+	cp pthread.3 /sys/man/3/pthread
+	cp pth.h.ape /sys/include/ape/pth.h
+	cp pthread.h.ape /sys/include/ape/pthread.h
+	cp pth-config /rc/bin/ape/
+	cp pthread-config /rc/bin/ape/
+
+
