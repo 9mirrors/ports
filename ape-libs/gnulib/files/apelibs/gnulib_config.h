@@ -82,6 +82,7 @@
 #ifndef PATH_MAX
 #define PATH_MAX _POSIX_PATH_MAX
 #endif
+#define HOST_NAME_MAX _POSIX_NAME_MAX
 typedef void* iconv_t;
 
 /* gnulib options */
@@ -162,7 +163,7 @@ typedef void* iconv_t;
 #define GNULIB_STRNDUP 1
 #define GNULIB_STRNLEN 1
 #define GNULIB_defined_wctype_functions 1
-
+#define GNULIB_SETHOSTNAME 1
 
 #endif /* GNULIB_CONFIG_H */
 

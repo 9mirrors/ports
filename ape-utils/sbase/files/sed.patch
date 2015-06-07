@@ -1,0 +1,14 @@
+--- sbase-master/sed.orig	Thu Jun  4 16:06:32 2015
++++ sbase-master/sed.c	Thu Jun  4 16:22:56 2015
+@@ -1719,7 +1719,10 @@
+ 	/* shrink/grow memory to fit and add our last instruction */
+ 	resize((void **)&prog, &pcap, sizeof(*prog), pc - prog + 1, NULL);
+ 	pc = prog + pcap - 1;
+-	pc->fninfo = &(Fninfo){ cmd_last, NULL, NULL, 0 };
++	pc->fninfo->fn = cmd_last;
++	pc->fninfo->getarg = NULL;
++	pc->fninfo->freearg = NULL;
++	pc->fninfo->naddr = 0;
+ 
+ 	files = argv;
+ 	run();

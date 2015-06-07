@@ -2,13 +2,11 @@
 
 #Targets not possible to build
 #or don't make sense on Plan9 even in compat mode
-# chroot cols ln
+# chroot cols cron ln logger nice renice
 #
 #compilation issues
-# cron (syslog.h), du (blkcnt_t), expr (variable array size)
-# find (variable array size), hostname (variable array size)
-# logger (syslog.h), nice renice (sys/resource.h)
-# nohup (no return main), sed (1715 not an l-value), setsid (getpgrp setsid)
+# du (blkcnt_t),
+# hostname (variable array size)
 # touch (tm_gmtoff etc)
 
 RC_APE=cat chown egrep false fgrep grep ln ls true printf
@@ -16,11 +14,11 @@ RC_APE=cat chown egrep false fgrep grep ln ls true printf
 RC_SBASE=egrep fgrep ln
 
 TARG=basename cal cat chgrp chmod chown cmp \
-	cksum col comm cp cut date dirname echo \
-	env expand false fold grep head \
-	join kill link logname ls md5sum mkdir \
-	mkfifo mktemp mv nl paste printenv printf \
-	pwd readlink rm rmdir seq sha1sum \
+	cksum comm cp cut date dirname echo \
+	env expand expr false find fold grep head \
+	hostname join kill link logname ls md5sum mkdir \
+	mkfifo mktemp mv nl nohup paste printenv printf \
+	pwd readlink rm rmdir sed seq setsid sha1sum \
 	sha256sum sha512sum sleep sort split sponge strings \
 	sync tail tar tee test time tr true tty \
 	uname unexpand uniq unlink uudecode uuencode wc which \
@@ -36,85 +34,6 @@ CC=pcc
 LD=pcc
 CFLAGS=-c -B -I'/sys/include/ape/gnulib' -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_C99_SNPRINTF_EXTENSION
 
-yes.$O: 
-xargs.$O:
-which.$O: 
-wc.$O: utf.h 
-uuencode.$O: 
-uudecode.$O: 
-unlink.$O: 
-uniq.$O: 
-unexpand.$O: utf.h
-uname.$O: 
-tty.$O: 
-tr.$O: utf.h 
-touch.$O: 
-time.$O: 
-test.$O: 
-tee.$O: 
-tar.$O: fs.h 
-tail.$O: utf.h text.h
-sync.$O: 
-strings.$O: utf.h 
-sponge.$O: text.h 
-split.$O: 
-sort.$O: text.h 
-sleep.$O: 
-sha512sum.$O: sha512.h crypt.h
-sha1sum.$O: sha1.h crypt.h 
-setsid.$O: 
-seq.$O: 
-sed.$O: utf.h 
-rmdir.$O:
-rm.$O: fs.h 
-renice.$O: 
-readlink.$O: 
-pwd.$O: 
-printf.$O: utf.h 
-printenv.$O: 
-paste.$O: utf.h 
-nohup.$O: 
-nl.$O: utf.h text.h
-nice.$O: 
-mv.$O: fs.h 
-mktemp.$O: 
-mkfifo.$O: 
-mkdir.$O: 
-md5sum.$O: md5.h crypt.h
-ls.$O: utf.h 
-logname.$O: 
-logger.$O: syslog.h strings.h 
-ln.$O: 
-link.$O: 
-kill.$O: strings.h 
-join.$O: utf.h text.h
-hostname.$O: 
-head.$O: 
-grep.$O: queue.h strings.h 
-fold.$O: 
-find.$O: 
-expr.$O: utf.h 
-expand.$O: utf.h
-env.$O: 
-echo.$O: 
-du.$O: fs.h 
-dirname.$O: 
-date.$O: 
-cut.$O: utf.h 
-cron.$O: queue.h
-cp.$O: fs.h 
-comm.$O: 
-cols.$O: utf.h text.h
-col.$O: utf.h
-cmp.$O: 
-cksum.$O: 
-chroot.$O: 
-chown.$O: fs.h 
-chmod.$O: fs.h 
-chgrp.$O: fs.h 
-cat.$O: text.h 
-cal.$O: 
-basename.$O: 
 
 clean:V:
 	rm -f [$OS].* *.[$OS] $CLEANFILES

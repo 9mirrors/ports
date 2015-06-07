@@ -1,0 +1,50 @@
+--- sbase-master/find.orig	Fri Jun  5 16:00:14 2015
++++ sbase-master/find.c	Sun Jun  7 18:03:34 2015
+@@ -770,13 +770,15 @@
+ static void
+ parse(int argc, char **argv)
+ {
+-	struct tok infix[2 * argc + 1], *stack[argc], *tok, *rpn, *out, **top;
++	struct tok infix[401], *stack[200], *tok, *rpn, *out, **top; /* guessed argc=200. Reasonable static value? */
+ 	struct op_info *op;
+ 	struct pri_info *pri;
+ 	char **arg;
+ 	int lasttype = -1;
+ 	size_t ntok = 0;
+-	struct tok and = { .u.oinfo = find_op("-a"), .type = AND };
++	struct tok and;
++	and.u.oinfo = find_op("-a");
++	and.type = AND;
+ 
+ 	gflags.print = 1;
+ 
+@@ -860,7 +862,8 @@
+ 	 * if there was an expression but no -print, -exec, or -ok, add -a -print
+ 	 * in rpn, not infix */
+ 	if (gflags.print)
+-		*out++ = (struct tok){ .u.pinfo = find_primary("-print"), .type = PRIM };
++		*out++->u.pinfo = *find_primary("-print");
++		/* *out++->type = PRIM; */
+ 	if (gflags.print == 2)
+ 		*out++ = and;
+ 
+@@ -970,7 +973,7 @@
+ 	/* FIXME: check errno to see if we are done or encountered an error? */
+ 	while ((de = readdir(dir))) {
+ 		size_t pathcap = len + strlen(de->d_name);
+-		char pathbuf[pathcap], *p;
++		char pathbuf[255], *p; /* guess that cap is PATH_MAX */
+ 
+ 		if (!strcmp(de->d_name, ".") || !strcmp(de->d_name, ".."))
+ 			continue;
+@@ -1025,8 +1028,8 @@
+ 	if ((argmax = sysconf(_SC_ARG_MAX)) == (size_t)-1)
+ 		argmax = _POSIX_ARG_MAX;
+ 
+-	if (clock_gettime(CLOCK_REALTIME, &start) < 0)
+-		weprintf("clock_gettime() failed:");
++/*	if (clock_gettime(CLOCK_REALTIME, &start) < 0)
++		weprintf("clock_gettime() failed:"); */
+ 
+ 	while (npaths--)
+ 		find(*paths++, NULL);

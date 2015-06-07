@@ -12,6 +12,7 @@
 
 #define LLONG_MAX LONG_MAX
 #define LLONG_MIN LONG_MIN
+#define _POSIX_HOST_NAME_MAX _POSIX_NAME_MAX
 
 #define lchown chown
 #define PRIu32 "lu"

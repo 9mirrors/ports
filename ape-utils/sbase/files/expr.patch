@@ -1,0 +1,20 @@
+--- sbase-master/expr.orig	Fri Jun  5 08:14:49 2015
++++ sbase-master/expr.c	Fri Jun  5 15:54:29 2015
+@@ -194,8 +194,15 @@
+ static int
+ parse(char *expr[], int numexpr)
+ {
+-	struct val valhead[numexpr], *valp = valhead, v = { .str = NULL, .num = 0 };
+-	int ophead[numexpr], *opp = ophead, type, lasttype = 0;
++	struct val valhead[24]; /* just guessing a value here - common limit? */
++	struct val *valp;
++	*valp = *valhead;
++	struct val v = { .str = NULL, .num = 0 };
++	int ophead[24];
++	int *opp;
++	*opp = *ophead; 
++	int type;
++	int lasttype = 0;
+ 	char prec[] = {
+ 		[ 0 ] = 0, [VAL] = 0, ['('] = 0, [')'] = 0,
+ 		['|'] = 1,
