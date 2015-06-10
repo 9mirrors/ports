@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='GNU make'
+VERSION=1
+
+WEBSOURCE=https://gnu.cu.be/make/make-4.1.tar.gz
+WORKFILE=make-4.1.tar.gz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/make-4.1
+PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile

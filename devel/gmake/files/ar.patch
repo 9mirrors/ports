@@ -1,0 +1,11 @@
+--- make-4.1/ar.orig	Wed Jun 10 11:20:31 2015
++++ make-4.1/ar.c	Wed Jun 10 11:20:55 2015
+@@ -308,7 +308,7 @@
+     return 0;
+ 
+   /* Now put the names into a vector for sorting.  */
+-  names = alloca (state.n * sizeof (const char *));
++  names = (char **) alloca (state.n * sizeof (const char *));
+   i = 0;
+   for (n = state.chain; n != 0; n = n->next)
+     names[i++] = n->name;

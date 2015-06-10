@@ -1,0 +1,11 @@
+--- make-4.1/implicit.orig	Wed Jun 10 13:06:42 2015
++++ make-4.1/implicit.c	Wed Jun 10 13:09:18 2015
+@@ -766,7 +766,7 @@
+                             d->name));
+ 
+                       if (int_file == 0)
+-                        int_file = alloca (sizeof (struct file));
++                        int_file = (struct file *) alloca (sizeof (struct file));
+                       memset (int_file, '\0', sizeof (struct file));
+                       int_file->name = d->name;
+ 

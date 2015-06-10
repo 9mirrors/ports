@@ -1,0 +1,33 @@
+--- make-4.1/main.orig	Wed Jun 10 18:59:47 2015
++++ make-4.1/main.c	Wed Jun 10 19:13:30 2015
+@@ -104,9 +104,9 @@
+ 
+     void *value_ptr;    /* Pointer to the value-holding variable.  */
+ 
+-    unsigned int env:1;         /* Can come from MAKEFLAGS.  */
+-    unsigned int toenv:1;       /* Should be put in MAKEFLAGS.  */
+-    unsigned int no_makefile:1; /* Don't propagate when remaking makefiles.  */
++    unsigned int env;	         /* Can come from MAKEFLAGS.  */
++    unsigned int toenv;	         /* Should be put in MAKEFLAGS.  */
++    unsigned int no_makefile;     /* Don't propagate when remaking makefiles.  */
+ 
+     const void *noarg_value;    /* Pointer to value used if no arg given.  */
+     const void *default_value;  /* Pointer to default value.  */
+@@ -2946,7 +2946,7 @@
+     return;
+ 
+   /* Allocate a vector that is definitely big enough.  */
+-  argv = alloca ((1 + len + 1) * sizeof (char *));
++  argv = (const char **) alloca ((1 + len + 1) * sizeof (char *));
+ 
+   /* getopt will look at the arguments starting at ARGV[1].
+      Prepend a spacer word.  */
+@@ -3039,7 +3039,7 @@
+   unsigned int flagslen = 0;
+ #define ADD_FLAG(ARG, LEN) \
+   do {                                                                        \
+-    struct flag *new = alloca (sizeof (struct flag));                         \
++    struct flag *new = (struct flag *) alloca (sizeof (struct flag));                         \
+     new->cs = cs;                                                             \
+     new->arg = (ARG);                                                         \
+     new->next = 0;                                                            \

@@ -1,0 +1,47 @@
+--- make-4.1/read.orig	Mon Jun  8 10:19:46 2015
++++ make-4.1/read.c	Mon Jun  8 10:24:07 2015
+@@ -1,6 +1,6 @@
+ /* Reading and parsing of makefiles for GNU Make.
+ Copyright (C) 1988-2014 Free Software Foundation, Inc.
+-This file is part of GNU Make.
++This file is part of GNU Make. directories
+ 
+ GNU Make is free software; you can redistribute it and/or modify it under the
+ terms of the GNU General Public License as published by the Free Software
+@@ -14,6 +14,8 @@
+ You should have received a copy of the GNU General Public License along with
+ this program.  If not, see <http://www.gnu.org/licenses/>.  */
+ 
++#include <unistd.h>
++
+ #include "makeint.h"
+ 
+ #include <assert.h>
+@@ -103,17 +105,8 @@
+ 
+ static const char *default_include_directories[] =
+   {
+-#if defined(WINDOWS32) && !defined(INCLUDEDIR)
+-/* This completely up to the user when they install MSVC or other packages.
+-   This is defined as a placeholder.  */
+-# define INCLUDEDIR "."
+-#endif
+     INCLUDEDIR,
+-#ifndef _AMIGA
+-    "/usr/gnu/include",
+-    "/usr/local/include",
+-    "/usr/include",
+-#endif
++	"/sys/include/ape",
+     0
+   };
+ 
+@@ -2931,7 +2924,7 @@
+       if (!is_variable)
+         {
+           free (home_dir);
+-          home_dir = getenv ("HOME");
++          home_dir = getenv ("home");
+         }
+ # if !defined(_AMIGA) && !defined(WINDOWS32)
+       if (home_dir == 0 || home_dir[0] == '\0')

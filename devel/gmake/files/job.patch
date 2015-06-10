@@ -1,0 +1,21 @@
+--- make-4.1/job.orig	Sun Jun  7 21:03:07 2015
++++ make-4.1/job.c	Sun Jun  7 21:18:19 2015
+@@ -2474,7 +2474,8 @@
+         else
+           shell = 0;
+ # else
+-        shell = getenv ("SHELL");
++/*        shell = getenv ("SHELL"); */
++		  shell = "/bin/rc";
+ # endif
+         if (shell == 0)
+           shell = default_shell;
+@@ -2488,7 +2489,7 @@
+           ++argc;
+ # endif
+ 
+-        new_argv = alloca ((1 + argc + 1) * sizeof (char *));
++        new_argv = (char **) alloca ((1 + argc + 1) * sizeof (char *));
+         new_argv[0] = (char *)shell;
+ 
+ # ifdef __EMX__

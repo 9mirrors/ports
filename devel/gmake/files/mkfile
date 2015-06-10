@@ -1,0 +1,65 @@
+</$objtype/mkfile
+TARG=gmake
+OFILES=job.$O output.$O remake.$O rule.$O misc.$O getopt.$O \
+	read.$O load.$O version.$O dir.$O hash.$O file.$O guile.$O loadapi.$O \
+	expand.$O strcache.$O signame.$O function.$O variable.$O alloca.$O arscan.$O \
+	commands.$O vpath.$O remote-stub.$O ar.$O getloadavg.$O implicit.$O \
+	getopt1.$O default.$O main.$O glob.$O fnmatch.$O
+BIN=/$objtype/bin
+HFILES=makeint.h gettext.h gnumake.h config.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -p -B -I. -I./glob -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION \
+	-D_LIMITS_EXTENSION -D_RESEARCH_SOURCE -DTIME_WITH_SYS_TIME -DHAVE_UNISTD_H \
+	-D_C99_SNPRINTF_EXTENSION \
+	-DHAVE_LIMITS_H -DHAVE_SYS_PARAM_H -DSTDC_HEADERS -DHAVE_INTTYPES_H -DHAVE_STDINT_H \
+	-DHAVE_LOCALE_H -DHAVE_SYS_RESOURCE_H -DHAVE_TTYNAME -DHAVE_GETCWD -DHAVE_STRCASECMP \
+	-DHAVE_STRNCASECMP -DHAVE_FCNTL_H -DHAVE_SYS_WAIT_H -DHAVE_WAITPID -DHAVE_DUP2 \
+	-DHAVE_FCNTL -DHAVE_STDLIB_H -DHAVE_FDOPEN -DHAVE_MKTEMP -DHAVE_SETVBUF \
+	-DHAVE_ATEXIT -DHAVE_STRERROR -DHAVE_STRDUP -DHAVE_STRING_H -DHAVE_FILENO \
+	-DHAVE_DIRENT_H -DHAVE_SETLOCALE -DHAVE_SIGACTION -DHAVE_ISATTY -DHAVE_CONFIG_H
+
+main.$O: getopt.h debug.h rule.h commands.h output.h job.h hash.h variable.h dep.h \
+	hash.h filedef.h 
+default.$O: commands.h output.h job.h dep.h rule.h hash.h variable.h hash.h filedef.h 
+getopt1.$O: getopt.h 
+implicit.$O: commands.h output.h job.h hash.h variable.h debug.h dep.h rule.h hash.h \
+	filedef.h 
+getloadavg.$O: 
+ar.$O: glob/fnmatch.h dep.h hash.h filedef.h 
+remote-stub.$O: commands.h output.h job.h hash.h filedef.h 
+vpath.$O: hash.h variable.h hash.h filedef.h 
+commands.$O: commands.h output.h job.h hash.h variable.h dep.h hash.h filedef.h 
+arscan.$O: 
+alloca.$O: 
+variable.$O: hash.h rule.h hash.h variable.h commands.h output.h job.h dep.h hash.h \
+	filedef.h 
+function.$O: debug.h commands.h output.h job.h dep.h hash.h variable.h hash.h filedef.h 
+strcache.$O: hash.h 
+expand.$O: rule.h hash.h variable.h commands.h output.h job.h hash.h filedef.h 
+loadapi.$O: dep.h hash.h variable.h hash.h filedef.h 
+file.$O: hash.h debug.h hash.h variable.h commands.h output.h job.h dep.h hash.h \
+	filedef.h 
+hash.$O: hash.h 
+dir.$O: glob/glob.h dep.h hash.h filedef.h hash.h 
+read.$O: hash.h debug.h rule.h hash.h variable.h commands.h output.h job.h dep.h \
+	hash.h filedef.h glob/glob.h 
+getopt.$O: getopt.h 
+misc.$O: debug.h dep.h hash.h filedef.h 
+rule.$O: rule.h hash.h variable.h commands.h output.h job.h dep.h hash.h filedef.h 
+remake.$O: debug.h hash.h variable.h dep.h commands.h output.h job.h hash.h filedef.h 
+output.$O: output.h job.h 
+job.$O: debug.h hash.h variable.h commands.h hash.h filedef.h debug.h output.h \
+	job.h 
+glob.$O: glob/glob.c
+	$CC $CFLAGS glob/glob.c
+
+fnmatch.$O: glob/fnmatch.c
+	$CC $CFLAGS glob/fnmatch.c
+
+install:V:
+	cp make.1 /sys/man/1/gmake
+
