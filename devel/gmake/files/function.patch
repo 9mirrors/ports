@@ -1,5 +1,5 @@
---- make-4.1/function.orig	Mon Jun  8 20:44:59 2015
-+++ make-4.1/function.c	Tue Jun  9 17:23:30 2015
+--- make-4.1/function.orig	Wed Jun 10 19:54:02 2015
++++ make-4.1/function.c	Wed Jun 10 19:56:21 2015
 @@ -1,6 +1,6 @@
  /* Builtin function expansion for GNU Make.
  Copyright (C) 1988-2014 Free Software Foundation, Inc.
@@ -8,6 +8,17 @@
  
  GNU Make is free software; you can redistribute it and/or modify it under the
  terms of the GNU General Public License as published by the Free Software
+@@ -37,8 +37,8 @@
+     unsigned char len;
+     unsigned char minimum_args;
+     unsigned char maximum_args;
+-    unsigned char expand_args:1;
+-    unsigned char alloc_fn:1;
++    unsigned char expand_args;
++    unsigned char alloc_fn;
+   };
+ 
+ static unsigned long
 @@ -956,7 +956,7 @@
    pattail = &pathead;
    while ((p = find_next_token (&pat_iterator, &len)) != 0)
@@ -26,117 +37,7 @@
  
        *wordtail = word;
        wordtail = &word->next;
-@@ -2263,53 +2263,67 @@
- #define FT_ENTRY(_name, _min, _max, _exp, _func) \
-   { { (_func) }, STRING_SIZE_TUPLE(_name), (_min), (_max), (_exp), 0 }
- 
--static struct function_table_entry function_table_init[] =
-+/* Plan9 hack : complains about initializing bitfields */
-+
-+struct old_function_table_entry
-+  {
-+    const char *name;
-+    unsigned char len;
-+    unsigned char minimum_args;
-+    unsigned char maximum_args;
-+    char expand_args;
-+    char *(*func_ptr) (char *output, char **argv, const char *fname);
-+  };
-+
-+
-+static struct old_function_table_entry function_table_init[] =
- {
-- /*         Name            MIN MAX EXP? Function */
--  FT_ENTRY ("abspath",       0,  1,  1,  func_abspath),
--  FT_ENTRY ("addprefix",     2,  2,  1,  func_addsuffix_addprefix),
--  FT_ENTRY ("addsuffix",     2,  2,  1,  func_addsuffix_addprefix),
--  FT_ENTRY ("basename",      0,  1,  1,  func_basename_dir),
--  FT_ENTRY ("dir",           0,  1,  1,  func_basename_dir),
--  FT_ENTRY ("notdir",        0,  1,  1,  func_notdir_suffix),
--  FT_ENTRY ("subst",         3,  3,  1,  func_subst),
--  FT_ENTRY ("suffix",        0,  1,  1,  func_notdir_suffix),
--  FT_ENTRY ("filter",        2,  2,  1,  func_filter_filterout),
--  FT_ENTRY ("filter-out",    2,  2,  1,  func_filter_filterout),
--  FT_ENTRY ("findstring",    2,  2,  1,  func_findstring),
--  FT_ENTRY ("firstword",     0,  1,  1,  func_firstword),
--  FT_ENTRY ("flavor",        0,  1,  1,  func_flavor),
--  FT_ENTRY ("join",          2,  2,  1,  func_join),
--  FT_ENTRY ("lastword",      0,  1,  1,  func_lastword),
--  FT_ENTRY ("patsubst",      3,  3,  1,  func_patsubst),
--  FT_ENTRY ("realpath",      0,  1,  1,  func_realpath),
--  FT_ENTRY ("shell",         0,  1,  1,  func_shell),
--  FT_ENTRY ("sort",          0,  1,  1,  func_sort),
--  FT_ENTRY ("strip",         0,  1,  1,  func_strip),
--  FT_ENTRY ("wildcard",      0,  1,  1,  func_wildcard),
--  FT_ENTRY ("word",          2,  2,  1,  func_word),
--  FT_ENTRY ("wordlist",      3,  3,  1,  func_wordlist),
--  FT_ENTRY ("words",         0,  1,  1,  func_words),
--  FT_ENTRY ("origin",        0,  1,  1,  func_origin),
--  FT_ENTRY ("foreach",       3,  3,  0,  func_foreach),
--  FT_ENTRY ("call",          1,  0,  1,  func_call),
--  FT_ENTRY ("info",          0,  1,  1,  func_error),
--  FT_ENTRY ("error",         0,  1,  1,  func_error),
--  FT_ENTRY ("warning",       0,  1,  1,  func_error),
--  FT_ENTRY ("if",            2,  3,  0,  func_if),
--  FT_ENTRY ("or",            1,  0,  0,  func_or),
--  FT_ENTRY ("and",           1,  0,  0,  func_and),
--  FT_ENTRY ("value",         0,  1,  1,  func_value),
--  FT_ENTRY ("eval",          0,  1,  1,  func_eval),
--  FT_ENTRY ("file",          1,  2,  1,  func_file),
-+ /* Name/size */                    /* MIN MAX EXP? Function */
-+  { STRING_SIZE_TUPLE("abspath"),       0,  1,  1,  func_abspath},
-+  { STRING_SIZE_TUPLE("addprefix"),     2,  2,  1,  func_addsuffix_addprefix},
-+  { STRING_SIZE_TUPLE("addsuffix"),     2,  2,  1,  func_addsuffix_addprefix},
-+  { STRING_SIZE_TUPLE("basename"),      0,  1,  1,  func_basename_dir},
-+  { STRING_SIZE_TUPLE("dir"),           0,  1,  1,  func_basename_dir},
-+  { STRING_SIZE_TUPLE("notdir"),        0,  1,  1,  func_notdir_suffix},
-+  { STRING_SIZE_TUPLE("subst"),         3,  3,  1,  func_subst},
-+  { STRING_SIZE_TUPLE("suffix"),        0,  1,  1,  func_notdir_suffix},
-+  { STRING_SIZE_TUPLE("filter"),        2,  2,  1,  func_filter_filterout},
-+  { STRING_SIZE_TUPLE("filter-out"),    2,  2,  1,  func_filter_filterout},
-+  { STRING_SIZE_TUPLE("findstring"),    2,  2,  1,  func_findstring},
-+  { STRING_SIZE_TUPLE("firstword"),     0,  1,  1,  func_firstword},
-+  { STRING_SIZE_TUPLE("flavor"),        0,  1,  1,  func_flavor},
-+  { STRING_SIZE_TUPLE("join"),          2,  2,  1,  func_join},
-+  { STRING_SIZE_TUPLE("lastword"),      0,  1,  1,  func_lastword},
-+  { STRING_SIZE_TUPLE("patsubst"),      3,  3,  1,  func_patsubst},
-+  { STRING_SIZE_TUPLE("realpath"),      0,  1,  1,  func_realpath},
-+  { STRING_SIZE_TUPLE("shell"),         0,  1,  1,  func_shell},
-+  { STRING_SIZE_TUPLE("sort"),          0,  1,  1,  func_sort},
-+  { STRING_SIZE_TUPLE("strip"),         0,  1,  1,  func_strip},
-+  { STRING_SIZE_TUPLE("wildcard"),      0,  1,  1,  func_wildcard},
-+  { STRING_SIZE_TUPLE("word"),          2,  2,  1,  func_word},
-+  { STRING_SIZE_TUPLE("wordlist"),      3,  3,  1,  func_wordlist},
-+  { STRING_SIZE_TUPLE("words"),         0,  1,  1,  func_words},
-+  { STRING_SIZE_TUPLE("origin"),        0,  1,  1,  func_origin},
-+  { STRING_SIZE_TUPLE("foreach"),       3,  3,  0,  func_foreach},
-+  { STRING_SIZE_TUPLE("call"),          1,  0,  1,  func_call},
-+  { STRING_SIZE_TUPLE("info"),          0,  1,  1,  func_error},
-+  { STRING_SIZE_TUPLE("error"),         0,  1,  1,  func_error},
-+  { STRING_SIZE_TUPLE("warning"),       0,  1,  1,  func_error},
-+  { STRING_SIZE_TUPLE("if"),            2,  3,  0,  func_if},
-+  { STRING_SIZE_TUPLE("or"),            1,  0,  0,  func_or},
-+  { STRING_SIZE_TUPLE("and"),           1,  0,  0,  func_and},
-+  { STRING_SIZE_TUPLE("value"),         0,  1,  1,  func_value},
-+  { STRING_SIZE_TUPLE("eval"),          0,  1,  1,  func_eval},
- #ifdef EXPERIMENTAL
--  FT_ENTRY ("eq",            2,  2,  1,  func_eq),
--  FT_ENTRY ("not",           0,  1,  1,  func_not),
-+  { STRING_SIZE_TUPLE("eq"),            2,  2,  1,  func_eq},
-+  { STRING_SIZE_TUPLE("not"),           0,  1,  1,  func_not},
- #endif
- };
- 
--#define FUNCTION_TABLE_ENTRIES (sizeof (function_table_init) / sizeof (struct function_table_entry))
--
-+
-+#define FUNCTION_TABLE_ENTRIES (sizeof (function_table_init) / sizeof (struct old_function_table_entry))
-+
-+/* end of plan9 hack */
- 
- /* These must come after the definition of function_table.  */
- 
-@@ -2402,7 +2416,7 @@
+@@ -2402,7 +2402,7 @@
    *stringp = end;
  
    /* Get some memory to store the arg pointers.  */
