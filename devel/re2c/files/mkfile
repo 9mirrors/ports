@@ -1,0 +1,29 @@
+</$objtype/mkfile
+TARG=re2c
+OFILES=actions.$O code.$O dfa.$O main.$O mbo_getopt.$O parser.$O scanner.$O substr.$O \
+	translate.$O 
+BIN=/$objtype/bin
+HFILES=globals.h basics.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE 
+
+substr.$O: substr.h 
+scanner.$O: parser.h ins.h token.h re.h substr.h token.h scanner.h parse.h scanner.h 
+parser.$O: parser.h ins.h token.h re.h substr.h token.h scanner.h parse.h 
+mbo_getopt.$O: mbo_getopt.h 
+main.$O: mbo_getopt.h re.h dfa.h ins.h token.h re.h substr.h token.h scanner.h \
+	parse.h 
+dfa.$O: re.h dfa.h substr.h 
+code.$O: ins.h token.h re.h substr.h token.h scanner.h parse.h re.h dfa.h substr.h 
+actions.$O: re.h dfa.h ins.h token.h re.h substr.h token.h scanner.h parse.h 
+
+nuke:V:
+	rm -f *.[$OS] y.tab.? y.debug y.output [$OS].$TARG $TARG
+
+install:V:
+	cp re2c.1 /sys/man/1/re2c
+

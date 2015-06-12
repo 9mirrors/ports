@@ -1,0 +1,193 @@
+diff -ru orig/actions.c re2c/actions.c
+--- orig/actions.c	Fri Jun 12 12:59:18 2015
++++ re2c/actions.c	Fri Jun 12 13:14:34 2015
+@@ -3,9 +3,9 @@
+ #include <stdio.h>
+ #include <ctype.h>
+ 
+-#include "tools/re2c/globals.h"
+-#include "tools/re2c/parse.h"
+-#include "tools/re2c/dfa.h"
++#include "globals.h"
++#include "parse.h"
++#include "dfa.h"
+ 
+ static Symbol *first = NULL;
+ 
+diff -ru orig/code.c re2c/code.c
+--- orig/code.c	Fri Jun 12 12:59:18 2015
++++ re2c/code.c	Fri Jun 12 13:14:34 2015
+@@ -5,10 +5,10 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <ctype.h>
+-#include "tools/re2c/substr.h"
+-#include "tools/re2c/globals.h"
+-#include "tools/re2c/dfa.h"
+-#include "tools/re2c/parse.h"
++#include "substr.h"
++#include "globals.h"
++#include "dfa.h"
++#include "parse.h"
+ 
+ #ifdef _WIN32
+ /* tmpfile() replacment for Windows.
+diff -ru orig/dfa.c re2c/dfa.c
+--- orig/dfa.c	Fri Jun 12 12:59:18 2015
++++ re2c/dfa.c	Fri Jun 12 13:14:34 2015
+@@ -1,9 +1,9 @@
+ #include <stdlib.h>
+ #include <ctype.h>
+ #include <string.h>
+-#include "tools/re2c/globals.h"
+-#include "tools/re2c/substr.h"
+-#include "tools/re2c/dfa.h"
++#include "globals.h"
++#include "substr.h"
++#include "dfa.h"
+ 
+ #define octCh(c) ('0' + c%8)
+ 
+diff -ru orig/dfa.h re2c/dfa.h
+--- orig/dfa.h	Fri Jun 12 12:59:18 2015
++++ re2c/dfa.h	Fri Jun 12 13:15:03 2015
+@@ -2,7 +2,7 @@
+ #define re2c_dfa_h
+ 
+ #include <stdio.h>
+-#include "tools/re2c/re.h"
++#include "re.h"
+ 
+ extern void prtCh(FILE *, unsigned char);
+ extern void printSpan(FILE *, unsigned int, unsigned int);
+diff -ru orig/globals.h re2c/globals.h
+--- orig/globals.h	Fri Jun 12 12:59:18 2015
++++ re2c/globals.h	Fri Jun 12 13:15:03 2015
+@@ -1,7 +1,7 @@
+ #ifndef	re2c_globals_h
+ #define	re2c_globals_h
+ 
+-#include "tools/re2c/basics.h"
++#include "basics.h"
+ 
+ extern const char *fileName;
+ extern char *outputFileName;
+diff -ru orig/ins.h re2c/ins.h
+--- orig/ins.h	Fri Jun 12 12:59:18 2015
++++ re2c/ins.h	Fri Jun 12 13:15:03 2015
+@@ -1,7 +1,7 @@
+ #ifndef re2c_ins_h
+ #define re2c_ins_h
+ 
+-#include "tools/re2c/basics.h"
++#include "basics.h"
+ 
+ #define nChars 256
+ typedef unsigned char Char;
+diff -ru orig/parse.h re2c/parse.h
+--- orig/parse.h	Fri Jun 12 12:59:18 2015
++++ re2c/parse.h	Fri Jun 12 13:15:03 2015
+@@ -2,8 +2,8 @@
+ #define re2c_parse_h
+ 
+ #include <stdio.h>
+-#include "tools/re2c/scanner.h"
+-#include "tools/re2c/re.h"
++#include "scanner.h"
++#include "re.h"
+ 
+ typedef struct Symbol {
+     struct Symbol		*next;
+diff -ru orig/parser.c re2c/parser.c
+--- orig/parser.c	Fri Jun 12 12:59:18 2015
++++ re2c/parser.c	Fri Jun 12 13:14:34 2015
+@@ -2,9 +2,9 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
+-#include "tools/re2c/globals.h"
+-#include "tools/re2c/parse.h"
+-#include "tools/re2c/parser.h"
++#include "globals.h"
++#include "parse.h"
++#include "parser.h"
+ 
+ int yylex(void);
+ static RegExp *parse_expr(void);
+diff -ru orig/re.h re2c/re.h
+--- orig/re.h	Fri Jun 12 12:59:18 2015
++++ re2c/re.h	Fri Jun 12 13:15:03 2015
+@@ -2,8 +2,8 @@
+ #define re2c_re_h
+ 
+ #include <stdio.h>
+-#include "tools/re2c/token.h"
+-#include "tools/re2c/ins.h"
++#include "token.h"
++#include "ins.h"
+ 
+ typedef struct extop {
+     char    op;
+diff -ru orig/scanner.c re2c/scanner.c
+--- orig/scanner.c	Fri Jun 12 12:59:18 2015
++++ re2c/scanner.c	Fri Jun 12 13:14:34 2015
+@@ -3,10 +3,10 @@
+ #line 1 "scanner.re"
+ #include <stdlib.h>
+ #include <string.h>
+-#include "tools/re2c/scanner.h"
+-#include "tools/re2c/parse.h"
+-#include "tools/re2c/globals.h"
+-#include "tools/re2c/parser.h"
++#include "scanner.h"
++#include "parse.h"
++#include "globals.h"
++#include "parser.h"
+ 
+ #ifndef MAX
+ #define MAX(a,b) (((a)>(b))?(a):(b))
+diff -ru orig/scanner.h re2c/scanner.h
+--- orig/scanner.h	Fri Jun 12 12:59:18 2015
++++ re2c/scanner.h	Fri Jun 12 13:15:03 2015
+@@ -2,7 +2,7 @@
+ #define	_scanner_h
+ 
+ #include <stdio.h>
+-#include "tools/re2c/token.h"
++#include "token.h"
+ 
+ typedef struct Scanner {
+     FILE		*in;
+diff -ru orig/substr.c re2c/substr.c
+--- orig/substr.c	Fri Jun 12 12:59:18 2015
++++ re2c/substr.c	Fri Jun 12 13:14:34 2015
+@@ -1,6 +1,6 @@
+ #include <string.h>
+-#include "tools/re2c/substr.h"
+-#include "tools/re2c/globals.h"
++#include "substr.h"
++#include "globals.h"
+ 
+ void
+ SubStr_out(const SubStr *s, FILE *o)
+diff -ru orig/substr.h re2c/substr.h
+--- orig/substr.h	Fri Jun 12 12:59:19 2015
++++ re2c/substr.h	Fri Jun 12 13:15:04 2015
+@@ -3,7 +3,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include "tools/re2c/basics.h"
++#include "basics.h"
+ 
+ struct SubStr {
+     char		*str;
+diff -ru orig/translate.c re2c/translate.c
+--- orig/translate.c	Fri Jun 12 12:59:19 2015
++++ re2c/translate.c	Fri Jun 12 13:14:34 2015
+@@ -1,4 +1,4 @@
+-#include "tools/re2c/globals.h"
++#include "globals.h"
+ 
+ unsigned char asc2asc[256] = {
+ 0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f,
