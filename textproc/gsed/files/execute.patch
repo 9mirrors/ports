@@ -1,0 +1,17 @@
+--- sed/execute.orig	Fri Jun 12 07:04:01 2015
++++ sed/execute.c	Fri Jun 12 07:06:25 2015
+@@ -744,9 +744,14 @@
+       if (fchown (output_fd, st.st_uid, st.st_gid) == -1)
+         fchown (output_fd, -1, st.st_gid);
+ #endif
++/* Temporarily disabled on Plan9: copy_acl pulls in a dependency of quoteargs.$O
++ * from ../lib or gnulib. The compiler freezes while trying to compile this
++ * object. 
++
+       copy_acl (input->in_file_name, input_fd,
+ 		input->out_file_name, output_fd,
+ 		st.st_mode);
++*/
+     }
+   else
+     output_file.fp = stdout;

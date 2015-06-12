@@ -1,0 +1,11 @@
+--- gnulib-20140202-stable/lib/obstack.orig	Wed Jun 10 20:29:08 2015
++++ gnulib-20140202-stable/lib/obstack.c	Wed Jun 10 20:33:53 2015
+@@ -23,6 +23,8 @@
+ # include "obstack.h"
+ #endif
+ 
++#define uintmax_t unsigned long
++
+ /* NOTE BEFORE MODIFYING THIS FILE: This version number must be
+    incremented whenever callers compiled using an old obstack.h can no
+    longer properly call the functions in this obstack.c.  */

@@ -20,6 +20,7 @@
 #define _GL_ATTRIBUTE_PURE 
 #define _GL_UNUSED /*nothing*/
 #define _GL_INLINE /*nothing*/
+#define _GL_EXTERN_INLINE /* nothing */
 #define _GL_INLINE_HEADER_BEGIN /* nothing */ 
 #define _GL_INLINE_HEADER_END /* nothing */
 

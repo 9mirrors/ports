@@ -1,0 +1,21 @@
+</$objtype/mkfile
+
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='GNU sed'
+VERSION=4.2
+#DEPS ape-libs/gnulib
+
+WEBSOURCE=https://gnu.cu.be/sed/sed-4.2.tar.gz
+WORKFILE=sed-4.2.tar.gz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/sed-4.2/sed
+PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile
+
+
+

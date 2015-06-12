@@ -1,0 +1,18 @@
+</$objtype/mkfile
+TARG=gsed
+OFILES=compile.$O execute.$O fmt.$O mbcs.$O regexp.$O sed.$O utils.$O 
+BIN=/$objtype/bin
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I.. -I/sys/include/ape/gnulib -I../lib -B -D_POSIX_SOURCE -DHAVE_STDLIB_H -DHAVE_UNISTD_H -DHAVE_STRCHR \
+	-DHAVE_POPEN -DHAVE_LIMITS_H -DHAVE_STRTOUL -DHAVE_SETLOCALE -DHAVE_VPRINTF -DHAVE_CONFIG_H
+
+
+install:V:
+	cp ../doc/sed.1 /sys/man/1/gsed
+
+
+
