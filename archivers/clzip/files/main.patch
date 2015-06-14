@@ -1,0 +1,15 @@
+--- clzip-1.7-rc1/main.orig	Sun Jun 14 12:53:50 2015
++++ clzip-1.7-rc1/main.c	Sun Jun 14 12:57:29 2015
+@@ -35,6 +35,12 @@
+ #include <unistd.h>
+ #include <utime.h>
+ #include <sys/stat.h>
++#if defined(PLAN9)
++#define fchmod(x,y) 0
++#define fchown(x,y,z) 0
++#define S_ISSOCK(x) 0
++#define S_ISVTX /* nothing */
++#endif
+ #if defined(__MSVCRT__)
+ #include <io.h>
+ #define fchmod(x,y) 0
