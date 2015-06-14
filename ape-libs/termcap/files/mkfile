@@ -1,0 +1,22 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libtermcap.a
+OFILES=tparam.$O termcap.$O version.$O 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -DSTDC_HEADERS -DHAVE_STRING_H -DHAVE_UNISTD_H -DHAVE_FCNTL_H
+
+termcap.$O: 
+tparam.$O: 
+
+install:V:
+	cp termcap.h /sys/include/ape/
+	cp termcap.src /sys/lib/termcap
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -f /sys/include/ape/termcap.h
+	rm -f /sys/lib/termcap
