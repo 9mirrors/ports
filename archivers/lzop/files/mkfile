@@ -1,0 +1,24 @@
+</$objtype/mkfile
+TARG=lzop
+OFILES=p_lzo.$O c_ansic.$O c_init.$O help.$O s_djgpp2.$O s_vcsa.$O mblock.$O frames.$O \
+	s_curses.$O djgpp2.$O compress.$O c_screen.$O c_none.$O util.$O filter.$O \
+	lzop.$O c_ansim.$O s_object.$O 
+BIN=/$objtype/bin
+HFILES=conf.h console.h miniacc.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape/lzo -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION \
+	-DHAVE_LZO_LZOCONF_H -DHAVE_LZO_LZO1X_H -DHAVE_INTTYPES_H -DHAVE_SYS_RESOURCE_H -DACC_LIBC_MOSTLY_FREESTANDING -DLZOP_HAVE_CONFIG_H -DACC_BROKEN_INTEGRAL_PROMOTION
+
+lzop.$O: version.h 
+help.$O: version.h 
+
+
+install:V:
+	cp ../doc/lzop.1 /sys/man/1/lzop
+
+nuke:V:
+	rm -f /sys/man/1/lzop

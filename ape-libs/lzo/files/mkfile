@@ -1,0 +1,203 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/liblzo.a
+OFILES=lzo1.$O lzo1_99.$O lzo1a.$O lzo1a_99.$O lzo1b_1.$O lzo1b_2.$O lzo1b_3.$O \
+	lzo1b_4.$O lzo1b_5.$O lzo1b_6.$O lzo1b_7.$O lzo1b_8.$O lzo1b_9.$O lzo1b_99.$O \
+	lzo1b_9x.$O lzo1b_cc.$O lzo1b_d1.$O lzo1b_d2.$O lzo1b_rr.$O lzo1b_xx.$O \
+	lzo1c_1.$O lzo1c_2.$O lzo1c_3.$O lzo1c_4.$O lzo1c_5.$O lzo1c_6.$O lzo1c_7.$O \
+	lzo1c_8.$O lzo1c_9.$O lzo1c_99.$O lzo1c_9x.$O lzo1c_cc.$O lzo1c_d1.$O lzo1c_d2.$O \
+	lzo1c_rr.$O lzo1c_xx.$O lzo1f_1.$O lzo1f_9x.$O lzo1f_d1.$O lzo1f_d2.$O \
+	lzo1x_1.$O lzo1x_1k.$O lzo1x_1l.$O lzo1x_1o.$O lzo1x_9x.$O lzo1x_d1.$O \
+	lzo1x_d2.$O lzo1x_d3.$O lzo1x_o.$O lzo1y_1.$O lzo1y_9x.$O lzo1y_d1.$O lzo1y_d2.$O \
+	lzo1y_d3.$O lzo1y_o.$O lzo1z_9x.$O lzo1z_d1.$O lzo1z_d2.$O lzo1z_d3.$O \
+	lzo2a_9x.$O lzo2a_d1.$O lzo2a_d2.$O lzo_crc.$O lzo_init.$O lzo_ptr.$O lzo_str.$O \
+	lzo_util.$O 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../include -D_POSIX_SOURCE -D_SUSV2_SOURCE -DHAVE_INTTYPES_H -DHAVE_STDINT_H 
+
+lzo_util.$O: lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h 
+lzo_str.$O: lzo_supp.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h 
+lzo_ptr.$O: lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h 
+lzo_init.$O: lzo_supp.h lzo_supp.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h 
+lzo_crc.$O: lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h 
+lzo2a_d2.$O: ../include/lzo/lzo2a.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config2a.h 
+lzo2a_d1.$O: ../include/lzo/lzo2a.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config2a.h 
+lzo2a_9x.$O: ../include/lzo/lzo2a.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config2a.h 
+lzo1z_d3.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	lzo1x_d3.c lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	../include/lzo/lzo1z.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config1z.h 
+lzo1z_d2.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	../include/lzo/lzo1z.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config1z.h 
+lzo1z_d1.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	../include/lzo/lzo1z.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config1z.h 
+lzo1z_9x.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	lzo1x_9x.c 
+lzo1y_o.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config1x.h ../include/lzo/lzo1y.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1y.h 
+lzo1y_d3.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	lzo1x_d3.c lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	../include/lzo/lzo1y.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config1y.h 
+lzo1y_d2.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	../include/lzo/lzo1y.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config1y.h 
+lzo1y_d1.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	../include/lzo/lzo1y.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config1y.h 
+lzo1y_9x.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	lzo1x_9x.c 
+lzo1y_1.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config1x.h ../include/lzo/lzo1y.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1y.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h 
+lzo1x_o.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config1x.h 
+lzo1x_d3.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h 
+lzo1x_d2.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h 
+lzo1x_d1.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h 
+lzo1x_9x.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h 
+lzo1x_1o.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h 
+lzo1x_1l.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h 
+lzo1x_1k.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1x.h \
+	lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h 
+lzo1x_1.$O: lzo_dict.h ../include/lzo/lzo1x.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h config1x.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h 
+lzo1f_d2.$O: lzo_dict.h ../include/lzo/lzo1f.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1f.h 
+lzo1f_d1.$O: lzo_dict.h ../include/lzo/lzo1f.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1f.h 
+lzo1f_9x.$O: lzo_dict.h ../include/lzo/lzo1f.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1f.h 
+lzo1f_1.$O: lzo_dict.h ../include/lzo/lzo1f.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h 
+lzo1c_xx.$O: config1c.h 
+lzo1c_rr.$O: config1c.h 
+lzo1c_d2.$O: config1c.h 
+lzo1c_d1.$O: config1c.h 
+lzo1c_cc.$O: config1c.h 
+lzo1c_9x.$O: config1c.h 
+lzo1c_99.$O: lzo1c_cc.h stats1b.h stats1c.h lzo1b_de.h ../include/lzo/lzo1c.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1c.h compr1c.h 
+lzo1c_9.$O: lzo1c_cc.h stats1b.h stats1c.h lzo1b_de.h ../include/lzo/lzo1c.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1c.h compr1c.h 
+lzo1c_8.$O: lzo1c_cc.h stats1b.h stats1c.h lzo1b_de.h ../include/lzo/lzo1c.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1c.h compr1c.h 
+lzo1c_7.$O: lzo1c_cc.h stats1b.h stats1c.h lzo1b_de.h ../include/lzo/lzo1c.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1c.h compr1c.h 
+lzo1c_6.$O: lzo1c_cc.h stats1b.h stats1c.h lzo1b_de.h ../include/lzo/lzo1c.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1c.h compr1c.h 
+lzo1c_5.$O: lzo1c_cc.h stats1b.h stats1c.h lzo1b_de.h ../include/lzo/lzo1c.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1c.h compr1c.h 
+lzo1c_4.$O: lzo1c_cc.h stats1b.h stats1c.h lzo1b_de.h ../include/lzo/lzo1c.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1c.h compr1c.h 
+lzo1c_3.$O: lzo1c_cc.h stats1b.h stats1c.h lzo1b_de.h ../include/lzo/lzo1c.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1c.h compr1c.h 
+lzo1c_2.$O: lzo1c_cc.h stats1b.h stats1c.h lzo1b_de.h ../include/lzo/lzo1c.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1c.h compr1c.h 
+lzo1c_1.$O: lzo1c_cc.h stats1b.h stats1c.h lzo1b_de.h ../include/lzo/lzo1c.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1c.h compr1c.h 
+lzo1b_xx.$O: config1b.h 
+lzo1b_rr.$O: config1b.h 
+lzo1b_d2.$O: config1b.h 
+lzo1b_d1.$O: config1b.h 
+lzo1b_cc.$O: config1b.h 
+lzo1b_9x.$O: config1b.h 
+lzo1b_99.$O: lzo1b_cc.h stats1b.h lzo1b_de.h ../include/lzo/lzo1b.h lzo_ptr.h lzo_func.h \
+	lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h \
+	config1b.h compr1b.h 
+lzo1b_9.$O: lzo1b_cc.h stats1b.h lzo1b_de.h ../include/lzo/lzo1b.h lzo_ptr.h lzo_func.h \
+	lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h \
+	config1b.h compr1b.h 
+lzo1b_8.$O: lzo1b_cc.h stats1b.h lzo1b_de.h ../include/lzo/lzo1b.h lzo_ptr.h lzo_func.h \
+	lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h \
+	config1b.h compr1b.h 
+lzo1b_7.$O: lzo1b_cc.h stats1b.h lzo1b_de.h ../include/lzo/lzo1b.h lzo_ptr.h lzo_func.h \
+	lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h \
+	config1b.h compr1b.h 
+lzo1b_6.$O: lzo1b_cc.h stats1b.h lzo1b_de.h ../include/lzo/lzo1b.h lzo_ptr.h lzo_func.h \
+	lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h \
+	config1b.h compr1b.h 
+lzo1b_5.$O: lzo1b_cc.h stats1b.h lzo1b_de.h ../include/lzo/lzo1b.h lzo_ptr.h lzo_func.h \
+	lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h \
+	config1b.h compr1b.h 
+lzo1b_4.$O: lzo1b_cc.h stats1b.h lzo1b_de.h ../include/lzo/lzo1b.h lzo_ptr.h lzo_func.h \
+	lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h \
+	config1b.h compr1b.h 
+lzo1b_3.$O: lzo1b_cc.h stats1b.h lzo1b_de.h ../include/lzo/lzo1b.h lzo_ptr.h lzo_func.h \
+	lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h \
+	config1b.h compr1b.h 
+lzo1b_2.$O: lzo1b_cc.h stats1b.h lzo1b_de.h ../include/lzo/lzo1b.h lzo_ptr.h lzo_func.h \
+	lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h \
+	config1b.h compr1b.h 
+lzo1b_1.$O: lzo1b_cc.h stats1b.h lzo1b_de.h ../include/lzo/lzo1b.h lzo_ptr.h lzo_func.h \
+	lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h \
+	config1b.h compr1b.h 
+lzo1a_99.$O: config1a.h 
+lzo1a.$O: stats1a.h lzo1a_de.h ../include/lzo/lzo1a.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h 
+lzo1_99.$O: lzo1b_cc.h stats1b.h lzo_dict.h lzo1b_de.h ../include/lzo/lzo1a.h lzo_ptr.h \
+	lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h ../include/lzo/lzoconf.h \
+	lzo_conf.h config1a.h ../include/lzo/lzo1.h lzo_ptr.h lzo_func.h lzo_supp.h \
+	../include/lzo/lzodefs.h ../include/lzo/lzoconf.h lzo_conf.h config1.h 
+lzo1.$O: lzo_dict.h ../include/lzo/lzo1.h lzo_ptr.h lzo_func.h lzo_supp.h ../include/lzo/lzodefs.h \
+	../include/lzo/lzoconf.h lzo_conf.h 
+
+install:V:
+	mkdir -p /sys/include/ape/lzo
+	dircp ../include/lzo /sys/include/ape/lzo
+	cp lzoconf.ape /sys/include/ape/lzo/lzoconf.h
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -rf /sys/include/ape/lzo
