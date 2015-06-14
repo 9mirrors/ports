@@ -1,0 +1,177 @@
+diff -ru orig/conversions.c termutils-2.0/conversions.c
+--- orig/conversions.c	Sun Jun 14 05:38:38 2015
++++ termutils-2.0/conversions.c	Sun Jun 14 10:53:01 2015
+@@ -19,6 +19,9 @@
+ #include "config.h"
+ #endif
+ 
++#include <stdlib.h>
++#include <string.h>
++
+ #include "tput.h"
+ 
+ /* `conversions' is binary-searched to retrieve the termcap equivalent
+diff -ru orig/error.c termutils-2.0/error.c
+--- orig/error.c	Sun Jun 14 05:38:38 2015
++++ termutils-2.0/error.c	Sun Jun 14 06:34:53 2015
+@@ -49,7 +49,7 @@
+ /* If NULL, error will flush stdout, then print on stderr the program
+    name, a colon and a space.  Otherwise, error will call this
+    function without parameters instead.  */
+-void (*error_print_progname) () = NULL;
++void (*error_print_progname) (void) = NULL;
+ 
+ /* The calling program should define program_name and set it to the
+    name of the executing program.  */
+diff -ru orig/getopt.c termutils-2.0/getopt.c
+--- orig/getopt.c	Sun Jun 14 05:38:38 2015
++++ termutils-2.0/getopt.c	Sun Jun 14 10:46:01 2015
+@@ -30,6 +30,12 @@
+ #include <config.h>
+ #endif
+ 
++#include <stdlib.h>
++#include <string.h>
++#define my_index strchr
++static void exchange(char **);
++static const char *_getopt_initialize(const char *);
++
+ #if !defined (__STDC__) || !__STDC__
+ /* This is a separate conditional since some stdc systems
+    reject `defined (const)'.  */
+@@ -178,7 +184,7 @@
+ /* Avoid depending on library functions or files
+    whose names are inconsistent.  */
+ 
+-char *getenv ();
++/* char *getenv ();
+ 
+ static char *
+ my_index (str, chr)
+@@ -192,7 +198,7 @@
+       str++;
+     }
+   return 0;
+-}
++} */
+ 
+ /* If using GCC, we can safely declare strlen this way.
+    If not using GCC, it is ok not to declare it.  */
+Only in orig: mfkile.tabs
+Only in orig: mfkile.tput
+diff -ru orig/tabs.c termutils-2.0/tabs.c
+--- orig/tabs.c	Sun Jun 14 05:38:38 2015
++++ termutils-2.0/tabs.c	Sun Jun 14 11:53:03 2015
+@@ -97,8 +97,8 @@
+ /* Number of elements in an array */
+ #define elemof(array) (sizeof (array) / sizeof (array[0]))
+ 
+-char *fgetline ();
+-void error ();
++char *fgetline (FILE *);
++void error (...);
+ 
+ extern char *version_string;
+ 
+@@ -358,6 +358,7 @@
+ bogus:
+   error (0, 0, "invalid tab specification `%s'", ispec);
+   usage (stderr, 1);
++  return -1;
+ }
+ 
+ static int
+@@ -474,7 +475,7 @@
+ }
+ 
+ void
+-version ()
++version (void)
+ {
+   printf ("GNU tabs version %s\n", version_string);
+   exit (0);
+@@ -801,4 +802,5 @@
+ set_tabs:
+   set_tabstops (term, tabs, numtabs);
+   exit (0);
++  return 0;
+ }
+diff -ru orig/tcutil.c termutils-2.0/tcutil.c
+--- orig/tcutil.c	Sun Jun 14 05:38:38 2015
++++ termutils-2.0/tcutil.c	Sun Jun 14 08:00:18 2015
+@@ -21,6 +21,8 @@
+ 
+ #include <tcutil.h>
+ #include <termcap.h>
++#include <unistd.h>
++#include <stdlib.h>
+ #define ERROR_EXIT 5		/* Real error or signal. */
+ 
+ /* We would appreciate it if somebody using a system with
+@@ -61,7 +63,7 @@
+ #define ENABLE_XTABS(buf) ((buf)->sg_flags |= XTABS)
+ #define DISABLE_XTABS(buf) ((buf)->sg_flags &= ~XTABS)
+ #else /* not HAVE_SGTTY_H */
+-#define NO_TTY_CONTROL
++#define NO_TTY_CONTROL 
+ #endif /* not HAVE_SGTTY_H */
+ #endif /* not HAVE_TERMIOS_H */
+ 
+@@ -94,8 +96,13 @@
+ #else
+ static tty_mode old_modes, new_modes;
+ 
++void translations_off(void);
++void restore_translations(void);
++void enable_xtabs(void);
++void disable_xtabs(void);
++
+ static RETSIGTYPE
+-signal_handler ()
++signal_handler (void)
+ {
+   restore_translations ();
+   exit (ERROR_EXIT);
+@@ -105,7 +112,7 @@
+    Also set OSPEED.  */
+ 
+ void
+-translations_off ()
++translations_off (void)
+ {
+   if (isatty (1))
+     {
+diff -ru orig/xmalloc.c termutils-2.0/xmalloc.c
+--- orig/xmalloc.c	Sun Jun 14 05:38:38 2015
++++ termutils-2.0/xmalloc.c	Sun Jun 14 06:37:05 2015
+@@ -58,8 +58,7 @@
+ #endif
+ 
+ static VOID *
+-fixup_null_alloc (n)
+-     size_t n;
++fixup_null_alloc (size_t n)
+ {
+   VOID *p;
+ 
+@@ -74,8 +73,7 @@
+ /* Allocate N bytes of memory dynamically, with error checking.  */
+ 
+ VOID *
+-xmalloc (n)
+-     size_t n;
++xmalloc (size_t n)
+ {
+   VOID *p;
+ 
+@@ -90,9 +88,7 @@
+    If P is NULL, run xmalloc.  */
+ 
+ VOID *
+-xrealloc (p, n)
+-     VOID *p;
+-     size_t n;
++xrealloc (void *p, size_t n)
+ {
+   if (p == 0)
+     return xmalloc (n);

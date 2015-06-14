@@ -1,0 +1,23 @@
+</$objtype/mkfile
+BUILD=lib tput tabs
+
+default:V:
+	for (i in $BUILD)
+	{mk -f mkfile.$i}
+	;
+
+install:V:
+	for (i in $BUILD)
+	{mk -f mkfile.$i $target}
+	;
+
+clean:V:
+	for (i in $BUILD)
+	{mk -f mkfile.$i $target}
+	;
+
+nuke:V:
+	for (i in $BUILD)
+	{mk -f mkfile.$i $target}
+	;
+

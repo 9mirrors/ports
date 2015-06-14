@@ -1,0 +1,14 @@
+</$objtype/mkfile
+TARG=tabs
+LIB=libutil.a$O /$objtype/lib/ape/libtermcap.a
+OFILES=tabs.$O fspec.$O
+BIN=/$objtype/bin/ape
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DHAVE_VPRINTF
+
+tabs.$O: 
+fspec.$O: 

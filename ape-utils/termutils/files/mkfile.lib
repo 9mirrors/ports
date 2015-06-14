@@ -1,0 +1,21 @@
+</$objtype/mkfile
+LIB=libutil.a$O
+OFILES=version.$O error.$O xmalloc.$O tcutil.$O fgetline.$O getopt.$O getopt1.$O bsearch.$O 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DHAVE_VPRINTF -DHAVE_CONFIG_H -DSTDC_HEADERS
+
+bsearch.$O: 
+getopt1.$O: getopt.h 
+getopt.$O: getopt.h 
+fgetline.$O: 
+tcutil.$O: termcap.h tcutil.h 
+xmalloc.$O: 
+error.$O: 
+
+nuke:V:
+	mk clean
+	rm -f $LIB
