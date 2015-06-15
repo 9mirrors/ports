@@ -1,0 +1,14 @@
+</$objtype/mkfile
+TARG=unrar
+OFILES=unrar.$O
+BIN=/$objtype/bin
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_UNIX 
+
+unrar.$O: unpold.c crccrypt.c unpack.c compr.c list.c somefn.c extract.c getopt.c \
+	comment.c getargs.c block.c smallfn.c others.c rdwrfn.c os.c global.c compress.h \
+	os.h const.h 

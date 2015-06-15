@@ -1,5 +1,4 @@
-APE=/sys/src/ape
-<$APE/config
+</$objtype/mkfile
 
 LIB=/$objtype/lib/ape/libcurses.a
 
@@ -60,6 +59,7 @@ OFILES=\
 HFILES=\
 	/sys/include/ape/curses.h\
 	/sys/include/ape/panel.h\
+	/sys/include/ape/term.h
 
 UPDATE=\
 	mkfile\
@@ -69,7 +69,10 @@ UPDATE=\
 
 </sys/src/cmd/mksyslib
 
-CFLAGS= -c -I. -D_POSIX_SOURCE -D_BSD_EXTENSION #-DPDCDEBUG
+CC=pcc
+LD=pcc
+CFLAGS= -c -I. -D_POSIX_SOURCE -D_BSD_EXTENSION -DHAVE_CONFIG_H
+#-DPDCDEBUG
 
 %.$O: pdcurses/%.c
 	$CC $CFLAGS pdcurses/$stem.c
@@ -81,6 +84,7 @@ CFLAGS= -c -I. -D_POSIX_SOURCE -D_BSD_EXTENSION #-DPDCDEBUG
 install:V:
 	cp curses.ape /sys/include/ape/curses.h
 	cp panel.h /sys/include/ape/
+	cp term.h /sys/include/ape/
 
 demos:V:
 	@{

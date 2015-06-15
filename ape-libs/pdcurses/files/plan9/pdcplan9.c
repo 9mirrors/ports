@@ -1,6 +1,7 @@
 #define _LOCK_EXTENSION
 #define _QLOCK_EXTENSION
 #define _PLAN9_SOURCE
+#define _RESEARCH_SOURCE
 #include <sys/types.h>
 #include <lock.h>
 #include <qlock.h>
@@ -233,25 +234,25 @@ int p9eget(void)
 {
 	char c;
 	Event e;
+	int x = 0;
 
 	if (resized)
 	{
 		resized = FALSE;
 		SP->resized = TRUE;
-		return KEY_RESIZE;
+		x = KEY_RESIZE;
 	}
 	switch (event(&e))
 	{
 	case Emouse:
 		setms(e.mouse);
-		return KEY_MOUSE;
+		x = KEY_MOUSE;
 	case Ekeyboard:
 		if (e.kbdc == Kdel)
 			raise(SIGINT);
-		return transk(e.kbdc);
-	}
-	/* should this ever happen? */
-	return 0;
+		x = transk(e.kbdc);
+	};
+	return x;
 }
 
 void p9init(void)

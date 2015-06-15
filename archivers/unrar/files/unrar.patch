@@ -1,0 +1,10 @@
+--- unrar-2.71/unrar.orig	Mon Jun 15 19:51:54 2015
++++ unrar-2.71/unrar.c	Mon Jun 15 19:50:37 2015
+@@ -44,6 +44,7 @@
+   ExecuteCommand();
+   ShutDown(SD_MEMORY);
+   exit(ExitCode);
++  return 0;
+ }
+ 
+ 
