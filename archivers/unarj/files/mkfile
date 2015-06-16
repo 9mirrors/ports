@@ -1,0 +1,15 @@
+</$objtype/mkfile
+TARG=unarj
+OFILES=decode.$O environ.$O unarj.$O 
+BIN=/$objtype/bin
+HFILES=unarj.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -DUNIX -D__STDC__
+
+unarj.$O: 
+environ.$O: 
+decode.$O: 

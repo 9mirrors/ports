@@ -1,0 +1,31 @@
+--- unarj-2.63a/environ.orig	Tue Jun 16 13:44:41 2015
++++ unarj-2.63a/environ.c	Tue Jun 16 13:50:40 2015
+@@ -431,6 +431,9 @@
+ #define SUBS_DEFINED
+ 
+ #include <time.h>
++#include <stdlib.h>
++#include <string.h>
++#include <utime.h>
+ 
+ #ifndef time_t
+ #define time_t long
+@@ -535,7 +538,7 @@
+ }
+ 
+ long
+-gettz()         /* returns the offset from GMT in seconds */
++gettz(void)         /* returns the offset from GMT in seconds */
+ {
+ #define NOONOFFSET    43200L
+ #define SEC_IN_DAY    (24L * 60L * 60L)
+@@ -555,8 +558,7 @@
+ }
+ 
+ long
+-mstonix(tstamp)
+-ulong tstamp;
++mstonix(ulong tstamp)
+ {
+     uint date, time;
+     int year, month, day, hour, min, sec, daycount;

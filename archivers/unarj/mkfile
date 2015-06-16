@@ -1,0 +1,18 @@
+</$objtype/mkfile
+
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='un-ARJ utility'
+VERSION=2.63a
+#DEPS=
+
+WEBSOURCE=http://ibiblio.org/pub/linux/utils/compress/unarj-2.63a.tar.gz
+WORKFILE=unarj-2.63a.tar.gz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/unarj-2.63a
+PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile
