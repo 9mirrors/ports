@@ -1,0 +1,73 @@
+diff -ru orig/uac_comm.c unace-1.2b/uac_comm.c
+--- orig/uac_comm.c	Tue Jun 16 13:58:41 2015
++++ unace-1.2b/uac_comm.c	Tue Jun 16 14:20:10 2015
+@@ -21,12 +21,12 @@
+    {                             // comment present?
+       if (head.HEAD_TYPE == MAIN_BLK)
+       {                          // get begin and size of comment data
+-         comm = MCOMM;
++         comm = (char *) MCOMM;
+          comm_cpr_size = MCOMM_SIZE;
+       }
+       else
+       {
+-         comm = FCOMM;
++         comm = (char *) FCOMM;
+          comm_cpr_size = FCOMM_SIZE;
+       }                          // limit comment size if too big
+       i = sizeof(head) - (INT)(comm - (CHAR*) &head);
+diff -ru orig/uac_crt.c unace-1.2b/uac_crt.c
+--- orig/uac_crt.c	Tue Jun 16 13:58:41 2015
++++ unace-1.2b/uac_crt.c	Tue Jun 16 14:33:07 2015
+@@ -11,6 +11,9 @@
+ #include <string.h>    // strncpy()
+ #include <sys/stat.h>  // struct stat
+ 
++#define S_IREAD S_IRUSR
++#define S_IWRITE S_IWUSR
++
+ #ifdef UNIX
+ #include <unistd.h>
+ #else
+@@ -38,7 +41,7 @@
+    INT  i;
+    char *cp;
+ 
+-   strncpy(s, (*(tfhead *) head).FNAME, i = (*(tfhead *) head).FNAME_SIZE);
++   strncpy(s,(const char *) (*(tfhead *) head).FNAME, i = (*(tfhead *) head).FNAME_SIZE);
+    s[i] = 0;
+ 
+    if (nopath)
+diff -ru orig/uac_dcpr.c unace-1.2b/uac_dcpr.c
+--- orig/uac_dcpr.c	Tue Jun 16 13:58:41 2015
++++ unace-1.2b/uac_dcpr.c	Tue Jun 16 14:37:10 2015
+@@ -470,7 +470,7 @@
+          f_err = ERR_OTHER;
+          r = 0;
+    }
+-   rd_crc = getcrc(rd_crc, buf, r);
++   rd_crc = getcrc(rd_crc, (unsigned char *) buf, r);
+    return r;
+ }
+ 
+diff -ru orig/unace.c unace-1.2b/unace.c
+--- orig/unace.c	Tue Jun 16 13:58:41 2015
++++ unace-1.2b/unace.c	Tue Jun 16 14:39:13 2015
+@@ -138,7 +138,7 @@
+       if (read(archan, buf, rd) < rd)
+          return 0;
+       head_size -= rd;
+-      crc = getcrc(crc, buf, rd);
++      crc = getcrc(crc, (unsigned char *) buf, rd);
+    }
+ 
+    head.HEAD_TYPE =*tp++;               // generic buffer to head conversion
+@@ -263,7 +263,7 @@
+       sprintf(av_str, "\ncreated on %d.%d.%d by ",
+               ts_day(adat.time_cr), ts_month(adat.time_cr), ts_year(adat.time_cr));
+       printf(av_str);
+-      strncpy(av_str, mhead.AV, mhead.AV_SIZE);
++      strncpy(av_str, (const char *) mhead.AV, mhead.AV_SIZE);
+       av_str[mhead.AV_SIZE] = 0;
+       printf("%s\n\n", av_str);
+    }

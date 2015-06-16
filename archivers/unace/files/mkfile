@@ -1,0 +1,21 @@
+</$objtype/mkfile
+TARG=unace
+OFILES=globals.$O uac_comm.$O uac_crc.$O uac_crt.$O uac_dcpr.$O uac_sys.$O unace.$O 
+BIN=/$objtype/bin
+HFILES=globals.h declare.h unace.h os.h portable.h declare.h acestruc.h os.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -+ -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DUNIX -DCASEINSENSE -D_LIMITS_EXTENSION 
+
+unace.$O: uac_sys.h uac_dcpr.h uac_crt.h uac_crc.h uac_comm.h 
+uac_sys.$O: uac_sys.h 
+uac_dcpr.$O: uac_sys.h uac_dcpr.h uac_crc.h uac_comm.h 
+uac_crt.$O: uac_sys.h uac_crt.h 
+uac_crc.$O: uac_crc.h 
+uac_comm.$O: uac_comm.h uac_dcpr.h 
+
+
+
