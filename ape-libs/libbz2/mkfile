@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='bunzip2 compression library for APE'
+VERSION=1.2.8-1
+
+WEBSOURCE=http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
+WORKFILE=bzip2-1.0.6.tar.gz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/bzip2-1.0.6
+PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile

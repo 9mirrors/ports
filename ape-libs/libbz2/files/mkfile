@@ -1,0 +1,57 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libbz2.a
+OFILES=blocksort.$O huffman.$O crctable.$O randtable.$O compress.$O decompress.$O \
+	bzlib.$O 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_FILE_OFFSET_BITS=64 
+
+bzlib.$O: bzlib.h bzlib_private.h 
+decompress.$O: bzlib.h bzlib_private.h 
+compress.$O: bzlib.h bzlib_private.h 
+randtable.$O: bzlib.h bzlib_private.h 
+crctable.$O: bzlib.h bzlib_private.h 
+huffman.$O: bzlib.h bzlib_private.h 
+blocksort.$O: bzlib.h bzlib_private.h 
+
+TARG=bzip2 bzip2recover
+BIN=/$objtype/bin/ape
+
+</sys/src/cmd/mkmany
+
+
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -f /sys/include/ape/bzlib.h
+    rm -f /rc/bin/ape/bzgrep
+	rm -f /rc/bin/ape/bzdiff
+	rm -f /rc/bin/ape/bzmore
+	rm -f /$objtype/bin/bzcat
+	rm -f /$objtype/bin/ape/bzip2
+	rm -f /$objtype/bin/ape/bunzip2
+	rm -f /$objtype/bin/bzip2recover
+	rm -f /sys/man/1ape/bzip2
+	rm -f /sys/man/1ape/bzdiff
+	rm -f /sys/man/1ape/bzmore
+	rm -f /sys/man/1ape/bzgrep
+
+install:V:
+	cp bzlib.ape /sys/include/ape/bzlib.h
+	cp bzgrep /rc/bin/ape/
+	cp bzdiff /rc/bin/ape/
+	cp bzmore /rc/bin/ape/
+	chmod +x /rc/bin/ape/bz*
+	cp $O.bzip2 /$objtype/bin/bzcat
+    cp $O.bzip2 /$objtype/bin/ape/bunzip2
+	cp $O.bzip2recover /$objtype/bin/bzip2recover
+	mkdir -p /sys/man/1ape
+	cp bzip2.1 /sys/man/1ape/bzip2
+	cp bzdiff.1 /sys/man/1ape/bzdiff
+	cp bzmore.1 /sys/man/1ape/bzmore
+	cp bzgrep.1 /sys/man/1ape/bzgrep
+
