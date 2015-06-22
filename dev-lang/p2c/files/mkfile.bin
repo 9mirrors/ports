@@ -1,0 +1,36 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libp2c.a
+
+TARG=p2c
+OFILES=trans.$O stuff.$O out.$O comment.$O lex.$O parse.$O decl.$O expr.$O pexpr.$O \
+	funcs.$O dir.$O hpmods.$O citmods.$O 
+
+# makeproto.$O 
+
+BIN=/$objtype/bin
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DCUST1=hpmods -DCUST2=citmods \
+	-DHAVE_ISATTY -DHASDUMPS -DP2C_HOME="/sys/lib/p2c" 
+
+#bin
+makeproto.$O: 
+citmods.$O: trans.h 
+hpmods.$O: trans.h 
+dir.$O: trans.h 
+funcs.$O: trans.h 
+pexpr.$O: trans.h 
+expr.$O: trans.h 
+decl.$O: trans.h 
+parse.$O: trans.h 
+lex.$O: trans.h 
+comment.$O: trans.h 
+out.$O: trans.h 
+stuff.$O: trans.h 
+trans.$O: trans.h 
+
+
+

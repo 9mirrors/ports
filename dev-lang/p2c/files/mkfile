@@ -1,0 +1,36 @@
+</$objtype/mkfile
+
+MKTARG=lib bin
+
+default:VQ:
+	for (i in $MKTARG)
+	{mk -f mkfile.$i}
+	;
+
+clean:V:
+	for (i in $MKTARG)
+	{mk -f mkfile.$i $target}
+	;
+
+nuke:VQ:
+	for (i in $MKTARG)
+	{mk -f mkfile.$i $target}
+	rm -rf /sys/lib/p2c
+	rm -f /sys/man/1/p2c
+	rm -f /sys/man/1/p2cc
+	rm -f /sys/include/ape/p2c.h
+	;
+
+install:V:
+	for (i in $MKTARG)
+	{mk -f mkfile.$i $target}
+	mkdir -p /sys/lib/p2c
+	cp sys.p2crc /sys/lib/p2c/p2crc
+	cp loc.p2crc /sys/lib/p2c/
+	cp system.m2 /sys/lib/p2c/
+	cp turbo.imp /sys/lib/p2c/
+	cp string.pas /sys/lib/p2c/
+	cp p2c.man /sys/man/1/p2c
+	cp p2cc.man /sys/man/1/p2cc
+	cp p2c.h.ape /sys/include/ape/p2c.h
+	;

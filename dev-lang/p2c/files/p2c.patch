@@ -1,0 +1,123 @@
+diff -ru orig/lex.c src/lex.c
+--- orig/lex.c	Wed Jun 17 20:36:59 2015
++++ src/lex.c	Mon Jun 22 09:12:26 2015
+@@ -1,6 +1,6 @@
+ /* "p2c", a Pascal to C translator.
+    Copyright (C) 1989, 1990, 1991, 1992, 1993 Free Software Foundation.
+-   Author's address: daveg@synaptics.com.
++   Author's address: daveg@synaptics.com. zgett
+ 
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+@@ -2724,7 +2724,7 @@
+ 
+ 
+ #ifdef LEXDEBUG
+-Static void zgettok();
++Static void zgettok(void);
+ void gettok()
+ {
+     zgettok();
+@@ -2747,7 +2747,7 @@
+         putchar('\n');
+     }
+ }
+-Static void zgettok()
++Static void zgettok(void)
+ #else
+ void gettok()
+ #endif
+diff -ru orig/p2clib.c src/p2clib.c
+--- orig/p2clib.c	Wed Jun 17 20:37:00 2015
++++ src/p2clib.c	Mon Jun 22 07:34:49 2015
+@@ -2,7 +2,7 @@
+ /* Run-time library for use with "p2c", the Pascal to C translator */
+ 
+ /* "p2c"  Copyright (C) 1989, 1990, 1991, 1992, 1993 Free Software Foundation.
+- * By Dave Gillespie, daveg@synaptics.com.  Version --VERSION--.
++ * By Dave Gillespie, daveg@synaptics.com.  Version --VERSION--. Escape
+  * This file may be copied, modified, etc. in any way.  It is not restricted
+  * by the licence agreement accompanying p2c itself.
+  */
+@@ -11,6 +11,9 @@
+ 
+ #include "p2c.h"
+ 
++#include <sys/types.h>
++#include <unistd.h>
++
+ 
+ #ifndef NO_TIME
+ # include <time.h>
+@@ -134,8 +137,7 @@
+ }
+ 
+ 
+-int my_toupper(c)
+-int c;
++int my_toupper(int c)
+ {
+     if (islower(c))
+ 	return _toupper(c);
+@@ -983,9 +985,7 @@
+ /* The following is suitable for the HP Pascal operating system.
+    It might want to be revised when emulating another system. */
+ 
+-char *_ShowEscape(buf, code, ior, prefix)
+-char *buf, *prefix;
+-int code, ior;
++char *_ShowEscape(char *buf, int code, int ior, char *prefix)
+ {
+     char *bufp;
+ 
+@@ -1069,8 +1069,7 @@
+ }
+ 
+ 
+-int _Escape(code)
+-int code;
++int _Escape(int code)
+ {
+     char buf[100];
+ 
+@@ -1086,6 +1085,8 @@
+         exit(EXIT_FAILURE);
+     fprintf(stderr, "%s\n", _ShowEscape(buf, P_escapecode, P_ioresult, ""));
+     exit(EXIT_FAILURE);
++	/* what should we return? */
++	return code;
+ }
+ 
+ int _EscIO(code)
+diff -ru orig/trans.c src/trans.c
+--- orig/trans.c	Wed Jun 17 20:36:59 2015
++++ src/trans.c	Mon Jun 22 09:05:06 2015
+@@ -1,6 +1,6 @@
+ /* "p2c", a Pascal to C translator.
+    Copyright (C) 1989, 1990, 1991, 1992, 1993 Free Software Foundation.
+-   Author's address: daveg@synaptics.com.
++   Author's address: daveg@synaptics.com. outmem
+ 
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+@@ -1035,17 +1035,18 @@
+ 
+ 
+ 
+-void exit_failure()
++void exit_failure(void)
+ {
+     exit(EXIT_FAILURE);
+ }
+ 
+ 
+ 
+-int outmem()
++int outmem(void)
+ {
+     fprintf(stderr, "p2c: Out of memory!\n");
+     exit(EXIT_FAILURE);
++	return -1; /* return value ? */
+ }
+ 
+ 

@@ -1,0 +1,18 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libp2c.a
+OFILES=p2clib.$O loc.p2clib.$O
+
+</sys/src/cmd/mksyslib
+
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DCUST1=hpmods -DCUST2=citmods \
+	-DHAVE_ISATTY -DHASDUMPS -DP2C_HOME=/sys/lib/p2c
+
+#lib
+p2clib.$O: p2c.h 
+
+
+
+

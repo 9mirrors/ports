@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='pascal-to-c translator/transpiler'
+VERSION=1.21alpha2
+
+WEBSOURCE=http://schneider.ncifcrf.gov/p2c/p2c-1.21alpha2.tar.gz
+WORKFILE=p2c-1.21alpha2.tar.gz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/src
+PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile
