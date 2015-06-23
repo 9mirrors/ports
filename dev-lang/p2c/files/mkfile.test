@@ -1,0 +1,15 @@
+</$objtype/mkfile
+TARG=basic cref e fact self 
+BIN=.
+
+</sys/src/cmd/mkmany
+
+CC=pcc
+LD=pcc
+CFLAGS=-c 
+
+%.c: ../examples/%.p
+	p2c ../examples/$stem.p -o $stem.c
+
+
+

@@ -1,0 +1,9 @@
+This is a pascal-to-C transpiler
+
+BUGS:
+* problems compiling generated files - stricter C compiler than with the old port?
+(issues: no return on int main(...) )
+
+TODO:
+* make a "test" mkfile to compile pascal files found in examples
+* implement a "p2cc" compiler in rc script based on the perl version

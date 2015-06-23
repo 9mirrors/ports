@@ -18,7 +18,7 @@ nuke:VQ:
 	rm -rf /sys/lib/p2c
 	rm -f /sys/man/1/p2c
 	rm -f /sys/man/1/p2cc
-	rm -f /sys/include/ape/p2c.h
+	rm -rf /sys/include/ape/p2c
 	;
 
 install:V:
@@ -32,5 +32,6 @@ install:V:
 	cp string.pas /sys/lib/p2c/
 	cp p2c.man /sys/man/1/p2c
 	cp p2cc.man /sys/man/1/p2cc
-	cp p2c.h.ape /sys/include/ape/p2c.h
+	mkdir -p /sys/include/ape/p2c
+	cp p2c.h.ape /sys/include/ape/p2c/p2c.h
 	;

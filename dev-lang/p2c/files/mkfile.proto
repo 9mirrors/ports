@@ -1,0 +1,25 @@
+</$objtype/mkfile
+TARG=makeproto
+OFILES=makeproto.$O 
+BIN=.
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE 
+
+PROTOSRC= citmods.c dir.c hpmods.c makeproto.c parse.c trans.c \
+comment.c expr.c lex.c out.c pexpr.c \
+decl.c funcs.c stuff.c
+
+install:V:
+	chmod +x makeproto
+	./makeproto -n -m -h -t16 -a35 -s0 -x $PROTOSRC -o p2c.hdrs
+	./makeproto -n -m -h -t16 -a35 -s1 -i $PROTOSRC -o p2c.proto
+	;
+
+
+	
+	
+
