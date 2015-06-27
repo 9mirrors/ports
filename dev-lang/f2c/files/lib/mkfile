@@ -1,0 +1,165 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libf2c.a
+OFILES=abort_.$O arithchk.$O backspac.$O c_abs.$O c_cos.$O c_div.$O c_exp.$O c_log.$O \
+	c_sin.$O c_sqrt.$O cabs.$O close.$O d_abs.$O d_acos.$O d_asin.$O d_atan.$O \
+	d_atn2.$O d_cnjg.$O d_cos.$O d_cosh.$O d_dim.$O d_exp.$O d_imag.$O d_int.$O \
+	d_lg10.$O d_log.$O d_mod.$O d_nint.$O d_prod.$O d_sign.$O d_sin.$O d_sinh.$O \
+	d_sqrt.$O d_tan.$O d_tanh.$O derf_.$O derfc_.$O dfe.$O dolio.$O dtime_.$O \
+	due.$O ef1asc_.$O ef1cmc_.$O endfile.$O erf_.$O erfc_.$O err.$O etime_.$O \
+	exit_.$O f77_aloc.$O f77vers.$O fmt.$O fmtlib.$O ftell64_.$O ftell_.$O \
+	getarg_.$O getenv_.$O h_abs.$O h_dim.$O h_dnnt.$O h_indx.$O h_len.$O h_mod.$O \
+	h_nint.$O h_sign.$O hl_ge.$O hl_gt.$O hl_le.$O hl_lt.$O i77vers.$O i_abs.$O \
+	i_dceiling.$O i_dim.$O i_dnnt.$O i_indx.$O i_len.$O i_len_trim.$O i_mod.$O \
+	i_nint.$O i_sceiling.$O i_sign.$O iargc_.$O iio.$O ilnw.$O inquire.$O l_ge.$O \
+	l_gt.$O l_le.$O l_lt.$O lbitbits.$O lbitshft.$O lread.$O lwrite.$O main.$O \
+	open.$O pow_ci.$O pow_dd.$O pow_di.$O pow_hh.$O pow_ii.$O pow_qq.$O pow_ri.$O \
+	pow_zi.$O pow_zz.$O qbitbits.$O qbitshft.$O r_abs.$O r_acos.$O r_asin.$O \
+	r_atan.$O r_atn2.$O r_cnjg.$O r_cos.$O r_cosh.$O r_dim.$O r_exp.$O r_imag.$O \
+	r_int.$O r_lg10.$O r_log.$O r_mod.$O r_nint.$O r_sign.$O r_sin.$O r_sinh.$O \
+	r_sqrt.$O r_tan.$O r_tanh.$O rdfmt.$O rewind.$O rsfe.$O rsli.$O rsne.$O \
+	s_cat.$O s_cmp.$O s_copy.$O s_paus.$O s_rnge.$O s_stop.$O sfe.$O sig_die.$O \
+	signal_.$O sue.$O system_.$O typesize.$O uio.$O uninit.$O util.$O wref.$O \
+	wrtfmt.$O wsfe.$O wsle.$O wsne.$O xwsne.$O z_abs.$O z_cos.$O z_div.$O z_exp.$O \
+	z_log.$O z_sin.$O z_sqrt.$O 
+HFILES=../include/f2c.h ../include/f2c_types.h ../config_aux/config.h
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -B -I. -I../include -I../config_aux -D_POSIX_SOURCE -D_SUSV2_SOURCE 
+
+z_sqrt.$O: 
+z_sin.$O: 
+z_log.$O: 
+z_exp.$O: 
+z_div.$O: 
+z_cos.$O: 
+z_abs.$O: 
+xwsne.$O: fmt.h lio.h fio.h 
+wsne.$O: lio.h fio.h 
+wsle.$O: lio.h fmt.h fio.h 
+wsfe.$O: fmt.h fio.h 
+wrtfmt.$O: fmt.h fio.h 
+wref.$O: fp.h fmt.h arith.h fio.h 
+util.$O: fio.h 
+uninit.$O: arith.h 
+uio.$O: fio.h 
+system_.$O: 
+sue.$O: fio.h 
+signal_.$O: signal1.h 
+sig_die.$O: 
+sfe.$O: fio.h 
+s_stop.$O: 
+s_rnge.$O: 
+s_paus.$O: signal1.h 
+s_copy.$O: 
+s_cat.$O: 
+rsne.$O: lio.h fio.h 
+rsli.$O: fmt.h lio.h fio.h 
+rsfe.$O: fmt.h fio.h 
+rewind.$O: fio.h 
+rdfmt.$O: fp.h fmt.h fio.h 
+r_tanh.$O: 
+r_tan.$O: 
+r_sqrt.$O: 
+r_sinh.$O: 
+r_sin.$O: 
+r_nint.$O: 
+r_mod.$O: 
+r_log.$O: 
+r_lg10.$O: 
+r_int.$O: 
+r_exp.$O: 
+r_cosh.$O: 
+r_cos.$O: 
+r_atn2.$O: 
+r_atan.$O: 
+r_asin.$O: 
+r_acos.$O: 
+pow_zz.$O: 
+pow_dd.$O: 
+open.$O: fio.h 
+main.$O: fio.h signal1.h 
+lwrite.$O: arith.h lio.h fmt.h fio.h 
+lread.$O: fp.h lio.h fmt.h fio.h 
+lbitbits.$O: 
+inquire.$O: fio.h 
+ilnw.$O: lio.h fio.h 
+iio.$O: fmt.h fio.h 
+iargc_.$O: 
+i_sign.$O: 
+i_sceiling.$O: 
+i_nint.$O: 
+i_mod.$O: 
+i_len_trim.$O: 
+i_len.$O: 
+i_dnnt.$O: 
+i_dim.$O: 
+i_dceiling.$O: 
+i_abs.$O: 
+hl_lt.$O: 
+hl_le.$O: 
+hl_gt.$O: 
+hl_ge.$O: 
+h_sign.$O: 
+h_nint.$O: 
+h_mod.$O: 
+h_len.$O: 
+h_dnnt.$O: 
+h_dim.$O: 
+h_abs.$O: 
+getenv_.$O: 
+ftell_.$O: fio.h 
+ftell64_.$O: fio.h 
+fmt.$O: fmt.h fio.h 
+f77_aloc.$O: 
+exit_.$O: 
+etime_.$O: 
+err.$O: fmt.h fio.h 
+erfc_.$O: 
+erf_.$O: 
+endfile.$O: fio.h 
+due.$O: fio.h 
+dtime_.$O: 
+dolio.$O: fio.h 
+dfe.$O: fmt.h fio.h 
+derfc_.$O: 
+derf_.$O: 
+d_tanh.$O: 
+d_tan.$O: 
+d_sqrt.$O: 
+d_sinh.$O: 
+d_sin.$O: 
+d_sign.$O: 
+d_prod.$O: 
+d_nint.$O: 
+d_mod.$O: 
+d_log.$O: 
+d_lg10.$O: 
+d_int.$O: 
+d_imag.$O: 
+d_exp.$O: 
+d_dim.$O: 
+d_cosh.$O: 
+d_cos.$O: 
+d_cnjg.$O: 
+d_atn2.$O: 
+d_atan.$O: 
+d_asin.$O: 
+d_acos.$O: 
+d_abs.$O: 
+close.$O: fio.h 
+cabs.$O: 
+c_sqrt.$O: 
+c_sin.$O: 
+c_log.$O: 
+c_exp.$O: 
+c_cos.$O: 
+c_abs.$O: 
+backspac.$O: fio.h 
+arithchk.$O: 
+abort_.$O: 
+nuke:V:
+	mk clean
+	rm -f $LIB

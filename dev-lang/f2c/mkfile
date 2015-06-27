@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='fortran-to-c translator/transpiler'
+VERSION='git master'
+
+WEBSOURCE=https://github.com/juanjosegarciaripoll/f2c/archive/master.zip
+WORKFILE=master.zip
+EXTRACTCOMMAND=unzip -f
+BUILDPATH=work/f2c-master
+PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile

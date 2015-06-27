@@ -1,0 +1,27 @@
+</$objtype/mkfile
+DIRS=lib src 
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	cp doc/f2c.1 /sys/man/1/f2c
+	cp include/f2c.h /sys/include/ape/
+	cp include/f2c_types.h /sys/include/ape/
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f /sys/man/1/f2c
+	rm -f /sys/include/ape/f2c.h
+	rm -f /sys/include/ape/f2c_types.h
+
+
+

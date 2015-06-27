@@ -1,0 +1,63 @@
+</$objtype/mkfile
+TARG=f2c
+OFILES=cds.$O data.$O equiv.$O error.$O exec.$O expr.$O format.$O formatdata.$O \
+	gram.$O init.$O intr.$O io.$O lex.$O main.$O mem.$O \
+	misc.$O names.$O niceprintf.$O output.$O p1output.$O parse_args.$O pread.$O \
+	proc.$O put.$O putpcc.$O sysdep.$O vax.$O version.$O 
+BIN=/$objtype/bin
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../include -I../config_aux -D_POSIX_SOURCE -D_SUSV2_SOURCE 
+
+version.$O: ../config_aux/config.h 
+vax.$O: niceprintf.h output.h pccdefs.h machdefs.h defines.h ftypes.h ../config_aux/config.h \
+	sysdep.h defs.h 
+sysdeptest.$O: 
+sysdep.$O: usignal.h machdefs.h defines.h ftypes.h ../config_aux/config.h sysdep.h \
+	defs.h 
+putpcc.$O: p1defs.h names.h niceprintf.h output.h pccdefs.h machdefs.h defines.h \
+	ftypes.h ../config_aux/config.h sysdep.h defs.h 
+put.$O: p1defs.h pccdefs.h names.h machdefs.h defines.h ftypes.h ../config_aux/config.h \
+	sysdep.h defs.h 
+proc.$O: p1defs.h niceprintf.h output.h names.h machdefs.h defines.h ftypes.h ../config_aux/config.h \
+	sysdep.h defs.h 
+pread.$O: machdefs.h defines.h ftypes.h ../config_aux/config.h sysdep.h defs.h 
+parse_args.$O: parse.h 
+p1output.$O: names.h niceprintf.h output.h p1defs.h machdefs.h defines.h ftypes.h \
+	../config_aux/config.h sysdep.h defs.h 
+output.$O: niceprintf.h output.h names.h machdefs.h defines.h ftypes.h ../config_aux/config.h \
+	sysdep.h defs.h 
+niceprintf.$O: niceprintf.h output.h names.h machdefs.h defines.h ftypes.h ../config_aux/config.h \
+	sysdep.h defs.h 
+names.$O: iob.h names.h niceprintf.h output.h machdefs.h defines.h ftypes.h ../config_aux/config.h \
+	sysdep.h defs.h 
+misc.$O: machdefs.h defines.h ftypes.h ../config_aux/config.h sysdep.h defs.h 
+mem.$O: iob.h machdefs.h defines.h ftypes.h ../config_aux/config.h sysdep.h defs.h 
+malloc.$O: 
+main.$O: parse.h machdefs.h defines.h ftypes.h ../config_aux/config.h sysdep.h \
+	defs.h ../config_aux/config.h 
+lex.$O: p1defs.h tokdefs.h machdefs.h defines.h ftypes.h ../config_aux/config.h \
+	sysdep.h defs.h 
+io.$O: iob.h names.h machdefs.h defines.h ftypes.h ../config_aux/config.h sysdep.h \
+	defs.h 
+intr.$O: names.h machdefs.h defines.h ftypes.h ../config_aux/config.h sysdep.h \
+	defs.h 
+init.$O: iob.h niceprintf.h output.h machdefs.h defines.h ftypes.h ../config_aux/config.h \
+	sysdep.h defs.h 
+gram.$O: p1defs.h machdefs.h defines.h ftypes.h ../config_aux/config.h sysdep.h \
+	defs.h 
+formatdata.$O: format.h names.h niceprintf.h output.h machdefs.h defines.h ftypes.h \
+	../config_aux/config.h sysdep.h defs.h 
+format.$O: iob.h names.h niceprintf.h output.h format.h p1defs.h machdefs.h defines.h \
+	ftypes.h ../config_aux/config.h sysdep.h defs.h 
+expr.$O: names.h niceprintf.h output.h machdefs.h defines.h ftypes.h ../config_aux/config.h \
+	sysdep.h defs.h 
+exec.$O: names.h p1defs.h machdefs.h defines.h ftypes.h ../config_aux/config.h \
+	sysdep.h defs.h 
+error.$O: machdefs.h defines.h ftypes.h ../config_aux/config.h sysdep.h defs.h 
+equiv.$O: machdefs.h defines.h ftypes.h ../config_aux/config.h sysdep.h defs.h 
+data.$O: machdefs.h defines.h ftypes.h ../config_aux/config.h sysdep.h defs.h 
+cds.$O: machdefs.h defines.h ftypes.h ../config_aux/config.h sysdep.h defs.h 
