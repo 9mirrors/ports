@@ -3,7 +3,7 @@
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='TRE regex library for APE'
 VERSION=0.8.0
-#DEPS=ape-libs/libutf8 ape-libs/libgetopt
+DEPS=ape-libs/libutf8 ape-libs/libgetopt
 
 WEBSOURCE=http://laurikari.net/tre/tre-0.8.0.tar.bz2
 WORKFILE=tre-0.8.8.tar.bz2

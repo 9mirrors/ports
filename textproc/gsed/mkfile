@@ -3,7 +3,7 @@
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='GNU sed'
 VERSION=4.2
-#DEPS ape-libs/gnulib
+DEPS=ape-libs/gnulib
 
 WEBSOURCE=https://gnu.cu.be/sed/sed-4.2.tar.gz
 WORKFILE=sed-4.2.tar.gz
@@ -16,6 +16,3 @@ CLEANCOMMAND=mk clean
 UNINSTALLCOMMAND=mk nuke
 
 </sys/ports/Mk/mkfile
-
-
-

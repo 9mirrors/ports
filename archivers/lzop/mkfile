@@ -3,7 +3,7 @@
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='lzo compression utility'
 VERSION=1.03
-#DEPS=ape-libs/lzo
+DEPS=ape-libs/lzo
 
 WEBSOURCE=http://www.lzop.org/download/lzop-1.03.tar.gz
 WORKFILE=lzop-1.03.tar.gz

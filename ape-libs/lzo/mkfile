@@ -3,7 +3,7 @@
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='LZO compression library'
 VERSION=2.0.9
-#DEPS=ape-libs/headers
+DEPS=ape-libs/headers
 
 WEBSOURCE=http://www.oberhumer.com/opensource/lzo/download/lzo-2.09.tar.gz
 WORKFILE=lzo-2.09.tar.gz
