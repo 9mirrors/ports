@@ -6,7 +6,7 @@ all:V:
 install:V:
 	ape/psh build.sh
 	cp src/.libs/libutf8.a /$objtype/lib/ape/
-	mkdir /sys/include/ape/utf8
+	mkdir -p /sys/include/ape/utf8
 	cp include/utf8/*.h /sys/include/ape/utf8/
 	cp apeheaders/*.h /sys/include/ape/
 	cd man && mk install
