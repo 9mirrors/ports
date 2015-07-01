@@ -10,8 +10,14 @@
 #include <gnulib_config.h>
 #include <fmemopen.h>
 
+#ifndef LLONG_MAX
 #define LLONG_MAX LONG_MAX
+#endif
+
+#ifndef LLONG_MIN
 #define LLONG_MIN LONG_MIN
+#endif
+
 #define _POSIX_HOST_NAME_MAX _POSIX_NAME_MAX
 
 #define lchown chown
