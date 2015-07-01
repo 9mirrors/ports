@@ -27,6 +27,8 @@
 
 #define st_rdev st_dev
 
+#define S_ISVTX /* nothing */
+
 #define strtold strtod
 void sync(void);
 #define llabs labs
