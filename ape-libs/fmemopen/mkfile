@@ -9,8 +9,8 @@ WORKFILE=simple_fmemopen.tbz
 EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/fmemopen
 BUILDCOMMAND=mk
-INSTALLCOMMAND=mk install
+INSTALLCOMMAND=/bin/rc -c 'mk install && cp fmemopen.h /sys/include/ape/'
 CLEANCOMMAND=mk clean
-UNINSTALLCOMMAND=mk nuke
+UNINSTALLCOMMAND=/bin/rc -c 'mk nuke && rm /sys/include/ape/fmemopen.h'
 
 </sys/ports/Mk/mkfile
