@@ -3,6 +3,7 @@
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='gnulib complement for APE'
 VERSION=1
+DEPS=ape-libs/headers ape-libs/libpoll
 
 WEBSOURCE=http://erislabs.net/ianb/projects/gnulib/gnulib-20140202-stable.tar.gz
 WORKFILE=gnulib-20140202-stable.tar.gz
