@@ -1,5 +1,5 @@
---- gnulib-20140202-stable/lib/obstack.orig	Wed Jun 10 20:29:08 2015
-+++ gnulib-20140202-stable/lib/obstack.c	Wed Jun 10 20:33:53 2015
+--- a/obstack.c	Wed Jun 10 20:29:08 2015
++++ b/obstack.c	Wed Jun 10 20:33:53 2015
 @@ -23,6 +23,8 @@
  # include "obstack.h"
  #endif

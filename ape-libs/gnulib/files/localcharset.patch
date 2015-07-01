@@ -1,5 +1,5 @@
---- gnulib-20140202-stable/lib/localcharset.orig	Mon Jun  1 05:06:16 2015
-+++ gnulib-20140202-stable/lib/localcharset.c	Mon Jun  1 07:42:02 2015
+--- a/localcharset.c	Mon Jun  1 05:06:16 2015
++++ b/localcharset.c	Mon Jun  1 07:42:02 2015
 @@ -127,7 +127,7 @@
    cp = charset_aliases;
    if (cp == NULL)

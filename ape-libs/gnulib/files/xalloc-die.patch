@@ -1,5 +1,5 @@
---- gnulib-20140202-stable/lib/xalloc-die.orig	Thu Jun 11 14:54:45 2015
-+++ gnulib-20140202-stable/lib/xalloc-die.c	Thu Jun 11 14:54:00 2015
+--- a/xalloc-die.c	Thu Jun 11 14:54:45 2015
++++ b/xalloc-die.c	Thu Jun 11 14:54:00 2015
 @@ -18,7 +18,7 @@
  
  #include <config.h>
