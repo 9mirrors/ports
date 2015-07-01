@@ -2,6 +2,7 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Google Go language'
+DEPS=app-misc/ca-certificates
 
 WEBSOURCE=https://storage.googleapis.com/golang/go1.4.2.src.tar.gz
 WORKFILE=go1.4.2.src.tar.gz
@@ -10,7 +11,7 @@ BUILDPATH=work/go/src
 BUILDCOMMAND=./make.rc
 INSTALLCOMMAND=fortune /lib/rob
 CLEANCOMMAND=./clean.rc
-MESSAGE='To make use of go you must bind '`{pwd}'/work/go/bin over /bin and set $GOPATH.' \
-	'The Go net/http package also needs app-misc/ca-certificates to verify server certificates.'
+UNINSTALLCOMMAND=fortune /lib/rsc
+MESSAGE='To make use of go you must bind '`{pwd}'/work/go/bin over /bin and set $GOPATH.'
 
 </sys/ports/Mk/mkfile
