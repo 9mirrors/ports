@@ -21,7 +21,5 @@ nuke:V:
 	rm -f /sys/include/ape/wchar.h
 	rm -f /sys/include/ape/wctype.h
 	rm -f /$objtype/lib/ape/libutf8.a
-
-
-
-
+	# ugh
+	rm -r /sys/man/3ape
