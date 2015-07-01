@@ -8,5 +8,6 @@ WORKFILE=2048.c
 BUILDPATH=work/
 BUILDCOMMAND=/bin/rc -c 's=2048; $CC $s.c && $LD -o $O.$s $s.$O'
 INSTALLCOMMAND=/bin/rc -c 's=2048; cp $O.$s /$objtype/bin/games/$s'
+UNINSTALLCOMMAND=rm /$objtype/bin/games/2048
 
 </sys/ports/Mk/mkfile
