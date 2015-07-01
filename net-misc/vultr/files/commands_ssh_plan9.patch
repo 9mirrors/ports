@@ -1,0 +1,34 @@
+diff --git a/cmd/commands_ssh_plan9.go b/cmd/commands_ssh_plan9.go
+new file mode 100644
+index 0000000..dc69e1b
+--- /dev/null
++++ b/cmd/commands_ssh_plan9.go
+@@ -0,0 +1,28 @@
++// +build plan9
++
++package cmd
++
++import (
++	"fmt"
++	"log"
++	"os"
++	"os/exec"
++)
++
++func connectSSH(user, host, key string, port int) {
++	args := []string{
++		"-p", fmt.Sprintf("%d", port),
++		"-u", user,
++		"-h", host,
++	}
++
++	cmd := exec.Command("scpu", args...)
++
++	cmd.Stdin = os.Stdin
++	cmd.Stderr = os.Stderr
++	cmd.Stdout = os.Stdout
++
++	if err := cmd.Run(); err != nil {
++		log.Fatal(err)
++	}
++}
