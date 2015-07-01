@@ -12,6 +12,6 @@ BUILDPATH=work/irc7
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
-UNINSTALLCOMMAND=rm /$objtype/bin/irc /$objtype/bin/ircsrv /sys/man/1/rc
+UNINSTALLCOMMAND=rm /$objtype/bin/irc /$objtype/bin/ircsrv /sys/man/1/irc
 
 </sys/ports/Mk/mkfile
