@@ -2,7 +2,8 @@
 
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='C-language version of lzip'
-VERSION=1
+VERSION=1.7-rc1
+DEPS=ape-libs/headers
 
 WEBSOURCE=http://download.savannah.gnu.org/releases/lzip/clzip/clzip-1.7-rc1.tar.gz
 WORKFILE=clzip-1.7-rc1.tar.gz
