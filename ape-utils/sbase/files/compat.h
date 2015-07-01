@@ -27,7 +27,7 @@
 
 #define st_rdev st_dev
 
-#define S_ISVTX /* nothing */
+#define S_ISVTX(m) 0 /* nothing */
 
 #define strtold strtod
 void sync(void);
