@@ -140,7 +140,7 @@ install:VQE: # build fetch
 	}
 	if not {
 		echo $PORTNAME is already installed
-		status='already installed'
+		status=''
 	}
 
 reinstall:VQE: # build fetch
