@@ -26,8 +26,13 @@ fn testone {
 	echo -n 'fetch.. '; quiet mk fetch || bail fetch: $status
 	echo -n 'build.. '; quiet mk build || bail build: $status
 	echo -n 'install.. '; quiet mk install || bail install: $status
-	echo -n 'uninstall.. '; quiet mk uninstall || bail uninstall: $status
-	echo -n 'nuke.. '; quiet mk nuke || exit 'nuke: '^$status
+}
+
+fn rmone {
+	port=$1
+	cd $PORTS/$port
+	quiet mk uninstall || bail uninstall: $status
+	quiet mk nuke || exit nuke: $status
 }
 
 for (c in $CATEGORY) {
@@ -44,6 +49,14 @@ for (c in $CATEGORY) {
 			fail=($fail $c/$port)
 		}
 	}	
+}
+
+# uninstall afterward so ports with deps work
+for (c in $CATEGORY) {
+	cd /sys/ports/$c
+	for (port in `{ls -l | grep '^d' | awk '{ print $10 }'}) {
+		@{ rmone $c/$port }
+	}
 }
 
 if(! ~ $#fail 0){
