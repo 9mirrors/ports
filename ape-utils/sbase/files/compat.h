@@ -27,7 +27,9 @@
 
 #define st_rdev st_dev
 
-#define S_ISVTX(m) 0 /* nothing */
+/* nothing */
+#define S_ISVTX 0001000
+#define S_ISSOCK(m)	(((m)&S__MASK) == 0140000)
 
 #define strtold strtod
 void sync(void);
@@ -42,6 +44,3 @@ int utimensat(int, const char *, const struct timespec *, int);
 #include <sys/stat.h>
 struct timespec _atim;
 struct timespec _mtim;
-
-
-
