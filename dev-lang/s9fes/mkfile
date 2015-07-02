@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Matthew Veety <mveety@mveety.com'
+DESCRIPTION='Scheme 9 from Empty Space'
+VERSION=20150701
+
+WEBSOURCE=http://t3x.org/s9fes/s9fes-20150701.tgz
+WORKFILE=s9fes-20150701.tgz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/src
+#PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk inst
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk deinst
+
+</sys/ports/Mk/mkfile
