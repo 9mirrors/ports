@@ -1,0 +1,16 @@
+--- a/lib/connect.c	Fri Jul  3 23:26:51 2015
++++ b/lib/connect.c	Fri Jul  3 23:27:50 2015
+@@ -494,8 +494,13 @@
+ 
+ #endif
+ 
++#ifdef PLAN9
++  if(sockfd < 0)
++	err = SOCKERRNO;
++#else
+   if(0 != getsockopt(sockfd, SOL_SOCKET, SO_ERROR, (void *)&err, &errSize))
+     err = SOCKERRNO;
++#endif
+ #ifdef _WIN32_WCE
+   /* Old WinCE versions don't support SO_ERROR */
+   if(WSAENOPROTOOPT == err) {

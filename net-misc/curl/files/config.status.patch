@@ -1,0 +1,11 @@
+--- a/config.status	Fri Jul  3 23:12:20 2015
++++ b/config.status	Fri Jul  3 23:12:23 2015
+@@ -567,7 +567,7 @@
+ LD='/bin/ld'
+ NM='/bin/nm'
+ LN_S='cp -p'
+-max_cmd_len='512'
++max_cmd_len='4096'
+ ac_objext='o'
+ exeext=''
+ lt_unset='unset'

@@ -1,0 +1,11 @@
+--- libtool.old	Fri Jul  3 22:19:40 2015
++++ libtool	Fri Jul  3 22:20:00 2015
+@@ -105,7 +105,7 @@
+ LN_S="cp -p"
+ 
+ # What is the maximum length of a command?
+-max_cmd_len=512
++max_cmd_len=4096
+ 
+ # Object file suffix (normally "o").
+ objext=o

@@ -1,0 +1,49 @@
+work around the poor ape select that returns
+fds in error set on eof
+	- mischief
+
+--- a/lib/select.c	Sat Jul  4 01:41:39 2015
++++ b/lib/select.c	Sat Jul  4 01:46:47 2015
+@@ -323,19 +323,31 @@
+     if(FD_ISSET(readfd0, &fds_read))
+       ret |= CURL_CSELECT_IN;
+     if(FD_ISSET(readfd0, &fds_err))
++#ifdef PLAN9
++      ret |= CURL_CSELECT_IN;
++#else
+       ret |= CURL_CSELECT_ERR;
++#endif
+   }
+   if(readfd1 != CURL_SOCKET_BAD) {
+     if(FD_ISSET(readfd1, &fds_read))
+       ret |= CURL_CSELECT_IN2;
+     if(FD_ISSET(readfd1, &fds_err))
++#ifdef PLAN9
++      ret |= CURL_CSELECT_IN2;
++#else
+       ret |= CURL_CSELECT_ERR;
++#endif
+   }
+   if(writefd != CURL_SOCKET_BAD) {
+     if(FD_ISSET(writefd, &fds_write))
+       ret |= CURL_CSELECT_OUT;
+     if(FD_ISSET(writefd, &fds_err))
++#ifdef PLAN9
++      ret |= CURL_CSELECT_OUT;
++#else
+       ret |= CURL_CSELECT_ERR;
++#endif
+   }
+ 
+   return ret;
+@@ -497,8 +509,10 @@
+       ufds[i].revents |= POLLIN;
+     if(FD_ISSET(ufds[i].fd, &fds_write))
+       ufds[i].revents |= POLLOUT;
++#ifndef PLAN9
+     if(FD_ISSET(ufds[i].fd, &fds_err))
+       ufds[i].revents |= POLLPRI;
++#endif
+     if(ufds[i].revents != 0)
+       r++;
+   }
