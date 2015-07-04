@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='GNU awk'
+VERSION=4.0.0b
+DEPS=ape-libs/gnulib ape-libs/libutf8
+
+WEBSOURCE=http://9p.io/sources/contrib/staal1978/pkg/gawk-4.0.0b.pkg.tbz
+WORKFILE=gawk-4.0.0b.pkg.tbz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/sys/src/pkg/gawk
+BUILDCOMMAND=mk -f mkfile.gawk
+INSTALLCOMMAND=mk -f mkfile.gawk BIN=/$objtype/bin install
+CLEANCOMMAND=mk clean
+UNINSTALL=/$objtype/bin/gawk
+
+</sys/ports/Mk/mkfile

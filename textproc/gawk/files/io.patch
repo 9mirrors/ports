@@ -1,0 +1,11 @@
+--- a/io.c	Fri Jul  3 20:32:16 2015
++++ b/io.c	Fri Jul  3 20:32:36 2015
+@@ -25,7 +25,7 @@
+ /* find sockaddr_storage */
+ 
+ #if defined PLAN9
+-#define sockaddr_storage sockaddr
++//#define sockaddr_storage sockaddr
+ #endif
+ 
+ /* For OSF/1 to get struct sockaddr_storage */
