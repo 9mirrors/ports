@@ -1,0 +1,19 @@
+</$objtype/mkfile
+DIRS=liblzma scripts lzmainfo xzdec xz
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+

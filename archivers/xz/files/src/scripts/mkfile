@@ -1,0 +1,31 @@
+</$objtype/mkfile
+default:VQ:
+	;
+
+install:VQ:
+	;
+
+clean:VQ:
+	;
+
+nuke:VQ:
+	rm -f /rc/bin/ape/xzless
+	rm -f /sys/man/1ape/xzless
+	rm -f /rc/bin/ape/xzmore
+	rm -f /sys/man/1ape/xzmore
+	rm -f /rc/bin/ape/xzgrep
+	rm -f /sys/man/1ape/xzgrep
+	rm -f /rc/bin/ape/xzdiff
+	rm -f /sys/man/1ape/xzdiff
+	;
+
+install:V:
+	cp xzless /rc/bin/ape/
+	cp xzless.1 /sys/man/1ape/xzless
+	cp xzmore /rc/bin/ape/
+	cp xzmore.1 /sys/man/1ape/xzmore
+	cp xzgrep /rc/bin/ape/
+	cp xzgrep.1 /sys/man/1ape/xzgrep
+	cp xzdiff /rc/bin/ape/
+	cp xzdiff.1 /sys/man/1ape/xzdiff
+

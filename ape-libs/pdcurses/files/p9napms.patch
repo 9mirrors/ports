@@ -1,0 +1,20 @@
+--- plan9/pdcplan9.org	Sat Jul  4 12:17:37 2015
++++ plan9/pdcplan9.c	Sat Jul  4 12:19:01 2015
+@@ -26,8 +26,6 @@
+ #include <keyboard.h>
+ #include "pdcplan9.h"
+ 
+-extern int _SLEEP(long);
+-
+ enum {
+ 	Ncolors = 18,
+ 	Eresized = 3,
+@@ -65,7 +63,7 @@
+ 
+ void p9napms(int ms)
+ {
+-	_SLEEP(ms);
++	sleep(ms);
+ }
+ 
+ 

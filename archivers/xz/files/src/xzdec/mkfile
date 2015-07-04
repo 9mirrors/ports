@@ -1,0 +1,32 @@
+</$objtype/mkfile
+TARG=xzdec
+LIB=../../lib/libgnu.a$O /$objtype/lib/ape/liblzma.a
+OFILES=xzdec.$O tuklib_exit.$O tuklib_progname.$O
+BIN=/$objtype/bin
+HFILES=../common/tuklib_exit.h ../common/tuklib_common.h ../common/tuklib_progname.h \
+	../common/sysdefs.h ../common/tuklib_config.h ../common/tuklib_common.h \
+	../../lib/getopt.h ../liblzma/api/lzma.h ../liblzma/api/lzma/hardware.h \
+	../liblzma/api/lzma/index_hash.h ../liblzma/api/lzma/index.h ../liblzma/api/lzma/block.h \
+	../liblzma/api/lzma/stream_flags.h ../liblzma/api/lzma/container.h ../liblzma/api/lzma/lzma12.h \
+	../liblzma/api/lzma/delta.h ../liblzma/api/lzma/bcj.h ../liblzma/api/lzma/filter.h \
+	../liblzma/api/lzma/check.h ../liblzma/api/lzma/vli.h ../liblzma/api/lzma/base.h \
+	../liblzma/api/lzma/version.h ../common/sysdefs.h /sys/include/ape/limits.h \
+	../../config.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -+ -I. -I../common -I../liblzma/api -I../liblzma/common -I../../ -I../../lib \
+	-DHAVE_CONFIG_H -D_SUSV2_SOURCE -DHAVE_STDINT_H -DHAVE_STDBOOL_H -DTUKLIB_SYMBOL_PREFIX=lzma_
+
+xzdec.$O: 
+
+%.$O: ../common/%.c
+	$CC $CFLAGS ../common/$stem.c
+
+install:V:
+	#also another target
+	cp $O.out $BIN/lzmadec
+	cp xzdec.1 /sys/man/1/xzdec
+

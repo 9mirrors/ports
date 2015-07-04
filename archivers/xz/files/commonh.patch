@@ -1,0 +1,23 @@
+--- xz-5.2.1/src/liblzma/common/common.ori	Mon Jun 29 03:58:49 2015
++++ xz-5.2.1/src/liblzma/common/common.h	Mon Jun 29 04:56:26 2015
+@@ -181,18 +181,8 @@
+ 
+ 
+ /// Macro to initialize lzma_next_coder structure
+-#define LZMA_NEXT_CODER_INIT \
+-	(lzma_next_coder){ \
+-		.coder = NULL, \
+-		.init = (uintptr_t)(NULL), \
+-		.id = LZMA_VLI_UNKNOWN, \
+-		.code = NULL, \
+-		.end = NULL, \
+-		.get_progress = NULL, \
+-		.get_check = NULL, \
+-		.memconfig = NULL, \
+-		.update = NULL, \
+-	}
++
++struct lzma_next_coder_s LZMA_NEXT_CODER_INIT = { .coder = NULL, .init = (uintptr_t) NULL, .id = LZMA_VLI_UNKNOWN, .code = NULL, .end = NULL, .get_progress = NULL, .get_check = NULL, .memconfig = NULL, .update = NULL };
+ 
+ 
+ /// Internal data for lzma_strm_init, lzma_code, and lzma_end. A pointer to

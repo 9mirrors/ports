@@ -1,0 +1,46 @@
+</$objtype/mkfile
+TARG=xz
+OFILES=util.$O suffix.$O signals.$O options.$O mytime.$O message.$O main.$O list.$O \
+	hardware.$O file_io.$O coder.$O args.$O \
+#   ../common \
+	tuklib_open_stdxxx.$O tuklib_progname.$O tuklib_exit.$O tuklib_mbstr_width.$O \
+	tuklib_mbstr_fw.$O
+
+BIN=/$objtype/bin
+HFILES=private.h list.h util.h suffix.h signals.h options.h file_io.h hardware.h \
+	args.h message.h coder.h mytime.h main.h ../common/tuklib_common.h ../common/tuklib_mbstr.h \
+	../common/tuklib_common.h ../common/tuklib_exit.h ../common/tuklib_common.h \
+	../common/tuklib_progname.h ../common/sysdefs.h ../common/tuklib_config.h \
+	../common/tuklib_common.h ../common/tuklib_gettext.h ../liblzma/api/lzma/hardware.h \
+	../liblzma/api/lzma/index_hash.h ../liblzma/api/lzma/index.h ../liblzma/api/lzma/block.h \
+	../liblzma/api/lzma/stream_flags.h ../liblzma/api/lzma/container.h ../liblzma/api/lzma/lzma12.h \
+	../liblzma/api/lzma/delta.h ../liblzma/api/lzma/bcj.h ../liblzma/api/lzma/filter.h \
+	../liblzma/api/lzma/check.h ../liblzma/api/lzma/vli.h ../liblzma/api/lzma/base.h \
+	../liblzma/api/lzma/version.h ../liblzma/api/lzma.h ../common/sysdefs.h \
+	../common/mythread.h /sys/include/ape/limits.h ../../config.h ../common/sysdefs.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -+ -I. -I../common -I../liblzma/api -I../liblzma/api/lzma -I../../common -I../.. -I../../lib -DHAVE_CONFIG_H \
+	-D_SUSV2_SOURCE -D_BSD_EXTENSION -DHAVE_STDINT_H -DHAVE_STDBOOL_H -DTUKLIB_SYMBOL_PREFIX=lzma_ -D_C99_SNPRINTF_EXTENSION 
+
+
+args.$O: ../../lib/getopt.h 
+file_io.$O: ../common/tuklib_open_stdxxx.h 
+list.$O: ../common/tuklib_integer.h 
+main.$O: 
+message.$O: 
+mytime.$O: 
+util.$O: 
+
+%.$O: ../common/%.c
+	$CC $CFLAGS ../common/$stem.c
+
+install:V:
+	cp $O.out $BIN/lzma
+	cp $O.out $BIN/unlzma
+	cp $O.out $BIN/lzcat
+	cp xz.1 /sys/man/1/xz
+

@@ -1,0 +1,24 @@
+</$objtype/mkfile
+TARG=lzmainfo
+LIB=../../lib/libgnu.a$O /$objtype/lib/ape/liblzma.a
+OFILES=lzmainfo.$O tuklib_progname.$O tuklib_exit.$O
+BIN=/$objtype/bin
+HFILES=../common/tuklib_exit.h ../common/tuklib_common.h ../common/tuklib_progname.h \
+	../common/tuklib_common.h ../common/tuklib_gettext.h ../common/sysdefs.h \
+	../common/tuklib_config.h ../common/tuklib_common.h ../liblzma/api/lzma.h ../common/sysdefs.h \
+	/sys/include/ape/limits.h ../../config.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -+ -B -I../common -I../liblzma/api -I../liblzma/common -I../.. -I../../lib -DHAVE_CONFIG_H -D_SUSV2_SOURCE -DHAVE_STDINT_H -DHAVE_STDBOOL_H -DTUKLIB_SYMBOL_PREFIX=lzma_
+
+lzmainfo.$O: 
+
+%.$O: ../common/%.c
+	$CC $CFLAGS ../common/$stem.c
+
+install:V:
+	cp lzmainfo.1 /sys/man/1/lzmainfo
+

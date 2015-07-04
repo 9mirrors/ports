@@ -1,0 +1,62 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/liblzma.a
+
+OFILES=\
+#	../common \
+	tuklib_physmem.$O\
+#	check \
+	check.$O sha256.$O crc32_table.$O crc32_fast.$O crc64_table.$O crc64_fast.$O\
+#	common \
+	common.$O block_util.$O easy_preset.$O filter_common.$O hardware_physmem.$O index.$O\
+	stream_flags_common.$O vli_size.$O\
+	alone_encoder.$O block_buffer_encoder.$O block_encoder.$O block_header_encoder.$O\
+	easy_buffer_encoder.$O easy_encoder.$O easy_encoder_memusage.$O filter_buffer_encoder.$O\
+	filter_encoder.$O filter_flags_encoder.$O index_encoder.$O stream_buffer_encoder.$O\
+	stream_encoder.$O stream_flags_encoder.$O vli_encoder.$O\
+	alone_decoder.$O auto_decoder.$O block_buffer_decoder.$O block_decoder.$O\
+	block_header_decoder.$O easy_decoder_memusage.$O filter_buffer_decoder.$O filter_decoder.$O\
+	filter_flags_decoder.$O index_decoder.$O index_hash.$O stream_buffer_decoder.$O\
+	stream_decoder.$O stream_flags_decoder.$O\
+#	delta \
+	delta_common.$O delta_encoder.$O delta_decoder.$O\
+#	lz \
+	lz_encoder.$O lz_encoder_mf.$O lz_decoder.$O\
+#	lzma \
+	fastpos_table.$O lzma_encoder.$O lzma_encoder_presets.$O lzma_encoder_optimum_fast.$O\
+	lzma_encoder_optimum_normal.$O lzma_decoder.$O lzma2_encoder.$O lzma2_decoder.$O\
+#	rangecoder \
+	price_table.$O\
+#	simple \
+	simple_coder.$O simple_encoder.$O simple_decoder.$O
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-+ -c -B -I./api -I./common -I./check -I./lz -I./rangeorder -I./lzma -I./delta -I./simple -I../common -I../.. -DTUKLIB_SYMBOL_PREFIX=lzma_ -D_POSIX_SOURCE -D_SUSV2_SOURCE -DHAVE_CONFIG_H
+
+%.$O: ../common/%.c
+	$CC $CFLAGS ../common/$stem.c
+
+%.$O: check/%.c
+	$CC $CFLAGS check/$stem.c
+
+%.$O: common/%.c
+	$CC $CFLAGS common/$stem.c
+
+%.$O: delta/%.c
+	$CC $CFLAGS delta/$stem.c
+
+%.$O: lz/%.c
+	$CC $CFLAGS lz/$stem.c
+
+%.$O: lzma/%.c
+	$CC $CFLAGS lzma/$stem.c
+
+%.$O: rangecoder/%.c
+	$CC $CFLAGS rangecoder/$stem.c
+
+%.$O: simple/%.c
+	$CC $CFLAGS simple/$stem.c
+
+

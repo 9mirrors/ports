@@ -1,0 +1,17 @@
+</$objtype/mkfile
+LIB=libgnu.a$O
+OFILES=getopt1.$O getopt.$O 
+HFILES=getopt_int.h getopt.h ../config.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I.. -D_POSIX_SOURCE -D_SUSV2_SOURCE 
+
+getopt.$O: 
+getopt1.$O: 
+
+nuke:V:
+	mk clean
+	rm -f $LIB
