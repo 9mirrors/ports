@@ -60,3 +60,17 @@ CFLAGS=-+ -c -B -I./api -I./common -I./check -I./lz -I./rangeorder -I./lzma -I./
 	$CC $CFLAGS simple/$stem.c
 
 
+nuke:V:
+	rm -f /sys/include/ape/lzma.h
+	rm -rf /sys/include/ape/lzma 
+
+install:V:
+	cp api/lzma.h /sys/include/ape/
+	mkdir -p /sys/include/ape/lzma
+	cp api/lzma/*.h /sys/include/ape/lzma/
+
+
+
+
+
+

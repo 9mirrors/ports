@@ -1,0 +1,11 @@
+--- src/liblzma/api/lzma.orig	Sun Jul  5 04:06:03 2015
++++ src/liblzma/api/lzma.h	Sun Jul  5 04:06:51 2015
+@@ -30,6 +30,8 @@
+ #ifndef LZMA_H
+ #define LZMA_H
+ 
++#pragma lib "/$M/lib/ape/liblzma.a"
++
+ /*****************************
+  * Required standard headers *
+  *****************************/
