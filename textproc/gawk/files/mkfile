@@ -55,7 +55,20 @@ dfa.$O: regex.h dfa.h xalloc.h gettext.h config.h
 field.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
 
 install:V:
+	cp $O.out $BIN/pgawk
+	cp awklib/eg/prog/igawk.sh /rc/bin/ape/igawk
+	cp gawkapi.h /sys/include/ape/
+	cp doc/gawk.1 /sys/man/1/gawk
+	cp doc/igawk.1 /sys/man/1/igawk
+	mkdir -p /sys/lib/gawk
+	cp awklib/eg/lib/*.awk /sys/lib/gawk/
 
 
 nuke:V:
+	rm -f $BIN/pgawk
+	rm -f /rc/bin/ape/igawk
+	rm -f /sys/include/ape/gawkapi.h
+	rm -f /sys/man/1/gawk
+	rm -f /sys/man/1/igawk
+	rm -rf /sys/lib/gawk
 
