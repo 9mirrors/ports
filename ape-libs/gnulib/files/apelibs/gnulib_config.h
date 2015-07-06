@@ -14,6 +14,8 @@
 #define __USE_GNU 1
 #define PLAN9 1
 
+#define GNULIB_NAMESPACE 1
+
 /* headers provided by APE */
 #define HAVE_AR_H 1
 #define HAVE_ASSERT_H 1
@@ -152,7 +154,8 @@ typedef void* iconv_t;
 #define GNULIB_WCSWIDTH 1
 #define GNULIB_WCTYPE 1
 #define GNULIB_ISWCTYPE 1
-/* #define REPLACE_ISWCNTRL 1 */
+/* #define REPLACE_ISWCNTRL 1
+#define REPLACE_TOWLOWER 1 */ /* replaced by rpl_functions.c */
 #define GNULIB_WCTRANS 1
 #define GNULIB_TOWCTRANS 1
 #define GNULIB_RANDOM 1
@@ -162,7 +165,6 @@ typedef void* iconv_t;
 #define GNULIB_POLL 1
 #define GNULIB_STRNDUP 1
 #define GNULIB_STRNLEN 1
-#define GNULIB_defined_wctype_functions 1
 #define GNULIB_SETHOSTNAME 1
 
 #endif /* GNULIB_CONFIG_H */

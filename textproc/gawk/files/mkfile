@@ -1,14 +1,12 @@
 </$objtype/mkfile 
 TARG=gawk
-#temporary hack, issues with wchar in libgnu, no wcscoll in libutf8
-LIB=/$objtype/lib/ape/libgnu.a
 OFILES=field.$O dfa.$O cint_array.$O gawkapi.$O array.$O eval.$O io.$O \
 	replace.$O builtin.$O re.$O gawkmisc.$O floatcomp.$O ext.$O \
 	int_array.$O symbol.$O \
 	profile.$O version.$O random.$O node.$O msg.$O awkgram.$O \
 	command.$O debug.$O str_array.$O main.$O mpfr.$O \
 # gnulib \
-	getopt.$O getopt1.$O regex.$O
+#	getopt.$O getopt1.$O regex.$O
 
 BIN=/$objtype/bin
 
@@ -16,7 +14,7 @@ BIN=/$objtype/bin
 
 CC=pcc
 LD=pcc
-CFLAGS=-c -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -DHAVE_CONFIG_H -D_BSD_EXTENSION -DGAWK
+CFLAGS=-c -B -I. -I/sys/include/ape/gnulib -D_POSIX_SOURCE -D_SUSV2_SOURCE -DHAVE_CONFIG_H -D_BSD_EXTENSION -DGAWK
 
 mpfr.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
 main.$O: getopt.h gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h \

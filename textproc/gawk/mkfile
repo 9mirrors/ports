@@ -3,9 +3,7 @@
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='GNU awk'
 VERSION=4.1.3
-DEPS=ape-libs/gnulib ape-libs/libutf8
-#temporary issue: wchar stuff in gnulib not working yet
-#support incomplete in libutf8
+DEPS=ape-libs/gnulib
 
 WEBSOURCE=https://gnu.cu.be/gawk/gawk-4.1.3.tar.gz
 WORKFILE=gawk-4.1.3.tar.gz
