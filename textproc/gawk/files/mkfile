@@ -14,7 +14,7 @@ BIN=/$objtype/bin
 
 CC=pcc
 LD=pcc
-CFLAGS=-c -B -I. -I/sys/include/ape/gnulib -D_POSIX_SOURCE -D_SUSV2_SOURCE -DHAVE_CONFIG_H -D_BSD_EXTENSION -DGAWK
+CFLAGS=-c -B -I. -I/sys/include/ape/gnulib -D_POSIX_SOURCE -D_SUSV2_SOURCE -DHAVE_CONFIG_H -D_BSD_EXTENSION -DGAWK -Dputwc=putc
 
 mpfr.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
 main.$O: getopt.h gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h \
