@@ -48,15 +48,10 @@
 # include <ctype.h>
 #endif
 
-/* Include the original <wctype.h> if it exists.
-   BeOS 5 has the functions but no <wctype.h>.  */
-/* The include_next requires a split double-inclusion guard.  */
-#if HAVE_WCTYPE_H
-#include "/sys/include/ape/wctype.h"
-#endif
 
 #ifndef GNULIB_WCTYPE_H
 #define GNULIB_WCTYPE_H
+#define _UTF8_WCTYPE_H
 
 #ifndef _GL_INLINE_HEADER_BEGIN
  #error "Please include config.h first."

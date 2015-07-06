@@ -70,6 +70,7 @@
 
 #ifndef GNULIB_WCHAR_H
 #define GNULIB_WCHAR_H
+#define _UTF8_WCHAR_H
 
 /* The __attribute__ feature is available in gcc versions 2.5 and later.
    The attribute __pure__ was added in gcc 2.96.  */

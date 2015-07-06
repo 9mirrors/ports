@@ -9,6 +9,7 @@ install:V:
 	mkdir -p /sys/include/ape/utf8
 	cp include/utf8/*.h /sys/include/ape/utf8/
 	cp apeheaders/*.h /sys/include/ape/
+	cp types.h /sys/include/ape/utf8/
 	cd man && mk install
 
 clean:V:

@@ -1,0 +1,63 @@
+</$objtype/mkfile 
+TARG=gawk
+#temporary hack, issues with wchar in libgnu, no wcscoll in libutf8
+LIB=/$objtype/lib/ape/libgnu.a
+OFILES=field.$O dfa.$O cint_array.$O gawkapi.$O array.$O eval.$O io.$O \
+	replace.$O builtin.$O re.$O gawkmisc.$O floatcomp.$O ext.$O \
+	int_array.$O symbol.$O \
+	profile.$O version.$O random.$O node.$O msg.$O awkgram.$O \
+	command.$O debug.$O str_array.$O main.$O mpfr.$O \
+# gnulib \
+	getopt.$O getopt1.$O regex.$O
+
+BIN=/$objtype/bin
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -DHAVE_CONFIG_H -D_BSD_EXTENSION -DGAWK
+
+mpfr.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+main.$O: getopt.h gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h \
+	awk.h 
+str_array.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+debug.$O: cmd.h gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h \
+	awk.h 
+command.$O: cmd.h gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h \
+	awk.h 
+awkgram.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+awkgram.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+msg.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+node.$O: floatmagic.h gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h \
+	awk.h 
+random.$O: random.h 
+version.$O: config.h 
+profile.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+symbol.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+int_array.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+ext.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+floatcomp.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+gawkmisc.$O: posix/gawkmisc.c gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h \
+	gettext.h awk.h 
+re.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+builtin.$O: floatmagic.h random.h gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h \
+	gettext.h awk.h 
+replace.$O: missing_d/setenv.c missing_d/usleep.c gawkapi.h regex.h dfa.h regex.h \
+	protos.h mbsupport.h gettext.h awk.h 
+io.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+eval.$O: interpret.h interpret.h gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h \
+	gettext.h awk.h 
+array.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+command.$O: cmd.h gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h \
+	awk.h 
+gawkapi.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+cint_array.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+dfa.$O: regex.h dfa.h xalloc.h gettext.h config.h 
+field.$O: gawkapi.h regex.h dfa.h regex.h protos.h mbsupport.h gettext.h awk.h 
+
+install:V:
+
+
+nuke:V:
+

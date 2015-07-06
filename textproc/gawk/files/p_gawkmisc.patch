@@ -1,0 +1,14 @@
+--- gawk-4.1.3/posix/gawkmisc.orig	Sun Jul  5 11:03:27 2015
++++ gawk-4.1.3/posix/gawkmisc.c	Sun Jul  5 11:04:06 2015
+@@ -220,9 +220,9 @@
+ #ifdef S_IFSOCK
+ 	case S_IFSOCK:
+ #endif
+-#ifdef S_IFIFO
++/* #ifdef S_IFIFO
+ 	case S_IFIFO:
+-#endif
++#endif */
+ 		return true;
+ 	case S_IFDIR:
+ 		*isdir = true;

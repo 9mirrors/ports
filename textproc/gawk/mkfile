@@ -2,16 +2,18 @@
 
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='GNU awk'
-VERSION=4.0.0b
+VERSION=4.1.3
 DEPS=ape-libs/gnulib ape-libs/libutf8
+#temporary issue: wchar stuff in gnulib not working yet
+#support incomplete in libutf8
 
-WEBSOURCE=http://9p.io/sources/contrib/staal1978/pkg/gawk-4.0.0b.pkg.tbz
-WORKFILE=gawk-4.0.0b.pkg.tbz
+WEBSOURCE=https://gnu.cu.be/gawk/gawk-4.1.3.tar.gz
+WORKFILE=gawk-4.1.3.tar.gz
 EXTRACTCOMMAND=tar xzvf
-BUILDPATH=work/sys/src/pkg/gawk
-BUILDCOMMAND=mk -f mkfile.gawk
-INSTALLCOMMAND=mk -f mkfile.gawk BIN=/$objtype/bin install
+PATCHES=files
+BUILDPATH=work/gawk-4.1.3
+BUILDCOMMAND=mk 
+INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
-UNINSTALL=/$objtype/bin/gawk
 
 </sys/ports/Mk/mkfile
