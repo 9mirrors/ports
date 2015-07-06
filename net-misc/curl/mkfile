@@ -3,7 +3,7 @@
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='curl'
 VERSION='7.28.1'
-DEPS=ape-libs/libpoll
+DEPS=textproc/gawk ape-libs/zlib
 
 WEBSOURCE=http://9p.io/sources/contrib/staal1978/pkg/curl-7.28.1.tbz
 WORKFILE=curl-7.28.1.tbz
