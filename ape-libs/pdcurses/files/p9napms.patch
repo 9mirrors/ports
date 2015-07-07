@@ -1,5 +1,5 @@
---- plan9/pdcplan9.org	Sat Jul  4 12:17:37 2015
-+++ plan9/pdcplan9.c	Sat Jul  4 12:19:01 2015
+--- a/plan9/pdcplan9.org	Sat Jul  4 12:17:37 2015
++++ b/plan9/pdcplan9.c	Sat Jul  4 12:19:01 2015
 @@ -26,8 +26,6 @@
  #include <keyboard.h>
  #include "pdcplan9.h"
