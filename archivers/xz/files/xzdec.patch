@@ -1,5 +1,5 @@
---- src/xzdec/xzdec.ori	Sat Jul  4 04:41:15 2015
-+++ src/xzdec/xzdec.c	Sat Jul  4 04:43:06 2015
+--- a/src/xzdec/xzdec.ori	Sat Jul  4 04:41:15 2015
++++ b/src/xzdec/xzdec.c	Sat Jul  4 04:43:06 2015
 @@ -320,4 +320,5 @@
  #endif
  
