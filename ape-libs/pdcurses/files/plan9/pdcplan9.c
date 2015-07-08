@@ -26,8 +26,6 @@
 #include <keyboard.h>
 #include "pdcplan9.h"
 
-extern int _SLEEP(long);
-
 enum {
 	Ncolors = 18,
 	Eresized = 3,
@@ -65,7 +63,7 @@ static void fatal(char *s)
 
 void p9napms(int ms)
 {
-	_SLEEP(ms);
+	sleep(ms);
 }
 
 
