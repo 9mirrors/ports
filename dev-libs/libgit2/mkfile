@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='git linkable library'
+VERSION=24f2f7b3633c
+
+WEBSOURCE=https://bitbucket.org/oridb/libgit2/get/24f2f7b3633c.zip
+WORKFILE=tip.tar.gz
+EXTRACTCOMMAND=unzip -af
+BUILDPATH=work/oridb-libgit2-24f2f7b3633c
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk uninstall
+
+</sys/ports/Mk/mkfile

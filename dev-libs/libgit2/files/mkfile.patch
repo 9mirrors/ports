@@ -1,0 +1,15 @@
+--- a/mkfile	Mon Jul 13 06:39:56 2015
++++ b/mkfile	Mon Jul 13 06:50:49 2015
+@@ -50,7 +50,11 @@
+ 	cp $LIB /$objtype/lib/$LIB
+ 	mkdir -p /sys/include/git2
+ 	dircp include/git2 /sys/include/git2
+-	
++
++uninstall:V:
++	rm -r /sys/include/git2
++	rm /$objtype/lib/$LIB
++
+ clean:V:
+ 	rm -f $OFILES
+ 
