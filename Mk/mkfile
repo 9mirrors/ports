@@ -21,27 +21,27 @@ info:VQE:
 fetch:VQE:
 	. /sys/ports/Config/ports.conf
 	mkdir -p work/
-	test -e work/.patched && rm work/.patched
+	bind -c work /n/work
+	cd /n/work
+	test -e .patched && rm .patched
 	if(! ~ $#WEBSOURCE 0){
-		@{ rfork ne; webfs && hget $WEBSOURCE > work/$WORKFILE } || exit $status
+		@{ rfork ne; webfs && hget $WEBSOURCE > $WORKFILE } || exit $status
 	}
 	if(! ~ $#9PSERVER 0){
 		if(! ~ $#9PFILE 0){
-			@{ rfork ne; 9fs $9PSERVER && fcp $9PFILE work/$WORKFILE } || exit $status
+			@{ rfork ne; 9fs $9PSERVER && fcp $9PFILE $WORKFILE } || exit $status
 		}
 		if(! ~ $#9PDIR 0){
-			@{ rfork ne; 9fs $9PSERVER && dircp $9PDIR work/ } || exit $status
+			@{ rfork ne; 9fs $9PSERVER && dircp $9PDIR ./ } || exit $status
 		}
 	}
 	if(! ~ $#EXTRACTCOMMAND 0){
-		file=`{pwd}^/work/^$WORKFILE
-		cd work
+		file=`{pwd}^/^$WORKFILE
 		$EXTRACTCOMMAND $file || exit $status
 	}
 	if(! ~ $#HGSOURCE 0){
 		@{
 			rfork ne
-			cd work
 			{ webfs && hg clone $HGSOURCE } || exit $status
 			if(! ~ $HGREV 0){
 				hg up $HGREV
