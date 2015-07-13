@@ -1,0 +1,14 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='etcd client filesystem'
+DEPS=dev-libs/libwebfs
+
+HGSOURCE=https://bitbucket.org/mischief/etcdfs
+BUILDPATH=work/etcdfs
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk uninstall
+
+</sys/ports/Mk/mkfile
