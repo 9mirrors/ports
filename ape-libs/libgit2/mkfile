@@ -2,12 +2,11 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='git linkable library'
-VERSION=24f2f7b3633c
+VERSION=9999
 
-WEBSOURCE=https://bitbucket.org/oridb/libgit2/get/24f2f7b3633c.zip
-WORKFILE=tip.tar.gz
-EXTRACTCOMMAND=unzip -af
-BUILDPATH=work/oridb-libgit2-24f2f7b3633c
+HGSOURCE=https://bitbucket.org/oridb/libgit2
+HGREV=24f2f7b3633c
+BUILDPATH=work/libgit2
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
