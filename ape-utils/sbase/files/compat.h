@@ -21,7 +21,11 @@
 #define _POSIX_HOST_NAME_MAX _POSIX_NAME_MAX
 
 #define lchown chown
+
+#ifndef PRIu32
 #define PRIu32 "lu"
+#endif
+
 #define intmax_t int32_t
 #define uintmax_t uint32_t
 
