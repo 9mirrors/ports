@@ -60,12 +60,14 @@
 #define SHLIBEXT "a"
 #define uintmax_t uint64_t
 #define intmax_t int64_t
+
+#ifndef INT32_MAX
 #define INT32_MAX INT_MAX
+#endif
+
+#ifndef INT32_MIN
 #define INT32_MIN INT_MIN
+#endif
 
 #define SIZEOF_UNSIGNED_INT 4
 #define SIZEOF_UNSIGNED_LONG 8
-
-
-
-
