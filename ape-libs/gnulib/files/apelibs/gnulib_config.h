@@ -80,7 +80,9 @@
 
 /* hacks */
 #include <limits.h>
+#ifndef SIZE_MAX
 #define SIZE_MAX LONG_MAX
+#endif
 #ifndef PATH_MAX
 #define PATH_MAX _POSIX_PATH_MAX
 #endif
