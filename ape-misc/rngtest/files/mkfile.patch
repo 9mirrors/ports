@@ -1,0 +1,8 @@
+--- a/mkfile	Mon Jul 13 20:45:51 2015
++++ b/mkfile	Mon Jul 13 20:46:45 2015
+@@ -11,4 +11,4 @@
+ BIN=$APEBIN
+ </sys/src/cmd/mkone
+ 
+-CFLAGS=-c -I. -D_POSIX_SOURCE -D_BSD_EXTENSION -D_SUSV2_SOURCE -D'PRIu64="lld"'
++CFLAGS=-c -I. -D_POSIX_SOURCE -D_BSD_EXTENSION -D_SUSV2_SOURCE
