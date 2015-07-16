@@ -43,6 +43,7 @@ pth_attr.$O: pth_acmac.h pth_acdef.h pth.h pth_vers.c pth_p.h
 nuke:V:
 	mk clean
 	rm -f $LIB
+
 install:V:
 	mk -f mkfile.pthread $target
 	cp pth-config.1 /sys/man/1/pth-config

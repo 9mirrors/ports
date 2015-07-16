@@ -1,0 +1,91 @@
+--- pth-2.0.7/pth_mctx.c	Thu Jul 16 04:20:26 2015
++++ oldport/pth_mctx.c	Sun Jun  7 19:20:19 2015
+@@ -39,13 +39,13 @@
+  * the value of `errno'.
+  */
+ 
+-#if PTH_MCTX_MTH(mcsc)
++#if PTH_MCTX_MTH(mcsc) 
+ #include <ucontext.h>
+ #endif
+ 
+ typedef struct pth_mctx_st pth_mctx_t;
+ struct pth_mctx_st {
+-#if PTH_MCTX_MTH(mcsc)
++#if PTH_MCTX_MTH(mcsc) 
+     ucontext_t uc;
+     int restored;
+ #elif PTH_MCTX_MTH(sjlj)
+@@ -54,7 +54,7 @@
+ #error "unknown mctx method"
+ #endif
+     sigset_t sigs;
+-#if PTH_MCTX_DSP(sjlje)
++#if PTH_MCTX_DSP(sjlje) 
+     sigset_t block;
+ #endif
+     int error;
+@@ -67,7 +67,7 @@
+ /*
+  * save the current machine context
+  */
+-#if PTH_MCTX_MTH(mcsc)
++#if PTH_MCTX_MTH(mcsc) 
+ #define pth_mctx_save(mctx) \
+         ( (mctx)->error = errno, \
+           (mctx)->restored = 0, \
+@@ -78,7 +78,7 @@
+         ( (mctx)->error = errno, \
+           pth_sc(sigprocmask)(SIG_SETMASK, &((mctx)->block), NULL), \
+           pth_sigsetjmp((mctx)->jb) )
+-#elif PTH_MCTX_MTH(sjlj)
++#elif PTH_MCTX_MTH(sjlj) 
+ #define pth_mctx_save(mctx) \
+         ( (mctx)->error = errno, \
+           pth_sigsetjmp((mctx)->jb) )
+@@ -180,7 +180,9 @@
+ #elif PTH_MCTX_MTH(sjlj)     &&\
+       !PTH_MCTX_DSP(sjljlx)  &&\
+       !PTH_MCTX_DSP(sjljisc) &&\
+-      !PTH_MCTX_DSP(sjljw32)
++      !PTH_MCTX_DSP(sjljw32) &&\
++	  !PTH_MCTX_DSP(sjljp9) &&\
++	  !PLAN9
+ 
+ /*
+  * VARIANT 2: THE SIGNAL STACK TRICK
+@@ -534,6 +536,34 @@
+     mctx->error = 0;
+     return TRUE;
+ }
++
++
++/*
++ * VARIANT 9: JMP_BUF FIDDLING FOR Plan9/APE
++ * APE has setjmp(2) and longjmp but not sigstack(2) or signalstack(2)
++ * APE also has sigsetjmp and siglongjmp
++* jb is defined as jmp_buf[]
++* info on jmp_buf is (unfortunately) asm and found in
++* /sys/src/ape/lib/ap/$objtype/setjmp.s
++* Thanks to Erik Quanström for help and feedback, even
++* if he thought it a BAD IDEA :)
++*/ 
++#elif PTH_MCTX_MTH(sjlj) && PTH_MCTX_DSP(sjljp9) || PLAN9
++#include <inttypes.h>
++intern int
++pth_mctx_set(pth_mctx_t *mctx, void (*func)(void),
++             char *sk_addr_lo, char *sk_addr_hi)
++{
++    pth_mctx_save(mctx);
++    sigemptyset(&mctx->sigs);
++    mctx->error = 0;
++/*    ...start hacking here... */
++    mctx->jb[1] = (int)func; /* equal to "pc" */
++    mctx->jb[0] = (int)sk_addr_hi; /* equal to "sp" */
++/*    mctx->jb[1] = (int)sk_addr_lo; */ /* equal to what? */
++    return TRUE;
++}
++
+ 
+ /*
+  * VARIANT X: JMP_BUF FIDDLING FOR ONE MORE ESOTERIC OS

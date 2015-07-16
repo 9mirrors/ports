@@ -4,10 +4,10 @@ OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='GNU Pth userspace pthread library for APE'
 VERSION=1
 
-WEBSOURCE=http://plan9.bell-labs.com/sources/contrib/staal1978/pkg/pth-2.0.7.tbz
-WORKFILE=pth-2.0.7.tbz
+WEBSOURCE=https://gnu.cu.be/pth/pth-2.0.7.tar.gz
+WORKFILE=pth-2.0.7.tar.gz
 EXTRACTCOMMAND=tar xzvf
-BUILDPATH=work/sys/src/pkg/pth
+BUILDPATH=work/pth-2.0.7/
 PATCHES=files
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install
