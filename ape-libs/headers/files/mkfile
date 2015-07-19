@@ -1,6 +1,6 @@
 </$objtype/mkfile
 
-HFILES=err stdint stdbool
+HFILES=err stdbool
 
 default:VQ:
 	for (i in $HFILES)
