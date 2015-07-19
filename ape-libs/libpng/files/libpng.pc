@@ -1,0 +1,11 @@
+prefix=/$objtype
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib/ape
+includedir=/sys/include/ape
+
+Name: libpng
+Description: Loads and saves PNG files
+Version: 1.6.17
+Libs: -L${libdir} -lpng
+Libs.private: -lz 
+Cflags: -I${includedir}

@@ -1,0 +1,14 @@
+</$objtype/mkfile
+TARG=pnm2png png2pnm 
+LIB=../../libpng.a 
+BIN=/$objtype/bin
+HFILES=../../png.h 
+
+</sys/src/cmd/mkmany
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I../../ -B -D_POSIX_SOURCE -D_SUSV2_SOURCE 
+
+png2pnm.$O: 
+pnm2png.$O: 
