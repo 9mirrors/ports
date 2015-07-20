@@ -1,5 +1,5 @@
 </$objtype/mkfile
-LIB=/$objtype/lib/libpng.a
+LIB=/$objtype/lib/ape/libpng.a
 OFILES=pngread.$O example.$O pngtrans.$O pngrutil.$O pngwtran.$O pngwio.$O pngerror.$O \
 	pngwrite.$O pngget.$O png.$O pngrio.$O pngwutil.$O pngmem.$O pngrtran.$O \
 	pngpread.$O pngset.$O 
@@ -18,8 +18,8 @@ nuke:V:
 	rm -f /sys/include/ape/png.h
 	rm -f /sys/include/ape/pnglibconf.h
 	rm -f /sys/include/ape/pngconf.h
-#	mk -f contrib/pngminus/mkfile nuke
 	rm -f /rc/bin/ape/libpng-config
+	cd contrib/pngminus  && mk nuke
 
 install:V:
 	cp libpngpf.3 /sys/man/3/libpngpf
@@ -27,7 +27,7 @@ install:V:
 	cp png.h /sys/include/ape/
 	cp pnglibconf.h /sys/include/ape/
 	cp pngconf.h /sys/include/ape/
-#	mk -f contrib/pngminus/mkfile install
 	cp libpng-config /rc/bin/ape/
+	cd contrib/pngminus && mk install
 	
 
