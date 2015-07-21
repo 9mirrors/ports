@@ -1,0 +1,39 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libjson-c.a
+OFILES=arraylist.$O debug.$O json_c_version.$O json_object.$O json_object_iterator.$O \
+	json_tokener.$O json_util.$O libjson.$O linkhash.$O printbuf.$O random_seed.$O 
+HFILES=config.h 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -DHAVE_CONFIG_H
+
+random_seed.$O: random_seed.h 
+printbuf.$O: printbuf.h debug.h 
+linkhash.$O: json_config.h json_inttypes.h json_object.h linkhash.h random_seed.h 
+libjson.$O: json_object.h 
+json_util.$O: json_object.h json_util.h json_tokener.h json_object.h json_inttypes.h \
+	printbuf.h debug.h 
+json_tokener.$O: json_object.h json_util.h json_tokener.h json_object.h json_inttypes.h \
+	arraylist.h printbuf.h debug.h math_compat.h 
+json_object_iterator.$O: json_object_iterator.h json_object_private.h json_c_version.h \
+	json_object_iterator.h json_object.h json_tokener.h json_object.h json_object.h \
+	json_util.h arraylist.h json_config.h json_inttypes.h json_object.h linkhash.h \
+	debug.h json.h 
+json_object.$O: math_compat.h json_object.h json_util.h json_object_private.h json_object.h \
+	json_inttypes.h arraylist.h json_config.h json_inttypes.h json_object.h \
+	linkhash.h printbuf.h debug.h 
+json_c_version.$O: json_c_version.h 
+debug.$O: debug.h 
+arraylist.$O: arraylist.h 
+
+install:V:
+	mkdir /sys/include/ape/json
+	cp apeheaders/*.h /sys/include/ape/json/
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -rf /sys/include/ape/json

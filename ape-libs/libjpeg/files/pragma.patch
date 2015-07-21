@@ -1,0 +1,36 @@
+diff -ru orig/jerror.h jpeg-9a/jerror.h
+--- orig/jerror.h	Tue Jul 21 03:38:47 2015
++++ jpeg-9a/jerror.h	Tue Jul 21 05:25:32 2015
+@@ -21,6 +21,9 @@
+  */
+ #ifndef JMESSAGE
+ #ifndef JERROR_H
++
++#pragma lib "/$M/lib/ape/libjpeg.a"
++
+ /* First time through, define the enum list */
+ #define JMAKE_ENUM_LIST
+ #else
+diff -ru orig/jmorecfg.h jpeg-9a/jmorecfg.h
+--- orig/jmorecfg.h	Tue Jul 21 03:38:47 2015
++++ jpeg-9a/jmorecfg.h	Tue Jul 21 05:26:20 2015
+@@ -11,6 +11,7 @@
+  * optimizations.  Most users will not need to touch this file.
+  */
+ 
++#pragma lib "/$M/lib/ape/libjpeg.a"
+ 
+ /*
+  * Define BITS_IN_JSAMPLE as either
+diff -ru orig/jpeglib.h jpeg-9a/jpeglib.h
+--- orig/jpeglib.h	Tue Jul 21 03:38:49 2015
++++ jpeg-9a/jpeglib.h	Tue Jul 21 05:26:37 2015
+@@ -14,6 +14,8 @@
+ #ifndef JPEGLIB_H
+ #define JPEGLIB_H
+ 
++#pragma lib "/$M/lib/ape/libjpeg.a"
++
+ /*
+  * First we include the configuration files that record how this
+  * installation of the JPEG library is set up.  jconfig.h can be

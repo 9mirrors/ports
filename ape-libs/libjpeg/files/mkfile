@@ -1,0 +1,121 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libjpeg.a
+OFILES=jaricom.$O jcapimin.$O jcapistd.$O jcarith.$O \
+	jccoefct.$O jccolor.$O jcdctmgr.$O jchuff.$O jcinit.$O \
+	jcmainct.$O jcmarker.$O jcmaster.$O jcomapi.$O jcparam.$O \
+	jcprepct.$O jcsample.$O jctrans.$O jdapimin.$O jdapistd.$O \
+	jdarith.$O jdatadst.$O jdatasrc.$O jdcoefct.$O jdcolor.$O \
+	jddctmgr.$O jdhuff.$O jdinput.$O jdmainct.$O jdmarker.$O \
+	jdmaster.$O jdmerge.$O jdpostct.$O jdsample.$O jdtrans.$O \
+	jerror.$O jfdctflt.$O jfdctfst.$O jfdctint.$O jidctflt.$O \
+	jidctfst.$O jidctint.$O jquant1.$O jquant2.$O jutils.$O \
+	jmemmgr.$O jmemnobs.$O 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION 
+
+wrgif.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+wrbmp.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+ckconfig.$O: 
+jdarith.$O: jpeglib.h jconfig.h jinclude.h 
+jcinit.$O: jpeglib.h jconfig.h jinclude.h 
+jchuff.$O: jpeglib.h jconfig.h jinclude.h 
+cdjpeg.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+jfdctint.$O: jdct.h jpeglib.h jconfig.h jinclude.h 
+jmemmgr.$O: jmemsys.h jpeglib.h jconfig.h jinclude.h 
+jmemmac.$O: Gestalt.h Script.h Folders.h Files.h Memory.h jmemsys.h jpeglib.h jconfig.h \
+	jinclude.h 
+jfdctfst.$O: jdct.h jpeglib.h jconfig.h jinclude.h 
+jfdctflt.$O: jdct.h jpeglib.h jconfig.h jinclude.h 
+jmemdos.$O: jmemsys.h jpeglib.h jconfig.h jinclude.h 
+jcsample.$O: jpeglib.h jconfig.h jinclude.h 
+rdcolmap.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+jpegtran.$O: jversion.h transupp.h cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h \
+	jinclude.h cdjpeg.h 
+jmemnobs.$O: jmemsys.h jpeglib.h jconfig.h jinclude.h 
+jdmaster.$O: jpeglib.h jconfig.h jinclude.h 
+jmemname.$O: jmemsys.h jpeglib.h jconfig.h jinclude.h 
+jdmarker.$O: jpeglib.h jconfig.h jinclude.h 
+jdpostct.$O: jpeglib.h jconfig.h jinclude.h 
+jddctmgr.$O: jdct.h jpeglib.h jconfig.h jinclude.h 
+jdtrans.$O: jpeglib.h jconfig.h jinclude.h 
+jdapistd.$O: jpeglib.h jconfig.h jinclude.h 
+jdapimin.$O: jpeglib.h jconfig.h jinclude.h 
+jutils.$O: jpeglib.h jconfig.h jinclude.h 
+jdmainct.$O: jpeglib.h jconfig.h jinclude.h 
+jdcoefct.$O: jpeglib.h jconfig.h jinclude.h 
+jmemansi.$O: jmemsys.h jpeglib.h jconfig.h jinclude.h 
+rdswitch.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+jccolor.$O: jpeglib.h jconfig.h jinclude.h 
+jidctint.$O: jdct.h jpeglib.h jconfig.h jinclude.h 
+jidctfst.$O: jdct.h jpeglib.h jconfig.h jinclude.h 
+jidctflt.$O: jdct.h jpeglib.h jconfig.h jinclude.h 
+jdmerge.$O: jpeglib.h jconfig.h jinclude.h 
+jaricom.$O: jpeglib.h jconfig.h jinclude.h 
+jquant2.$O: jpeglib.h jconfig.h jinclude.h 
+jquant1.$O: jpeglib.h jconfig.h jinclude.h 
+cjpeg.$O: cderror.h jversion.h cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h \
+	jinclude.h cdjpeg.h 
+wrtarga.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+jcprepct.$O: jpeglib.h jconfig.h jinclude.h 
+jdsample.$O: jpeglib.h jconfig.h jinclude.h 
+wrjpgcom.$O: jconfig.h jinclude.h 
+jcarith.$O: jpeglib.h jconfig.h jinclude.h 
+jcparam.$O: jpeglib.h jconfig.h jinclude.h 
+jerror.$O: jerror.h jerror.h jversion.h jpeglib.h jconfig.h jinclude.h 
+jcomapi.$O: jpeglib.h jconfig.h jinclude.h 
+jdhuff.$O: jpeglib.h jconfig.h jinclude.h 
+jcmaster.$O: jpeglib.h jconfig.h jinclude.h 
+jdcolor.$O: jpeglib.h jconfig.h jinclude.h 
+jcmarker.$O: jpeglib.h jconfig.h jinclude.h 
+djpeg.$O: cderror.h jversion.h cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h \
+	jinclude.h cdjpeg.h 
+jdatasrc.$O: jerror.h jpeglib.h jconfig.h jinclude.h 
+rdtarga.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+jcdctmgr.$O: jdct.h jpeglib.h jconfig.h jinclude.h 
+rdrle.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+rdppm.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+jdatadst.$O: jerror.h jpeglib.h jconfig.h jinclude.h 
+transupp.$O: transupp.h jpeglib.h jconfig.h jinclude.h 
+rdgif.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+rdbmp.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+jctrans.$O: jpeglib.h jconfig.h jinclude.h 
+jcapistd.$O: jpeglib.h jconfig.h jinclude.h 
+jcapimin.$O: jpeglib.h jconfig.h jinclude.h 
+example.$O: jpeglib.h 
+jcmainct.$O: jpeglib.h jconfig.h jinclude.h 
+jccoefct.$O: jpeglib.h jconfig.h jinclude.h 
+rdjpgcom.$O: jconfig.h jinclude.h 
+jdinput.$O: jpeglib.h jconfig.h jinclude.h 
+wrrle.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+wrppm.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -f /sys/include/ape/jerror.h
+	rm -f /sys/include/ape/jmorecfg.h
+	rm -f /sys/include/ape/jpeglib.h
+	mk -f mkfile.djpeg nuke
+	mk -f mkfile.cjpeg nuke
+	mk -f mkfile.wrjpgcom nuke
+	mk -f mkfile.jpegtran nuke 
+
+install:V:
+	cp rdjpgcom.1 /sys/man/1/rdjpgcom
+	cp djpeg.1 /sys/man/1/djpeg
+	cp wrjpgcom.1 /sys/man/1/wrjpgcom
+	cp jpegtran.1 /sys/man/1/jpegtran
+	cp cjpeg.1 /sys/man/1/cjpeg
+	cp jerror.h /sys/include/ape/
+	cp jmorecfg.h /sys/include/ape/
+	cp jpeglib.h /sys/include/ape/
+	mk -f mkfile.djpeg install
+	mk -f mkfile.cjpeg install
+	mk -f mkfile.wrjpgcom install
+	mk -f mkfile.jpegtran install 
+

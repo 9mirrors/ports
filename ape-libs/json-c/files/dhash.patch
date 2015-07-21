@@ -1,0 +1,77 @@
+diff -ru orig/debug.h json-c-master/debug.h
+--- orig/debug.h	Mon Jul 20 04:23:49 2015
++++ json-c-master/debug.h	Mon Jul 20 05:06:42 2015
+@@ -48,20 +48,20 @@
+ 
+ #endif
+ 
+-#define MC_ERROR(x, ...) mc_error(x, ##__VA_ARGS__)
++#define MC_ERROR(x, ...) mc_error(x, __VA_ARGS__)
+ 
+ #ifdef MC_MAINTAINER_MODE
+ #define MC_SET_DEBUG(x) mc_set_debug(x)
+ #define MC_GET_DEBUG() mc_get_debug()
+ #define MC_SET_SYSLOG(x) mc_set_syslog(x)
+-#define MC_DEBUG(x, ...) mc_debug(x, ##__VA_ARGS__)
+-#define MC_INFO(x, ...) mc_info(x, ##__VA_ARGS__)
++#define MC_DEBUG(x, ...) mc_debug(x, __VA_ARGS__)
++#define MC_INFO(x, ...) mc_info(x, __VA_ARGS__)
+ #else
+ #define MC_SET_DEBUG(x) if (0) mc_set_debug(x)
+ #define MC_GET_DEBUG() (0)
+ #define MC_SET_SYSLOG(x) if (0) mc_set_syslog(x)
+-#define MC_DEBUG(x, ...) if (0) mc_debug(x, ##__VA_ARGS__)
+-#define MC_INFO(x, ...) if (0) mc_info(x, ##__VA_ARGS__)
++#define MC_DEBUG(x, ...) if (0) mc_debug(x, __VA_ARGS__)
++#define MC_INFO(x, ...) if (0) mc_info(x, __VA_ARGS__)
+ #endif
+ 
+ #ifdef __cplusplus
+diff -ru orig/json_object.h json-c-master/json_object.h
+--- orig/json_object.h	Mon Jul 20 04:23:49 2015
++++ json-c-master/json_object.h	Mon Jul 20 05:19:47 2015
+@@ -354,28 +354,28 @@
+ # define json_object_object_foreach(obj,key,val) \
+ 	char *key; \
+ 	struct json_object *val __attribute__((__unused__)); \
+-	for(struct lh_entry *entry ## key = json_object_get_object(obj)->head, *entry_next ## key = NULL; \
+-		({ if(entry ## key) { \
+-			key = (char*)entry ## key->k; \
+-			val = (struct json_object*)entry ## key->v; \
+-			entry_next ## key = entry ## key->next; \
+-		} ; entry ## key; }); \
+-		entry ## key = entry_next ## key )
++	for(struct lh_entry *entry key = json_object_get_object(obj)->head, *entry_next key = NULL; \
++		({ if(entry key) { \
++			key = (char*)entry key->k; \
++			val = (struct json_object*)entry key->v; \
++			entry_next key = entry key->next; \
++		} ; entry key; }); \
++		entry key = entry_next key )
+ 
+ #else /* ANSI C or MSC */
+ 
+ # define json_object_object_foreach(obj,key,val) \
+ 	char *key;\
+ 	struct json_object *val; \
+-	struct lh_entry *entry ## key; \
+-	struct lh_entry *entry_next ## key = NULL; \
+-	for(entry ## key = json_object_get_object(obj)->head; \
+-		(entry ## key ? ( \
+-			key = (char*)entry ## key->k, \
+-			val = (struct json_object*)entry ## key->v, \
+-			entry_next ## key = entry ## key->next, \
+-			entry ## key) : 0); \
+-		entry ## key = entry_next ## key)
++	struct lh_entry *entry key; \
++	struct lh_entry *entry_next key = NULL; \
++	for(entry key = json_object_get_object(obj)->head; \
++		(entry key ? ( \
++			key = (char*)entry key->k, \
++			val = (struct json_object*)entry key->v, \
++			entry_next key = entry key->next, \
++			entry key) : 0); \
++		entry key = entry_next key)
+ 
+ #endif /* defined(__GNUC__) && !defined(__STRICT_ANSI__) && __STDC_VERSION__ >= 199901L */
+ 
