@@ -1,0 +1,26 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libexpat.a
+OFILES=xmlparse.$O xmlrole.$O xmltok.$O xmltok_impl.$O xmltok_ns.$O
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -B -I. -I./xmlwf -I./lib -DHAVE_EXPAT_CONFIG_H -D_POSIX_SOURCE -DHAVE_UNISTD_H 
+
+%.$O: lib/%.c
+	$CC $CFLAGS lib/$stem.c
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -f /sys/man/1/xmlwf
+	rm -f /sys/include/ape/expat.h
+	rm -f /sys/include/ape/expat_external.h
+#	mk -f mkfile.bin nuke
+
+install:V:
+	cp doc/xmlwf.1 /sys/man/1/xmlwf
+	cp lib/expat.h /sys/include/ape/
+	cp lib/expat_external.h /sys/include/ape/
+#	mk -f mkfile.bin install

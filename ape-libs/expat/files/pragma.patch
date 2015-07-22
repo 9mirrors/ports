@@ -1,0 +1,24 @@
+diff -ru orig/expat.h lib/expat.h
+--- orig/expat.h	Wed Jul 22 04:10:19 2015
++++ lib/expat.h	Wed Jul 22 05:39:31 2015
+@@ -5,6 +5,8 @@
+ #ifndef Expat_INCLUDED
+ #define Expat_INCLUDED 1
+ 
++#pragma lib "/$M/lib/ape/libexpat.a"
++
+ #ifdef __VMS
+ /*      0        1         2         3      0        1         2         3
+         1234567890123456789012345678901     1234567890123456789012345678901 */
+diff -ru orig/expat_external.h lib/expat_external.h
+--- orig/expat_external.h	Wed Jul 22 04:10:18 2015
++++ lib/expat_external.h	Wed Jul 22 05:39:55 2015
+@@ -5,6 +5,8 @@
+ #ifndef Expat_External_INCLUDED
+ #define Expat_External_INCLUDED 1
+ 
++#pragma lib "/$M/lib/ape/libexpat.a"
++
+ /* External API definitions */
+ 
+ #if defined(_MSC_EXTENSIONS) && !defined(__BEOS__) && !defined(__CYGWIN__)
