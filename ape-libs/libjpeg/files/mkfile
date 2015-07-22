@@ -23,7 +23,6 @@ ckconfig.$O:
 jdarith.$O: jpeglib.h jconfig.h jinclude.h 
 jcinit.$O: jpeglib.h jconfig.h jinclude.h 
 jchuff.$O: jpeglib.h jconfig.h jinclude.h 
-cdjpeg.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
 jfdctint.$O: jdct.h jpeglib.h jconfig.h jinclude.h 
 jmemmgr.$O: jmemsys.h jpeglib.h jconfig.h jinclude.h 
 jmemmac.$O: Gestalt.h Script.h Folders.h Files.h Memory.h jmemsys.h jpeglib.h jconfig.h \
@@ -57,8 +56,6 @@ jdmerge.$O: jpeglib.h jconfig.h jinclude.h
 jaricom.$O: jpeglib.h jconfig.h jinclude.h 
 jquant2.$O: jpeglib.h jconfig.h jinclude.h 
 jquant1.$O: jpeglib.h jconfig.h jinclude.h 
-cjpeg.$O: cderror.h jversion.h cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h \
-	jinclude.h cdjpeg.h 
 wrtarga.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
 jcprepct.$O: jpeglib.h jconfig.h jinclude.h 
 jdsample.$O: jpeglib.h jconfig.h jinclude.h 
@@ -74,14 +71,9 @@ jcmarker.$O: jpeglib.h jconfig.h jinclude.h
 djpeg.$O: cderror.h jversion.h cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h \
 	jinclude.h cdjpeg.h 
 jdatasrc.$O: jerror.h jpeglib.h jconfig.h jinclude.h 
-rdtarga.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
 jcdctmgr.$O: jdct.h jpeglib.h jconfig.h jinclude.h 
-rdrle.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
-rdppm.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
 jdatadst.$O: jerror.h jpeglib.h jconfig.h jinclude.h 
 transupp.$O: transupp.h jpeglib.h jconfig.h jinclude.h 
-rdgif.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
-rdbmp.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
 jctrans.$O: jpeglib.h jconfig.h jinclude.h 
 jcapistd.$O: jpeglib.h jconfig.h jinclude.h 
 jcapimin.$O: jpeglib.h jconfig.h jinclude.h 
@@ -115,7 +107,10 @@ install:V:
 	cp jmorecfg.h /sys/include/ape/
 	cp jpeglib.h /sys/include/ape/
 	mk -f mkfile.djpeg install
-	mk -f mkfile.cjpeg install
+	mk clean
+#	mk -f mkfile.cjpeg install
+#	mk clean
 	mk -f mkfile.wrjpgcom install
-	mk -f mkfile.jpegtran install 
+	mk clean
+#	mk -f mkfile.jpegtran install 
 

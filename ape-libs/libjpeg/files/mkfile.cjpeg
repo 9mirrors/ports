@@ -2,8 +2,9 @@
 LIB=/$objtype/lib/ape/libjpeg.a
 BIN=/$objtype/bin
 
-TARG=cjpeg
-OFILES=cjpeg.$O rdppm.$O rdgif.$O rdtarga.$O rdrle.$O rdbmp.$O rdswitch.$O cdjpeg.$O
+TARG=cjpeg 
+OFILES=cjpeg.$O rdppm.$O rdgif.$O rdtarga.$O rdrle.$O rdbmp.$O \
+        rdswitch.$O cdjpeg.$O
 
 </sys/src/cmd/mkone
 
@@ -11,6 +12,15 @@ CC=pcc
 LD=pcc
 CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION
 
+
+cjpeg.$O: cderror.h jversion.h cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h \
+jinclude.h cdjpeg.h 
+rdppm.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+rdgif.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+rdbmp.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h
+rdtarga.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h  
+rdrle.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
+cdjpeg.$O: cderror.h jerror.h jmorecfg.h jpeglib.h jconfig.h jinclude.h cdjpeg.h 
 
 
 
