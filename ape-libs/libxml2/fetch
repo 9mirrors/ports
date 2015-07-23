@@ -1,0 +1,9 @@
+#!/bin/rc
+
+ftpfs -a anonymous -r libxml2 xmlsoft.org
+mkdir work
+fcp /n/ftp/libxml2-2.9.2.tar.gz work/
+unmount /n/ftp
+
+
+

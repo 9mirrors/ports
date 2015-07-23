@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Jens Staal <staal1978@gmail.com>'
+DESCRIPTION='XML library for APE'
+VERSION=2.9.2
+
+#download over ftp using 'fetch' script
+WORKFILE=libxml2-2.9.2.tar.gz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/libxml2-2.9.2
+PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile
