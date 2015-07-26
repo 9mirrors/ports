@@ -1,9 +1,9 @@
 #! /bin/sh
 
-prefix=/usr/local
-exec_prefix=${prefix}
-includedir=${prefix}/include
-libdir=${exec_prefix}/lib
+prefix=/sys
+exec_prefix=/${objtype}
+includedir=${prefix}/include/ape
+libdir=${exec_prefix}/lib/ape
 
 usage()
 {

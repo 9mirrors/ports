@@ -1,0 +1,13 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libxml2.a
+TARG=runtest runxmlconf testrecurse testAutomata testC14N testHTML testModule testReader testRegexp testSAX testSchemas testThreads \
+testThreads testThreadsWin32 testURI testXPath testapi testchar testdict testdso testlimits testrecurse
+BIN=/$objtype/bin
+
+</sys/src/cmd/mkmany
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -B -I. -I./include -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DHAVE_SYS_SOCKET_H \
+	-DHAVE_NETDB_H -DHAVE_GETADDRINFO -DHAVE_SYS_SELECT_H -DHAVE_ERRNO_H -DHAVE_CONFIG_H -D_C99_SNPRINTF_EXTENSION -DECONNRESET=0
+
