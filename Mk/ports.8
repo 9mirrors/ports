@@ -1,12 +1,12 @@
 .TH PORTS 8
 .SH NAME
-/sys/ports/, ports/install, ports/update \- Contributed programs and management
+/sys/ports/, ports/install, ports/update, ports/setup \- Contributed programs and management
 .SH SYNOPSIS
 .B ports/install
 [
 .B -p
 ]
-.I root
+.I portname
 .PP
 .B ports/update
 .PP
@@ -14,6 +14,24 @@
 .SH DESCRIPTION
 .I Ports
 and related programs allow users and administrators to install, manage, and fetch programs and sources to programs. Each port contains whats needed to fetch, build, install, and uninstall each program automatically. Ports keeps track of dependencies that need to be installed before a port is installed and what ports are installed on the system. Ports also keep a short synopsis and versioning information for each port ease finding and upgrading programs.
+.SH UTILITIES
+.I Ports
+has a few utilities to help in using the ports tree.
+.TP
+.B ports/install
+.PP
+This utility allows users to install ports without having to go to the ports tree and can pretend to install to see if the port works.
+.TP
+.BI -p
+Pretends to install the port. Really installs it to /tmp/ports-overlay.
+.TP
+.B ports/update
+.PP
+This utility updates the ports tree.
+.TP
+.B ports/setup
+.PP
+This utility does the initial setup for ports to allow users to start using ports. This must be run after a new installation of 9front if you want the ports tree.
 .SH TARGETS
 Some of the targets work recursively through the subdirectories of the ports tree or each category. This lets you install the entire ports tree, or all of the ports in a single category automatically. The targets that do this are
 .B fetch, build, install, reinstall,
