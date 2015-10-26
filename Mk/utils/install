@@ -4,6 +4,8 @@ rfork ne
 . /sys/ports/Config/ports.conf
 . /sys/ports/Mk/pkg.rc
 
+PRETEND=0
+
 fn quiet {
 	$* >/dev/null >[2=1]
 }
@@ -13,9 +15,36 @@ fn bail {
 	exit $"*
 }
 
+fn usage {
+	echo 'Usage: ports/install [portname] or ports/install -p [portname]'
+	exit 'usage'
+}
+
+fn runoverlay {
+	echo 'Pretending to install...'
+	if(test -d /tmp/ports-config){
+		rm -rf /tmp/ports-config
+	}
+	if(test -d /tmp/ports-overlay){
+		rm -rf /tmp/ports-overlay
+	}
+	mkdir /tmp/ports-overlay/
+	mkdir /tmp/ports-config/
+	cp $PORTS/Config/* /tmp/ports-config/
+	bind -c /tmp/ports-config $PORTS/Config
+	$PORTS/Mk/overlays/create /tmp/ports-overlay
+	OVERLAYROOT=/tmp/ports-overlay
+	$PORTS/Mk/overlays/mount
+}
+
 if(~ $#1 0){
-	echo 'Usage: ports/install [portname]'
-	exit 'no args'
+	usage
+}
+
+while(~ $1 -*){
+	switch($1){
+	case -p; shift ; runoverlay
+	}
 }
 
 PORTNAME=$1
@@ -29,8 +58,16 @@ if(! checkport $PORTNAME){
 	echo -n 'build.. '; quiet mk build || bail 'build: '^$status
 	echo -n 'install.. '; quiet mk install || bail 'install: '^$status
 	if(! $status){
-		echo 'done.'
-		exit ''
+		if(~ $PRETEND 1) {
+			echo 'pretend install is done.'
+			echo 'you can find the installed files in /tmp/ports-overlay and'
+			echo 'you can find the install database and config in /tmp/ports-config'
+			exit ''
+		}
+		if not {
+			echo 'done.'
+			exit ''
+		}
 	}
 	if not {
 		echo 'port '^$PORTNAME^' failed to install'
