@@ -8,8 +8,8 @@ db:VQ:
 	touch Config/ports.db
 
 utils:VQ:
-	mkdir -p /rc/bin/port
-	dircp Mk/utils /rc/bin/port/
+	mkdir -p /rc/bin/ports
+	dircp Mk/utils /rc/bin/ports/
 	exit ''
 
 install:VQE:
