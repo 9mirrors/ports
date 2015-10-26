@@ -17,7 +17,8 @@ OVERLAYDIRS=`{ cat $OVERLAYROOT/mounttab }
 for(i in $OVERLAYDIRS) {
 	if(test -d /$i){
 		bind -cb $OVERLAYROOT/$i /$i
-	} else {
+	}
+	if not{
 		echo 'cannot overlay' $i
 	}
 }
