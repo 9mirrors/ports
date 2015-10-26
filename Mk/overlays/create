@@ -1,0 +1,44 @@
+#!/bin/rc
+
+rfork ne
+
+if(~ $#1 0) {
+	echo 'Usage: ' $0 '[overlay root]'
+	exit 'usage'
+}
+
+if(! test -d $1) {
+	mkdir $1
+}
+
+OVERLAYROOT=$1
+ARCHDIRS=(bin lib include)
+ARCH=(386 amd64 arm)
+SYSDIRS=(lib include man doc)
+
+for(i in $ARCH) {
+	echo 'creating' $i
+	mkdir $OVERLAYROOT/$i
+	echo $i >> $OVERLAYROOT/mounttab
+}
+
+for(i in $ARCHDIRS) {
+	for(j in $ARCH){
+		echo 'creating' $j/$i
+		mkdir $OVERLAYROOT/$j/$i
+		echo $j/$i >> $OVERLAYROOT/mounttab
+	}
+}
+
+echo 'creating sys'
+mkdir $OVERLAYROOT/sys
+echo 'sys' >> $OVERLAYROOT/mounttab
+
+for(i in $SYSDIRS){
+	echo 'creating sys/'^$i
+	mkdir $OVERLAYROOT/sys/$i
+	echo 'sys/'^$i >> $OVERLAYROOT/mounttab
+}
+
+echo 'done.'
+

@@ -1,0 +1,24 @@
+#!/bin/rc
+
+. /sys/ports/Config/ports.conf
+. /sys/ports/Mk/pkg.rc
+
+if(~ $#OVERLAYROOT 0) {
+	exit 'no overlays'
+}
+
+if(! test -d $OVERLAYROOT) {
+	echo 'Overlay root' $OVERLAYROOT 'does not exist.'
+	exit 'does not exist'
+}
+
+OVERLAYDIRS=`{ cat $OVERLAYROOT/mounttab }
+
+for(i in $OVERLAYDIRS) {
+	if(test -d /$i){
+		bind -cb $OVERLAYROOT/$i /$i
+	} else {
+		echo 'cannot overlay' $i
+	}
+}
+

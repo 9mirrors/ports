@@ -1,0 +1,38 @@
+#!/bin/rc
+
+rfork ne
+
+. /sys/ports/Config/ports.conf
+. /sys/ports/Mk/pkg.rc
+
+if(~ $#1 0) {
+	echo 'Usage: ' $0 '[overlay root]
+	exit 'usage'
+}
+
+OVERLAYROOT=$1
+
+if(! test -e mkfile){
+	echo 'not found: mkfile'
+	echo 'be sure to run this in a port's directory'
+	exit 'no mkfile'
+}
+
+if(! test -d $1){
+	echo 'creating new overlay...'
+	mkdir $1
+	/sys/ports/Mk/overlays/create $1
+}
+
+/sys/ports/mk/overlays/mount
+
+cp /sys/ports/Config/ports.db /sys/ports/Config/ports.db.backup
+
+mk fetch
+mk build
+mk install   # use reinstall so the port isn't registered as installed.
+
+mv /sys/ports/Config/ports.db $OVERLAYROOT/ports.db
+mv /sys/ports/Config/ports.db.backup /sys/ports/Config/ports.db
+
+echo 'done.'
