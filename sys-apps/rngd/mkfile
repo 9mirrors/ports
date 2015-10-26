@@ -3,7 +3,7 @@
 OWNER='Matthew Veety <mveety@mveety.com>'
 DESCRIPTION='Random number generator filesystem'
 
-HGSOURCE=https://bitbucket.org/mischief/rngd
+HGSOURCE=http://bitbucket.org/mischief/rngd
 BUILDPATH=work/rngd
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install

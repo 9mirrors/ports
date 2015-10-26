@@ -15,11 +15,12 @@ OVERLAYROOT=$1
 ARCHDIRS=(bin lib include)
 ARCH=(386 amd64 arm)
 SYSDIRS=(lib include man doc)
+MANDIRS=(1 2 3 4 5 6 7 8)
 
 for(i in $ARCH) {
 	echo 'creating' $i
 	mkdir $OVERLAYROOT/$i
-	echo $i >> $OVERLAYROOT/mounttab
+#	echo $i >> $OVERLAYROOT/mounttab
 }
 
 for(i in $ARCHDIRS) {
@@ -32,12 +33,18 @@ for(i in $ARCHDIRS) {
 
 echo 'creating sys'
 mkdir $OVERLAYROOT/sys
-echo 'sys' >> $OVERLAYROOT/mounttab
+#echo 'sys' >> $OVERLAYROOT/mounttab
 
 for(i in $SYSDIRS){
 	echo 'creating sys/'^$i
 	mkdir $OVERLAYROOT/sys/$i
 	echo 'sys/'^$i >> $OVERLAYROOT/mounttab
+}
+
+for(i in $MANDIRS){
+	echo 'creating sys/man/'^$i
+	mkdir $OVERLAYROOT/sys/man/$i
+	echo 'sys/man/'^$i >> $OVERLAYROOT/mounttab
 }
 
 echo 'done.'

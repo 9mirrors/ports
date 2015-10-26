@@ -3,6 +3,11 @@
 . /sys/ports/Config/ports.conf
 . /sys/ports/Mk/pkg.rc
 
+if(! ~ $#1 0){
+	OVERLAYROOT=$1
+	echo 'Overlaying '^$OVERLAYROOT^' ...'
+}
+
 if(~ $#OVERLAYROOT 0) {
 	exit 'no overlays'
 }
@@ -13,8 +18,11 @@ if(! test -d $OVERLAYROOT) {
 }
 
 OVERLAYDIRS=`{ cat $OVERLAYROOT/mounttab }
+echo 'overlaydirs=' $OVERLAYDIRS
+
 
 for(i in $OVERLAYDIRS) {
+	echo 'overlaying ' $i
 	if(test -d /$i){
 		bind -cb $OVERLAYROOT/$i /$i
 	}
@@ -22,4 +30,3 @@ for(i in $OVERLAYDIRS) {
 		echo 'cannot overlay' $i
 	}
 }
-
