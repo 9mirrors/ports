@@ -1,4 +1,6 @@
 #!/bin/rc
+rfork ne
+
 . /sys/ports/Config/ports.conf
 cd /sys/ports
 mk update
