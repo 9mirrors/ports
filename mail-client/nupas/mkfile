@@ -1,0 +1,15 @@
+</$objtype/mkfile
+
+OWNER='Matthew Veety <mveety@mveety.com>'
+DESCRIPTION='nupas mail client and server'
+
+WEBSOURCE=http://9front.org/extra/nupas.tgz
+WORKFILE=nupas.tgz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/nupas
+BUILDCOMMAND=mk all
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+
+</sys/ports/Mk/mkfile
+
