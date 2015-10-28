@@ -8,7 +8,7 @@ WORKFILE=nupas.tgz
 EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/nupas
 BUILDCOMMAND=mk all
-INSTALLCOMMAND=mk install
+INSTALLCOMMAND=mk installall
 CLEANCOMMAND=mk clean
 
 </sys/ports/Mk/mkfile
