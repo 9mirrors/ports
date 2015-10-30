@@ -124,6 +124,36 @@ build:VQE:
 		$POSTBUILD
 	}
 
+test:VQE: # build fetch
+	. /sys/ports/Config/ports.conf
+	. /sys/ports/Mk/pkg.rc
+	if(! ~ $#archmask 0){
+		for(i in $archmask){
+			if(~ $i $objtype){
+				exit 'objtype '^$"objtype^' is not supported'
+			}
+		}
+	}
+	@{
+		rfork ne
+		cd $BUILDPATH
+		if(! ~ $#TESTCOMMAND 0){
+			$TESTCOMMAND
+			if(! ~ $status ''){
+				echo 'Tests failed. Please notify '^$OWNER
+				status='tests failed'
+			}
+			if not {
+				echo 'Tests completed successfully!'
+				status=''
+			}
+		}
+		if not {
+			echo 'tests aren''t supported on this port'
+			status='no tests'
+		}
+	}
+
 install:VQE: # build fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
