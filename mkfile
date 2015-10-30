@@ -10,6 +10,7 @@ db:VQ:
 utils:VQ:
 	mkdir -p /rc/bin/ports
 	dircp Mk/utils /rc/bin/ports/
+	cp Mk/ports.8 /sys/man/8/ports
 	exit ''
 
 install:VQE:
