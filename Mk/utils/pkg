@@ -1,0 +1,63 @@
+#!/bin/rc
+
+# Low-level pkg.rc poking tool
+
+. /sys/ports/Mk/pkg.rc
+
+fn usage {
+	echo 'usage: ports/pkg [pkg.rc function] [args...]'
+	echo '				   checkport [portname]'
+	echo '				   register [portname]'
+	echo '				   deregister [portname]'
+	echo '				   portversion [portname]'
+	echo '				   apply [file]'
+	echo '				   unapply [file]'
+	exit 'args'
+}
+
+if(~ $#* 0){
+	usage
+}
+
+cmd=$1 ; shift
+switch($cmd) {
+	case checkport
+		if(~ $#* 0) { usage ; }
+		checkport $1
+		s=$status
+		echo 'Status: '^$s
+		exit $s
+	case register
+		if(~ $#* 0) { usage ; }
+		register $1
+		s=$status
+		echo 'Status: '^$s
+		exit $s
+	case unregister
+		if(~ $#* 0) { usage ; }
+		unregister $1
+		s=$status
+		echo 'Status: '^$s
+		exit $s
+	case portversion
+		if(~ $#* 0) { usage ; }
+		portversion $1
+		s=$status
+		echo 'Status: '^$s
+		exit $s
+	case apply
+		if(~ $#* 0) { usage ; }
+		apply $1
+		s=$status
+		echo 'Status: '^$s
+		exit $s
+	case unapply
+		if(~ $#* 0) { usage ; }
+		unapply $1
+		s=$status
+		echo 'Status: '^$s
+		exit $s
+	case *
+		usage
+}
+
