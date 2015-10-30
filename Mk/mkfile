@@ -119,6 +119,10 @@ build:VQE:
 			status=''
 		}
 	}
+	if(! ~ $#POSTBUILD 0){
+		echo 'Running post-build hooks...'
+		$POSTBUILD
+	}
 
 install:VQE: # build fetch
 	. /sys/ports/Config/ports.conf
