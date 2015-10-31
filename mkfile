@@ -100,11 +100,14 @@ update:VQE:
 		if(test -e /sys/ports) {
 			cd /sys/ports
 			hg pull
-			hg update
+			hg update $BRANCH
 			exit
 		}
 		if not {
 			hg clone https://bitbucket.org/mveety/9front-ports /sys/ports
+			cd /sys/ports
+			hg update $BRANCH
+			exit
 		}
 	}
 
