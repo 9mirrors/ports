@@ -101,7 +101,7 @@ build:VQE:
 					objtype=$objtype
 					cputype=$cputype
 					cd $PORTS/$i
-					mk
+					mk fetch ; mk build ; mk install
 				} || exit $status
 			}
 		}
