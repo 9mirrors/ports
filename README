@@ -21,7 +21,7 @@ Patches can be included and are highly encouraged.
 Working with ports:
 	Installation:
 		go to where the port you want to install resides.
-		run mk all.
+		mk fetch; mk build; mk install
 		you're done.
 	Uninstallation:
 		go to where the port you want to uninstall resides.
