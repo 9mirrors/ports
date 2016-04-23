@@ -2,5 +2,5 @@
 rfork ne
 . /sys/ports/Config/ports.conf
 cd /sys/ports
-echo 'Using ports branch: '^$BRANCH
+echo 'Using ports branch '^$BRANCH
 mk update

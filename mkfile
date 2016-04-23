@@ -104,7 +104,7 @@ update:VQE:
 			exit
 		}
 		if not {
-			hg clone https://bitbucket.org/mveety/9front-ports /sys/ports
+			hg clone https://code.9front.org/hg/ports /sys/ports
 			cd /sys/ports
 			hg update $BRANCH
 			exit
