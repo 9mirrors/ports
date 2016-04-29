@@ -177,6 +177,9 @@ install:VQE: # build fetch
 				echo $i
 			}
 		}
+		if(! ~ $#MSGFILE 0){
+			cat $MSGFILE
+		}
 	}
 	if not {
 		echo $PORTNAME is already installed
