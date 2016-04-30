@@ -172,7 +172,7 @@ install:VQE: # build fetch
 		if not {
 			register $PORTNAME '0'
 		}
-		if(! ~ $*MESSAGE 0){
+		if(! ~ $#MESSAGE 0){
 			for(i in $MESSAGE){
 				echo $i
 			}
