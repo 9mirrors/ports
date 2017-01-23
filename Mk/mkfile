@@ -123,6 +123,7 @@ build:VQE:
 		echo 'Running post-build hooks...'
 		$POSTBUILD
 	}
+	exit ''
 
 test:VQE: # build fetch
 	. /sys/ports/Config/ports.conf
@@ -153,6 +154,7 @@ test:VQE: # build fetch
 			status='no tests'
 		}
 	}
+	exit ''
 
 install:VQE: # build fetch
 	. /sys/ports/Config/ports.conf
@@ -185,6 +187,7 @@ install:VQE: # build fetch
 		echo $PORTNAME is already installed
 		status=''
 	}
+	exit ''
 
 reinstall:VQE: # build fetch
 	. /sys/ports/Config/ports.conf
@@ -199,6 +202,7 @@ reinstall:VQE: # build fetch
 			echo $i
 		}
 	}
+	exit ''
 
 clean:VQE: # build fetch
 	. /sys/ports/Config/ports.conf
