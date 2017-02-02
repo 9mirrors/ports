@@ -23,8 +23,7 @@ fetch:VQE:
 	@{
 		rfork ne
 		mkdir -p work/
-		bind -c work /n/work
-		cd /n/work
+		cd work
 		test -e .patched && rm .patched
 		if(! ~ $#WEBSOURCE 0){
 			{ webfs && hget $WEBSOURCE > $WORKFILE } || exit $status
@@ -44,15 +43,15 @@ fetch:VQE:
 		if(! ~ $#HGSOURCE 0){
 			@{
 				rfork ne
-				{ webfs && hg clone $HGSOURCE } || exit $status
-				if(! ~ $HGREV 0){
+				{ echo `{pwd} && webfs && hg clone $HGSOURCE } || exit $status
+				if(! ~ $#HGREV 0){
 					hg up $HGREV
 				}
 			} || exit $status
 		}
 		exit ''
 	}
-	exit $status
+	exit ''
 
 patch:VQE:
 	. /sys/ports/Config/ports.conf
