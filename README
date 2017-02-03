@@ -1,21 +1,18 @@
 9front/Plan 9 Ports Tree.
 
-This allows automated downloading, building, and installing of bullshit
+This allows automated downloading, building, and installing of programs
 onto your Plan 9 system. The scripts are categorized by type and name, and the
 contents of the directories are standardized.
 
 Contributing
-	To contribute make a zip file with the scripts to fetch, build, install,
-and clean everything needed for the application, then post the zip file to
-http://bitbucket.org/mveety/9front-ports/issues as a new issue. This will get
-tested and accepted or rejected. The zip file should use the constants in
-/sys/ports/Config/ports.conf and not have the actual program sources with it.
-The program should successfully build and install. I also reccommend a README
-in the file that has some information about the program that you deem as
-important and a way to contact you.
+	To contribute make a patch that contains the mkfile, potential patches, and
+other stuff thats needed to build. If the port depends on another port that doesn't
+yet exist, please create that one too. Your patch should not touch any files in
+$PORTS, $PORTS/Config, or $PORTS/Mk. If it *needs* to touch files in there, please
+discuss this beforehand with mveety or one of the other maintainers.
 
 Bug Reports:
-	Post bugs on http://bitbucket.org/mveety/9front-ports/issues.
+	Post bugs to 9front@9front.org
 Patches can be included and are highly encouraged.
 
 Working with ports:
