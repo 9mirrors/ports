@@ -23,8 +23,7 @@ fetch:VQE:
 	@{
 		rfork ne
 		mkdir -p work/
-		bind -c work /n/work
-		cd /n/work
+		cd work
 		test -e .patched && rm .patched
 		if(! ~ $#WEBSOURCE 0){
 			{ webfs && hget $WEBSOURCE > $WORKFILE } || exit $status
@@ -45,14 +44,14 @@ fetch:VQE:
 			@{
 				rfork ne
 				{ webfs && hg clone $HGSOURCE } || exit $status
-				if(! ~ $HGREV 0){
+				if(! ~ $#HGREV 0){
 					hg up $HGREV
 				}
 			} || exit $status
 		}
 		exit ''
 	}
-	exit $status
+	exit ''
 
 patch:VQE:
 	. /sys/ports/Config/ports.conf
@@ -101,7 +100,7 @@ build:VQE:
 					objtype=$objtype
 					cputype=$cputype
 					cd $PORTS/$i
-					mk
+					mk fetch ; mk build ; mk install
 				} || exit $status
 			}
 		}
@@ -123,6 +122,7 @@ build:VQE:
 		echo 'Running post-build hooks...'
 		$POSTBUILD
 	}
+	exit ''
 
 test:VQE: # build fetch
 	. /sys/ports/Config/ports.conf
@@ -153,6 +153,7 @@ test:VQE: # build fetch
 			status='no tests'
 		}
 	}
+	exit ''
 
 install:VQE: # build fetch
 	. /sys/ports/Config/ports.conf
@@ -172,16 +173,20 @@ install:VQE: # build fetch
 		if not {
 			register $PORTNAME '0'
 		}
-		if(! ~ $*MESSAGE 0){
+		if(! ~ $#MESSAGE 0){
 			for(i in $MESSAGE){
 				echo $i
 			}
+		}
+		if(! ~ $#MSGFILE 0){
+			cat $MSGFILE
 		}
 	}
 	if not {
 		echo $PORTNAME is already installed
 		status=''
 	}
+	exit ''
 
 reinstall:VQE: # build fetch
 	. /sys/ports/Config/ports.conf
@@ -196,6 +201,7 @@ reinstall:VQE: # build fetch
 			echo $i
 		}
 	}
+	exit ''
 
 clean:VQE: # build fetch
 	. /sys/ports/Config/ports.conf

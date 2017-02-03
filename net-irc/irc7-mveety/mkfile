@@ -1,0 +1,15 @@
+</$objtype/mkfile
+
+OWNER='Matthew Veety <mveety@gmail.com>'
+DESCRIPTION='File based irc client (mveety patches)'
+VERSION='1'
+
+HGSOURCE=http://bitbucket.org/mveety/irc7
+HGREV=0538e4a1996a
+BUILDPATH=work/irc7
+BUILDCOMMAND=mk all
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=rm /$objtype/bin/irc /$objtype/bin/ircsrv /sys/man/1/irc
+
+</sys/ports/Mk/mkfile

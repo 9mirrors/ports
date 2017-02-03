@@ -2,12 +2,14 @@
 rfork ne
 webfs
 if(test -e /bin/hg){
-	hg clone https://bitbucket.org/mveety/9front-ports /sys/ports
+	hg clone https://code.9front.org/hg/ports /sys/ports
 	touch /sys/ports/Config/ports.db
 	echo 'Be sure to edit /sys/ports/Config/ports.conf'
 	echo 'run portupdate to keep the ports tree up to date.'
 }
 if not {
+	echo 'installing the ports tree without mercurial is no longer supported'
+	exit 'no mercurial'
 	mkdir -p /sys/ports
 	hget http://mveety.com/raw/ports.tgz > /tmp/ports.tgz
 	cd /sys/ports

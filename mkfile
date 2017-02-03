@@ -13,15 +13,6 @@ utils:VQ:
 	cp Mk/ports.8 /sys/man/8/ports
 	exit ''
 
-install:VQE:
-	for(i in $CATEGORY){
-		@{
-			rfork ne
-			cd $i
-			mk install
-		}
-	}
-
 info:VQE:
 	for(i in $CATEGORY){
 		@{
@@ -104,7 +95,7 @@ update:VQE:
 			exit
 		}
 		if not {
-			hg clone https://bitbucket.org/mveety/9front-ports /sys/ports
+			hg clone https://code.9front.org/hg/ports /sys/ports
 			cd /sys/ports
 			hg update $BRANCH
 			exit
