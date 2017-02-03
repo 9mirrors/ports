@@ -43,7 +43,7 @@ fetch:VQE:
 		if(! ~ $#HGSOURCE 0){
 			@{
 				rfork ne
-				{ echo `{pwd} && webfs && hg clone $HGSOURCE } || exit $status
+				{ webfs && hg clone $HGSOURCE } || exit $status
 				if(! ~ $#HGREV 0){
 					hg up $HGREV
 				}
