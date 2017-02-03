@@ -13,15 +13,6 @@ utils:VQ:
 	cp Mk/ports.8 /sys/man/8/ports
 	exit ''
 
-install:VQE:
-	for(i in $CATEGORY){
-		@{
-			rfork ne
-			cd $i
-			mk install
-		}
-	}
-
 info:VQE:
 	for(i in $CATEGORY){
 		@{
