@@ -23,7 +23,6 @@ fgb/png: PNG library for APE.
 fgb/poll: Free poll(3) for APE.
 fgb/posix-man: POSIX 1003.1-2003 man pages and man(1) for APE.
 fgb/regex: Henry Spencer's regex lib for APE.
-fgb/scheme: Philip K. Dick's TinySCHEME Version 1.34
 fgb/snake: Snake - snake/nibbles clone.
 fgb/sqlite3: SQLite version 3.5.4 for APE.
 fgb/tcl: TCL 8.5.9 APE port for Plan 9
@@ -138,4 +137,4 @@ de0u/squeak: Squeak Smalltalk programming environment
 fgb/breakout: Breakout - breakout/arkanoid clone.
 
 DONE -- Committed:
-
+fgb/scheme: Philip K. Dick's TinySCHEME Version 1.34

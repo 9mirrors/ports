@@ -1,0 +1,11 @@
+#!/bin/rc
+
+switch($9PSERVER){
+case 9pio
+	{
+		srv -nq tcp!9p.io 9pio
+		mount -nC /srv/9pio /n/9pio
+	} || exit $status
+case *
+	9fs $9PSERVER || exit $status
+}
