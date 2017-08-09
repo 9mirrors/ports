@@ -1,0 +1,13 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='utility and data structure library'
+
+HGSOURCE=https://bitbucket.org/henesy/libds
+BUILDPATH=work/libds
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk uninstall
+
+</sys/ports/Mk/mkfile
