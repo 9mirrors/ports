@@ -7,7 +7,7 @@ DESCRIPTION='HTML5 compliant web browser for plan9'
 9PDIR=/n/9pio/contrib/fgb/root/sys/src/cmd/scheme
 BUILDPATH=work/
 BUILDCOMMAND=mk all
-INSTALLCOMMAND=mk install
+INSTALLCOMMAND=rc ../install
 CLEANCOMMAND=mk clean
 UNINSTALL=/$objtype/bin/scheme
 

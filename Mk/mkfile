@@ -31,16 +31,16 @@ fetch:VQE:
 		if(! ~ $#9PSERVER 0){
 			# i think we might want to add this in the future
 			# maybe just nick 9front's 9fs
-			# /sys/ports/Mk/ports9fs $9PSERVER || exit $status
-			switch($9PSERVER){
-			case 9pio
-				{
-					srv -nq tcp!9p.io 9pio
-					mount -nC /srv/9pio /n/9pio
-				} || exit $status
-			case *
-				9fs $9PSERVER || exit $status
-			}
+			$PORTS/Mk/ports9fs $9PSERVER || exit $status
+			#switch($9PSERVER){
+			#case 9pio
+			#	{
+			#		srv -nq tcp!9p.io 9pio
+			#		mount -nC /srv/9pio /n/9pio
+			#	} || exit $status
+			#case *
+			#	9fs $9PSERVER || exit $status
+			#}
 			if(! ~ $#9PFILE 0){
 				fcp $9PFILE $WORKFILE || exit $status
 			}
