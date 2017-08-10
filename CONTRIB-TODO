@@ -133,8 +133,8 @@ yk/fontsrv: fontsrv - file system access to scalable fonts
 yk/rd: A Remote Desktop Protocol client
 
 DOING -- WIP:
-de0u/squeak: Squeak Smalltalk programming environment
 fgb/breakout: Breakout - breakout/arkanoid clone.
 
 DONE -- Committed:
+de0u/squeak: Squeak Smalltalk programming environment
 fgb/scheme: Philip K. Dick's TinySCHEME Version 1.34
