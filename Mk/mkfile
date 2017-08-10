@@ -8,6 +8,12 @@ PORTCAT=`{basename -d `{pwd} | sed 's,.*/,,'}
 PORTNAME=$PORTCAT/`{basename `{pwd}}
 files=`{pwd}/files
 
+# for ease of use
+BUILDPATH=`{ if(~ $#BUILDPATH 0){ echo 'work/' }; if not { echo $BUILDPATH }}
+BUILDCOMMAND=`{ if(~ $#BUILDCOMMAND 0){ echo 'mk' }; if not { echo $BUILDCOMMAND }}
+INSTALLCOMMAND=`{ if(~ $#INSTALLCOMMAND 0){ echo 'mk install' }; if not { echo $INSTALLCOMMAND }}
+CLEANCOMMAND=`{ if(~ $#CLEANCOMMAND 0){ echo 'mk clean' }; if not { echo $CLEANCOMMAND }}
+
 all:VQE: fetch build install
 
 info:VQE:
