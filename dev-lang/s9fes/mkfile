@@ -1,6 +1,6 @@
 </$objtype/mkfile
 
-OWNER='Matthew Veety <mveety@mveety.com'
+OWNER='Matthew Veety <mveety@mveety.com>'
 DESCRIPTION='Scheme 9 from Empty Space'
 VERSION=20150701
 
