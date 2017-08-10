@@ -2,6 +2,7 @@
 
 OWNER='Matthew Veety <mveety@mveety.com>'
 DESCRIPTION='HTML5 compliant web browser for plan9'
+VERSION='1.35'
 
 9PSERVER=9pio
 9PDIR=/n/9pio/contrib/fgb/root/sys/src/cmd/scheme
