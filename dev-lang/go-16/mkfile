@@ -2,10 +2,11 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Google Go language'
+VERSION='1.6.2'
 DEPS=app-misc/ca-certificates
 
-WEBSOURCE=https://storage.googleapis.com/golang/go1.4.2.src.tar.gz
-WORKFILE=go1.4.2.src.tar.gz
+WEBSOURCE=https://storage.googleapis.com/golang/go1.6.2.src.tar.gz
+WORKFILE=go1.6.2.src.tar.gz
 EXTRACTCOMMAND=/bin/tar xzvf
 BUILDPATH=work/go/src
 BUILDCOMMAND=./make.rc
