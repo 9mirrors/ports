@@ -1,0 +1,14 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='Squeak/Smalltalk from de0u/squeak'
+VERSION=4.5
+
+HGSOURCE=https://bitbucket.org/henesy/squeak
+BUILDPATH=work/squeak
+BUILDCOMMAND=mk
+CLEANCOMMAND=mk nuke
+INSTALLCOMMAND=mk install
+UNINSTALLCOMMAND=mk uninstall
+
+</sys/ports/Mk/mkfile
