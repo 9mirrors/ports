@@ -33,6 +33,11 @@ fn register {
 	if(test -e $PORTS/Config/ports.db){
 		echo $1^' '^$2 >> $PORTS/Config/ports.db
 	}
+	if not {
+		echo 'creating install database...'
+		touch $PORTS/Config/ports.db
+		echo $1^' '^$2 >> $PORTS/Config/ports.db
+	}
 }
 
 fn deregister {
