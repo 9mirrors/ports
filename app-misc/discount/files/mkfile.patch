@@ -1,0 +1,14 @@
+*** mkfile	Sun Sep  3 15:32:35 2017
+--- mkfile.patched	Sun Sep  3 18:09:51 2017
+***************
+*** 35,37 ****
+--- 35,43 ----
+  
+  nuke:
+  	ape/psh -c 'cd .. && make distclean'
++ 
++ uninstall: 
++ 	rm $BIN/markdown
++ 
++ mk build:
++ 	CONFIG='--with-tabstops=7' mk config

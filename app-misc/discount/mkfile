@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='DISCOUNT is an implementation of John Gruber Markdown by David Parsons <orc@pell.portland.or.us>'
+VERSION='2.2.2'
+
+WEBSOURCE=http://www.pell.portland.or.us/~orc/Code/discount/discount-2.2.2.tar.bz2
+WORKFILE=discount-2.2.2.tar.bz2
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/discount-2.2.2/Plan9
+BUILDCOMMAND=mk build
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk nuke
+UNINSTALLCOMMAND=mk uninstall
+
+
+</sys/ports/Mk/mkfile
