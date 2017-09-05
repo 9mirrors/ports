@@ -1,0 +1,11 @@
+</$objtype/mkfile
+
+OWNER='Matthew Veety <mveety@mveety.com>'
+DESCRIPTION='quanstro''s imgloop. used for radar(1)'
+VERSION='0'
+
+9PSERVER=9pio
+9PDIR=/n/9pio/contrib/quanstro/root/sys/src/cmd/imgloop
+UNINSTALL=/$objtype/bin/imgloop
+
+</sys/ports/Mk/mkfile
