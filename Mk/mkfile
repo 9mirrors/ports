@@ -13,6 +13,7 @@ BUILDPATH=`{ if(~ $#BUILDPATH 0){ echo 'work/' }; if not { echo $BUILDPATH }}
 BUILDCOMMAND=`{ if(~ $#BUILDCOMMAND 0){ echo 'mk' }; if not { echo $BUILDCOMMAND }}
 INSTALLCOMMAND=`{ if(~ $#INSTALLCOMMAND 0){ echo 'mk install' }; if not { echo $INSTALLCOMMAND }}
 CLEANCOMMAND=`{ if(~ $#CLEANCOMMAND 0){ echo 'mk clean' }; if not { echo $CLEANCOMMAND }}
+WORKFILE=`{ if(~ $#WORKFILE 0){ echo './' }; if not { echo $WORKFILE }}
 
 all:VQE: fetch build install
 
@@ -38,17 +39,15 @@ fetch:VQE:
 			# i think we might want to add this in the future
 			# maybe just nick 9front's 9fs
 			$PORTS/Mk/ports9fs $9PSERVER || exit $status
-			#switch($9PSERVER){
-			#case 9pio
-			#	{
-			#		srv -nq tcp!9p.io 9pio
-			#		mount -nC /srv/9pio /n/9pio
-			#	} || exit $status
-			#case *
-			#	9fs $9PSERVER || exit $status
-			#}
 			if(! ~ $#9PFILE 0){
-				fcp $9PFILE $WORKFILE || exit $status
+				if(! ~ $#9PFILE 1){
+					for(i in $9PFILE){
+						fcp $i ./ || exit $status
+					}
+				}
+				if not {
+					fcp $9PFILE $WORKFILE || exit $status
+				}
 			}
 			if(! ~ $#9PDIR 0){
 				dircp $9PDIR ./ || exit $status
@@ -207,6 +206,21 @@ install:VQE: # build fetch
 	exit ''
 
 reinstall:VQE: # build fetch
+	. /sys/ports/Config/ports.conf
+	. /sys/ports/Mk/pkg.rc
+	cd $BUILDPATH
+	@{
+		rfork ne
+		$INSTALLCOMMAND
+	}
+	if(! ~ $*MESSAGE 0){
+		for(i in $MESSAGE){
+			echo $i
+		}
+	}
+	exit ''
+
+testinstall:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
