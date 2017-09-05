@@ -1,0 +1,5 @@
+#!/bin/rc
+rm /rc/bin/radar
+rm /rc/bin/radarloop
+rm /lib/radar/*
+rm -r /lib/radar

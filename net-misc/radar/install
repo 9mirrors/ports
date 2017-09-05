@@ -1,0 +1,10 @@
+#!/bin/rc
+fcp radar /rc/bin/radar
+fcp radarloop /rc/bin/radarloop
+chmod +x /rc/bin/radar
+chmod +x /rc/bin/radarloop
+mkdir /lib/radar
+fcp genlat /lib/radar
+fcp stationlat /lib/radar
+fcp stations /lib/radar
+chmod +x /lib/radar/genlat
