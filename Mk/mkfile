@@ -272,7 +272,11 @@ uninstall:VQE: # fetch
 		}
 	}
 	if not {
-		@{ rfork ne; cd $BUILDPATH; $UNINSTALLCOMMAND } || exit $status
+		@{
+			rfork ne
+			cd $BUILDPATH
+			$UNINSTALLCOMMAND
+		} || exit $status
 	}
 	deregister $PORTNAME
 
