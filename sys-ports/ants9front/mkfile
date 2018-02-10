@@ -1,0 +1,13 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='mycroftiv''s 9ants utilities ported to 9front.'
+
+HGSOURCE=https://bitbucket.org/mycroftiv/ants9front
+BUILDPATH=work/ants9front
+BUILDCOMMAND=echo Use ''mk install''
+CLEANCOMMAND=build clean
+INSTALLCOMMAND=build portsinstall
+UNINSTALLCOMMAND=build portsuninstall
+
+</sys/ports/Mk/mkfile
