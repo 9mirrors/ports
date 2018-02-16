@@ -97,7 +97,6 @@ quanstro/vera: vera subpixel fonts
 quanstro/yuk: yukon ii driver
 stallion/mercurial: Mercurial Distributed SCM (version 2.2.3)
 stefanha/vim: Vim: enhanced vi editor
-steve/cfront: AT&T™ cfront C++ pre-compiler, update to v3.03 of old plan9 port
 steve/cvs: CVS 1.11.1p1 - rsc's port almost unchanged, uses mk and ape.
 steve/cvsfs: present a remote CVS repository as a dump filesystem
 steve/diff3: three way file differences - native plan9 port of Unix V7 source
@@ -133,8 +132,9 @@ yk/fontsrv: fontsrv - file system access to scalable fonts
 yk/rd: A Remote Desktop Protocol client
 
 DOING -- WIP:
-fgb/breakout: Breakout - breakout/arkanoid clone.
+steve/cfront: AT&T™ cfront C++ pre-compiler, update to v3.03 of old plan9 port
 
 DONE -- Committed:
 de0u/squeak: Squeak Smalltalk programming environment
 fgb/scheme: Philip K. Dick's TinySCHEME Version 1.34
+fgb/breakout: Breakout - breakout/arkanoid clone.
