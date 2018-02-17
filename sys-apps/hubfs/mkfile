@@ -1,0 +1,13 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='Provides GNU screen-like functionality via a 9p fs of io Hubs.'
+
+HGSOURCE=https://bitbucket.org/mycroftiv/hubfs
+BUILDPATH=work/hubfs
+BUILDCOMMAND=mk
+CLEANCOMMAND=mk nuke
+INSTALLCOMMAND=cp work/hubfs/hubfs /$objtype/bin/hubfs
+UNINSTALLCOMMAND=rm /$objtype/bin/hubfs
+
+</sys/ports/Mk/mkfile

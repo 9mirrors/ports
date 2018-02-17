@@ -1,0 +1,13 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='grio has the background image patch and colour options'
+
+HGSOURCE=https://bitbucket.org/mycroftiv/grio
+BUILDPATH=work/grio
+BUILDCOMMAND=mk
+CLEANCOMMAND=mk nuke
+INSTALLCOMMAND=cp work/grio/grio /$objtype/bin/grio
+UNINSTALLCOMMAND=rm /$objtype/bin/grio
+
+</sys/ports/Mk/mkfile

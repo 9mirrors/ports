@@ -1,0 +1,13 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='This is a copy of fossil and its needed library and manpages.'
+
+HGSOURCE=https://bitbucket.org/mycroftiv/fossiloventi
+BUILDPATH=work/fossiloventi
+BUILDCOMMAND=INSTALL
+CLEANCOMMAND=echo No cleans, sorry. ☺
+INSTALLCOMMAND=echo INSTALL is the build and install in one, sorry. ☺
+UNINSTALLCOMMAND=rm -r /$objtype/bin/fossil; rm /sys/man/*/*fossil*
+
+</sys/ports/Mk/mkfile
