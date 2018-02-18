@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='steve''s rtf2txt'
+VERSION=1
+
+WEBSOURCE=http://sources.postnix.us/contrib/steve/rtf2txt.tbz
+WORKFILE=rtf2txt.tbz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/sys/src/cmd/rtf2txt
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk nuke
+UNINSTALLCOMMAND=rm /$objtype/bin/rtf2txt
+
+</sys/ports/Mk/mkfile

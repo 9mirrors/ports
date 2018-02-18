@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='steve''s C beautifier, more aggressive with messy source than cb(1)'
+VERSION=1
+
+WEBSOURCE=http://sources.postnix.us/contrib/steve/indent.tbz
+WORKFILE=indent.tbz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/sys/src/cmd/indent
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk nuke
+UNINSTALLCOMMAND=rm /$objtype/bin/indent
+
+</sys/ports/Mk/mkfile

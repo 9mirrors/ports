@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='steve''s pptfs'
+VERSION=1
+
+WEBSOURCE=http://9.postnix.us/code/ports/pptfs.tgz
+WORKFILE=pptfs.tgz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/pptfs
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk nuke
+UNINSTALLCOMMAND=rm /$objtype/bin/pptfs
+
+</sys/ports/Mk/mkfile

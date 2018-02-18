@@ -19,7 +19,6 @@ fgb/png: PNG library for APE.
 fgb/poll: Free poll(3) for APE.
 fgb/posix-man: POSIX 1003.1-2003 man pages and man(1) for APE.
 fgb/regex: Henry Spencer's regex lib for APE.
-fgb/snake: Snake - snake/nibbles clone.
 fgb/sqlite3: SQLite version 3.5.4 for APE.
 fgb/tcl: TCL 8.5.9 APE port for Plan 9
 fgb/tiff: Libtiff 3.8.2 for APE.
@@ -89,8 +88,6 @@ quanstro/syslogdsr: syslogd with a taylored for coraid storage
 quanstro/vblade: virtual (software) aoe target
 quanstro/vera: vera subpixel fonts
 quanstro/yuk: yukon ii driver
-stallion/mercurial: Mercurial Distributed SCM (version 2.2.3)
-stefanha/vim: Vim: enhanced vi editor
 steve/cvs: CVS 1.11.1p1 - rsc's port almost unchanged, uses mk and ape.
 steve/cvsfs: present a remote CVS repository as a dump filesystem
 steve/diff3: three way file differences - native plan9 port of Unix V7 source
@@ -98,17 +95,11 @@ steve/expat: The expat 2.0.1 xml parser library ported to APE
 steve/glean: glean - network reconnaissance
 steve/graphviz: Graphviz V1.7.7 (dot, neato and twopi) based on David Toplin's release.
 steve/health: print SCSI disk temperature and error counts
-steve/indent: BSD indent - C beautifier, more aggressive with messy source than cb(1)
-steve/m4: m4 macro preprocessor - native plan9 port of Unix V7 source
-steve/mkmk: mkmk - auto generate mkfiles for foreign APE software
 steve/mkpass: generate ramdom passowrds based on ethernet traffic
 steve/mkptypes: extract function prototypes from C old source code
-steve/mothra: Tom Duff's early web browser ported from the 2nd edition. (not up to modern html)
 steve/ncpfs: NetWare™ NCP file sharing protocol client
 steve/pppdec: decode PPP protocol negotiation from a simple hexdump
-steve/pptfs: present a powerpoint file as a directory of text and image files
 steve/refer: 
-steve/rtf2txt: MicroSoft™ RTF to text conversion
 steve/seft: seft - search engine for text, APE build with mkfile.
 steve/snmpfs: very simple snmp manager (client) filesystem - DER encode and decode lifted from Russ's snmp code.
 steve/spline: cubic spline interpolator - native plan9 port of Unix V7 source
@@ -126,9 +117,15 @@ yk/rd: A Remote Desktop Protocol client
 DOING -- WIP:
 steve/cfront: AT&T™ cfront C++ pre-compiler, update to v3.03 of old plan9 port
 
+
 DONE -- Committed:
 de0u/squeak: Squeak Smalltalk programming environment
 fgb/scheme: Philip K. Dick's TinySCHEME Version 1.34
 fgb/breakout: Breakout - breakout/arkanoid clone.
 steve/tex: TeX, metafont, metapost fonts etc, circa 1998 (kind of)
 steve/mysqlfs: A client for MySQL databases.
+fgb/snake: Snake - snake/nibbles clone.
+steve/rtf2txt: MicroSoft™ RTF to text conversion
+steve/indent: BSD indent - C beautifier, more aggressive with messy source than cb(1)
+steve/pptfs: present a powerpoint file as a directory of text and image files
+stefanha/vim: Vim: enhanced vi editor
