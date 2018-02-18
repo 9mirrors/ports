@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='steve''s client for MySQL databases'
+VERSION=1
+
+WEBSOURCE=http://sources.postnix.us/contrib/steve/mysqlfs.tbz
+WORKFILE=breakout.tgz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/sys/src/cmd/mysqlfs
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk nuke
+UNINSTALLCOMMAND=rm /$objtype/bin/mysqlfs
+
+</sys/ports/Mk/mkfile

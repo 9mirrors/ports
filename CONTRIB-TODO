@@ -1,7 +1,5 @@
 TODO -- No work:
-bichued/hg: Mercurial 1.0.2
 bichued/klondike: a solitaire game
-bichued/python: python 2.5.1
 de0u/divergefs: Chao-Kuo Lin's overlay/union/layer/stitch file system
 fgb/4th: 4tH 3.5d - Forth-like interpreter.
 fgb/X11: Equis - Xserver for Plan 9 + Xlibs.
@@ -17,8 +15,6 @@ fgb/magick: ImageMagick 6.3.6-10
 fgb/mines: Minesweeper game written for Plan 9.
 fgb/mpage: Mpage postcript utility port.
 fgb/nd: nd -- Tiny little command line WebDAV interface. Version: 0.8.2
-fgb/openssh: OpenSSH_4.7p1, OpenSSL 0.9.8g 19 Oct 2007
-fgb/openssl: OPENSSL 0.9.8g for APE.
 fgb/png: PNG library for APE.
 fgb/poll: Free poll(3) for APE.
 fgb/posix-man: POSIX 1003.1-2003 man pages and man(1) for APE.
@@ -78,7 +74,6 @@ quanstro/ndb: all of ndb, and dns executables
 quanstro/ndbrequery: search ndb tuple values by regular expression
 quanstro/ndbtozone: convert an ndb database to bind zones.
 quanstro/nfactotum: a dsa capabable factotum
-quanstro/nupas: scalable upas
 quanstro/nvram: search all sd devices for nvram partition or plan9.nvr in 9fat.
 quanstro/oui: These commands convert common strings containing an embedded
 quanstro/palatino: subpixel palatino
@@ -90,7 +85,6 @@ quanstro/replica: replica changes from fs history paper http://www.quanstro.net/
 quanstro/requery: regular expression matching for ndb databases
 quanstro/sd: devsd updates to support raw ata devices
 quanstro/smart: smart monitoring for scsi & ata disks
-quanstro/ssh2: ssh2
 quanstro/syslogdsr: syslogd with a taylored for coraid storage
 quanstro/vblade: virtual (software) aoe target
 quanstro/vera: vera subpixel fonts
@@ -110,7 +104,6 @@ steve/mkmk: mkmk - auto generate mkfiles for foreign APE software
 steve/mkpass: generate ramdom passowrds based on ethernet traffic
 steve/mkptypes: extract function prototypes from C old source code
 steve/mothra: Tom Duff's early web browser ported from the 2nd edition. (not up to modern html)
-steve/mysqlfs: A client for MySQL databases.
 steve/ncpfs: NetWare™ NCP file sharing protocol client
 steve/pppdec: decode PPP protocol negotiation from a simple hexdump
 steve/pptfs: present a powerpoint file as a directory of text and image files
@@ -121,7 +114,6 @@ steve/snmpfs: very simple snmp manager (client) filesystem - DER encode and deco
 steve/spline: cubic spline interpolator - native plan9 port of Unix V7 source
 steve/srch: build and search a database of comments/variables/functions in C source
 steve/suggest: suggest - spelling corrector 'spell doc | suggest'
-steve/tex: TeX, metafont, metapost fonts etc, circa 1998
 steve/tidy: W3C HTMP/XML beautifier and checker
 steve/tmac.pm: the pm troff preprocessor and macros
 steve/unifdef: unifdef - remove ifdef'ed lines from C code, APE port of BSD 4.3 code
@@ -138,3 +130,5 @@ DONE -- Committed:
 de0u/squeak: Squeak Smalltalk programming environment
 fgb/scheme: Philip K. Dick's TinySCHEME Version 1.34
 fgb/breakout: Breakout - breakout/arkanoid clone.
+steve/tex: TeX, metafont, metapost fonts etc, circa 1998 (kind of)
+steve/mysqlfs: A client for MySQL databases.
