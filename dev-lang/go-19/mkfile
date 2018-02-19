@@ -1,0 +1,18 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='Google Go language'
+VERSION='1.9.0'
+DEPS=app-misc/ca-certificates
+
+WEBSOURCE=http://9legacy.org/download/go/go1.9.3-plan9-amd64-bootstrap.tbz
+WORKFILE=go1.9.3-plan9-amd64-bootstrap.tbz
+EXTRACTCOMMAND=/bin/tar xzf
+BUILDPATH=work/go
+BUILDCOMMAND=fortune /lib/rob
+INSTALLCOMMAND=cp bin/go* /$objtype/bin/
+CLEANCOMMAND=fortune /lib/ken
+UNINSTALLCOMMAND=fortune /lib/rsc
+MESSAGE='To make use of go you must bind '`{pwd}'/work/go/bin over /bin and set $GOPATH.'
+
+</sys/ports/Mk/mkfile
