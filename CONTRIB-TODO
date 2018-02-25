@@ -117,7 +117,6 @@ yk/rd: A Remote Desktop Protocol client
 DOING -- WIP:
 steve/cfront: AT&T™ cfront C++ pre-compiler, update to v3.03 of old plan9 port
 
-
 DONE -- Committed:
 de0u/squeak: Squeak Smalltalk programming environment
 fgb/scheme: Philip K. Dick's TinySCHEME Version 1.34
