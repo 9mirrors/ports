@@ -5,9 +5,9 @@ DESCRIPTION='Provides GNU screen-like functionality via a 9p fs of io Hubs.'
 
 HGSOURCE=https://bitbucket.org/mycroftiv/hubfs
 BUILDPATH=work/hubfs
-BUILDCOMMAND=mk
+BUILDCOMMAND=mk all
 CLEANCOMMAND=mk nuke
-INSTALLCOMMAND=cp work/hubfs/hubfs /$objtype/bin/hubfs
-UNINSTALLCOMMAND=rm /$objtype/bin/hubfs
+INSTALLCOMMAND=mk install
+UNINSTALLCOMMAND=
 
 </sys/ports/Mk/mkfile
