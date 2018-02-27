@@ -64,7 +64,7 @@ fetch:VQE:
 				if(! ~ $#HGREV 0){
 					hg up $HGREV
 				}
-			} || exit $status
+			}
 		}
 		exit ''
 	}
