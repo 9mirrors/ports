@@ -7,7 +7,7 @@ HGSOURCE=https://bitbucket.org/mycroftiv/grio
 BUILDPATH=work/grio
 BUILDCOMMAND=mk
 CLEANCOMMAND=mk nuke
-INSTALLCOMMAND=cp work/grio/6.out /$objtype/bin/grio
-UNINSTALLCOMMAND=rm /$objtype/bin/grio
+INSTALLCOMMAND=mk install
+UNINSTALLCOMMAND=/$objtype/bin/grio
 
 </sys/ports/Mk/mkfile
