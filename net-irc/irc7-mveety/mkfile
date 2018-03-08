@@ -5,7 +5,6 @@ DESCRIPTION='File based irc client (mveety patches)'
 VERSION='1'
 
 HGSOURCE=http://bitbucket.org/mveety/irc7
-HGREV=0538e4a1996a
 BUILDPATH=work/irc7
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install

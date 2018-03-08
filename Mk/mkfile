@@ -15,7 +15,7 @@ INSTALLCOMMAND=`{ if(~ $#INSTALLCOMMAND 0){ echo 'mk install' }; if not { echo $
 CLEANCOMMAND=`{ if(~ $#CLEANCOMMAND 0){ echo 'mk clean' }; if not { echo $CLEANCOMMAND }}
 WORKFILE=`{ if(~ $#WORKFILE 0){ echo './' }; if not { echo $WORKFILE }}
 
-all:VQE: fetch build install
+all:VQE:fetch build install
 
 info:VQE:
 	echo 'Name: ' $PORTNAME
@@ -25,7 +25,7 @@ info:VQE:
 	echo 'Description: ' $DESCRIPTION
 	echo 'Complain to: ' $OWNER
 
-fetch:VQE:
+fetch:QE:
 	. /sys/ports/Config/ports.conf
 	@{
 		rfork ne
@@ -33,58 +33,58 @@ fetch:VQE:
 		cd work
 		test -e .patched && rm .patched
 		if(! ~ $#WEBSOURCE 0){
-			{ webfs && hget $WEBSOURCE > $WORKFILE } || exit $status
+			{ webfs && hget $WEBSOURCE > $WORKFILE }
 		}
 		if(! ~ $#9PSERVER 0){
 			# i think we might want to add this in the future
 			# maybe just nick 9front's 9fs
-			$PORTS/Mk/ports9fs $9PSERVER || exit $status
+			$PORTS/Mk/ports9fs $9PSERVER
 			if(! ~ $#9PFILE 0){
 				if(! ~ $#9PFILE 1){
 					for(i in $9PFILE){
-						fcp $i ./ || exit $status
+						fcp $i ./
 					}
 				}
 				if not {
-					fcp $9PFILE $WORKFILE || exit $status
+					fcp $9PFILE $WORKFILE
 				}
 			}
 			if(! ~ $#9PDIR 0){
-				dircp $9PDIR ./ || exit $status
+				dircp $9PDIR ./
 			}
 		}
 		if(! ~ $#EXTRACTCOMMAND 0){
 			file=`{pwd}^/^$WORKFILE
-			$EXTRACTCOMMAND $file || exit $status
+			$EXTRACTCOMMAND $file
 		}
 		if(! ~ $#HGSOURCE 0){
 			@{
 				rfork ne
-				{ webfs && hg clone $HGSOURCE } || exit $status
+				{ webfs && hg clone $HGSOURCE }
 				if(! ~ $#HGREV 0){
 					hg up $HGREV
 				}
 			}
 		}
-		exit ''
 	}
-	exit ''
+	status=''
+	touch fetch
 
-patch:VQE:
+patch:VQE:fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
-	if(test -e work/.patched){
-		exit 'already patched'
+	if(! test -e work/.patched){
+		for(p in `{ls $files/*.patch >[2]/dev/null}){
+			@{ cd $BUILDPATH && apply $p } || exit 'applying '^$p^' failed'
+		}
+		if(! ~ $#PATCHES 0){
+			dircp $PATCHES $BUILDPATH
+		}
 	}
-	for(p in `{ls $files/*.patch >[2]/dev/null}){
-		@{ cd $BUILDPATH && apply $p } || exit 'applying '^$p^' failed'
-	}
-	if(! ~ $#PATCHES 0){
-		dircp $PATCHES $BUILDPATH
-	}
-	touch work/.patched || exit $status
+	touch work/.patched
+	touch patch
 
-unpatch:VQE:
+unpatch:VQE:fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! test -e work/.patched){
@@ -93,9 +93,10 @@ unpatch:VQE:
 	for(p in `{ls $files/*.patch >[2]/dev/null}){
 		@{ cd $BUILDPATH && unapply $p } || exit 'unapplying '^$p^' failed'
 	}
-	rm work/.patched || exit $status
+	rm -f work/.patched
+	rm -f patch
 
-build:VQE:
+build:QE:fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#archmask 0){
@@ -118,30 +119,30 @@ build:VQE:
 					cputype=$cputype
 					cd $PORTS/$i
 					mk fetch ; mk build ; mk install
-				} || exit $status
+				}
 			}
 		}
 	}
 	if(! test -e work/.patched){
-		mk patch || exit $status
+		mk patch
 	}
-	cd $BUILDPATH
 	@{
 		rfork ne
+		cd $BUILDPATH
 		if(! ~ $BUILDCOMMAND ''){
 			$BUILDCOMMAND
 		}
 		if not {
 			status=''
 		}
+		if(! ~ $#POSTBUILD 0){
+			echo 'Running post-build hooks...'
+			$POSTBUILD
+		}
 	}
-	if(! ~ $#POSTBUILD 0){
-		echo 'Running post-build hooks...'
-		$POSTBUILD
-	}
-	exit ''
+	touch build
 
-test:VQE: # build fetch
+test:VQE:build fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#archmask 0){
@@ -172,7 +173,7 @@ test:VQE: # build fetch
 	}
 	exit ''
 
-install:VQE: # build fetch
+install:QE:build patch fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#BUILDONLY 0){
@@ -203,9 +204,9 @@ install:VQE: # build fetch
 		echo $PORTNAME is already installed
 		status=''
 	}
-	exit ''
+	touch install
 
-reinstall:VQE: # build fetch
+reinstall:VQE:build fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
@@ -218,7 +219,6 @@ reinstall:VQE: # build fetch
 			echo $i
 		}
 	}
-	exit ''
 
 testinstall:VQE:
 	. /sys/ports/Config/ports.conf
@@ -233,20 +233,22 @@ testinstall:VQE:
 			echo $i
 		}
 	}
-	exit ''
+	status=''
 
-clean:VQE: # build fetch
+clean:VQE:fetch
 	. /sys/ports/Config/ports.conf
-	cd $BUILDPATH || exit notfetched
+	cd $BUILDPATH || exit 'not fetched'
 	if(! ~ $#CLEANCOMMAND 0){
 		$CLEANCOMMAND || exit $status
 	}
-	exit ''
+	rm -f build
+	status=''
 
 nuke:VQE:
 	rm -rf work/
+	rm -f fetch build install patch
 
-uninstall:VQE: # fetch
+uninstall:VQE:fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! checkport $PORTNAME){
