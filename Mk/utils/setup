@@ -5,17 +5,9 @@ if(test -e /bin/hg){
 	hg clone https://code.9front.org/hg/ports /sys/ports
 	touch /sys/ports/Config/ports.db
 	echo 'Be sure to edit /sys/ports/Config/ports.conf'
-	echo 'run portupdate to keep the ports tree up to date.'
+	echo 'run ports/update to keep the ports tree up to date.'
 }
 if not {
 	echo 'installing the ports tree without mercurial is no longer supported'
 	exit 'no mercurial'
-	mkdir -p /sys/ports
-	hget http://mveety.com/raw/ports.tgz > /tmp/ports.tgz
-	cd /sys/ports
-	tar xzvf /tmp/ports.tgz
-	touch /sys/ports/Config/ports.db
-	echo 'Please note:'
-	echo 'The installer couldn't find mercurial. Many ports and the ports tree update'
-	echo 'target require mercurial to function properly. Please install it.'
 }
