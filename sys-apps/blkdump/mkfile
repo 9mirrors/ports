@@ -1,0 +1,14 @@
+</$objtype/mkfile
+
+OWNER='Matthew Veety <mveety@gmail.com>'
+DESCRIPTION='Simple tool to dump blocks from disks in a readable format'
+VERSION='1'
+
+HGSOURCE=http://bitbucket.org/mveety/blkdump
+BUILDPATH=work/blkdump
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=rm /$objtype/bin/blkdump
+
+</sys/ports/Mk/mkfile
