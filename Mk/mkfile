@@ -118,6 +118,7 @@ build:QE:fetch
 					objtype=$objtype
 					cputype=$cputype
 					cd $PORTS/$i
+					echo 'installing dependent port '^$i^'...'
 					mk fetch ; mk build ; mk install
 				}
 			}
