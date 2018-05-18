@@ -3,6 +3,7 @@
 OWNER='Matthew Veety <mveety@gmail.com>'
 DESCRIPTION='tcl programming language'
 VERSION='8.5.9'
+archmask=amd64
 
 DEPS=dev-libs/tcllib
 9PSERVER=9pio
