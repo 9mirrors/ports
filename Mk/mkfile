@@ -237,9 +237,16 @@ testinstall:VQE:
 
 clean:VQE:fetch
 	. /sys/ports/Config/ports.conf
-	cd $BUILDPATH || exit 'not fetched'
-	if(! ~ $#CLEANCOMMAND 0){
-		$CLEANCOMMAND || exit $status
+	@{
+		rfork ne
+		cd $BUILDPATH || exit 'not fetched'
+		if(! ~ $#NOCLEAN 0) {
+			exit
+		}
+		if(! ~ $#CLEANCOMMAND 0){
+			echo 'running '^$CLEANCOMMAND
+			$CLEANCOMMAND || exit $status
+		}
 	}
 	rm -f build
 	status=''
