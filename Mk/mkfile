@@ -278,6 +278,7 @@ uninstall:VQE:fetch
 	}
 	if(~ $#UNINSTALLCOMMAND 0){
 		for(i in $UNINSTALL){
+			echo 'removing '''^$i^'''...'
 			rm -f $i
 		}
 	}
