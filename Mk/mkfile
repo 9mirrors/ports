@@ -288,4 +288,4 @@ uninstall:VQE:fetch
 		} || exit $status
 	}
 	deregister $PORTNAME
-
+	rm -f install
