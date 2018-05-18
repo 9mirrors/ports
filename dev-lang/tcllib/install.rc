@@ -1,0 +1,4 @@
+#!/bin/rc
+pwd
+mkdir -p /sys/lib/tcl
+dircp work/ /sys/lib/tcl

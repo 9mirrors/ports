@@ -1,0 +1,14 @@
+</$objtype/mkfile
+
+OWNER='Matthew Veety <mveety@gmail.com>'
+DESCRIPTION='Support library for dev-lang/tcl'
+
+9PSERVER=9pio
+9PDIR=/n/9pio/contrib/fgb/root/sys/lib/tcl
+BUILDPATH=./
+BUILDCOMMAND=echo 'fake build'
+INSTALLCOMMAND=rc install.rc
+UNINSTALLCOMMAND=rm -r /sys/lib/tcl
+NOCLEAN=1
+
+</sys/ports/Mk/mkfile
