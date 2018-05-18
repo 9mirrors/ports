@@ -33,9 +33,9 @@ switch($cmd) {
 		s=$status
 		echo 'Status: '^$s
 		exit $s
-	case unregister
+	case deregister
 		if(~ $#* 0) { usage ; }
-		unregister $1
+		deregister $1
 		s=$status
 		echo 'Status: '^$s
 		exit $s
