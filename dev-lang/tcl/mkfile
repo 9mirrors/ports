@@ -1,0 +1,12 @@
+</$objtype/mkfile
+
+OWNER='Matthew Veety <mveety@gmail.com>'
+DESCRIPTION='tcl programming language'
+VERSION='8.5.9'
+
+DEPS=dev-libs/tcllib
+9PSERVER=9pio
+9PDIR=/n/9pio/contrib/fgb/root/sys/src/cmd/tcl
+UNINSTALL=/$objtype/bin/tclsh
+
+</sys/ports/Mk/mkfile

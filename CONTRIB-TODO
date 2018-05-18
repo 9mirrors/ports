@@ -20,7 +20,6 @@ fgb/poll: Free poll(3) for APE.
 fgb/posix-man: POSIX 1003.1-2003 man pages and man(1) for APE.
 fgb/regex: Henry Spencer's regex lib for APE.
 fgb/sqlite3: SQLite version 3.5.4 for APE.
-fgb/tcl: TCL 8.5.9 APE port for Plan 9
 fgb/tiff: Libtiff 3.8.2 for APE.
 fgb/ttf2subf: Ttf2subf, converts TrueType Fonts to the Subfont format.
 fgb/wchar: Gunnar Ritter's libwchar for APE.
@@ -128,3 +127,4 @@ steve/rtf2txt: MicroSoft™ RTF to text conversion
 steve/indent: BSD indent - C beautifier, more aggressive with messy source than cb(1)
 steve/pptfs: present a powerpoint file as a directory of text and image files
 stefanha/vim: Vim: enhanced vi editor
+fgb/tcl: TCL 8.5.9 APE port for Plan 9

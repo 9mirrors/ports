@@ -2,6 +2,7 @@
 
 OWNER='Matthew Veety <mveety@gmail.com>'
 DESCRIPTION='Support library for dev-lang/tcl'
+VERSION='8.5.9'
 
 9PSERVER=9pio
 9PDIR=/n/9pio/contrib/fgb/root/sys/lib/tcl
