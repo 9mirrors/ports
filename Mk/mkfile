@@ -51,7 +51,7 @@ fetch:QE:
 				}
 			}
 			if(! ~ $#9PDIR 0){
-				dircp $9PDIR ./
+				$PORTS/Mk/portsdircp $9PDIR ./
 			}
 		}
 		if(! ~ $#EXTRACTCOMMAND 0){
@@ -79,7 +79,7 @@ patch:VQE:fetch
 			@{ cd $BUILDPATH && apply $p } || exit 'applying '^$p^' failed'
 		}
 		if(! ~ $#PATCHES 0){
-			dircp $PATCHES $BUILDPATH
+			$PORTS/Mk/portsdircp $PATCHES $BUILDPATH
 		}
 	}
 	touch work/.patched
