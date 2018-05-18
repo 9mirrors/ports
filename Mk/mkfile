@@ -14,6 +14,7 @@ BUILDCOMMAND=`{ if(~ $#BUILDCOMMAND 0){ echo 'mk' }; if not { echo $BUILDCOMMAND
 INSTALLCOMMAND=`{ if(~ $#INSTALLCOMMAND 0){ echo 'mk install' }; if not { echo $INSTALLCOMMAND }}
 CLEANCOMMAND=`{ if(~ $#CLEANCOMMAND 0){ echo 'mk clean' }; if not { echo $CLEANCOMMAND }}
 WORKFILE=`{ if(~ $#WORKFILE 0){ echo './' }; if not { echo $WORKFILE }}
+archmask=`{ if(! ~ $#ARCHMASK 0) { echo $ARCHMASK } }
 
 all:VQE:fetch build install
 
@@ -100,10 +101,15 @@ build:QE:fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#archmask 0){
-		for(i in $archmask){
-			if(~ $i $objtype){
-				exit 'objtype '^$"objtype^' is not supported'
+		if(! ~ $#IGNOREMASKS 0){
+			for(i in $archmask){
+				if(~ $i $objtype){
+					exit 'objtype '^$"objtype^' is not supported'
+				}
 			}
+		}
+		if not {
+			echo 'warning: ignoring architecture build masks'
 		}
 	}
 	if(! ~ $#DEPS 0){
