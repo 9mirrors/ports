@@ -119,7 +119,7 @@ build:QE:fetch
 					cputype=$cputype
 					cd $PORTS/$i
 					echo 'installing dependent port '^$i^'...'
-					mk fetch ; mk build ; mk install
+					mk all
 				}
 			}
 		}
@@ -200,12 +200,12 @@ install:QE:build patch fetch
 		if(! ~ $#MSGFILE 0){
 			cat $MSGFILE
 		}
+		touch install
 	}
 	if not {
 		echo $PORTNAME is already installed
 		status=''
 	}
-	touch install
 
 reinstall:VQE:build fetch
 	. /sys/ports/Config/ports.conf
@@ -245,7 +245,6 @@ clean:VQE:fetch
 			exit
 		}
 		if(! ~ $#CLEANCOMMAND 0){
-			echo 'running '^$CLEANCOMMAND
 			$CLEANCOMMAND || exit $status
 		}
 	}
