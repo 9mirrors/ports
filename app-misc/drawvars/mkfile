@@ -1,0 +1,11 @@
+</$objtype/mkfile
+
+OWNER='Matthew Veety <mveety@gmail.com>'
+DESCRIPTION='Drawvars create images files (png, jpg, ...) of functions (y=2x)'
+VERSION='0'
+
+9PSERVER=9pio
+9PDIR=/n/9pio/contrib/gabidiaz/root/sys/src/cmd/drawvars
+UNINSTALL=/sys/man/4/drawvars /$objtype/bin/drawvars
+
+</sys/ports/Mk/mkfile

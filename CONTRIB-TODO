@@ -3,7 +3,6 @@ bichued/klondike: a solitaire game
 fgb/4th: 4tH 3.5d - Forth-like interpreter.
 fgb/X11: Equis - Xserver for Plan 9 + Xlibs.
 fgb/bz2: BZ2 library for APE
-fgb/contrib: Contrib - Trivial Package Management
 fgb/curses: PDCurses 3.3 library for APE.
 fgb/freefont: These are Free UCS Outline Fonts converted to the subfont format.
 fgb/freetype: FreeType 2.3.5 for APE.
@@ -26,7 +25,6 @@ fgb/xml2: libxml2-2.6.30 for APE.
 fgb/z: ZLIB for APE.
 fst/histogram: display a histogram from the input values.
 fst/target: target,tippi - spy on mouse and display the state of mouse buttons
-gabidiaz/drawvars: Drawvars create images files (png, jpg, ...) of functions (y=2x)
 gabidiaz/gsvn: SVN download over http. Tested with inferno and googlecode.
 gabidiaz/perl: This is the same perl version as is in the iso image on the extra directory
 gabidiaz/snmpfs: SNMP v2 filesystem interface implementation
@@ -128,3 +126,5 @@ steve/indent: BSD indent - C beautifier, more aggressive with messy source than 
 steve/pptfs: present a powerpoint file as a directory of text and image files
 stefanha/vim: Vim: enhanced vi editor
 fgb/tcl: TCL 8.5.9 APE port for Plan 9
+fgb/contrib: Contrib - Trivial Package Management
+gabidiaz/drawvars: Drawvars create images files (png, jpg, ...) of functions (y=2x)
