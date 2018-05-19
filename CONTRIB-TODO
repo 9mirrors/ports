@@ -1,6 +1,5 @@
 TODO -- No work:
 bichued/klondike: a solitaire game
-de0u/divergefs: Chao-Kuo Lin's overlay/union/layer/stitch file system
 fgb/4th: 4tH 3.5d - Forth-like interpreter.
 fgb/X11: Equis - Xserver for Plan 9 + Xlibs.
 fgb/bz2: BZ2 library for APE
@@ -115,6 +114,7 @@ yk/rd: A Remote Desktop Protocol client
 
 DOING -- WIP:
 steve/cfront: AT&T™ cfront C++ pre-compiler, update to v3.03 of old plan9 port
+de0u/divergefs: Chao-Kuo Lin's overlay/union/layer/stitch file system
 
 DONE -- Committed:
 de0u/squeak: Squeak Smalltalk programming environment
