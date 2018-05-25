@@ -1,0 +1,4 @@
+Database format:
+	portcat/portname:version:install-date:archs,...
+
+example: sys-apps/blkdump:0:2018-05-25:386,amd64,arm

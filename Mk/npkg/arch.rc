@@ -1,0 +1,38 @@
+#!/bin/rc
+
+# getarch [record string]
+fn getarch {
+	reclist = `{ fmtrecord $1 }
+	echo $reclist(4)
+}
+
+fn fmtarch {
+	echo $1 | sed -e 's/,/\n/g'
+}
+
+# checkarch [arch] [record string]
+fn checkarch {
+	archs = `{ fmtarch `{ getarch $2 } }
+	_as = ''
+	for(i in $archs){
+		if(~ $i $1) {
+			_as = 'found arch '^$i
+		}
+	}
+	status = $_as
+}
+
+# makearchstr [archs...]
+fn makearchstr {
+	first = '1'
+	for(i in $*){
+		if(~ $first '1'){
+			echo -n $i
+			first = '0'
+		}
+		if not {
+			echo -n ','^$i
+		}
+	}
+	echo ''
+}

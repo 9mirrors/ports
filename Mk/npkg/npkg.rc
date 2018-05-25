@@ -1,0 +1,104 @@
+#!/bin/rc
+
+. $PORTS/Config/ports.conf
+. $PORTS/Mk/npkg/npkg.conf
+if(test -r $PORTS/Config/npkg.conf){
+	. $PORTS/Config/npkg.conf
+}
+. $ndbbin/records.rc
+. $ndbbin/arch.rc
+
+fn apply {
+	file=$1
+	echo applying `{basename $file}
+	ape/patch -p1 < $file
+}
+
+fn unapply {
+	file=$1
+	echo unapplying `{basename $file}
+	ape/patch -R -p1 < $file
+}
+
+fn checkport {
+	s = ''
+	rec = ''
+	rec = `{ getrecord 'name' $1 }
+	echo 'checking for port: '^$1
+	if(~ $#2 0){
+		_vers = 'none'
+	}
+	if not {
+		_vers = $2
+	}
+	if(~ $#rec 0){
+		s = 'checkport: not installed'
+	}
+	if not {
+		_fmtrec `{ fmtrecord $rec }
+		if(! checkarch $objtype $rec){
+			s = 'checkport: arch '^$objtype^' not installed'
+		}
+		if not {
+			if(! ~ $_vers 'none'){
+			if(! ~ $_fmtrec(2) $_vers){
+				s = 'checkport: old version '^$_vers^' installed'
+			}
+			}
+		}
+	}
+	status = $s
+}
+
+fn register {
+	rec = ''
+	_name = $1
+	_date = `{ date -i }
+	_archstr = ''
+	_frec = ''
+
+	if(~ $#2 0){
+		_vers = 'none'
+	}
+	if not {
+		_vers = $2
+	}
+	rec = `{ getrecord 'name' $1 }
+	if(! ~ $#rec 0){
+		echo 'updating install record...'
+		_frec = `{ fmtrecord $rec }
+		_astr = $_frec(4)
+		_archstr = $_astr^','^$objtype
+	}
+	if not {
+		echo 'adding installed port...'
+		_archstr = $objtype
+	}
+	addrecord $_name $_vers $_date $_archstr
+}
+
+fn deregister {
+	echo 'removing installed port...'
+	removerecord $1
+}
+
+fn portversion {
+	s = ''
+	vers = 0
+	_rec = ''
+	_frec = ''
+	echo 'checking version of '^$1
+	_rec = `{ getrecord $1 }
+	_frec = `{fmtrecord $"_rec }
+	vers = $_frec(2)
+	if(~ $vers 0){
+		s = 'no version'
+	}
+	if(~ $vers 'none'){
+		s = 'no version'
+	}
+	if not {
+		echo $vers
+	}
+	status = $s
+}

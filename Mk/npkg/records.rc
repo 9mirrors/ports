@@ -1,0 +1,26 @@
+#!/bin/rc
+
+fn fmtrecord {
+	echo $1 | sed -e 's/:/\n/g'
+}
+
+# getrecord [field] [value]
+# ex: getrecord name 'portcat/portname'
+fn getrecord {
+	awk -f $ndbbin/getrec.awk -v 'FIELD='^$1 -v 'VALUE='^$2 $ndbfile
+}
+
+fn addrecord {
+	awk -f $ndbbin/addrec.awk -v 'NAME='^$1 \
+				-v 'VERSION='^$2 \
+				-v 'DATE='^$3 \
+				-v 'ARCHSTR='^$4 $ndbfile > $ndbfile^'.tmp'
+	cp $ndbfile $ndbfile^'.old'
+	mv $ndbfile^'.tmp' $ndbfile
+}
+		
+fn removerecord {
+	awk -f $ndbbin/remrec.awk -v 'NAME='^$1 $ndbfile > $ndbfile^'.tmp'
+	cp $ndbfile $ndbfile^'.old'
+	mv $ndbfile^'.tmp' $ndbfile
+}
