@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='Kenji update of 2e ktrans'
+VERSION=2
+
+WEBSOURCE=http://9.postnix.us/code/ports/ktrans.tgz
+WORKFILE=ktrans.tgz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/ktrans
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk installfull
+CLEANCOMMAND=mk nuke
+UNINSTALLCOMMAND=mk uninstall
+
+</sys/ports/Mk/mkfile
