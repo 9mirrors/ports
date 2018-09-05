@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='opus audio player using libogg by mischief'
+VERSION=1
+
+WEBSOURCE=http://9.postnix.us/code/ports/opus.bundle
+WORKFILE=opus.bundle
+EXTRACTCOMMAND=rc
+BUILDPATH=work
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk nuke
+UNINSTALLCOMMAND=mk uninstall
+
+</sys/ports/Mk/mkfile
