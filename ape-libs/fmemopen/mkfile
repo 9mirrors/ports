@@ -4,13 +4,13 @@ OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='fmemopen() for APE'
 VERSION=1
 
-WEBSOURCE=http://plan9.bell-labs.com/sources/contrib/staal1978/ports/src/simple_fmemopen.tbz
+WEBSOURCE=https://9p.io/sources/contrib/staal1978/ports/src/simple_fmemopen.tbz
 WORKFILE=simple_fmemopen.tbz
 EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/fmemopen
 BUILDCOMMAND=mk
 INSTALLCOMMAND=/bin/rc -c 'mk install && cp fmemopen.h /sys/include/ape/'
 CLEANCOMMAND=mk clean
-UNINSTALLCOMMAND=/bin/rc -c 'mk nuke && rm /sys/include/ape/fmemopen.h'
+UNINSTALLCOMMAND=/bin/rc -c 'mk nuke && rm -f /sys/include/ape/fmemopen.h'
 
 </sys/ports/Mk/mkfile
