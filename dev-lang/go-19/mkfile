@@ -1,18 +1,22 @@
 </$objtype/mkfile
 
+# TODO: arm support
+
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Google Go language'
-VERSION='1.9.0'
+VERSION=1.9.7
 DEPS=app-misc/ca-certificates
 
-WEBSOURCE=http://9legacy.org/download/go/go1.9.3-plan9-amd64-bootstrap.tbz
-WORKFILE=go1.9.3-plan9-amd64-bootstrap.tbz
+WEBSOURCE=http://9legacy.org/download/go/go$VERSION-plan9-amd64-bootstrap.tbz
+WORKFILE=go$VERSION-plan9-$objtype-bootstrap.tbz
 EXTRACTCOMMAND=/bin/tar xzf
-BUILDPATH=work/go
+BUILDPATH=work/go-plan9-$objtype-bootstrap
 BUILDCOMMAND=fortune /lib/rob
-INSTALLCOMMAND=cp bin/go* /$objtype/bin/
+INSTALLCOMMAND=/bin/rc -c '''mkdir -p /sys/lib/go/$objtype-$VERSION && dircp . /sys/lib/go/$objtype-$VERSION'''
 CLEANCOMMAND=fortune /lib/ken
-UNINSTALLCOMMAND=fortune /lib/rsc
-MESSAGE='To make use of go you must bind '`{pwd}'/work/go/bin over /bin and set $GOPATH.'
+UNINSTALLCOMMAND=rm -rf /sys/lib/go/$objtype-$VERSION
+MESSAGE='To use go, add this to your profile:' \
+	'	bind -b /sys/lib/go/$objtype-'$VERSION'/bin /bin' \
+	'	GOROOT=/sys/lib/go/$objtype-'$VERSION
 
 </sys/ports/Mk/mkfile
