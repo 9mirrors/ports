@@ -9,6 +9,7 @@ WORKFILE=discount-2.2.2.tar.bz2
 EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/discount-2.2.2/Plan9
 BUILDCOMMAND=mk build
+TESTCOMMAND=mk test
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk nuke
 UNINSTALLCOMMAND=mk uninstall
