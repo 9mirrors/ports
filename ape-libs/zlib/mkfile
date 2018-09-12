@@ -2,12 +2,12 @@
 
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='zlib compression library for APE'
-VERSION=1.2.8-1
+VERSION=1.2.7
 
-WEBSOURCE=http://zlib.net/zlib-1.2.8.tar.gz
-WORKFILE=zlib-1.2.8.tar.gz
+WEBSOURCE=https://ftp.osuosl.org/pub/libpng/src/archive/gz/zlib/zlib-$VERSION.tar.gz
+WORKFILE=zlib-$VERSION.tar.gz
 EXTRACTCOMMAND=tar xzvf
-BUILDPATH=work/zlib-1.2.8
+BUILDPATH=work/zlib-$VERSION
 PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
