@@ -2,19 +2,19 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='vultr.com cli tool'
-DEPS=dev-lang/go
+VERSION=1.15.0
+DEPS=dev-lang/go-19
 
-WEBSOURCE=https://github.com/JamesClonk/vultr/archive/master.zip
-WORKFILE=master.zip
-EXTRACTCOMMAND=unzip -vf
-BUILDPATH=work/vultr-master
-BUILDCOMMAND=/bin/rc -c 'rfork ne; \
+WEBSOURCE=https://github.com/JamesClonk/vultr/archive/$VERSION.tar.gz
+WORKFILE=vultr-$VERSION.tar.gz
+EXTRACTCOMMAND=tar xzf
+BUILDPATH=work/vultr-$VERSION
+BUILDCOMMAND=/bin/rc -c '''rfork ne; \
 	mkdir -p gopath/src/github.com/JamesClonk/vultr; \
 	bind . gopath/src/github.com/JamesClonk/vultr; \
-	bind -b Godeps/_workspace/src/github.com gopath/src/github.com; \
-	GOPATH=`{pwd}^/gopath $PORTS/dev-lang/go/work/go/bin/go build;'
+	GOPATH=`{pwd}^/gopath /bin/go build;'''
 CLEANCOMMAND=rm -r gopath
-INSTALLCOMMAND=cp vultr-master /$objtype/bin/vultr
-UNINSTALLCOMMAND=rm /$objtype/bin/vultr
+INSTALLCOMMAND=cp vultr-$VERSION /$objtype/bin/vultr
+UNINSTALLCOMMAND=rm -f /$objtype/bin/vultr
 
 </sys/ports/Mk/mkfile

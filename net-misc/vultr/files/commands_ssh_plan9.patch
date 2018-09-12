@@ -1,11 +1,6 @@
-diff --git a/cmd/commands_ssh_plan9.go b/cmd/commands_ssh_plan9.go
-new file mode 100644
-index 0000000..dc69e1b
---- /dev/null
-+++ b/cmd/commands_ssh_plan9.go
+--- /dev/null	Mon Sep 10 15:20:26 2018
++++ b/cmd/commands_ssh_plan9.go	Wed Sep 12 16:44:43 2018
 @@ -0,0 +1,28 @@
-+// +build plan9
-+
 +package cmd
 +
 +import (
@@ -16,13 +11,15 @@ index 0000000..dc69e1b
 +)
 +
 +func connectSSH(user, host, key string, port int) {
-+	args := []string{
-+		"-p", fmt.Sprintf("%d", port),
-+		"-u", user,
-+		"-h", host,
++	args := []string{"-u", user}
++
++	if port == 22 {
++		args = append(args, host)
++	} else {
++		args = append(args, fmt.Sprintf("tcp!%s!%d", host, port))
 +	}
 +
-+	cmd := exec.Command("scpu", args...)
++	cmd := exec.Command("ssh", args...)
 +
 +	cmd.Stdin = os.Stdin
 +	cmd.Stderr = os.Stderr
