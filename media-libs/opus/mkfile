@@ -12,6 +12,6 @@ PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
-UNINSTALLCOMMAND=mk nuke
+UNINSTALLCOMMAND=mk uninstall
 
 </sys/ports/Mk/mkfile
