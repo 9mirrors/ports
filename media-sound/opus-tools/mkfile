@@ -1,0 +1,18 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='Royalty-free, highly versatile audio codec'
+VERSION=0.10.0
+DEPS=media-libs/opus
+
+WEBSOURCE='https://git.xiph.org/?p=opus-tools.git;a=snapshot;h=5aecfedfb1290d4272e53cf12405cbc5b68f0ffe;sf=tgz'
+WORKFILE=opus-tools-0.10.0.tar.gz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/opus-tools-5aecfed
+PATCHES=files
+BUILDCOMMAND=mk all
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile
