@@ -4,7 +4,7 @@ OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='libpoll for APE'
 VERSION=1
 
-WEBSOURCE=http://plan9.bell-labs.com/sources/contrib/fgb/tar/poll.tgz
+WEBSOURCE=https://9p.io/sources/contrib/fgb/tar/poll.tgz
 WORKFILE=poll.tgz
 EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/poll
