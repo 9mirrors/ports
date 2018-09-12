@@ -11,6 +11,6 @@ BUILDPATH=work/qk1
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk nuke
-UNINSTALLCOMMAND=rm /$objtype/bin/quake
+UNINSTALLCOMMAND=mk uninstall
 
 </sys/ports/Mk/mkfile
