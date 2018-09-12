@@ -1,0 +1,33 @@
+</$objtype/mkfile
+
+CC=pcc
+CFLAGS=-Iinclude \
+	-I/sys/src/cmd/audio/libogg \
+	-I /sys/include/ape/opus \
+	-D_POSIX_SOURCE -D_C99_SNPRINTF_EXTENSION \
+	-DSPX_RESAMPLE_EXPORT= -DRANDOM_PREFIX=opustools -DOUTSIDE_SPEEX \
+	-DFLOATING_POINT -DOLD_LIBOGG \
+	-DPACKAGE_NAME="opus-tools" -DPACKAGE_VERSION="$VERSION" \
+	-c
+
+TARG=opusdec opusenc
+BIN=/$objtype/bin/audio
+
+LIB=/$objtype/lib/ape/libopus.a
+
+</sys/src/cmd/mkmany
+
+%.$O:	src/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	share/%.c
+	$CC $CFLAGS $prereq
+
+COMMON=opus_header.$O resample.$O getopt.$O getopt1.$O
+
+$O.opusdec: opusdec.$O wav_io.$O wave_out.$O  diag_range.$O $COMMON
+$O.opusenc: opusenc.$O audio-in.$O diag_range.$O lpc.$O flac.$O picture.$O $COMMON
+
+uninstall:V:
+	for (i in $TARG)
+		rm -f $BIN/$i

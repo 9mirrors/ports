@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='Open codec designed for internet transmission of interactive speech and audio'
+VERSION=1.2.1
+
+WEBSOURCE='https://git.xiph.org/?p=opus.git;a=snapshot;h=defbc370ec764d3d0dc43c45911e455b5e483b30;sf=tgz'
+WORKFILE=opus-1.2.1.tar.gz
+EXTRACTCOMMAND=tar xzvf
+BUILDPATH=work/opus-defbc37
+PATCHES=files
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk uninstall
+
+</sys/ports/Mk/mkfile

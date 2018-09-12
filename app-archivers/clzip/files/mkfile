@@ -1,7 +1,7 @@
 </$objtype/mkfile
 DIRS=doc testsuite 
 TARG=lzip
-OFILES=carg_parser.$O decoder.$O encoder.$O encoder_base.$O fast_encoder.$O main.$O 
+OFILES=carg_parser.$O decoder.$O encoder.$O encoder_base.$O fast_encoder.$O file_index.$O list.$O main.$O 
 BIN=/$objtype/bin
 HFILES=encoder_base.h lzip.h 
 
@@ -9,7 +9,7 @@ HFILES=encoder_base.h lzip.h
 
 CC=pcc
 LD=pcc
-CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -DPROGVERSION="1.7" -DPLAN9
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_C99_SNPRINTF_EXTENSION -DPROGVERSION="$VERSION" -DPLAN9
 
 main.$O: fast_encoder.h encoder.h decoder.h carg_parser.h /sys/include/ape/limits.h 
 fast_encoder.$O: fast_encoder.h 
@@ -21,10 +21,5 @@ carg_parser.$O: carg_parser.h
 install:V:
 	cp doc/clzip.1 /sys/man/1/lzip
 
-nuke:V:
-	rm -f /sys/man/1/lzip
-
-
-
-
-
+uninstall:V:
+	rm -f /sys/man/1/lzip $BIN/$TARG

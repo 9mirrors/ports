@@ -4,14 +4,23 @@ OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='mercurial'
 VERSION=3.4.1
 
-WEBSOURCE=http://mercurial.selenic.com/release/mercurial-3.4.1.tar.gz
-WORKFILE=mercurial-3.4.1.tar.gz
+# local definitions
+BINHG=build/scripts-2.5/hg
+SITEPACKAGES=/sys/lib/python/lib/python2.5/site-packages/
+
+WEBSOURCE=https://mercurial-scm.org/release/mercurial-$VERSION.tar.gz
+WORKFILE=mercurial-$VERSION.tar.gz
 EXTRACTCOMMAND=tar xzvf
-BUILDPATH=work/mercurial-3.4.1
+BUILDPATH=work/mercurial-$VERSION
 BUILDCOMMAND=python setup.py --pure build
+POSTBUILD=/bin/rc -c 'sed -e ''s,@LIBDIR@,''^$SITEPACKAGES^'','' < $BINHG > $BINHG.tmp && \
+	mv $BINHG.tmp $BINHG'
 INSTALLCOMMAND=python setup.py --pure install
 CLEANCOMMAND=python setup.py --pure clean --all
-UNINSTALLCOMMAND=/bin/rc -c 'rm -r /sys/lib/python/bin/hg /sys/lib/python/lib/python2.5/site-packages/^(hgext mercurial mercurial-3.4.1-py2.5.egg-info'
-MESSAGE='bind -b /sys/lib/python/bin /bin'
+UNINSTALLCOMMAND=/bin/rc -c 'rm -rf /sys/lib/python/bin/hg $SITEPACKAGES^(hgext mercurial mercurial-$VERSION-py2.5.egg-info)'
+
+MESSAGE='To use this version of mercurial, add:' \
+	'	bind -b /sys/lib/python/bin /bin' \
+	'to $home/lib/profile.'
 
 </sys/ports/Mk/mkfile
