@@ -3,6 +3,7 @@
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='Optionally use mksh as default /bin/sh in APE'
 DEPS=app-shells/mksh
+VERSION=0
 
 BUILDPATH=work/
 BUILDCOMMAND=fortune

@@ -6,8 +6,6 @@ VERSION=1
 DEPS=ape-libs/newlib-libgen ape-libs/gnulib ape-libs/fmemopen
 
 WEBSOURCE=http://git.suckless.org/sbase/snapshot/sbase-master.tar.bz2
-WORKFILE=sbase-master.tar.bz2
-EXTRACTCOMMAND=/bin/tar xzvf
 BUILDPATH=work/sbase-master
 PATCHES=files
 BUILDCOMMAND=mk all

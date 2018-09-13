@@ -5,8 +5,6 @@ DESCRIPTION='GNU termcap library'
 VERSION=1.3.1
 
 WEBSOURCE=https://gnu.cu.be/termutils/termutils-2.0.tar.gz
-WORKFILE=termutils-2.0.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/termutils-2.0
 PATCHES=files
 BUILDCOMMAND=mk
