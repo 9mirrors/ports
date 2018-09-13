@@ -239,7 +239,7 @@ testinstall:VQE:
 	}
 	status=''
 
-clean:VQE:fetch
+clean:VQE:	$BUILDPATH
 	. /sys/ports/Config/ports.conf
 	@{
 		rfork ne
@@ -258,7 +258,7 @@ nuke:VQE:
 	rm -rf work/
 	rm -f fetch build install patch
 
-uninstall:VQE:fetch
+uninstall:VQE:
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! checkport $PORTNAME){
