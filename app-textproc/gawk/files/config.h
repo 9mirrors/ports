@@ -48,8 +48,8 @@
 #define GETPGRP_VOID 1
 
 #define PACKAGE "gawk"
-#define VERSION "4.1.3"
-#define PACKAGE_STRING "gawk 4.1.3"
+#define VERSION "4.1.4"
+#define PACKAGE_STRING "gawk 4.1.4"
 
 #define DEFPATH "/bin"
 #define DEFLIBPATH "/sys/lib/gawk"

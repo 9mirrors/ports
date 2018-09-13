@@ -65,10 +65,9 @@ install:V:
 
 
 nuke:V:
-	rm -f $BIN/pgawk
+	rm -f $BIN/pgawk $BIN/gawk
 	rm -f /rc/bin/ape/igawk
 	rm -f /sys/include/ape/gawkapi.h
 	rm -f /sys/man/1/gawk
 	rm -f /sys/man/1/igawk
 	rm -rf /sys/lib/gawk
-
