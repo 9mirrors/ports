@@ -4,9 +4,7 @@ OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='XML library for APE'
 VERSION=2.9.2
 
-#download over ftp using 'fetch' script
-WORKFILE=libxml2-2.9.2.tar.gz
-EXTRACTCOMMAND=tar xzvf
+WEBSOURCE=http://xmlsoft.org/sources/libxml2-2.9.2.tar.gz
 BUILDPATH=work/libxml2-2.9.2
 PATCHES=files
 BUILDCOMMAND=mk

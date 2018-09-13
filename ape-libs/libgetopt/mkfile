@@ -5,8 +5,6 @@ DESCRIPTION='getopt for APE'
 VERSION=1
 
 WEBSOURCE=https://github.com/sabotage-linux/gnu-getopt/archive/master.zip
-WORKFILE=master.zip
-EXTRACTCOMMAND=unzip -f
 BUILDPATH=work/gnu-getopt-master/
 PATCHES=files
 BUILDCOMMAND=mk

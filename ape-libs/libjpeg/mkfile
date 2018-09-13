@@ -5,8 +5,6 @@ DESCRIPTION='JPEG library for APE'
 VERSION=9a
 
 WEBSOURCE=http://ijg.org/files/jpegsrc.v9a.tar.gz
-WORKFILE=jpegsrc.v9a.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/jpeg-9a
 PATCHES=files
 BUILDCOMMAND=mk

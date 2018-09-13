@@ -8,8 +8,6 @@ VERSION=2.0.9
 DEPS=ape-libs/headers
 
 WEBSOURCE=http://www.oberhumer.com/opensource/lzo/download/lzo-2.09.tar.gz
-WORKFILE=lzo-2.09.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/lzo-2.09/src
 PATCHES=files
 BUILDCOMMAND=mk

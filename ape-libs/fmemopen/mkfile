@@ -5,8 +5,6 @@ DESCRIPTION='fmemopen() for APE'
 VERSION=1
 
 WEBSOURCE=https://9p.io/sources/contrib/staal1978/ports/src/simple_fmemopen.tbz
-WORKFILE=simple_fmemopen.tbz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/fmemopen
 BUILDCOMMAND=mk
 INSTALLCOMMAND=/bin/rc -c 'mk install && cp fmemopen.h /sys/include/ape/'

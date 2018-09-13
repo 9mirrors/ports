@@ -5,8 +5,6 @@ DESCRIPTION='expat XML parser library for APE'
 VERSION=2.1.0
 
 WEBSOURCE=http://kent.dl.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz
-WORKFILE=expat-2.1.0.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/expat-2.1.0
 PATCHES=files
 BUILDCOMMAND=mk

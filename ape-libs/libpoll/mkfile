@@ -5,8 +5,6 @@ DESCRIPTION='libpoll for APE'
 VERSION=1
 
 WEBSOURCE=https://9p.io/sources/contrib/fgb/tar/poll.tgz
-WORKFILE=poll.tgz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/poll
 PATCHES=files
 BUILDCOMMAND=mk

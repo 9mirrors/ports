@@ -5,8 +5,6 @@ DESCRIPTION='zlib compression library for APE'
 VERSION=1.2.7
 
 WEBSOURCE=https://ftp.osuosl.org/pub/libpng/src/archive/gz/zlib/zlib-$VERSION.tar.gz
-WORKFILE=zlib-$VERSION.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/zlib-$VERSION
 PATCHES=files
 BUILDCOMMAND=mk

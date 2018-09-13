@@ -5,8 +5,6 @@ DESCRIPTION='newlib libgen as a library in APE'
 VERSION=1
 
 WEBSOURCE=http://plan9.bell-labs.com/sources/contrib/staal1978/ports/src/newlib-libgen.src.tbz
-WORKFILE=newlib-libgen.src.tbz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/libgen
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install

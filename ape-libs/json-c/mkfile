@@ -5,8 +5,6 @@ DESCRIPTION='json c library for APE'
 VERSION=0.12
 
 WEBSOURCE=https://github.com/json-c/json-c/archive/master.zip
-WORKFILE=master.zip
-EXTRACTCOMMAND=unzip -f
 BUILDPATH=work/json-c-master
 PATCHES=files
 BUILDCOMMAND=mk

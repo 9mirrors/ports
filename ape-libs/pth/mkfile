@@ -5,8 +5,6 @@ DESCRIPTION='GNU Pth userspace pthread library for APE'
 VERSION=1
 
 WEBSOURCE=https://gnu.cu.be/pth/pth-2.0.7.tar.gz
-WORKFILE=pth-2.0.7.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/pth-2.0.7/
 PATCHES=files
 BUILDCOMMAND=mk all
