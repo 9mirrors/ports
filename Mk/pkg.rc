@@ -5,6 +5,12 @@ if(~ $#BUILDPATH 0){
 	BUILDPATH=work
 }
 
+fn V {
+	if(! ~ $#V 0)
+		echo $*
+	$*
+}
+
 fn checkport {
 	s=''
 	echo 'checking for port: '^$1
@@ -104,6 +110,24 @@ fn unapply {
 	file=$1
 	echo unapplying `{basename $file}
 	ape/patch -R -p1 < $file
+}
+
+fn extract {
+	file=$1
+	switch($1){
+	case *.tar.gz *.tgz *.tar.bz2 *.tbz
+		v=''
+		if(~ $V 2)
+			v='v'
+		V tar $v^xf $file
+	case *.zip
+		v=''
+		if(~ $V 2)
+			v='-v'
+		V unzip $v -f $file
+	case *
+	}
+	rm /env/file /env/v
 }
 
 # lsd - ls directories
