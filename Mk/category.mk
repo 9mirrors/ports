@@ -1,8 +1,9 @@
 PORTS=`{ ls -l | grep '^d' | awk '{ print $10 }' }
 
-all.%:VQE:
+sub.%:VQE:
 	echo `{pbd}^/$stem - $MKARGS
 	cd $stem
 	mk $MKFLAGS $MKARGS
+	status=''
 
-install info fetch build install reinstall clean uninstall nuke:V:	${PORTS:%=all.%}
+install info check fetch build install reinstall clean uninstall nuke:VE:	${PORTS:%=sub.%}
