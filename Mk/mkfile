@@ -5,7 +5,7 @@
 BUILDFOR=$objtype
 PORTID=`{echo $PORTNAME | md5sum}
 PORTCAT=`{basename -d `{pwd} | sed 's,.*/,,'}
-PORTNAME=$PORTCAT/`{basename `{pwd}}
+PORTNAME=$PORTCAT/`{pbd}
 files=`{pwd}/files
 
 # for ease of use
