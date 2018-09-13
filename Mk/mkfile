@@ -26,6 +26,11 @@ info:VQE:
 	echo 'Description: ' $DESCRIPTION
 	echo 'Complain to: ' $OWNER
 
+check:VQE:
+	. $PORTS/Config/ports.conf
+	. $PORTS/Mk/pkg.rc
+	qa
+
 fetch:QE:
 	. /sys/ports/Config/ports.conf
 	test -e patch && rm patch
