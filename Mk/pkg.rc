@@ -68,6 +68,32 @@ fn portversion {
 	status=$s
 }
 
+fn wantvars {
+	for(v)
+		if(~ $#$v 0)
+			errors=($errors $v^' is missing')
+}
+
+fn notwantvars {
+	for(v)
+		if(! ~ $#$v 0)
+			errors=($errors $v^' is deprecated')
+}
+
+# check various problems in port mkfiles
+fn qa {
+	errors=()
+	wantvars OWNER DESCRIPTION VERSION
+	notwantvars WORKFILE EXTRACTCOMMAND
+
+	if(! ~ $#errors 0){
+		echo `{pwd}^/mkfile has $#errors problems
+		for(e in $errors)
+			echo - $e
+	}
+	~ $#errors 0 || status=`''{echo $#errors qa errors}
+}
+
 fn apply {
 	file=$1
 	echo applying `{basename $file}
