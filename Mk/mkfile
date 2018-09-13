@@ -13,7 +13,6 @@ BUILDPATH=`{ if(~ $#BUILDPATH 0){ echo 'work/' }; if not { echo $BUILDPATH }}
 BUILDCOMMAND=`{ if(~ $#BUILDCOMMAND 0){ echo 'mk' }; if not { echo $BUILDCOMMAND }}
 INSTALLCOMMAND=`{ if(~ $#INSTALLCOMMAND 0){ echo 'mk install' }; if not { echo $INSTALLCOMMAND }}
 CLEANCOMMAND=`{ if(~ $#CLEANCOMMAND 0){ echo 'mk clean' }; if not { echo $CLEANCOMMAND }}
-WORKFILE=`{ if(~ $#WORKFILE 0){ echo './' }; if not { echo $WORKFILE }}
 archmask=`{ if(! ~ $#ARCHMASK 0) { echo $ARCHMASK } }
 
 all:VQE:fetch build install
@@ -31,50 +30,66 @@ check:VQE:
 	. $PORTS/Mk/pkg.rc
 	qa
 
-fetch:QE:
-	. /sys/ports/Config/ports.conf
+fetch:Q:
+	. $PORTS/Config/ports.conf
+	. $PORTS/Mk/pkg.rc
 	test -e patch && rm patch
-	@{
-		rfork ne
-		mkdir -p work/
-		cd work
-		if(! ~ $#WEBSOURCE 0){
-			{ webfs && hget $WEBSOURCE > $WORKFILE } || exit $status
+	mkdir -p work/
+	cd work
+	
+	# dowload multiple http files, possibly with new names
+	localfiles=()
+	if(! ~ $#WEBSOURCE 0){
+		rfork n
+		test -w /mnt/web/clone || webfs
+		for(s in $WEBSOURCE){
+			t=`{eval echo $s}	# expand variables
+			r=$t(1)		# uri
+			l=$t(2)		# local name
+			if(~ $l '')
+				l=`{echo $r | awk -F'/' '{ print $NF }' }
+			V hget -o $l $r
+			localfiles=($localfiles $l)
+			rm /env/^(t r l)
 		}
-		if(! ~ $#9PSERVER 0){
-			# i think we might want to add this in the future
-			# maybe just nick 9front's 9fs
-			$PORTS/Mk/ports9fs $9PSERVER
-			if(! ~ $#9PFILE 0){
-				if(! ~ $#9PFILE 1){
-					for(i in $9PFILE){
-						fcp $i ./
-					}
-				}
-				if not {
-					fcp $9PFILE $WORKFILE
-				}
-			}
-			if(! ~ $#9PDIR 0){
-				$PORTS/Mk/portsdircp $9PDIR ./
-			}
+	}
+	
+	if(! ~ $#9PSERVER 0){
+		rfork n
+		V $PORTS/Mk/ports9fs $9PSERVER
+	}
+	
+	if(! ~ $#9PFILE 0){
+		for(s in $9PFILE){
+			t=`{eval echo $s}
+			r=$t(1)
+			l=$t(2)
+			if(~ $l '')
+				l=`{echo $r | awk -F'/' '{ print $NF }' }
+			V fcp $r $l
+			localfiles=($localfiles $l)
+			rm /env/^(t r l)
 		}
-		if(! ~ $#EXTRACTCOMMAND 0){
-			file=`{pwd}^/^$WORKFILE
-			$EXTRACTCOMMAND $file
-		}
-		if(! ~ $#HGSOURCE 0){
-			@{
-				rfork ne
-				{ webfs && hg clone $HGSOURCE }
-				if(! ~ $#HGREV 0){
-					hg up $HGREV
-				}
-			}
-		}
-		status=''
-	} || exit $status
-	status=''
+	}
+	
+	if(! ~ $#9PDIR 0){
+		$PORTS/Mk/portsdircp $9PDIR ./
+	}
+	
+	for(l in $localfiles){
+		extract $l
+	}
+	
+	if(! ~ $#HGSOURCE 0){
+		rfork n
+		test -w /mnt/web/clone || webfs
+		v='--quiet'
+		if(~ $V 2) v=()
+		V hg $v clone $HGSOURCE
+		if(! ~ $#HGREV 0)
+			V hg $v up $HGREV
+	}
+	
 	touch fetch
 
 patch:QE:fetch
