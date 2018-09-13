@@ -16,7 +16,7 @@ INSTALLCOMMAND=/bin/rc -c '''mkdir -p /sys/lib/go/$objtype-$VERSION && dircp . /
 CLEANCOMMAND=fortune /lib/ken
 UNINSTALLCOMMAND=rm -rf /sys/lib/go/$objtype-$VERSION
 MESSAGE='To use go, add this to your profile:' \
-	'	bind -b /sys/lib/go/$objtype-'$VERSION'/bin /bin' \
+	'	bind -a /sys/lib/go/$objtype-'$VERSION'/bin /bin' \
 	'	GOROOT=/sys/lib/go/$objtype-'$VERSION
 
 </sys/ports/Mk/mkfile

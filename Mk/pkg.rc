@@ -79,3 +79,8 @@ fn unapply {
 	echo unapplying `{basename $file}
 	ape/patch -R -p1 < $file
 }
+
+# lsd - ls directories
+fn lsd {
+	ls -l $1 | grep '^d' | awk '{ print $10 }'
+}

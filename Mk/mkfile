@@ -26,49 +26,48 @@ info:VQE:
 	echo 'Description: ' $DESCRIPTION
 	echo 'Complain to: ' $OWNER
 
-fetch:QE:
+fetch:Q:
 	. /sys/ports/Config/ports.conf
-	@{
-		rfork ne
-		mkdir -p work/
-		cd work
-		test -e .patched && rm .patched
-		if(! ~ $#WEBSOURCE 0){
-			{ webfs && hget $WEBSOURCE > $WORKFILE }
-		}
-		if(! ~ $#9PSERVER 0){
-			# i think we might want to add this in the future
-			# maybe just nick 9front's 9fs
-			$PORTS/Mk/ports9fs $9PSERVER
-			if(! ~ $#9PFILE 0){
-				if(! ~ $#9PFILE 1){
-					for(i in $9PFILE){
-						fcp $i ./
-					}
-				}
-				if not {
-					fcp $9PFILE $WORKFILE
+	
+	mkdir -p work/
+	cd work
+	test -e .patched && rm .patched
+	if(! ~ $#WEBSOURCE 0){
+		{ webfs && hget $WEBSOURCE > $WORKFILE } || st=$status { rm -f $WORKFILE && exit $st }
+	}
+	if(! ~ $#9PSERVER 0){
+		# i think we might want to add this in the future
+		# maybe just nick 9front's 9fs
+		$PORTS/Mk/ports9fs $9PSERVER
+		if(! ~ $#9PFILE 0){
+			if(! ~ $#9PFILE 1){
+				for(i in $9PFILE){
+					fcp $i ./
 				}
 			}
-			if(! ~ $#9PDIR 0){
-				$PORTS/Mk/portsdircp $9PDIR ./
+			if not {
+				fcp $9PFILE $WORKFILE
 			}
 		}
-		if(! ~ $#EXTRACTCOMMAND 0){
-			file=`{pwd}^/^$WORKFILE
-			$EXTRACTCOMMAND $file
-		}
-		if(! ~ $#HGSOURCE 0){
-			@{
-				rfork ne
-				{ webfs && hg clone $HGSOURCE }
-				if(! ~ $#HGREV 0){
-					hg up $HGREV
-				}
-			}
+		if(! ~ $#9PDIR 0){
+			$PORTS/Mk/portsdircp $9PDIR ./
 		}
 	}
-	status=''
+	if(! ~ $#EXTRACTCOMMAND 0){
+		file=`{pwd}^/^$WORKFILE
+		$EXTRACTCOMMAND $file
+	}
+	if(! ~ $#HGSOURCE 0){
+		@{
+			rfork ne
+			{ webfs && hg clone $HGSOURCE }
+			if(! ~ $#HGREV 0){
+				hg up $HGREV
+			}
+			status=''
+		}
+	}
+	cd ..
 	touch fetch
 
 patch:VQE:fetch
@@ -100,6 +99,7 @@ unpatch:VQE:fetch
 build:QE:fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
+		
 	if(! ~ $#archmask 0){
 		if(! ~ $#IGNOREMASKS 0){
 			for(i in $archmask){
@@ -112,6 +112,7 @@ build:QE:fetch
 			echo 'warning: ignoring architecture build masks'
 		}
 	}
+		
 	if(! ~ $#DEPS 0){
 		echo 'installing dependencies...'
 		for(i in $DEPS){
@@ -130,22 +131,24 @@ build:QE:fetch
 			}
 		}
 	}
+		
 	if(! test -e work/.patched){
-		mk patch
+		mk patch || exit $status
 	}
-	@{
-		rfork ne
-		cd $BUILDPATH
-		if(! ~ $BUILDCOMMAND ''){
-			$BUILDCOMMAND
-		}
-		if not {
-			status=''
-		}
-		if(! ~ $#POSTBUILD 0){
-			echo 'Running post-build hooks...'
-			$POSTBUILD
-		}
+	
+	echo screw $BUILDCOMMAND
+	
+	if(! ~ $#BUILDCOMMAND 0){
+		echo 'Building '$PORTNAME'...'
+		@{ cd $BUILDPATH && $BUILDCOMMAND } || exit $status
+	}
+	if not {
+		status=''
+	}
+	
+	if(! ~ $#POSTBUILD 0){
+		echo 'Running post-build hooks...'
+		$POSTBUILD
 	}
 	touch build
 
@@ -191,6 +194,7 @@ install:QE:build patch fetch
 		}
 	}
 	if(! checkport $PORTNAME){
+		echo 'Installing '$PORTNAME'...'
 		@{ rfork ne; cd $BUILDPATH && $INSTALLCOMMAND } || exit $status
 		if(! ~ $#VERSION 0){
 			register $PORTNAME $VERSION

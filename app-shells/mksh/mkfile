@@ -4,11 +4,11 @@ archmask=amd64
 
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='MirBSD Korn shell'
-VERSION=50f-1
+VERSION=R56c
 
-WEBSOURCE=https://www.mirbsd.org/MirOS/dist/mir/mksh/mksh-R50f.tgz
-WORKFILE=mksh-R50f.tgz
-EXTRACTCOMMAND=/bin/tar xzvf
+WEBSOURCE=https://www.mirbsd.org/MirOS/dist/mir/mksh/mksh-$VERSION.tgz
+WORKFILE=mksh-$VERSION.tgz
+EXTRACTCOMMAND=tar xzf
 BUILDPATH=work/mksh
 CC=cc
 CFLAGS=-DMKSH_NOPROSPECTOFWORK

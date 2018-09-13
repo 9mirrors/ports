@@ -3,8 +3,8 @@
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='random number generator test'
 
-9PSERVER=sources
-9PFILE=/n/sources/contrib/bakul/rngtest.tar.gz
+9PSERVER=9pio
+9PFILE=/n/9pio/contrib/bakul/rngtest.tar.gz
 WORKFILE=rngtest.tar.gz
 EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/rngtest/src

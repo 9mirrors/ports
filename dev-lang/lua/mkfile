@@ -6,9 +6,9 @@ VERSION=5.1.5
 
 WEBSOURCE=http://download.redis.io/releases/redis-3.0.1.tar.gz
 WORKFILE=redis-3.0.1.tar.gz
-EXTRACTCOMMAND=/bin/tar xzvf
+EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/redis-3.0.1/deps/lua/src
-BUILDCOMMAND=ape/psh -c 'CC=cc make all MYCFLAGS="-D_C99_SNPRINTF_EXTENSION -D_POSIX_SOURCE -D_SUSV2_SOURCE -DLUA_POSIX -DENABLE_CJSON_GLOBAL"'
+BUILDCOMMAND=ape/psh -xc '''CC=cc make all CFLAGS="-D_C99_SNPRINTF_EXTENSION -D_POSIX_SOURCE -D_SUSV2_SOURCE -DLUA_POSIX -DENABLE_CJSON_GLOBAL"'''
 CLEANCOMMAND=ape/psh -c 'CC=cc make clean'
 INSTALLCOMMAND=cp lua luac /$objtype/bin/
 UNINSTALLCOMMAND=rm /$objtype/bin/lua /$objtype/bin/luac
