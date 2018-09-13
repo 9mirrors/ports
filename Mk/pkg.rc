@@ -1,8 +1,13 @@
 . /sys/ports/Config/ports.conf
 
-# setup some sane defaults.
-if(~ $#BUILDPATH 0){
-	BUILDPATH=work
+# subprocess to avoid triggering rc flag e killing us
+# (rc -e is set by mk targets without E attribute)
+@{
+	# setup some sane defaults.
+	if(~ $#BUILDPATH 0){
+		BUILDPATH=work
+	}
+	status=''
 }
 
 fn V {
