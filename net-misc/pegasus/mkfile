@@ -2,12 +2,13 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Pegasus is another httpd that runs on Plan9 4ed.'
-VERSION='2.8e'
+VERSION=2.8e
 
-WEBSOURCE=http://plan9.aichi-u.ac.jp/netlib/pegasus/pegasus-2.8e.tgz
-WORKFILE=pegasus-2.8e.tar
-EXTRACTCOMMAND=tar xvf
-BUILDPATH=work/pegasus-2.8e/httpd
+WEBSOURCE=http://p9.nyx.link/netlib/pegasus/pegasus-$VERSION.tgz
+# yes, it's actually a tar file
+WORKFILE=pegasus-$VERSION.tar
+EXTRACTCOMMAND=tar xf
+BUILDPATH=work/pegasus-$VERSION/httpd
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
