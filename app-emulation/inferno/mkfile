@@ -4,6 +4,7 @@ archmask=amd64
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Inferno® is a distributed operating system'
+VERSION=0
 
 HGSOURCE=https://bitbucket.org/inferno-os/inferno-os /usr/inferno
 BUILDPATH=/usr/inferno

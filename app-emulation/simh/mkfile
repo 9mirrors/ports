@@ -6,8 +6,6 @@ VERSION='2'
 
 9PSERVER=9front.org
 9PFILE=/n/9front.org/extra/simh.tgz
-WORKFILE=simh.tgz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/simh
 BUILDCOMMAND=plan9/build
 INSTALLCOMMAND=cp simh/BIN/* /$objtype/bin/
