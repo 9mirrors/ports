@@ -6,8 +6,6 @@ VERSION=1.2b
 #DEPS=
 
 WEBSOURCE=http://ibiblio.org/pub/linux/utils/compress/unace-1.2b.tar.gz
-WORKFILE=unace-1.2b.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/unace-1.2b
 PATCHES=files
 BUILDCOMMAND=mk

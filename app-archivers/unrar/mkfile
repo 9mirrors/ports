@@ -6,8 +6,6 @@ VERSION=2.71 #ancient but the latest pure C variant I have found
 #DEPS=
 
 WEBSOURCE=http://ibiblio.org/pub/linux/utils/compress/unrar-2.71.tar.gz
-WORKFILE=unrar-2.71.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/unrar-2.71
 PATCHES=files
 BUILDCOMMAND=mk

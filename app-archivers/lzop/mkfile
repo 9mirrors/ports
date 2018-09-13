@@ -6,8 +6,6 @@ VERSION=1.03
 DEPS=ape-libs/lzo
 
 WEBSOURCE=http://www.lzop.org/download/lzop-1.03.tar.gz
-WORKFILE=lzop-1.03.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/lzop-1.03/src
 PATCHES=files
 BUILDCOMMAND=mk

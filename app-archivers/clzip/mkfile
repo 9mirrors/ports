@@ -6,8 +6,6 @@ VERSION=1.10
 DEPS=ape-libs/headers
 
 WEBSOURCE=http://download.savannah.gnu.org/releases/lzip/clzip/clzip-$VERSION.tar.gz
-WORKFILE=clzip-$VERSION.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/clzip-$VERSION
 PATCHES=files
 BUILDCOMMAND=mk

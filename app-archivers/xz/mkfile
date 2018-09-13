@@ -5,9 +5,7 @@ DESCRIPTION='xz utilities and liblzma for APE'
 VERSION=5.2.1
 #DEPS=
 
-WEBSOURCE=http://tukaani.org/xz/xz-5.2.1.tar.bz2
-WORKFILE=xz-5.2.1.tar.bz2
-EXTRACTCOMMAND=tar xzvf
+WEBSOURCE=https://github.com/xz-mirror/xz/releases/download/v5.2.1/xz-5.2.1.tar.bz2
 BUILDPATH=work/xz-5.2.1
 PATCHES=files
 BUILDCOMMAND=mk
