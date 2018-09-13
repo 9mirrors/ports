@@ -1,6 +1,12 @@
 </$objtype/mkfile
 <Config/ports.mk.conf
 
+CATEGORIES=`{ ls -l | grep '^d' | grep -v '(.hg|Config|Mk)$' | awk '{ print $10 }' }
+TARGETS=`{sed -n -e '/^([A-Z]+|[ 	]+)/d' -e '/^(sub|default)/d' -e 's/:.*//p'  mkfile}
+
+default:VQ:
+	echo mk $TARGETS
+
 test:VQ:
 	rc Mk/test
 
@@ -13,77 +19,15 @@ utils:VQ:
 	cp Mk/ports.8 /sys/man/8/ports
 	exit ''
 
-info:VQE:
-	for(i in $CATEGORY){
-		@{
-			rfork ne
-			cd $i
-			mk info
-		}
-	}
 
-fetch:VQE:
-	for(i in $CATEGORY){
-		@{
-			rfork ne
-			cd $i
-			mk fetch
-		}
-	}
+sub.%:VQE:
+	echo $stem - $MKARGS
+	cd $stem
+	mk $MKFLAGS $MKARGS
 
-build:VQE:
-	for(i in $CATEGORY){
-		@{
-			rfork ne
-			cd $i
-			mk build
-		}
-	}
+info:V: ${CATEGORIES:%=sub.%}
 
-install:VQE:
-	for(i in $CATEGORY){
-		@{
-			rfork ne
-			cd $i
-			mk install
-		}
-	}
-
-reinstall:VQE:
-	for(i in $CATEGORY){
-		@{
-			rfork ne
-			cd $i
-			mk reinstall
-		}
-	}
-
-clean:VQE:
-	for(i in $CATEGORY){
-		@{
-			rfork ne
-			cd $i
-			mk clean
-		}
-	}
-
-nuke:VQE:
-	for(i in $CATEGORY){
-		@{
-			rfork ne
-			cd $i
-			mk nuke
-		}
-	}
-
-uninstall:VQE:
-	for(i in $CATEGORY){
-		@{
-			rfork ne
-			cd $i
-			mk uninstall
-		}
-	}
+fetch build clean install reinstall uninstall nuke:V: ${CATEGORIES:%=sub.%}
 
 update:VQE:
 	@{
