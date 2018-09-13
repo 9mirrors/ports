@@ -2,11 +2,10 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='random number generator test'
+VERSION=0
 
 9PSERVER=9pio
 9PFILE=/n/9pio/contrib/bakul/rngtest.tar.gz
-WORKFILE=rngtest.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/rngtest/src
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
