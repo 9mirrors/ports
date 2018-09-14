@@ -1,0 +1,14 @@
+--- a/dat.h	Thu Oct 17 10:22:02 2013
++++ b/dat.h	Wed Sep 12 01:12:34 2018
+@@ -22,11 +22,6 @@
+ 	QMAX,
+ };
+ 
+-enum
+-{
+-	Kscrolloneup = KF|0x20,
+-	Kscrollonedown = KF|0x21,
+-};
+ 
+ #define	STACK	8192
+ 

@@ -2,15 +2,15 @@
 
 OWNER='Matthew Veety <mveety@gmail.com>'
 DESCRIPTION='Modified rio'
-VERSION='1'
+VERSION=0
 
-9PSERVER=sources
-9PDIR=/n/sources/contrib/anothy/src/cmd/nile
+9PSERVER=9pio
+9PDIR=/n/9pio/contrib/anothy/src/cmd/nile
 BUILDPATH=work
-PATCHES=files/
+PATCHES=files
 BUILDCOMMAND=mk
-INSTALLCOMMAND=mk portinstall
+INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
-UNINSTALL=/$objtype/bin/nile
+UNINSTALL=/$objtype/bin/nile /sys/man/1/nile
 
 </sys/ports/Mk/mkfile
