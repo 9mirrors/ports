@@ -121,12 +121,12 @@ fn extract {
 	file=$1
 	switch($1){
 	case *.tar.gz *.tgz *.tar.bz2 *.tbz
-		v=''
+		v=()
 		if(~ $V 2)
 			v='v'
 		V tar $v^xf $file
 	case *.zip
-		v=''
+		v=()
 		if(~ $V 2)
 			v='-v'
 		V unzip $v -f $file
