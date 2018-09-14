@@ -1,7 +1,0 @@
-#!/bin/rc
-mk install
-echo 'mkdir -p /sys/lib/scheme'
-mkdir -p /sys/lib/scheme
-echo 'cp ../init.scm /sys/lib/scheme'
-cp ../init.scm /sys/lib/scheme
-exit ''

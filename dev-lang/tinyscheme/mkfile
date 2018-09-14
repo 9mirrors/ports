@@ -1,15 +1,15 @@
 </$objtype/mkfile
 
-OWNER='Matthew Veety <mveety@mveety.com>'
-DESCRIPTION='HTML5 compliant web browser for plan9'
-VERSION='1.35'
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='TinyScheme is a lightweight Scheme interpreter'
+VERSION=1.41
 
-9PSERVER=9pio
-9PDIR=/n/9pio/contrib/fgb/root/sys/src/cmd/scheme
-BUILDPATH=work/
-BUILDCOMMAND=mk all
-INSTALLCOMMAND=rc ../install
+WEBSOURCE=https://superb-dca2.dl.sourceforge.net/project/tinyscheme/tinyscheme/tinyscheme-$VERSION/tinyscheme-$VERSION.tar.gz
+PATCHES=files
+BUILDPATH=work/tinyscheme-$VERSION
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
-UNINSTALL=/$objtype/bin/scheme
+UNINSTALLCOMMAND=mk uninstall
 
 </sys/ports/Mk/mkfile

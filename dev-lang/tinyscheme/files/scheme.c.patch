@@ -1,0 +1,17 @@
+--- scheme.c.bak	Thu Sep 13 22:11:43 2018
++++ scheme.c	Thu Sep 13 22:16:38 2018
+@@ -32,10 +32,14 @@
+ #include <ctype.h>
+ 
+ #if USE_STRCASECMP
++#ifdef PLAN9
++#define stricmp strcasecmp
++#else
+ #include <strings.h>
+ # ifndef __APPLE__
+ #  define stricmp strcasecmp
+ # endif
++#endif
+ #endif
+ 
+ /* Used for documentation purposes, to signal functions in 'interface' */

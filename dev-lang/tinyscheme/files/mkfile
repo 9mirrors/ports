@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+CC=pcc
+CFLAGS=-D_POSIX_SOURCE -D_BSD_EXTENSION -DPLAN9 -DInitFile="/sys/lib/tinyscheme/init.scm" -c
+TARG=scheme
+OFILES=$TARG.$O
+BIN=/$objtype/bin
+
+</sys/src/cmd/mkone
+
+install:V:
+	mkdir -p /sys/lib/tinyscheme
+	cp init.scm /sys/lib/tinyscheme
+
+uninstall:V:
+	rm -rf $BIN/$TARG /sys/lib/tinyscheme
