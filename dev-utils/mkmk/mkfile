@@ -4,9 +4,8 @@ OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='automatic generation of mkfiles'
 VERSION=1
 
-WEBSOURCE=http://plan9.bell-labs.com/sources/contrib/steve/mkmk.tbz
-WORKFILE=mkmk.tbz
-EXTRACTCOMMAND=tar xzvf
+9PSERVER=9pio
+9PFILE=/n/9pio/contrib/steve/mkmk.tbz
 BUILDPATH=work/mkmk
 PATCHES=files
 BUILDCOMMAND=mk

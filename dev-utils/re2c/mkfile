@@ -6,8 +6,6 @@ VERSION=1
 #DEPS=
 
 WEBSOURCE=https://github.com/yasm/yasm/archive/master.zip
-WORKFILE=master.zip
-EXTRACTCOMMAND=unzip -f
 BUILDPATH=work/yasm-master/tools/re2c
 PATCHES=files
 BUILDCOMMAND=mk

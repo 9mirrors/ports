@@ -6,8 +6,6 @@ VERSION=1
 DEPS=ape-libs/gnulib ape-libs/headers
 
 WEBSOURCE=http://haddonthethird.net/m4/m4-2.tar.bz2
-WORKFILE=m4-2.tar.bz2
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/m4-2
 PATCHES=files
 BUILDCOMMAND=mk
