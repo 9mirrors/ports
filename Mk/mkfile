@@ -28,11 +28,11 @@ info:VQE:
 
 fetch:QE:
 	. /sys/ports/Config/ports.conf
+	test -e patch && rm patch
 	@{
 		rfork ne
 		mkdir -p work/
 		cd work
-		test -e .patched && rm .patched
 		if(! ~ $#WEBSOURCE 0){
 			{ webfs && hget $WEBSOURCE > $WORKFILE }
 		}
@@ -71,33 +71,27 @@ fetch:QE:
 	status=''
 	touch fetch
 
-patch:VQE:fetch
+patch:QE:fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
-	if(! test -e work/.patched){
-		for(p in `{ls $files/*.patch >[2]/dev/null}){
-			@{ cd $BUILDPATH && apply $p } || exit 'applying '^$p^' failed'
-		}
-		if(! ~ $#PATCHES 0){
-			$PORTS/Mk/portsdircp $PATCHES $BUILDPATH
-		}
+	for(p in `{ls $files/*.patch >[2]/dev/null}){
+		@{ cd $BUILDPATH && apply $p } || exit 'applying '^$p^' failed'
 	}
-	touch work/.patched
+	if(! ~ $#PATCHES 0){
+		$PORTS/Mk/portsdircp $PATCHES $BUILDPATH
+	}
 	touch patch
 
-unpatch:VQE:fetch
+unpatch:VQE:	$BUILDPATH
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
-	if(! test -e work/.patched){
-		exit 'not patched'
-	}
+	test -e patch || exit 'not patched'
 	for(p in `{ls $files/*.patch >[2]/dev/null}){
 		@{ cd $BUILDPATH && unapply $p } || exit 'unapplying '^$p^' failed'
 	}
-	rm -f work/.patched
 	rm -f patch
 
-build:QE:fetch
+build:QE:patch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#archmask 0){
@@ -129,9 +123,6 @@ build:QE:fetch
 				}
 			}
 		}
-	}
-	if(! test -e work/.patched){
-		mk patch
 	}
 	@{
 		rfork ne
