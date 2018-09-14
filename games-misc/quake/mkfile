@@ -5,8 +5,6 @@ DESCRIPTION='quake 1 port by qwx'
 VERSION=1
 
 WEBSOURCE=http://9.postnix.us/code/ports/qk1.tgz
-WORKFILE=qk1.tgz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/qk1
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install

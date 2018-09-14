@@ -2,10 +2,10 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='2048'
+VERSION=0
 
-WEBSOURCE=http://9.offblast.org/stuff/2048.c
-WORKFILE=2048.c
-BUILDPATH=work/
+9PSERVER=9front
+9PFILE=/n/extra/2048.c
 BUILDCOMMAND=/bin/rc -c 's=2048; $CC $s.c && $LD -o $O.$s $s.$O'
 INSTALLCOMMAND=/bin/rc -c 's=2048; cp $O.$s /$objtype/bin/games/$s'
 UNINSTALLCOMMAND=rm /$objtype/bin/games/2048
