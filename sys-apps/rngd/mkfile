@@ -2,6 +2,7 @@
 
 OWNER='Matthew Veety <mveety@mveety.com>'
 DESCRIPTION='Random number generator filesystem'
+VERSION=0
 
 HGSOURCE=http://bitbucket.org/mischief/rngd
 BUILDPATH=work/rngd

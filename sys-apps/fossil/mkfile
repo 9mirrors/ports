@@ -2,9 +2,9 @@
 
 OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='This is a copy of fossil and its needed library and manpages.'
+VERSION=0
 
 HGSOURCE=https://bitbucket.org/mycroftiv/fossiloventi
-BUILDPATH=work/fossiloventi
 BUILDCOMMAND=INSTALL
 CLEANCOMMAND=echo No cleans, sorry. ☺
 INSTALLCOMMAND=echo INSTALL is the build and install in one, sorry. ☺
