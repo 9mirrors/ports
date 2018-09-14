@@ -5,8 +5,6 @@ DESCRIPTION='steve''s client for MySQL databases'
 VERSION=1
 
 WEBSOURCE=http://sources.postnix.us/contrib/steve/mysqlfs.tbz
-WORKFILE=mysqlfs.tbz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/sys/src/cmd/mysqlfs
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
