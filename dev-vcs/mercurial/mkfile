@@ -9,8 +9,6 @@ BINHG=build/scripts-2.5/hg
 SITEPACKAGES=/sys/lib/python/lib/python2.5/site-packages/
 
 WEBSOURCE=https://mercurial-scm.org/release/mercurial-$VERSION.tar.gz
-WORKFILE=mercurial-$VERSION.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/mercurial-$VERSION
 BUILDCOMMAND=python setup.py --pure build
 POSTBUILD=/bin/rc -c 'sed -e ''s,@LIBDIR@,''^$SITEPACKAGES^'','' < $BINHG > $BINHG.tmp && \
