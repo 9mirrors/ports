@@ -2,11 +2,10 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='XScreenSaver ports'
+VERSION=0
 
 9PSERVER=9front.org
 9PFILE=/n/9front.org/extra/xscr.tgz
-WORKFILE=xscr.tgz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/xscr
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install
