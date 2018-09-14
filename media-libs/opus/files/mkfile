@@ -2,7 +2,7 @@
 
 CC=pcc
 CFLAGS=-Iinclude -Isilk -Isilk/float -Icelt -DPACKAGE_VERSION="$VERSION" -DOPUS_BUILD -DCUSTOM_MODES -DNONTHREADSAFE_PSEUDOSTACK -c
-LIB=/$objtype/lib/ape/libopus.a
+LIB=libopus.$O.a
 
 OFILES=\
 # silk \
@@ -144,7 +144,9 @@ OFILES=\
 	opus_multistream_encoder.$O \
 	repacketizer.$O
 
-</sys/src/cmd/mksyslib
+</sys/src/cmd/mklib
+
+LIBDIR=/$objtype/lib/ape
 
 %.$O:	silk/%.c
 	$CC $CFLAGS silk/$stem.c
@@ -158,9 +160,11 @@ OFILES=\
 %.$O:	src/%.c
 	$CC $CFLAGS src/$stem.c
 
-install:V:
+installheaders:V:
 	mkdir -p /sys/include/ape/opus
 	dircp include /sys/include/ape/opus
 
+install:VQ:	installheaders
+
 uninstall:V:
-	rm -rf $LIB /sys/include/ape/opus
+	rm -rf $LIBDIR/$LIB /sys/include/ape/opus
