@@ -132,7 +132,7 @@ fn extract {
 		V unzip $v -f $file
 	case *
 	}
-	rm /env/file /env/v
+	rm -f /env/file /env/v
 }
 
 # lsd - ls directories
