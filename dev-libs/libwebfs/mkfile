@@ -2,6 +2,7 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='webfs client library'
+VERSION=0
 
 HGSOURCE=https://bitbucket.org/mischief/libwebfs
 BUILDPATH=work/libwebfs

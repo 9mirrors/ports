@@ -2,6 +2,7 @@
 
 OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='utility and data structure library'
+VERSION=0
 
 HGSOURCE=https://bitbucket.org/henesy/libds
 BUILDPATH=work/libds

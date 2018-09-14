@@ -2,6 +2,7 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='benchmarking library'
+VERSION=0
 
 HGSOURCE=https://bitbucket.org/mischief/libbench
 BUILDPATH=work/libbench

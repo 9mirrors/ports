@@ -6,8 +6,8 @@ VERSION='8.5.9'
 
 9PSERVER=9pio
 9PDIR=/n/9pio/contrib/fgb/root/sys/lib/tcl
-BUILDPATH=./
-BUILDCOMMAND=echo 'fake build'
+BUILDPATH=work
+BUILDCOMMAND=fortune
 INSTALLCOMMAND=rc install.rc
 UNINSTALLCOMMAND=rm -r /sys/lib/tcl
 NOCLEAN=1
