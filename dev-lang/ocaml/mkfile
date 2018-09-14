@@ -1,0 +1,18 @@
+</$objtype/mkfile
+
+# imported from https://code.9front.org/hg/ocaml
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='Ocaml'
+BASEVERSION=4.07.0
+VERSION=$BASEVERSION-1
+
+WEBSOURCE=https://github.com/ocaml/ocaml/archive/$BASEVERSION.tar.gz
+PATCHES=files
+BUILDPATH=work/ocaml-$BASEVERSION
+BUILDCOMMAND=mk
+INSTALLCOMMAND=/bin/rc -c '''mkdir -p /sys/lib/ocaml && mk install'''
+NOCLEAN=1
+UNINSTALLCOMMAND=/bin/rc -c 'rm -rf /bin/^(ocaml ocamlc ocamldep ocamllex ocamlmklib ocamlrun ocamlyacc /sys/lib/ocaml)'
+
+</sys/ports/Mk/mkfile

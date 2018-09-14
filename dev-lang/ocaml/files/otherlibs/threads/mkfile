@@ -1,0 +1,96 @@
+</$objtype/mkfile
+CC=pcc
+LD=pcc
+CFLAGS=\
+	-I../../byterun/$objtype\
+	-I../../byterun\
+	-D_PLAN9_SOURCE\
+	-D_BSD_EXTENSION\
+	-D_C99_SNPRINTF_EXTENSION\
+	-D_POSIX_SOURCE\
+	-DCAML_NAME_SPACE\
+	-Bc
+LIBNAME=threads
+LIB=lib$LIBNAME.a
+SYSOFILES=libc/getitimer.$O
+OFILES=scheduler.$O $SYSOFILES
+</sys/src/cmd/mklib
+
+scheduler.c:V: fix_scheduler
+	fix_scheduler
+
+CMOFILES=thread.cmo mutex.cmo condition.cmo event.cmo
+OCAMLRUN = ../../boot/ocamlrun
+STDLIB=../../stdlib
+UNIXLIB=../unix
+OCAMLC=$OCAMLRUN ../../boot/ocamlc -nostdlib -I $STDLIB -I $UNIXLIB
+OCAMLFLAGS=-w +33..39 -warn-error A -bin-annot -g -safe-string -c
+STDLIBCMOFILES=$STDLIB/camlinternalFormatBasics.cmo stdlib.cmo					\
+  $STDLIB/stdlib__seq.cmo $STDLIB/stdlib__array.cmo $STDLIB/stdlib__list.cmo $STDLIB/stdlib__char.cmo $STDLIB/stdlib__bytes.cmo	\
+  $STDLIB/stdlib__string.cmo $STDLIB/stdlib__sys.cmo $STDLIB/stdlib__sort.cmo marshal.cmo		\
+  $STDLIB/stdlib__obj.cmo $STDLIB/stdlib__int32.cmo $STDLIB/stdlib__int64.cmo				\
+  $STDLIB/stdlib__nativeint.cmo $STDLIB/stdlib__lexing.cmo $STDLIB/stdlib__parsing.cmo			\
+  $STDLIB/stdlib__set.cmo $STDLIB/stdlib__map.cmo $STDLIB/stdlib__stack.cmo $STDLIB/stdlib__queue.cmo	\
+  $STDLIB/camlinternalLazy.cmo $STDLIB/stdlib__lazy.cmo $STDLIB/stdlib__stream.cmo			\
+  $STDLIB/stdlib__buffer.cmo $STDLIB/camlinternalFormat.cmo $STDLIB/stdlib__printf.cmo		\
+  $STDLIB/stdlib__arg.cmo $STDLIB/stdlib__printexc.cmo $STDLIB/stdlib__gc.cmo $STDLIB/stdlib__digest.cmo	\
+  $STDLIB/stdlib__random.cmo $STDLIB/stdlib__hashtbl.cmo $STDLIB/stdlib__format.cmo			\
+  $STDLIB/stdlib__scanf.cmo $STDLIB/stdlib__callback.cmo $STDLIB/camlinternalOO.cmo		\
+  $STDLIB/stdlib__oo.cmo $STDLIB/camlinternalMod.cmo $STDLIB/stdlib__genlex.cmo			\
+  $STDLIB/stdlib__weak.cmo $STDLIB/stdlib__ephemeron.cmo $STDLIB/stdlib__filename.cmo			\
+  $STDLIB/stdlib__complex.cmo $STDLIB/stdlib__arrayLabels.cmo $STDLIB/stdlib__listLabels.cmo		\
+  $STDLIB/stdlib__bytesLabels.cmo $STDLIB/stdlib__stringLabels.cmo				\
+  $STDLIB/stdlib__moreLabels.cmo $STDLIB/stdlib__stdLabels.cmo
+
+UNIXLIB_OBJS=unix.cmo $UNIXLIB/unixLabels.cmo
+
+threads.cma: $CMOFILES
+	$OCAMLC -a -o threads.cma $CMOFILES
+
+stdlib.cma: $STDLIBCMOFILES
+	$OCAMLC -a -o stdlib.cma $STDLIBCMOFILES
+
+unix.cma: $LIBUNIXCMOFILES
+	$OCAMLC -a -o unix.cma $LIBUNIXCMOFILES
+
+stdlib.cmo: stdlib.mli stdlib.cmi stdlib.ml
+	 stdlib.ml
+
+stdlib.cmo: stdlib.mli stdlib.cmi stdlib.ml
+	$OCAMLC $OCAMLFLAGS -nopervasives -pp 'awk -f $STDLIB/expand_module_aliases.awk' -c stdlib.ml
+
+stdlib.mli: $STDLIB/stdlib.mli
+	cp $STDLIB/stdlib.mli stdlib.mli
+
+stdlib.cmi: $STDLIB/stdlib.cmi
+	cp $STDLIB/stdlib.cmi stdlib.cmi
+
+marshal.cmo: marshal.mli marshal.cmi marshal.ml
+	$OCAMLC $OCAMLFLAGS marshal.ml
+
+marshal.mli: $STDLIB/marshal.mli
+	cp $STDLIB/marshal.mli marshal.mli
+
+marshal.cmi: $STDLIB/marshal.cmi
+	cp $STDLIB/marshal.cmi marshal.cmi
+
+unix.mli: $UNIXLIB/unix.mli
+	cp $UNIXLIB/unix.mli unix.mli
+
+unix.cmi: $UNIXLIB/unix.cmi
+	cp $UNIXLIB/unix.cmi unix.cmi
+
+unix.cmo: unix.mli unix.cmi
+	$OCAMLC $OCAMLFLAGS unix.ml
+
+%.cmi: %.mli
+	$OCAMLC $OCAMLFLAGS $stem.mli
+
+%.cmo: %.ml
+	$OCAMLC $OCAMLFLAGS $stem.ml
+
+<.depend
+
+$SYSOFILES:
+	cd libc
+	mk

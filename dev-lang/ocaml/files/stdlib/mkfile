@@ -1,0 +1,59 @@
+OCAMLRUN=../boot/ocamlrun
+OCAMLC=$OCAMLRUN ../boot/ocamlc
+OCAMLFLAGS=-use-prims ../byterun/primitives -strict-sequence -absname -w +a-4-9-41-42-44-45-48 -g -warn-error A -bin-annot -nostdlib -safe-string -strict-formats -c
+TARG=stdlib.cma
+OFILES=\
+	stdlib__seq.cmo stdlib__char.cmo stdlib__uchar.cmo stdlib__sys.cmo stdlib__list.cmo \
+	stdlib__bytes.cmo stdlib__string.cmo \
+	stdlib__sort.cmo stdlib__marshal.cmo stdlib__obj.cmo stdlib__float.cmo stdlib__array.cmo \
+	stdlib__int32.cmo stdlib__int64.cmo stdlib__nativeint.cmo \
+	stdlib__lexing.cmo stdlib__parsing.cmo \
+	stdlib__set.cmo stdlib__map.cmo stdlib__stack.cmo stdlib__queue.cmo \
+	camlinternalLazy.cmo stdlib__lazy.cmo stdlib__stream.cmo \
+	stdlib__buffer.cmo camlinternalFormat.cmo stdlib__printf.cmo \
+	stdlib__arg.cmo stdlib__printexc.cmo stdlib__gc.cmo \
+	stdlib__digest.cmo stdlib__random.cmo stdlib__hashtbl.cmo stdlib__weak.cmo \
+	stdlib__format.cmo stdlib__scanf.cmo stdlib__callback.cmo \
+	camlinternalOO.cmo stdlib__oo.cmo camlinternalMod.cmo \
+	stdlib__genlex.cmo stdlib__ephemeron.cmo \
+	stdlib__filename.cmo stdlib__complex.cmo \
+	stdlib__arrayLabels.cmo stdlib__listLabels.cmo stdlib__bytesLabels.cmo \
+	stdlib__stringLabels.cmo stdlib__moreLabels.cmo stdlib__stdLabels.cmo \
+	stdlib__spacetime.cmo stdlib__bigarray.cmo
+IFILES=${OFILES:%.cmo=%.cmi}
+
+all:V: $TARG std_exit.cmo
+
+<.depend
+
+$TARG: camlinternalFormatBasics.cmo stdlib.cmo $OFILES
+	$OCAMLC -use-prims ../byterun/primitives -a -o $TARG camlinternalFormatBasics.cmo stdlib.cmo $OFILES
+
+$OFILES $IFILES std_exit.cmo: stdlib.cmi
+
+install: all
+	cp stdlib.cma std_exit.cmo camlheader camlheader_ur *.cmi ../boot
+
+sys.ml: sys.mlp ../VERSION
+	sed 's|%%VERSION%%|'^`{sed -e 1q ../VERSION | tr -d '\r'}^'|' sys.mlp > sys.ml
+
+stdlib.cmi: stdlib.mli
+	$OCAMLC $OCAMLFLAGS -nopervasives -no-alias-deps -w -49 -pp 'awk -f expand_module_aliases.awk' stdlib.mli
+
+stdlib.cmo: stdlib.ml
+	$OCAMLC $OCAMLFLAGS -nopervasives -no-alias-deps -w -49 -pp 'awk -f expand_module_aliases.awk' stdlib.ml
+
+stdlib__%.cmi: %.mli
+	$OCAMLC $OCAMLFLAGS `{../tools/Compflags.rc stdlib__$stem.cmi} -o stdlib__$stem.cmi $stem.mli
+
+stdlib__%.cmo: %.ml
+	$OCAMLC $OCAMLFLAGS `{../tools/Compflags.rc stdlib__$stem.cmo} -o stdlib__$stem.cmo $stem.ml
+
+%.cmi: %.mli
+	$OCAMLC $OCAMLFLAGS `{../tools/Compflags.rc $stem.cmi} $stem.mli
+
+%.cmo: %.ml
+	$OCAMLC $OCAMLFLAGS `{../tools/Compflags.rc $stem.cmo} $stem.ml
+
+clean:V:
+	rm -f *.cm[io] sys.ml
