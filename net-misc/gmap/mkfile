@@ -2,12 +2,12 @@
 
 OWNER='Matthew Veety <mveety@mveety.com>'
 DESCRIPTION='quanstro''s gmap(1). google maps client'
-VERSION='0'
+VERSION=0
 
 9PSERVER=9pio
 9PFILE=/n/9pio/contrib/quanstro/root/rc/bin/gmap
 BUILDCOMMAND=fortune
-INSTALLCOMMAND='/bin/rc ../install'
+INSTALLCOMMAND=/bin/rc -c '''cp  gmap /rc/bin/gmap'''
 CLEANCOMMAND=fortune
 UNINSTALL=/bin/rc/gmap
 MESSAGE='This port requires a google maps key stored in the file /lib/gmapkey to work.' 'goto http://code.google.com/apis/maps/signup.html and get a google maps key (free)'
