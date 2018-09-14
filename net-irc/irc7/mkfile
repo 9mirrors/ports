@@ -6,8 +6,6 @@ VERSION='1'
 
 9PSERVER=9front.org
 9PFILE=/n/9front.org/extra/irc7.tgz
-WORKFILE=irc7.tgz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/irc7
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install
