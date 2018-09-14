@@ -34,7 +34,7 @@ fetch:QE:
 		mkdir -p work/
 		cd work
 		if(! ~ $#WEBSOURCE 0){
-			{ webfs && hget $WEBSOURCE > $WORKFILE }
+			{ webfs && hget $WEBSOURCE > $WORKFILE } || exit $status
 		}
 		if(! ~ $#9PSERVER 0){
 			# i think we might want to add this in the future
@@ -67,7 +67,8 @@ fetch:QE:
 				}
 			}
 		}
-	}
+		status=''
+	} || exit $status
 	status=''
 	touch fetch
 
