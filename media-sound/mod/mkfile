@@ -1,0 +1,14 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='mod music tracker and tools'
+VERSION=0
+
+WEBSOURCE=http://runjimmyrunrunyoufuckerrun.com/src/mod.tgz
+BUILDPATH=work/mod
+BUILDCOMMAND=mk all
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk uninstall
+
+</sys/ports/Mk/mkfile

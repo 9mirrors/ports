@@ -1,0 +1,11 @@
+--- a/mkfile	Thu Sep 13 23:29:03 2018
++++ b/mkfile	Thu Sep 13 23:29:33 2018
+@@ -1,7 +1,7 @@
+ </$objtype/mkfile
+ 
+ TARG = track decode edsamp
+-BIN = $home/bin/$objtype/mod
++BIN = /$objtype/bin/mod
+ MANUAL = /sys/man/1/modtracker
+ 
+ HFILES = dat.h fns.h play.h
