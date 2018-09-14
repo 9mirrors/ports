@@ -1,9 +1,0 @@
-</$objtype/mkfile
-
-PORTNAME='packages/contrib'
-OWNER='Nick Owens <mischief@offblast.org>'
-DESCRIPTION='contrib'
-INSTALLCOMMAND=rc -c 'mkdir -p /dist/replica/client && 9fs sources && /n/sources/contrib/fgb/root/rc/bin/contrib/install fgb/contrib'
-UNINSTALLCOMMAND=rc -c 'contrib/remove fgb/contrib | rc'
-
-</sys/ports/Mk/mkfile
