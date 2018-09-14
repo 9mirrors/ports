@@ -2,6 +2,7 @@
 
 OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='grio has the background image patch and colour options'
+VERSION=0
 
 HGSOURCE=https://bitbucket.org/mycroftiv/grio
 BUILDPATH=work/grio
