@@ -6,8 +6,6 @@ VERSION=1.15.0
 DEPS=dev-lang/go-19
 
 WEBSOURCE=https://github.com/JamesClonk/vultr/archive/$VERSION.tar.gz
-WORKFILE=vultr-$VERSION.tar.gz
-EXTRACTCOMMAND=tar xzf
 BUILDPATH=work/vultr-$VERSION
 BUILDCOMMAND=/bin/rc -c '''rfork ne; \
 	mkdir -p gopath/src/github.com/JamesClonk/vultr; \

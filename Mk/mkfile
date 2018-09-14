@@ -30,11 +30,16 @@ check:VQE:
 	. $PORTS/Mk/pkg.rc
 	qa
 
-fetch:Q:
+work:Q:
+	mkdir work
+
+fetch:Q:	work
 	. $PORTS/Config/ports.conf
 	. $PORTS/Mk/pkg.rc
+	# avoid a bug in mk, which executes prereqs when mtimes are equal.
+	test -e fetch && exit ''
 	test -e patch && rm patch
-	mkdir -p work/
+	mkdir -p work
 	cd work
 	
 	# dowload multiple http files, possibly with new names
@@ -89,10 +94,10 @@ fetch:Q:
 		if(! ~ $#HGREV 0)
 			V hg $v up $HGREV
 	}
-	
+	cd ..
 	touch fetch
 
-patch:QE:fetch
+patch:QE:	fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	for(p in `{ls $files/*.patch >[2]/dev/null}){
@@ -112,7 +117,7 @@ unpatch:VQE:	$BUILDPATH
 	}
 	rm -f patch
 
-build:QE:patch
+build:QE:	patch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#archmask 0){
@@ -161,7 +166,7 @@ build:QE:patch
 	}
 	touch build
 
-test:VQE:build fetch
+test:VQE:	build
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#archmask 0){
@@ -192,7 +197,7 @@ test:VQE:build fetch
 	}
 	exit ''
 
-install:QE:build patch fetch
+install:QE:	build
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#BUILDONLY 0){
@@ -225,7 +230,7 @@ install:QE:build patch fetch
 		status=''
 	}
 
-reinstall:VQE:build fetch
+reinstall:VQE:	build fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH

@@ -2,10 +2,9 @@
 
 DESCRIPTION='Files needed to use map(7)'
 OWNER='Matthew Veety <mveety@gmail.com>'
+VERSION=0
 
 WEBSOURCE=http://www.cs.dartmouth.edu/~doug/wdbii.tar.gz
-WORKFILE=wdbii.tgz
-EXTRACTCOMMAND=tar xzvf
 BUILDCOMMAND=fortune
 BUILDPATH=./
 INSTALLCOMMAND=dircp work/ /lib/map

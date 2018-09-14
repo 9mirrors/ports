@@ -27,7 +27,7 @@ sub.%:VQE:
 
 info:V: ${CATEGORIES:%=sub.%}
 
-fetch build clean install reinstall uninstall nuke:V: ${CATEGORIES:%=sub.%}
+check fetch build clean install reinstall uninstall nuke:V: ${CATEGORIES:%=sub.%}
 
 update:VQE:
 	@{

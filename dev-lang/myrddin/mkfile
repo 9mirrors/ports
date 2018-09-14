@@ -2,6 +2,7 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Myrddin language'
+VERSION=9999
 
 HGSOURCE=https://bitbucket.org/oridb/mc
 BUILDPATH=work/mc

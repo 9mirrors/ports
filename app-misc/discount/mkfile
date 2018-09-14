@@ -5,8 +5,6 @@ DESCRIPTION='DISCOUNT is an implementation of John Gruber Markdown by David Pars
 VERSION=2.2.5
 
 WEBSOURCE=https://github.com/Orc/discount/archive/$VERSION.tar.gz
-WORKFILE=discount-$VERSION.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/discount-$VERSION/Plan9
 BUILDCOMMAND=mk build
 TESTCOMMAND=mk test

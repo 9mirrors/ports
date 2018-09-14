@@ -2,13 +2,13 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='CA certificate bundle'
+VERSION=0
 
 WEBSOURCE=https://curl.haxx.se/ca/cacert.pem
-WORKFILE=cacert.pem
 BUILDPATH=work/
 BUILDCOMMAND=fortune /lib/uriel
 CLEANCOMMAND=fortune /lib/uriel
-INSTALLCOMMAND=/bin/rc -c '''echo $WORKFILE; cp $WORKFILE /sys/lib/tls/ca.pem'''
+INSTALLCOMMAND=/bin/rc -c '''cp cacert.pem /sys/lib/tls/ca.pem'''
 UNINSTALL=/sys/lib/tls/ca.pem
 
 </sys/ports/Mk/mkfile

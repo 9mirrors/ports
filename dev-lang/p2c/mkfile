@@ -5,8 +5,6 @@ DESCRIPTION='pascal-to-c translator/transpiler'
 VERSION=1.21alpha2
 
 WEBSOURCE=http://schneider.ncifcrf.gov/p2c/p2c-1.21alpha2.tar.gz
-WORKFILE=p2c-1.21alpha2.tar.gz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/src
 PATCHES=files
 BUILDCOMMAND=mk

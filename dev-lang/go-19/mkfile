@@ -7,9 +7,7 @@ DESCRIPTION='Google Go language'
 VERSION=1.9.7
 DEPS=app-misc/ca-certificates
 
-WEBSOURCE=http://9legacy.org/download/go/go$VERSION-plan9-amd64-bootstrap.tbz
-WORKFILE=go$VERSION-plan9-$objtype-bootstrap.tbz
-EXTRACTCOMMAND=/bin/tar xzf
+WEBSOURCE=http://9legacy.org/download/go/go$VERSION-plan9-$objtype-bootstrap.tbz
 BUILDPATH=work/go-plan9-$objtype-bootstrap
 BUILDCOMMAND=fortune /lib/rob
 INSTALLCOMMAND=/bin/rc -c '''mkdir -p /sys/lib/go/$objtype-$VERSION && dircp . /sys/lib/go/$objtype-$VERSION'''

@@ -5,7 +5,8 @@ DESCRIPTION='curl'
 VERSION='7.28.1'
 DEPS=app-textproc/gawk ape-libs/zlib
 
-WEBSOURCE=http://9p.io/sources/contrib/staal1978/pkg/curl-7.28.1.tbz
+9PSERVER=9pio
+9PFILE=/n/9pio/contrib/staal1978/pkg/curl-7.28.1.tbz
 WORKFILE=curl-7.28.1.tbz
 EXTRACTCOMMAND=tar xvf
 BUILDPATH=work/sys/src/pkg/curl
