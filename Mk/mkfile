@@ -37,7 +37,7 @@ fetch:Q:	work
 	. $PORTS/Config/ports.conf
 	. $PORTS/Mk/pkg.rc
 	# avoid a bug in mk, which executes prereqs when mtimes are equal.
-	test -e fetch && exit ''
+	test -e $target && exit
 	test -e patch && rm patch
 	mkdir -p work
 	cd work
@@ -95,18 +95,20 @@ fetch:Q:	work
 			V hg $v up $HGREV
 	}
 	cd ..
-	touch fetch
+	touch $target
 
 patch:QE:	fetch
 	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
+	# avoid a bug in mk, which executes prereqs when mtimes are equal.
+	test -e $target && exit
 	for(p in `{ls $files/*.patch >[2]/dev/null}){
 		@{ cd $BUILDPATH && apply $p } || exit 'applying '^$p^' failed'
 	}
 	if(! ~ $#PATCHES 0){
 		$PORTS/Mk/portsdircp $PATCHES $BUILDPATH
 	}
-	touch patch
+	touch $target
 
 unpatch:VQE:	$BUILDPATH
 	. /sys/ports/Config/ports.conf
