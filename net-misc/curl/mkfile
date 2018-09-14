@@ -2,13 +2,11 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='curl'
-VERSION='7.28.1'
+VERSION=7.28.1
 DEPS=app-textproc/gawk ape-libs/zlib
 
 9PSERVER=9pio
 9PFILE=/n/9pio/contrib/staal1978/pkg/curl-7.28.1.tbz
-WORKFILE=curl-7.28.1.tbz
-EXTRACTCOMMAND=tar xvf
 BUILDPATH=work/sys/src/pkg/curl
 BUILDCOMMAND=ape/psh -c make
 INSTALLCOMMAND=cp src/curl /$objtype/bin/curl

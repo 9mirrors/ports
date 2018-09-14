@@ -5,9 +5,6 @@ DESCRIPTION='Pegasus is another httpd that runs on Plan9 4ed.'
 VERSION=2.8e
 
 WEBSOURCE=http://p9.nyx.link/netlib/pegasus/pegasus-$VERSION.tgz
-# yes, it's actually a tar file
-WORKFILE=pegasus-$VERSION.tar
-EXTRACTCOMMAND=tar xf
 BUILDPATH=work/pegasus-$VERSION/httpd
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install

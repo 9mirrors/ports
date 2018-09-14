@@ -2,6 +2,7 @@
 
 OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='go Discord client'
+VERSION=0
 DEPS=dev-lang/go
 
 HGSOURCE=https://bitbucket.org/henesy/disco

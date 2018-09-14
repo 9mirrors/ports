@@ -2,6 +2,7 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='xmpp is a simple XMPP client'
+VERSION=0
 
 HGSOURCE=https://bitbucket.org/ftrvxmtrx/xmpp
 BUILDPATH=work/xmpp

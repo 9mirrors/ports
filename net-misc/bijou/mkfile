@@ -2,11 +2,9 @@
 
 OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='A nominally HTTP/1.1 compliant web server for Plan 9 by Sean Caron (scaron@umich.edu)'
-VERSION='1.0'
+VERSION=1.0
 
 WEBSOURCE=http://9.postnix.us/code/ports/bijou.tgz
-WORKFILE=bijou.tgz
-EXTRACTCOMMAND=tar xzvf
 BUILDPATH=work/bijou-1.0/src
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
