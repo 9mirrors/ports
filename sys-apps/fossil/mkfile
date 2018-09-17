@@ -1,13 +1,14 @@
 </$objtype/mkfile
 
 OWNER='Sean Hinchee <henesy.dev@gmail.com>'
-DESCRIPTION='This is a copy of fossil and its needed library and manpages.'
-VERSION=0
+DESCRIPTION='This is an update of fossil by 9legacy'
+VERSION=2
 
-HGSOURCE=https://bitbucket.org/mycroftiv/fossiloventi
-BUILDCOMMAND=INSTALL
-CLEANCOMMAND=echo No cleans, sorry. ☺
-INSTALLCOMMAND=echo INSTALL is the build and install in one, sorry. ☺
-UNINSTALLCOMMAND=rm -r /$objtype/bin/fossil; rm /sys/man/*/*fossil*
+HGSOURCE=https://bitbucket.org/mycroftiv/fossilnewventi
+BUILDPATH=work/fossilnewventi
+BUILDCOMMAND=mk
+CLEANCOMMAND=mk clean
+INSTALLCOMMAND=/bin/rc -c '''mkdir /$objtype/bin/fossil && mk install && cp manpages/fossil.4 /sys/man/4/fossil && cp manpages/fossilcons.8 /sys/man/8/fossilcons && cp manpages/loadfossil.8 /sys/man/8/loadfossil'''
+UNINSTALLCOMMAND=/bin/rc -c 'rm -r /$objtype/bin/fossil /sys/man/4/fossil /sys/man/8/fossilcons /sys/man/8/loadfossil'
 
 </sys/ports/Mk/mkfile
