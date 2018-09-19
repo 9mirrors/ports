@@ -34,7 +34,6 @@ check:VQE:
 MYDISTFILEPATHS=${MYDISTFILES:%=$DISTFILES/$PORTNAME/%}
 
 fetch:VQ:
-	. $PORTS/Config/ports.conf
 	. $PORTS/Mk/pkg.rc
 	
 	gotem=()
@@ -178,7 +177,6 @@ extract:Q:	verify
 	touch $target
 
 patch:QE:	extract
-	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	# avoid a bug in mk, which executes prereqs when mtimes are equal.
 	test -e $target && exit
@@ -310,7 +308,6 @@ install:QE:	build
 	}
 
 reinstall:VQE:	build
-	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
 	@{
