@@ -4,8 +4,7 @@ OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='TinyScheme is a lightweight Scheme interpreter'
 VERSION=1.41
 
-WEBSOURCE=https://superb-dca2.dl.sourceforge.net/project/tinyscheme/tinyscheme/tinyscheme-$VERSION/tinyscheme-$VERSION.tar.gz
-PATCHES=files
+WEBSOURCE=https://download.sourceforge.net/tinyscheme/tinyscheme-$VERSION.tar.gz
 BUILDPATH=work/tinyscheme-$VERSION
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
