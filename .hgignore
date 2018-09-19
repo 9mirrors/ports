@@ -1,5 +1,6 @@
 Config/ports.db
 .*/.*/work.*
+dist/.*
 build
 fetch
 install
