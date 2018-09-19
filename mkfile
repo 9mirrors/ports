@@ -1,11 +1,13 @@
 </$objtype/mkfile
 <Config/ports.mk.conf
 
-CATEGORIES=`{ ls -l | grep '^d' | grep -v '(.hg|Config|Mk)$' | awk '{ print $10 }' }
 TARGETS=`{sed -n -e '/^([A-Z]+|[ 	]+)/d' -e '/^(sub|default)/d' -e 's/:.*//p'  mkfile}
 
 default:VQ:
 	echo mk $TARGETS
+
+categories:VQ:
+	echo $CATEGORY
 
 test:VQ:
 	rc Mk/test
@@ -25,9 +27,9 @@ sub.%:VQE:
 	cd $stem
 	mk $MKFLAGS $MKARGS
 
-info:V: ${CATEGORIES:%=sub.%}
+info:V: ${CATEGORY:%=sub.%}
 
-check fetch build clean install reinstall uninstall nuke:V: ${CATEGORIES:%=sub.%}
+check fetch build clean install reinstall uninstall nuke:V: ${CATEGORY:%=sub.%}
 
 update:VQE:
 	@{
