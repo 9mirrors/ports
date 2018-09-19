@@ -1,9 +1,27 @@
-PORTS=`{ ls -l | grep '^d' | awk '{ print $10 }' }
+PORTS=`{ for(d in `{ls -F $1}) if(~ $d */) echo $d }
+PORTTARGETS=\
+	info \
+	check \
+	fetch \
+	manifest \
+	verify \
+	build \
+	clean \
+	install \
+	uninstall \
+	reinstall \
+	nuke \
+	distclean
 
-sub.%:VQE:
+default:VQ:
+	echo mk $PORTTARGETS
+
+sub.%:VQ:
 	echo `{pbd}^/$stem - $MKARGS
 	cd $stem
 	mk $MKFLAGS $MKARGS
 	status=''
 
-install info check fetch build install reinstall clean uninstall nuke:VE:	${PORTS:%=sub.%}
+SUBTARGETS=${PORTS:%=sub.%}
+
+$PORTTARGETS:V: $SUBTARGETS
