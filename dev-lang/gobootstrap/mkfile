@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='Google Go language'
+VERSION=1.10.3
+
+# local variables
+bootstrapdest=/sys/lib/go/$objtype-$VERSION-bootstrap
+
+WEBSOURCE=http://9legacy.org/download/go/go$VERSION-plan9-$objtype-bootstrap.tbz
+BUILDPATH=work/go-plan9-$objtype-bootstrap
+BUILDCOMMAND=echo -n
+CLEANCOMMAND=echo -n
+INSTALLCOMMAND=/bin/rc -c '''mkdir -p $bootstrapdest && dircp . $bootstrapdest'''
+UNINSTALLCOMMAND=rm -rf $bootstrapdest
+
+</sys/ports/Mk/mkfile
