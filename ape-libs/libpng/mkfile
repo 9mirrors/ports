@@ -5,8 +5,8 @@ DESCRIPTION='png library for APE'
 VERSION=1.6.17
 DEPS=ape-libs/zlib
 
-WEBSOURCE=http://garr.dl.sourceforge.net/project/libpng/libpng16/1.6.17/libpng-1.6.17.tar.gz
-BUILDPATH=work/libpng-1.6.17/
+WEBSOURCE=https://download.sourceforge.net/libpng/libpng-$VERSION.tar.gz
+BUILDPATH=work/libpng-$VERSION
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
