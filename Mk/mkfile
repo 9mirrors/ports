@@ -15,7 +15,9 @@ INSTALLCOMMAND=`{ if(~ $#INSTALLCOMMAND 0){ echo 'mk install' }; if not { echo $
 CLEANCOMMAND=`{ if(~ $#CLEANCOMMAND 0){ echo 'mk clean' }; if not { echo $CLEANCOMMAND }}
 archmask=`{ if(! ~ $#ARCHMASK 0) { echo $ARCHMASK } }
 
-all:VQE:fetch build install
+<|$PORTS/Mk/mk.rc
+
+all:VQE:	install
 
 info:VQE:
 	echo 'Name: ' $PORTNAME
@@ -29,31 +31,43 @@ check:VQE:
 	. $PORTS/Mk/pkg.rc
 	qa
 
-work:Q:
-	mkdir work
+MYDISTFILEPATHS=${MYDISTFILES:%=$DISTFILES/$PORTNAME/%}
 
-fetch:Q:	work
+fetch:VQ:
+	. $PORTS/Config/ports.conf
 	. $PORTS/Mk/pkg.rc
+	
+	gotem=()
+	for(p in $MYDISTFILEPATHS)
+		if(test -e $p)
+			gotem=($gotem $p)
+	
+	if(! ~ $#gotem $#DISTFILEPATHS)
+		exit
+	
+	echo fetching distfiles for $PORTNAME
 	# avoid a bug in mk, which executes prereqs when mtimes are equal.
 	test -e $target && exit
 	test -e patch && rm patch
-	mkdir -p work
-	cd work
+	
+	# ensure distfiles exists
+	if(! test -d $DISTFILES){
+		mkdir $DISTFILES
+		chmod +t $DISTFILES
+	}
+	
+	if(! test -d $DISTFILES/$PORTNAME)
+		mkdir -p $DISTFILES/$PORTNAME
 	
 	# dowload multiple http files, possibly with new names
-	localfiles=()
 	if(! ~ $#WEBSOURCE 0){
 		rfork n
 		test -w /mnt/web/clone || webfs
 		for(s in $WEBSOURCE){
-			t=`{eval echo $s}	# expand variables
-			r=$t(1)		# uri
-			l=$t(2)		# local name
-			if(~ $l '')
-				l=`{echo $r | awk -F'/' '{ print $NF }' }
-			V hget -o $l $r
-			localfiles=($localfiles $l)
-			rm /env/^(t r l)
+			eval `{uriextract $s}
+			if(! test -r $DISTFILES/$PORTNAME/$local)
+				V hget -o $DISTFILES/$PORTNAME/$local $remote
+			rm -f /env/^(local remote)
 		}
 	}
 	
@@ -64,41 +78,111 @@ fetch:Q:	work
 	
 	if(! ~ $#9PFILE 0){
 		for(s in $9PFILE){
-			t=`{eval echo $s}
-			r=$t(1)
-			l=$t(2)
-			if(~ $l '')
-				l=`{echo $r | awk -F'/' '{ print $NF }' }
-			V fcp $r $l
-			localfiles=($localfiles $l)
-			rm /env/^(t r l)
+			eval `{uriextract $s}
+			if(! test -r $DISTFILES/$PORTNAME/$local)
+				V fcp $remote $DISTFILES/$PORTNAME/$local
+			if not status=''
+			rm -f /env/^(local remote)
 		}
 	}
 	
 	if(! ~ $#9PDIR 0){
-		$PORTS/Mk/portsdircp $9PDIR ./
-	}
-	
-	for(l in $localfiles){
-		extract $l
+		for(s in $9PDIR){
+			eval `{uriextract $s}
+			if(! test -d $DISTFILES/$PORTNAME/$local){
+				V mkdir -p $DISTFILES/$PORTNAME/$local
+				V $PORTS/Mk/portsdircp $remote $DISTFILES/$PORTNAME/$local
+			}
+			if not status=''
+			rm -f /env/^(local remote)
+		}
 	}
 	
 	if(! ~ $#HGSOURCE 0){
-		rfork n
-		test -w /mnt/web/clone || webfs
-		v='--quiet'
-		if(~ $V 2) v=()
-		V hg $v clone $HGSOURCE
-		if(! ~ $#HGREV 0)
-			V hg $v up $HGREV
+		eval `{uriextract $HGSOURCE}
+		if(! test -d $DISTFILES/$PORTNAME/$local){
+			v='--quiet'
+			if(~ $V 2) v=()
+			rfork n
+			test -w /mnt/web/clone || webfs
+			if(~ $#HGREV 0) HGREV=tip
+			V hg $v clone -r $HGREV $remote $DISTFILES/$PORTNAME/$local
+		}
+		rm -f /env/^(local remote v)
 	}
-	cd ..
+	status=''
+
+$MYDISTFILEPATHS:N:	fetch
+
+distfiles:Q:
+	echo $MYDISTFILES
+
+distclean:Q:	nuke
+	echo removing $DISTFILES/$PORTNAME
+	rm -rf $DISTFILES/$PORTNAME
+
+# hack around the fact that 9P directory file list isn't
+# generated when mk is invoked with an empty dist dir,
+# so reinvoke mk to build the list after fetching
+_manifest:VQ:	$MYDISTFILEPATHS
+	echo checksumming $prereq
+	if(~ $#MYDISTFILES 0) echo -n > manifest
+	if not @{
+		cd $DISTFILES/$PORTNAME
+		sha1sum -2 256 $MYDISTFILES
+	} > manifest
+
+manifest:QD:	$MYDISTFILEPATHS
+	if(~ $NOVERIFY 1) exit
+	test -e $target && exit
+	mk _manifest
+
+_verify:VQ:	$MYDISTFILEPATHS
+	echo verifying $MYDISTFILEPATHS
+	if(~ $#MYDISTFILES 0) echo -n > verify
+	if not @{
+		cd $DISTFILES/$PORTNAME
+		sha1sum -2 256 $MYDISTFILES
+	} > verify
+	
+	if(cmp -s manifest verify)
+		exit
+	
+	s='MANIFEST VERFICATION FAILED'
+	echo $s
+	echo file sums changed:
+	ape/diff -u manifest verify
+	exit $s
+
+verify:DQ:	manifest 
+	if(~ $NOVERIFY 1){
+		echo 'skipping verification'
+		exit
+	}
+	test -e $target && exit
+	mk _verify
+
+_extract:VQ:	$MYDISTFILEPATHS
+	. /sys/ports/Mk/pkg.rc
+	echo extracting $MYDISTFILEPATHS
+	for(l in $MYDISTFILEPATHS) @{
+		cd work
+		extract $l
+	}
+
+extract:Q:	verify
+	test -e $target && exit
+	test -e patch && rm patch
+	mkdir -p work
+	mk _extract
 	touch $target
 
-patch:QE:	fetch
+patch:QE:	extract
+	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	# avoid a bug in mk, which executes prereqs when mtimes are equal.
 	test -e $target && exit
+	echo patching $PORTNAME
 	for(p in `{ls $files/*.patch >[2]/dev/null}){
 		@{ cd $BUILDPATH && apply $p } || exit 'applying '^$p^' failed'
 	}
@@ -225,7 +309,8 @@ install:QE:	build
 		status=''
 	}
 
-reinstall:VQE:	build fetch
+reinstall:VQE:	build
+	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
 	@{
@@ -266,9 +351,9 @@ clean:VQE:	$BUILDPATH
 	rm -f build
 	status=''
 
-nuke:VQE:
+nuke:VQ:
 	rm -rf work/
-	rm -f fetch build install patch
+	rm -f fetch verify extract patch build install
 
 uninstall:VQE:
 	. /sys/ports/Mk/pkg.rc

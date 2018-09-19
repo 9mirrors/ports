@@ -95,6 +95,9 @@ fn qa {
 	wantvars OWNER DESCRIPTION VERSION
 	notwantvars WORKFILE EXTRACTCOMMAND PATCHES
 
+	if(! test -r manifest)
+		errors=($errors 'manifest file is missing')
+
 	if(! ~ $#errors 0){
 		echo `{pwd}^/mkfile has $#errors problems
 		for(e in $errors)
@@ -115,6 +118,22 @@ fn unapply {
 	ape/patch -R -p1 < $file
 }
 
+# given a string like 'http://example.com/src.tar.gz local.tar.gz',
+# put the uri in $remote and the local file name in $local.
+# if the local file name is missing, attempt to extract it from the
+# uri.  this function should be called in the context of eval to set
+# $remote and $local.
+fn uriextract {
+	t=`{eval echo $1}	# expand variables
+	r=$t(1)		# uri
+	l=$t(2)		# local name
+	if(~ $l '')
+		l=`{echo $r | awk -F'/' '{ print $NF }' }
+	echo 'local='^$l
+	echo 'remote='^$r
+	rm -f /env/^(t r l)
+}
+
 fn extract {
 	file=$1
 	switch($1){
@@ -129,6 +148,13 @@ fn extract {
 			v='-v'
 		V unzip $v -f $file
 	case *
+		if(test -f $file)
+			fcp $file .
+		if not
+		if(test -d $file)
+			dircp $file .
+		if not
+			exit 'dont know what to do with '^$file
 	}
 	rm -f /env/file /env/v
 }

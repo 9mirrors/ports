@@ -5,3 +5,7 @@ build
 fetch
 install
 patch
+extract
+verify
+
+manifest
