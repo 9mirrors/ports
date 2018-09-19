@@ -7,7 +7,6 @@ VERSION=1
 
 WEBSOURCE=https://github.com/yasm/yasm/archive/master.zip
 BUILDPATH=work/yasm-master/tools/re2c
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

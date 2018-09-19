@@ -6,7 +6,6 @@ VERSION=9a
 
 WEBSOURCE=http://ijg.org/files/jpegsrc.v9a.tar.gz
 BUILDPATH=work/jpeg-9a
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

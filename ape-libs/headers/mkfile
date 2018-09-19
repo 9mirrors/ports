@@ -5,7 +5,6 @@ DESCRIPTION='shim headers for APE'
 VERSION=1
 
 BUILDPATH=work/
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

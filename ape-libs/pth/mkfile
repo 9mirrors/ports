@@ -6,7 +6,6 @@ VERSION=1
 
 WEBSOURCE=https://gnu.cu.be/pth/pth-2.0.7.tar.gz
 BUILDPATH=work/pth-2.0.7/
-PATCHES=files
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

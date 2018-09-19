@@ -6,7 +6,6 @@ VERSION=1
 
 WEBSOURCE=https://github.com/sabotage-linux/gnu-getopt/archive/master.zip
 BUILDPATH=work/gnu-getopt-master/
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

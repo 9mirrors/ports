@@ -6,7 +6,6 @@ VERSION=1.2.1
 
 WEBSOURCE=https://archive.mozilla.org/pub/opus/opus-$VERSION.tar.gz
 BUILDPATH=work/opus-$VERSION
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk nuke

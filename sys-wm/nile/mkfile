@@ -7,7 +7,6 @@ VERSION=0
 9PSERVER=9pio
 9PDIR=/n/9pio/contrib/anothy/src/cmd/nile
 BUILDPATH=work
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

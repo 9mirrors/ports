@@ -6,7 +6,6 @@ VERSION=1
 
 WEBSOURCE=https://9p.io/sources/contrib/fgb/tar/poll.tgz
 BUILDPATH=work/poll
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

@@ -6,7 +6,6 @@ VERSION='git master'
 
 WEBSOURCE=https://github.com/juanjosegarciaripoll/f2c/archive/master.zip
 BUILDPATH=work/f2c-master
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

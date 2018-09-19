@@ -7,7 +7,6 @@ DEPS=ape-libs/gnulib
 
 WEBSOURCE=https://gnu.cu.be/sed/sed-4.2.tar.gz
 BUILDPATH=work/sed-4.2/sed
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

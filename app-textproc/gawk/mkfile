@@ -6,7 +6,6 @@ VERSION=4.1.4
 DEPS=ape-libs/gnulib
 
 WEBSOURCE=https://gnu.cu.be/gawk/gawk-$VERSION.tar.gz
-PATCHES=files
 BUILDPATH=work/gawk-$VERSION
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install

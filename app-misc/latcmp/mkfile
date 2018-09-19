@@ -6,7 +6,6 @@ VERSION='0'
 
 9PSERVER=9pio
 9PFILE=/n/9pio/contrib/quanstro/root/sys/src/cmd/latcmp.c
-PATCHES=files/
 UNINSTALL=/$objtype/bin/imgloop
 
 </sys/ports/Mk/mkfile

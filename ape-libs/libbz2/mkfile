@@ -6,7 +6,6 @@ VERSION=1.2.8-1
 
 WEBSOURCE=http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
 BUILDPATH=work/bzip2-1.0.6
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

@@ -9,7 +9,6 @@ DEPS=ape-libs/headers
 
 WEBSOURCE=http://www.oberhumer.com/opensource/lzo/download/lzo-2.09.tar.gz
 BUILDPATH=work/lzo-2.09/src
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

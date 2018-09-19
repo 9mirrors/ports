@@ -95,7 +95,7 @@ fn notwantvars {
 fn qa {
 	errors=()
 	wantvars OWNER DESCRIPTION VERSION
-	notwantvars WORKFILE EXTRACTCOMMAND
+	notwantvars WORKFILE EXTRACTCOMMAND PATCHES
 
 	if(! ~ $#errors 0){
 		echo `{pwd}^/mkfile has $#errors problems

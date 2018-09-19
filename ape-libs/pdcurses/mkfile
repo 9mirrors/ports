@@ -6,7 +6,6 @@ VERSION=3.4
 
 WEBSOURCE=http://kent.dl.sourceforge.net/project/pdcurses/pdcurses/3.4/PDCurses-3.4.tar.gz
 BUILDPATH=work/PDCurses-3.4
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

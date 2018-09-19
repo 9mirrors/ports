@@ -7,7 +7,6 @@ VERSION=2.63a
 
 WEBSOURCE=http://ibiblio.org/pub/linux/utils/compress/unarj-2.63a.tar.gz
 BUILDPATH=work/unarj-2.63a
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

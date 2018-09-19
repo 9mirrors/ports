@@ -7,7 +7,6 @@ DEPS=ape-libs/headers ape-libs/libpoll
 
 WEBSOURCE=http://erislabs.net/ianb/projects/gnulib/gnulib-20140202-stable.tar.gz
 BUILDPATH=work/gnulib-20140202-stable/lib/
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

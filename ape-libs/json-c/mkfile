@@ -6,7 +6,6 @@ VERSION=0.12
 
 WEBSOURCE=https://github.com/json-c/json-c/archive/master.zip
 BUILDPATH=work/json-c-master
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

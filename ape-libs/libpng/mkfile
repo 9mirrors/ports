@@ -7,7 +7,6 @@ DEPS=ape-libs/zlib
 
 WEBSOURCE=http://garr.dl.sourceforge.net/project/libpng/libpng16/1.6.17/libpng-1.6.17.tar.gz
 BUILDPATH=work/libpng-1.6.17/
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

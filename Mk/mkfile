@@ -105,8 +105,8 @@ patch:QE:	fetch
 	for(p in `{ls $files/*.patch >[2]/dev/null}){
 		@{ cd $BUILDPATH && apply $p } || exit 'applying '^$p^' failed'
 	}
-	if(! ~ $#PATCHES 0){
-		$PORTS/Mk/portsdircp $PATCHES $BUILDPATH
+	if(test -d $files){
+		$PORTS/Mk/portsdircp $files $BUILDPATH
 	}
 	touch $target
 

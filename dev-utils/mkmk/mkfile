@@ -7,7 +7,6 @@ VERSION=1
 9PSERVER=9pio
 9PFILE=/n/9pio/contrib/steve/mkmk.tbz
 BUILDPATH=work/mkmk
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

@@ -6,7 +6,6 @@ VERSION=2.9.2
 
 WEBSOURCE=http://xmlsoft.org/sources/libxml2-2.9.2.tar.gz
 BUILDPATH=work/libxml2-2.9.2
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

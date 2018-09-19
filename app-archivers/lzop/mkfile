@@ -7,7 +7,6 @@ DEPS=ape-libs/lzo
 
 WEBSOURCE=http://www.lzop.org/download/lzop-1.03.tar.gz
 BUILDPATH=work/lzop-1.03/src
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

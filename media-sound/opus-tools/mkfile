@@ -7,7 +7,6 @@ DEPS=media-libs/opus
 
 WEBSOURCE=https://archive.mozilla.org/pub/opus/opus-tools-$VERSION.tar.gz
 BUILDPATH=work/opus-$VERSION
-PATCHES=files
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

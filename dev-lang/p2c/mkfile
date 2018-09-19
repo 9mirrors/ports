@@ -6,7 +6,6 @@ VERSION=1.21alpha2
 
 WEBSOURCE=http://schneider.ncifcrf.gov/p2c/p2c-1.21alpha2.tar.gz
 BUILDPATH=work/src
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean

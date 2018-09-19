@@ -7,7 +7,6 @@ DEPS=app-misc/imgloop app-misc/latcmp net-misc/gmap
 
 9PSERVER=9pio
 9PFILE=/n/9pio/contrib/quanstro/root/rc/bin/radar /n/9pio/contrib/quanstro/root/rc/bin/radarloop /n/9pio/contrib/quanstro/root/lib/radar/genlat /n/9pio/contrib/quanstro/root/lib/radar/stationlat /n/9pio/contrib/quanstro/root/lib/radar/stations
-PATCHES=files
 BUILDCOMMAND=fortune
 INSTALLCOMMAND=./install
 NOCLEAN=1

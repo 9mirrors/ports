@@ -6,7 +6,6 @@ VERSION=1
 
 WEBSOURCE=https://gnu.cu.be/make/make-4.1.tar.gz
 BUILDPATH=work/make-4.1
-PATCHES=files
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
