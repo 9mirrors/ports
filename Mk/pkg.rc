@@ -1,5 +1,3 @@
-. /sys/ports/Config/ports.conf
-
 # subprocess to avoid triggering rc flag e killing us
 # (rc -e is set by mk targets without E attribute)
 @{

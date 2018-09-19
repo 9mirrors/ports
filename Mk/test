@@ -8,8 +8,6 @@ fail=()
 mkdir -p /sys/ports
 bind -bc . /sys/ports
 
-. /sys/ports/Config/ports.conf
-
 fn quiet {
 	$* >/dev/null >[2=1]
 }

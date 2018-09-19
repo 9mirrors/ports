@@ -26,7 +26,6 @@ info:VQE:
 	echo 'Complain to: ' $OWNER
 
 check:VQE:
-	. $PORTS/Config/ports.conf
 	. $PORTS/Mk/pkg.rc
 	qa
 
@@ -34,7 +33,6 @@ work:Q:
 	mkdir work
 
 fetch:Q:	work
-	. $PORTS/Config/ports.conf
 	. $PORTS/Mk/pkg.rc
 	# avoid a bug in mk, which executes prereqs when mtimes are equal.
 	test -e $target && exit
@@ -98,7 +96,6 @@ fetch:Q:	work
 	touch $target
 
 patch:QE:	fetch
-	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	# avoid a bug in mk, which executes prereqs when mtimes are equal.
 	test -e $target && exit
@@ -111,7 +108,6 @@ patch:QE:	fetch
 	touch $target
 
 unpatch:VQE:	$BUILDPATH
-	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	test -e patch || exit 'not patched'
 	for(p in `{ls $files/*.patch >[2]/dev/null}){
@@ -120,7 +116,6 @@ unpatch:VQE:	$BUILDPATH
 	rm -f patch
 
 build:QE:	patch
-	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#archmask 0){
 		if(! ~ $#IGNOREMASKS 0){
@@ -169,7 +164,6 @@ build:QE:	patch
 	touch build
 
 test:VQE:	build
-	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#archmask 0){
 		for(i in $archmask){
@@ -200,7 +194,6 @@ test:VQE:	build
 	exit ''
 
 install:QE:	build
-	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! ~ $#BUILDONLY 0){
 		for(i in $BUILDONLY){
@@ -233,7 +226,6 @@ install:QE:	build
 	}
 
 reinstall:VQE:	build fetch
-	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
 	@{
@@ -247,7 +239,6 @@ reinstall:VQE:	build fetch
 	}
 
 testinstall:VQE:
-	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	cd $BUILDPATH
 	@{
@@ -262,7 +253,6 @@ testinstall:VQE:
 	status=''
 
 clean:VQE:	$BUILDPATH
-	. /sys/ports/Config/ports.conf
 	@{
 		rfork ne
 		cd $BUILDPATH || exit 'not fetched'
@@ -281,7 +271,6 @@ nuke:VQE:
 	rm -f fetch build install patch
 
 uninstall:VQE:
-	. /sys/ports/Config/ports.conf
 	. /sys/ports/Mk/pkg.rc
 	if(! checkport $PORTNAME){
 		echo $PORTNAME is not installed
