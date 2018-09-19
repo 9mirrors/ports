@@ -2,14 +2,10 @@
 
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='libutf8 wchar library for APE'
-VERSION=1
+VERSION=0.8.1
 
-#real upstream -get some issues with corrupted gzip
-#WEBSOURCE=http://www.haible.de/bruno/libutf8-0.8.1.tar.gz
-#WORKFILE=libutf8-0.8.1.tar.gz
-#temporary source below:
-WEBSOURCE=http://plan9.bell-labs.com/sources/contrib/staal1978/ports/src/libutf8.src.0.8.1.tbz
-BUILDPATH=work/libutf8
+WEBSOURCE=http://www.haible.de/bruno/libutf8-$VERSION.tar.gz
+BUILDPATH=work/libutf8-$VERSION
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
