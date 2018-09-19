@@ -135,5 +135,15 @@ fn extract {
 
 # lsd - ls directories
 fn lsd {
-	ls -l $1 | grep '^d' | awk '{ print $10 }'
+	for(d in `{ls -F $1}) if(~ $f */) echo $d
+}
+
+fn lsr {
+	l = `{ls -F $*}
+	for(i in $l){
+		if(~ $i */)
+			lsr $i
+		if not
+			echo $i
+	}
 }
