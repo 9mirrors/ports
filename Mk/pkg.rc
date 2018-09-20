@@ -171,5 +171,5 @@ fn lsr {
 			lsr $i
 		if not
 			echo $i
-	}
+	} | sed 's,\*$,,g'
 }
