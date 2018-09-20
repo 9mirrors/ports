@@ -151,6 +151,12 @@ extract:DQ:	verify
 		cd work
 		extract $DISTFILES/$PORTNAME/$l
 	}
+	if(! ~ $#HGSOURCE 0) @{
+		eval `{uriextract $"HGSOURCE}
+		cd work
+		extract $DISTFILES/$PORTNAME/$local
+		rm -f /env/^(local remote)
+	}
 	touch $target
 
 patch:QE:	extract

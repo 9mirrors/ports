@@ -151,12 +151,15 @@ fn extract {
 		if(test -f $file)
 			fcp $file .
 		if not
-		if(test -d $file)
-			dircp $file .
+		if(test -d $file){
+			base=`{basename $file}
+			mkdir $base
+			dircp $file $base
+		}
 		if not
 			exit 'dont know what to do with '^$file
 	}
-	rm -f /env/file /env/v
+	rm -f /env/^(file v base)
 }
 
 # lsd - ls directories
