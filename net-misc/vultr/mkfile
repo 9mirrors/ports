@@ -3,14 +3,15 @@
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='vultr.com cli tool'
 VERSION=1.15.0
-DEPS=dev-lang/go-19
+DEPS=dev-lang/go
 
 WEBSOURCE=https://github.com/JamesClonk/vultr/archive/$VERSION.tar.gz
 BUILDPATH=work/vultr-$VERSION
-BUILDCOMMAND=/bin/rc -c '''rfork ne; \
-	mkdir -p gopath/src/github.com/JamesClonk/vultr; \
-	bind . gopath/src/github.com/JamesClonk/vultr; \
-	GOPATH=`{pwd}^/gopath /bin/go build;'''
+BUILDCOMMAND='rfork ne && \
+	mkdir -p gopath/src/github.com/JamesClonk/vultr && \
+	bind . gopath/src/github.com/JamesClonk/vultr && \
+	GOPATH=`{pwd}^/gopath /bin/go build'
+
 CLEANCOMMAND=rm -r gopath
 INSTALLCOMMAND=cp vultr-$VERSION /$objtype/bin/vultr
 UNINSTALLCOMMAND=rm -f /$objtype/bin/vultr
