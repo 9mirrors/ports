@@ -9,22 +9,17 @@ DEPS=app-misc/ca-certificates dev-lang/gobootstrap
 
 # local variables
 # keep bootstrap in sync with dev-lang/gobootstrap
-bootstrap=/sys/lib/go/$objtype-1.10.3-bootstrap
-final=/sys/lib/go/$objtype-$VERSION
+GOROOT_BOOTSTRAP=/sys/lib/go/$objtype-1.10.3-bootstrap
+GOROOT_FINAL=/sys/lib/go/$objtype-$VERSION
 
 WEBSOURCE=https://go.googlesource.com/go/+archive/go$VERSION.tar.gz
-BUILDPATH=work/src/
-BUILDCOMMAND=/bin/rc -c '''GOROOT_BOOTSTRAP=$bootstrap GOROOT_FINAL=$final ./make.rc'''
-CLEANCOMMAND=/bin/rc -c '''GOROOT=.. clean.rc;'''
-INSTALLCOMMAND=/bin/rc -c '''for(d in (api bin doc lib misc pkg src test)){
-		mkdir -p /sys/lib/go/$objtype-$VERSION/$d
-		dircp ../$d /sys/lib/go/$objtype-$VERSION/$d 
-	}
-	cp ../favicon.ico  /sys/lib/go/$objtype-$VERSION/'''
+BUILDCOMMAND=' cd src; ./make.rc'
+CLEANCOMMAND='GOROOT=..; cd src; ./clean.rc'
+INSTALLCOMMAND=mkdir -p $GOROOT_FINAL && \
+	dircp . /sys/lib/go/$objtype-$VERSION && \
+	cp bin/^(go gofmt) /$objtype/bin
 
-UNINSTALLCOMMAND=rm -rf /sys/lib/go/$objtype-$VERSION
-MESSAGE='To use go, add this to your profile:' \
-	'	bind -a /sys/lib/go/$objtype-'$VERSION'/bin /bin' \
-	'	GOROOT=/sys/lib/go/$objtype-'$VERSION
+UNINSTALLCOMMAND=rm -rf $GOROOT_FINAL \
+	/$objtype/bin/^(go gofmt)
 
 </sys/ports/Mk/mkfile
