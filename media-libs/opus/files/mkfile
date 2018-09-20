@@ -2,7 +2,7 @@
 
 CC=pcc
 CFLAGS=-Iinclude -Isilk -Isilk/float -Icelt -DPACKAGE_VERSION="$VERSION" -DOPUS_BUILD -DCUSTOM_MODES -DNONTHREADSAFE_PSEUDOSTACK -c
-LIB=libopus.$O.a
+LIB=libopus.a
 
 OFILES=\
 # silk \
