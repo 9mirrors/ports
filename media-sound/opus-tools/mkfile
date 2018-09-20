@@ -2,11 +2,11 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Royalty-free, highly versatile audio codec'
-VERSION=0.10.0
+VERSION=0.1.10
 DEPS=media-libs/opus
 
 WEBSOURCE=https://archive.mozilla.org/pub/opus/opus-tools-$VERSION.tar.gz
-BUILDPATH=work/opus-$VERSION
+BUILDPATH=work/opus-tools-$VERSION
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
