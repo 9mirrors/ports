@@ -2,14 +2,14 @@
 
 OWNER='Matthew Veety <mveety@mveety.com>'
 DESCRIPTION='Emulator for vintage hardware'
-VERSION='2'
+VERSION=2
 
 9PSERVER=9front.org
 9PFILE=/n/9front.org/extra/simh.tgz
 BUILDPATH=work/simh
 BUILDCOMMAND=plan9/build
-INSTALLCOMMAND=cp simh/BIN/* /$objtype/bin/
+INSTALLCOMMAND=cp BIN/* /$objtype/bin
 CLEANCOMMAND=rm *.$O
-UNINSTALLCOMMAND=rm '/'^$objtype^'/bin/'^('pdp8' 'pdp10' 'pdp11' 'vax' 'vax780')
+UNINSTALLCOMMAND=rm /$objtype/bin/^(pdp8 pdp11 vax vax780)
 
 </sys/ports/Mk/mkfile
