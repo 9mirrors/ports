@@ -2,13 +2,13 @@
 
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='bunzip2 compression library for APE'
-VERSION=1.2.8-1
+VERSION=1.0.6
 
-WEBSOURCE=http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
-BUILDPATH=work/bzip2-1.0.6
+WEBSOURCE=https://spacehopper.org/mirrors/bzip2-$VERSION.tar.gz
+BUILDPATH=work/bzip2-$VERSION
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
-UNINSTALLCOMMAND=mk nuke
+UNINSTALLCOMMAND=mk uninstall
 
 </sys/ports/Mk/mkfile

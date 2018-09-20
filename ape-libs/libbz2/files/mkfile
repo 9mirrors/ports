@@ -1,9 +1,9 @@
 </$objtype/mkfile
-LIB=/$objtype/lib/ape/libbz2.a
+LIB=libbz2.a
 OFILES=blocksort.$O huffman.$O crctable.$O randtable.$O compress.$O decompress.$O \
-	bzlib.$O 
+	bzlib.$O
 
-</sys/src/cmd/mksyslib
+</sys/src/cmd/mklib
 
 CC=pcc
 LD=pcc
@@ -22,13 +22,13 @@ BIN=/$objtype/bin/ape
 
 </sys/src/cmd/mkmany
 
+default:V:	$PROGS
 
-
-nuke:V:
+uninstall:V:
 	mk clean
-	rm -f $LIB
+	rm -f /$objtype/lib/ape/$$LIB
 	rm -f /sys/include/ape/bzlib.h
-    rm -f /rc/bin/ape/bzgrep
+	rm -f /rc/bin/ape/bzgrep
 	rm -f /rc/bin/ape/bzdiff
 	rm -f /rc/bin/ape/bzmore
 	rm -f /$objtype/bin/bzcat
@@ -41,6 +41,7 @@ nuke:V:
 	rm -f /sys/man/1ape/bzgrep
 
 install:V:
+	cp $LIB /$objtype/lib/ape/$LIB
 	cp bzlib.ape /sys/include/ape/bzlib.h
 	cp bzgrep /rc/bin/ape/
 	cp bzdiff /rc/bin/ape/
