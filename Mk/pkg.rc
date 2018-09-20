@@ -173,3 +173,34 @@ fn lsr {
 			echo $i
 	} | sed 's,\*$,,g'
 }
+
+# print dist files derived from source uris
+fn distfiles {
+	if(! ~ $#WEBSOURCE 0){
+		for(s in $WEBSOURCE){
+			eval `{uriextract $"s}
+			echo $local
+			rm -f /env/^(local remote)
+		}
+	}
+	
+	if(! ~ $#9PFILE 0){
+		for(s in $9PFILE){
+			eval `{uriextract $"s}
+			echo $local
+			rm -f /env/^(local remote)
+		}
+	}
+	
+	if(! ~ $#9PDIR 0){
+		for(s in $9PDIR){
+			eval `{uriextract $"s}
+			ddir=$DISTFILES/$PORTNAME/
+			if(test -d $ddir){
+				@{cd $ddir; lsr $local }
+			}
+			rm -f /env/^(local remove ddir)
+		}
+	}
+	status=''
+}

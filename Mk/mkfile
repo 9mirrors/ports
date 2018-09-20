@@ -15,8 +15,6 @@ INSTALLCOMMAND=`{ if(~ $#INSTALLCOMMAND 0){ echo 'mk install' }; if not { echo $
 CLEANCOMMAND=`{ if(~ $#CLEANCOMMAND 0){ echo 'mk clean' }; if not { echo $CLEANCOMMAND }}
 archmask=`{ if(! ~ $#ARCHMASK 0) { echo $ARCHMASK } }
 
-<|$PORTS/Mk/mk.rc
-
 all:VQE:	install
 
 info:VQE:
@@ -31,18 +29,14 @@ check:VQE:
 	. $PORTS/Mk/pkg.rc
 	qa
 
-MYDISTFILEPATHS=${MYDISTFILES:%=$DISTFILES/$PORTNAME/%}
-
 fetch:VQ:
 	. $PORTS/Mk/pkg.rc
 	
-	gotem=()
-	for(p in $MYDISTFILEPATHS)
-		if(test -e $p)
-			gotem=($gotem $p)
-	
-	if(! ~ $#gotem $#DISTFILEPATHS)
-		exit
+	for(p in `{distfiles}) @{
+		if(! test -f $DISTFILES/$PORTNAME/$p)
+			exit 'nothave'
+		status=''
+	} && exit
 	
 	echo fetching distfiles for $PORTNAME
 	# avoid a bug in mk, which executes prereqs when mtimes are equal.
@@ -111,38 +105,32 @@ fetch:VQ:
 	}
 	status=''
 
-$MYDISTFILEPATHS:N:	fetch
-
 distfiles:Q:
-	echo $MYDISTFILES
+	. $PORTS/Mk/pkg.rc
+	distfiles
 
 distclean:Q:	nuke
 	echo removing $DISTFILES/$PORTNAME
 	rm -rf $DISTFILES/$PORTNAME
 
-# hack around the fact that 9P directory file list isn't
-# generated when mk is invoked with an empty dist dir,
-# so reinvoke mk to build the list after fetching
-_manifest:VQ:	$MYDISTFILEPATHS
-	echo checksumming $prereq
-	if(~ $#MYDISTFILES 0) echo -n > manifest
-	if not @{
-		cd $DISTFILES/$PORTNAME
-		sha1sum -2 256 $MYDISTFILES
-	} > manifest
-
-manifest:QD:	$MYDISTFILEPATHS
+manifest:QD:
+	. /sys/ports/Mk/pkg.rc
 	if(~ $NOVERIFY 1) exit
-	test -e $target && exit
-	mk _manifest
+	test -e manifest && exit 'manifest already exists'
+	echo creating manifest
+	distfiles | @{ cd $DISTFILES/$PORTNAME; xargs sha1sum -2 256 } > manifest
 
-_verify:VQ:	$MYDISTFILEPATHS
-	echo verifying $MYDISTFILEPATHS
-	if(~ $#MYDISTFILES 0) echo -n > verify
-	if not @{
-		cd $DISTFILES/$PORTNAME
-		sha1sum -2 256 $MYDISTFILES
-	} > verify
+verify:DQ:	fetch
+	. /sys/ports/Mk/pkg.rc
+	if(~ $NOVERIFY 1){
+		echo skipping verification
+		exit
+	}
+	test -e manifest || exit 'missing manifest'
+	test -e $target && exit
+	
+	echo verifying manifest
+	distfiles | @{ cd $DISTFILES/$PORTNAME; xargs sha1sum -2 256 } > verify
 	
 	if(cmp -s manifest verify)
 		exit
@@ -153,27 +141,19 @@ _verify:VQ:	$MYDISTFILEPATHS
 	ape/diff -u manifest verify
 	exit $s
 
-verify:DQ:	manifest 
-	if(~ $NOVERIFY 1){
-		echo 'skipping verification'
-		exit
-	}
-	test -e $target && exit
-	mk _verify
+_extract:VQ:
 
-_extract:VQ:	$MYDISTFILEPATHS
+
+extract:DQ:	verify
 	. /sys/ports/Mk/pkg.rc
-	echo extracting $MYDISTFILEPATHS
-	for(l in $MYDISTFILEPATHS) @{
-		cd work
-		extract $l
-	}
-
-extract:Q:	verify
 	test -e $target && exit
 	test -e patch && rm patch
 	mkdir -p work
-	mk _extract
+	echo extracting distfiles
+	for(l in `{distfiles}) @{
+		cd work
+		extract $DISTFILES/$PORTNAME/$l
+	}
 	touch $target
 
 patch:QE:	extract
