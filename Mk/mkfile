@@ -220,7 +220,7 @@ build:QE:	patch
 		eval $BUILDCOMMAND || exit $status
 		if(! ~ $#POSTBUILD 0){
 			echo 'Running post-build hooks...'
-			$POSTBUILD
+			eval $POSTBUILD || exit $status
 		}
 	}
 	touch build
