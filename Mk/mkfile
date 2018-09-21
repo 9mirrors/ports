@@ -28,6 +28,11 @@ check:VQE:
 
 fetch:VQ:
 	. $PORTS/Mk/pkg.rc
+	# setup our own webfs/ua, mainly for sourceforge
+	rfork n
+	unmount /mnt/web || status=''
+	webfs
+	echo useragent curl/7.28.1 > /mnt/web/ctl
 	
 	for(p in `{distfiles}) @{
 		if(! test -f $DISTFILES/$PORTNAME/$p)
@@ -51,8 +56,6 @@ fetch:VQ:
 	
 	# dowload multiple http files, possibly with new names
 	if(! ~ $#WEBSOURCE 0){
-		rfork n
-		test -w /mnt/web/clone || webfs
 		for(s in $WEBSOURCE){
 			eval `{uriextract $s}
 			if(! test -r $DISTFILES/$PORTNAME/$local)
@@ -93,8 +96,6 @@ fetch:VQ:
 		if(! test -d $DISTFILES/$PORTNAME/$local){
 			v='--quiet'
 			if(~ $V 2) v=()
-			rfork n
-			test -w /mnt/web/clone || webfs
 			if(~ $#HGREV 0) HGREV=tip
 			V hg $v clone -r $HGREV $remote $DISTFILES/$PORTNAME/$local
 		}
