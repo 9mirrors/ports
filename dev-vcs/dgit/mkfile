@@ -1,0 +1,18 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='A Pure Go Git Implementation'
+VERSION=0
+DEPS=dev-lang/go
+
+GOPKG=github.com/driusan/dgit
+
+WEBSOURCE=https://github.com/driusan/dgit/archive/master.tar.gz
+BUILDPATH=work/dgit-master
+BUILDCOMMAND=go build -mod vendor
+CLEANCOMMAND=go clean
+# to git or not to git?
+INSTALLCOMMAND=cp dgit /$objtype/bin/dgit
+UNINSTALLCOMMAND=rm -f /$objtype/bin/dgit
+
+</sys/ports/Mk/mkfile
