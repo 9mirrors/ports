@@ -7,15 +7,17 @@ VERSION=3.4.1
 # local definitions
 BINHG=build/scripts-2.5/hg
 SITEPACKAGES=/sys/lib/python/lib/python2.5/site-packages/
+# hack around broken python subprocess path search
+PATH=/bin
 
 WEBSOURCE=https://mercurial-scm.org/release/mercurial-$VERSION.tar.gz
 BUILDPATH=work/mercurial-$VERSION
 BUILDCOMMAND=python setup.py --pure build
-POSTBUILD=/bin/rc -c 'sed -e ''s,@LIBDIR@,''^$SITEPACKAGES^'','' < $BINHG > $BINHG.tmp && \
+POSTBUILD='sed -e ''s,@LIBDIR@,''^$SITEPACKAGES^'','' < $BINHG > $BINHG.tmp && \
 	mv $BINHG.tmp $BINHG'
 INSTALLCOMMAND=python setup.py --pure install
 CLEANCOMMAND=python setup.py --pure clean --all
-UNINSTALLCOMMAND=/bin/rc -c 'rm -rf /sys/lib/python/bin/hg $SITEPACKAGES^(hgext mercurial mercurial-$VERSION-py2.5.egg-info)'
+UNINSTALLCOMMAND=rm -rf /sys/lib/python/bin/hg $SITEPACKAGES^(hgext mercurial mercurial-$VERSION-py2.5.egg-info)
 
 MESSAGE='To use this version of mercurial, add:' \
 	'	bind -b /sys/lib/python/bin /bin' \
