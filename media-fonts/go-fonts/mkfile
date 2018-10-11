@@ -1,0 +1,14 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='The Go fonts'
+VERSION=0
+
+WEBSOURCE=http://9.postnix.us/misc/go.fonts.tgz
+BUILDPATH=work
+BUILDCOMMAND=echo No build.
+INSTALLCOMMAND=dircp ./ /lib/font/bit
+CLEANCOMMAND=rm -r Go-*
+UNINSTALLCOMMAND=rm -r /lib/font/bit/Go-*
+
+</sys/ports/Mk/mkfile
