@@ -111,7 +111,7 @@ distclean:Q:	nuke
 	echo removing $DISTFILES/$PORTNAME
 	rm -rf $DISTFILES/$PORTNAME
 
-manifest:QD:
+manifest:QD:	fetch
 	. /sys/ports/Mk/pkg.rc
 	if(~ $NOVERIFY 1) exit
 	test -e manifest && exit 'manifest already exists'
