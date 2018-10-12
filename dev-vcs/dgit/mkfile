@@ -5,8 +5,6 @@ DESCRIPTION='A Pure Go Git Implementation'
 VERSION=0
 DEPS=dev-lang/go
 
-GOPKG=github.com/driusan/dgit
-
 WEBSOURCE=https://github.com/driusan/dgit/archive/master.tar.gz
 BUILDPATH=work/dgit-master
 BUILDCOMMAND=go build -mod vendor
