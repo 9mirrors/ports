@@ -202,7 +202,7 @@ fn distfiles {
 			if(test -d $ddir){
 				@{cd $ddir; lsr $local }
 			}
-			rm -f /env/^(local remove ddir)
+			rm -f /env/^(local remote ddir)
 		}
 	}
 	status=''
