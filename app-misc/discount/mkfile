@@ -2,9 +2,9 @@
 
 OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='DISCOUNT is an implementation of John Gruber Markdown by David Parsons <orc@pell.portland.or.us>'
-VERSION=2.2.5
+VERSION=2.2.4
 
-WEBSOURCE=https://github.com/Orc/discount/archive/$VERSION.tar.gz
+WEBSOURCE=https://github.com/Orc/discount/archive/v$VERSION.tar.gz
 BUILDPATH=work/discount-$VERSION/Plan9
 BUILDCOMMAND=mk build
 TESTCOMMAND=mk test
