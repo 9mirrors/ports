@@ -113,17 +113,12 @@ distclean:Q:	nuke
 
 manifest:QD:	fetch
 	. /sys/ports/Mk/pkg.rc
-	if(~ $NOVERIFY 1) exit
 	test -e manifest && exit 'manifest already exists'
 	echo creating manifest
 	distfiles | @{ cd $DISTFILES/$PORTNAME; xargs sha1sum -2 256 } > manifest
 
 verify:DQ:	fetch
 	. /sys/ports/Mk/pkg.rc
-	if(~ $NOVERIFY 1){
-		echo skipping verification
-		exit
-	}
 	test -e manifest || exit 'missing manifest'
 	test -e $target && exit
 	
