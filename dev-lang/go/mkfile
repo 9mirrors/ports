@@ -4,7 +4,7 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Google Go language'
-VERSION=1.11
+VERSION=1.11.1
 DEPS=app-misc/ca-certificates dev-lang/gobootstrap
 
 # local variables
@@ -12,8 +12,9 @@ DEPS=app-misc/ca-certificates dev-lang/gobootstrap
 GOROOT_BOOTSTRAP=/sys/lib/go/$objtype-1.10.3-bootstrap
 GOROOT_FINAL=/sys/lib/go/$objtype-$VERSION
 
-WEBSOURCE=https://go.googlesource.com/go/+archive/go$VERSION.tar.gz
-BUILDCOMMAND=' cd src; ./make.rc'
+WEBSOURCE=https://dl.google.com/go/go$VERSION.src.tar.gz
+BUILDPATH=work/go
+BUILDCOMMAND='cd src; ./make.rc'
 CLEANCOMMAND='GOROOT=..; cd src; ./clean.rc'
 INSTALLCOMMAND=mkdir -p $GOROOT_FINAL && \
 	dircp . /sys/lib/go/$objtype-$VERSION && \
