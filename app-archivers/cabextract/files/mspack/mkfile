@@ -1,0 +1,14 @@
+</$objtype/mkfile
+
+CC=pcc
+CFLAGS=-c -I.
+
+LIB=libmspack.$O.a
+OFILES=\
+	cabd.$O \
+	lzxd.$O \
+	mszipd.$O \
+	qtmd.$O \
+	system.$O
+
+</sys/src/cmd/mklib

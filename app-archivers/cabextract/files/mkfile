@@ -1,0 +1,27 @@
+</$objtype/mkfile
+
+CC=pcc
+CFLAGS=-c -Imspack -I. -DHAVE_CONFIG_H
+TARG=cabextract
+BIN=/$objtype/bin
+LIB=mspack/libmspack.$O.a
+OFILES=\
+	cabextract.$O \
+	md5.$O \
+	getopt.$O \
+	getopt1.$O \
+	fnmatch.$O
+
+</sys/src/cmd/mkone
+
+%.$O:	src/%.c
+	$CC $CFLAGS src/$stem.c
+
+cabextract.$O fnmatch.$O:	fnmatch.h
+
+fnmatch.h:	fnmatch_.h
+	cp $prereq $target
+
+$LIB:
+	cd mspack
+	mk $MKFLAGS
