@@ -1,0 +1,14 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='Microsoft cabinet file extractor'
+VERSION=1.7
+
+WEBSOURCE=https://www.cabextract.org.uk/cabextract-$VERSION.tar.gz
+BUILDPATH=work/cabextract-$VERSION
+BUILDCOMMAND=mk
+INSTALLCOMMAND=mk install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=mk nuke
+
+</sys/ports/Mk/mkfile
