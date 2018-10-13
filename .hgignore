@@ -1,11 +1,3 @@
-Config/ports.db
-.*/.*/work.*
-dist/.*
-build
-fetch
-install
-patch
-extract
-verify
-
-manifest
+^Config/ports.db
+^dist
+^.*/.*/(build|extract|install|patch|verify|work)
