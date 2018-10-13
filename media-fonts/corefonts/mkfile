@@ -1,0 +1,42 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org'
+DESCRIPTION='Microsoft TrueType core fonts'
+VERSION=1
+DEPS=app-archivers/cabextract
+
+FONTEXES=\
+	andale32.exe \
+	arialb32.exe \
+	comic32.exe \
+	courie32.exe \
+	georgi32.exe \
+	impact32.exe \
+	webdin32.exe \
+	wd97vwr32.exe
+
+FONTFILES=\
+	andalemo.ttf \
+	ariblk.ttf \
+	comic.ttf \
+	comicbd.ttf \
+	cour.ttf \
+	courbd.ttf \
+	courbi.ttf \
+	couri.ttf \
+	georgia.ttf \
+	georgiab.ttf \
+	georgiai.ttf \
+	georgiaz.ttf \
+	impact.ttf \
+	tahoma.ttf \
+	webdings.ttf
+
+WEBSOURCE=`{echo https://download.sourceforge.net/corefonts/^($FONTEXES)}
+BUILDCOMMAND='for(e in $FONTEXES) cabextract --lowercase $e;' \
+	'cabextract -F tahoma.ttf viewer1.cab'
+INSTALLCOMMAND=cp $FONTFILES /lib/font/ttf/
+CLEANCOMMAND=rm $FONTFILES
+UNINSTALLCOMMAND='for(f in $FONTFILES) rm -f /lib/font/ttf/$f'
+
+</sys/ports/Mk/mkfile
