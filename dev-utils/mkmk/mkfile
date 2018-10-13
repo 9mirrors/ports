@@ -6,10 +6,10 @@ VERSION=1
 
 9PSERVER=9pio
 9PFILE=/n/9pio/contrib/steve/mkmk.tbz
-BUILDPATH=work/mkmk
+BUILDPATH=work/sys/src/cmd/mkmk
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
-UNINSTALLCOMMAND=mk nuke
+UNINSTALL=/$objtype/bin/mkmk /sys/man/1/mkmk
 
 </sys/ports/Mk/mkfile
