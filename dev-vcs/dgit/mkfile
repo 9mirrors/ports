@@ -2,11 +2,13 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='A Pure Go Git Implementation'
-VERSION=0
+VERSION=20181013
 DEPS=dev-lang/go
 
-WEBSOURCE=https://github.com/driusan/dgit/archive/master.tar.gz
-BUILDPATH=work/dgit-master
+COMMIT=49625dcca1eed1cae4ccd3eb750df6024f074bc8
+
+WEBSOURCE=https://github.com/driusan/dgit/archive/$COMMIT.tar.gz
+BUILDPATH=work/dgit-$COMMIT
 BUILDCOMMAND=go build -mod vendor
 CLEANCOMMAND=go clean
 # to git or not to git?
