@@ -2,17 +2,19 @@
 
 # imported from https://code.9front.org/hg/ocaml
 
-OWNER='Nick Owens <mischief@offblast.org>'
+OWNER='Ben Purcell <spew@cbza.org>'
 DESCRIPTION='Ocaml'
-BASEVERSION=4.07.0
+MAJORVERSION=4.07
+MINORVERSION=1
+BASEVERSION=$MAJORVERSION.$MINORVERSION
 VERSION=$BASEVERSION-1
 
-WEBSOURCE=https://github.com/ocaml/ocaml/archive/$BASEVERSION.tar.gz
+WEBSOURCE=http://caml.inria.fr/pub/distrib/ocaml-$MAJORVERSION/ocaml-$BASEVERSION.tar.gz
 PATCHES=files
 BUILDPATH=work/ocaml-$BASEVERSION
 BUILDCOMMAND=mk
 INSTALLCOMMAND=/bin/rc -c '''mkdir -p /sys/lib/ocaml && mk install'''
 NOCLEAN=1
-UNINSTALLCOMMAND=/bin/rc -c 'rm -rf /bin/^(ocaml ocamlc ocamldep ocamllex ocamlmklib ocamlrun ocamlyacc /sys/lib/ocaml)'
+UNINSTALLCOMMAND=/bin/rc -c '''rm -rf /bin/^(ocaml ocamlc ocamldep ocamllex ocamlmklib ocamlrun ocamlyacc /sys/lib/ocaml)'''
 
 </sys/ports/Mk/mkfile
