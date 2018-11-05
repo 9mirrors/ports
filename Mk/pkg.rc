@@ -137,7 +137,7 @@ fn uriextract {
 fn extract {
 	file=$1
 	switch($1){
-	case *.tar.gz *.tgz *.tar.bz2 *.tbz
+	case *.tar *.tar.gz *.tgz *.tar.bz2 *.tbz
 		v=''
 		if(~ $V 2)
 			v='v'
