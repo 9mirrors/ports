@@ -1,0 +1,14 @@
+</$objtype/mkfile
+
+OWNER='Nick Owens <mischief@offblast.org>'
+DESCRIPTION='qrstuv''s paint'
+VERSION=0
+
+WEBSOURCE='http://www.9paste.net/qrstuv/paint?tar qpaint.tar'
+BUILDPATH=work/paint
+BUILDCOMMAND=mk all
+INSTALLCOMMAND=mk '''TARG=qpaint''' '''BIN=/$objtype/bin''' install
+CLEANCOMMAND=mk clean
+UNINSTALLCOMMAND=rm -rf /$objtype/bin/qpaint
+
+</sys/ports/Mk/mkfile
