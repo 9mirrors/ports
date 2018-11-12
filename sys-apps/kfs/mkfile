@@ -1,0 +1,14 @@
+</$objtype/mkfile
+
+OWNER='Sean Hinchee <henesy.dev@gmail.com>'
+DESCRIPTION='A port of 9legacy''s kfs(4) and relevant tools to 9front. No auth for now.'
+VERSION=1
+
+HGSOURCE=https://bitbucket.org/henesy/kfs
+BUILDPATH=work/kfs
+BUILDCOMMAND=mk
+CLEANCOMMAND=mk clean
+INSTALLCOMMAND=mk install && mk installman
+UNINSTALLCOMMAND=mk uninstall
+
+</sys/ports/Mk/mkfile
