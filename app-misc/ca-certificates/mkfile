@@ -2,9 +2,9 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='CA certificate bundle'
-VERSION=0
+VERSION=20181017
 
-WEBSOURCE=https://curl.haxx.se/ca/cacert.pem
+WEBSOURCE=https://curl.haxx.se/ca/cacert-2018-10-17.pem
 BUILDPATH=work/
 BUILDCOMMAND=fortune /lib/uriel
 CLEANCOMMAND=fortune /lib/uriel
