@@ -6,7 +6,7 @@ VERSION=9999
 
 HGSOURCE=https://bitbucket.org/oridb/mc
 BUILDPATH=work/mc
-BUILDCOMMAND=mk
+BUILDCOMMAND=mk bootstrap && mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
 UNINSTALLCOMMAND=mk uninstall
