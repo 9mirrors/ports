@@ -2,10 +2,10 @@
 
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='xz utilities and liblzma for APE'
-VERSION=5.2.1
+VERSION=5.2.2
 
-WEBSOURCE=https://github.com/xz-mirror/xz/releases/download/v5.2.1/xz-5.2.1.tar.bz2
-BUILDPATH=work/xz-5.2.1
+WEBSOURCE=https://github.com/xz-mirror/xz/releases/download/v$VERSION/xz-$VERSION.tar.bz2
+BUILDPATH=work/xz-$VERSION
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
