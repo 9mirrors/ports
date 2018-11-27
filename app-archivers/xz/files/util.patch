@@ -1,0 +1,10 @@
+--- a/src/xz/util.c
++++ b/src/xz/util.c
+@@ -132,6 +132,7 @@
+ 	message_fatal(_("Value of the option `%s' must be in the range "
+ 				"[%" PRIu64 ", %" PRIu64 "]"),
+ 				name, min, max);
++	return 0;
+ }
+ 
+ 

@@ -1,0 +1,28 @@
+--- a/src/xz/options.c
++++ b/src/xz/options.c
+@@ -171,11 +171,12 @@
+ 	};
+ 
+ 	lzma_options_delta *options = xmalloc(sizeof(lzma_options_delta));
+-	*options = (lzma_options_delta){
++	lzma_options_delta opt = {
+ 		// It's hard to give a useful default for this.
+ 		.type = LZMA_DELTA_TYPE_BYTE,
+ 		.dist = LZMA_DELTA_DIST_MIN,
+ 	};
++	*options = opt;
+ 
+ 	parse_options(str, opts, &set_delta, options);
+ 
+@@ -214,9 +215,10 @@
+ 	};
+ 
+ 	lzma_options_bcj *options = xmalloc(sizeof(lzma_options_bcj));
+-	*options = (lzma_options_bcj){
++	lzma_options_bcj opt = {
+ 		.start_offset = 0,
+ 	};
++	*options = opt;
+ 
+ 	parse_options(str, opts, &set_bcj, options);
+ 

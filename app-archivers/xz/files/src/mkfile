@@ -1,5 +1,5 @@
 </$objtype/mkfile
-DIRS=liblzma scripts lzmainfo xzdec xz
+DIRS=liblzma lzmainfo xzdec # scripts xz
 
 all:V:
 	for (i in $DIRS)

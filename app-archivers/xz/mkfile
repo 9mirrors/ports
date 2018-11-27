@@ -3,13 +3,12 @@
 OWNER='Jens Staal <staal1978@gmail.com>'
 DESCRIPTION='xz utilities and liblzma for APE'
 VERSION=5.2.1
-#DEPS=
 
 WEBSOURCE=https://github.com/xz-mirror/xz/releases/download/v5.2.1/xz-5.2.1.tar.bz2
 BUILDPATH=work/xz-5.2.1
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
-UNINSTALLCOMMAND=mk nuke
+UNINSTALLCOMMAND=mk uninstall
 
 </sys/ports/Mk/mkfile

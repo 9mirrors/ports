@@ -70,16 +70,16 @@
 #undef HAVE_DECODER_ARMTHUMB
 
 /* Define to 1 if delta decoder is enabled. */
-#undef HAVE_DECODER_DELTA
+#define HAVE_DECODER_DELTA 1
 
 /* Define to 1 if ia64 decoder is enabled. */
 #undef HAVE_DECODER_IA64
 
 /* Define to 1 if lzma1 decoder is enabled. */
-#undef HAVE_DECODER_LZMA1
+#define HAVE_DECODER_LZMA1 1
 
 /* Define to 1 if lzma2 decoder is enabled. */
-#undef HAVE_DECODER_LZMA2
+#define HAVE_DECODER_LZMA2 1
 
 /* Define to 1 if powerpc decoder is enabled. */
 #undef HAVE_DECODER_POWERPC
@@ -100,16 +100,16 @@
 #undef HAVE_ENCODER_ARMTHUMB
 
 /* Define to 1 if delta encoder is enabled. */
-#undef HAVE_ENCODER_DELTA
+#define HAVE_ENCODER_DELTA 1
 
 /* Define to 1 if ia64 encoder is enabled. */
 #undef HAVE_ENCODER_IA64
 
 /* Define to 1 if lzma1 encoder is enabled. */
-#undef HAVE_ENCODER_LZMA1
+#define HAVE_ENCODER_LZMA1 1
 
 /* Define to 1 if lzma2 encoder is enabled. */
-#undef HAVE_ENCODER_LZMA2
+#define HAVE_ENCODER_LZMA2 1
 
 /* Define to 1 if powerpc encoder is enabled. */
 #undef HAVE_ENCODER_POWERPC

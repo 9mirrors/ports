@@ -1,0 +1,22 @@
+--- a/src/liblzma/lz/lz_decoder.h
++++ b/src/liblzma/lz/lz_decoder.h
+@@ -73,7 +73,7 @@
+ 
+ 
+ #define LZMA_LZ_DECODER_INIT \
+-	(lzma_lz_decoder){ \
++	{ \
+ 		.coder = NULL, \
+ 		.code = NULL, \
+ 		.reset = NULL, \
+--- a/src/liblzma/lz/lz_decoder.c
++++ b/src/liblzma/lz/lz_decoder.c
+@@ -217,7 +217,8 @@
+ 
+ 		next->coder->dict.buf = NULL;
+ 		next->coder->dict.size = 0;
+-		next->coder->lz = LZMA_LZ_DECODER_INIT;
++		lzma_lz_decoder decoder = LZMA_LZ_DECODER_INIT;
++		next->coder->lz = decoder;
+ 		next->coder->next = LZMA_NEXT_CODER_INIT;
+ 	}

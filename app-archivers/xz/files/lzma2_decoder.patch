@@ -1,0 +1,12 @@
+--- a/src/liblzma/lzma/lzma2_decoder.c
++++ b/src/liblzma/lzma/lzma2_decoder.c
+@@ -232,7 +232,8 @@
+ 		lz->code = &lzma2_decode;
+ 		lz->end = &lzma2_decoder_end;
+ 
+-		lz->coder->lzma = LZMA_LZ_DECODER_INIT;
++		lzma_lz_decoder decoder = LZMA_LZ_DECODER_INIT;
++		lz->coder->lzma = decoder;
+ 	}
+ 
+ 	const lzma_options_lzma *options = opt;

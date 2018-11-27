@@ -17,3 +17,9 @@ nuke:V:
 	for (i in $DIRS)
 		@{ cd $i; mk $target }
 
+uninstall:V:
+	rm -f /$objtype/lib/ape/liblzma.a
+	rm -f /sys/include/ape/lzma.h
+	rm -rf /sys/include/ape/lzma
+	rm -f /$objtype/bin/^(lzmainfo lzmadec xzdec)
+	rm -f /sys/man/1/^(lzmainfo xzdec)

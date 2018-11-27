@@ -1,0 +1,8 @@
+--- a/src/xz/main.c
++++ b/src/xz/main.c
+@@ -304,4 +304,5 @@
+ 		es = E_SUCCESS;
+ 
+ 	tuklib_exit(es, E_ERROR, message_verbosity_get() != V_SILENT);
++	return 0;
+ }
