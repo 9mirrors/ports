@@ -1,0 +1,104 @@
+--- a/src/audio-in.c	Fri Sep  7 10:48:50 2018
++++ b/src/audio-in.c	Fri Sep  7 10:52:51 2018
+@@ -720,7 +720,11 @@
+     int sampbyte = f->samplesize / 8;
+     int realsamples = f->totalsamples > 0 && samples > (f->totalsamples - f->samplesread)
+         ? f->totalsamples - f->samplesread : samples;
+-    signed char *buf = alloca(realsamples*sampbyte*f->channels);
++    signed char *buf = malloc(realsamples*sampbyte*f->channels);
++    if(buf == NULL){
++        fprintf(stderr, "allocation failure\n");
++        return 0;
++    }
+     int i,j;
+     int *ch_permute = f->channel_permute;
+ 
+@@ -792,17 +796,20 @@
+             }
+         }
+         else {
++            free(buf);
+             fprintf(stderr, _("Big endian 24 bit PCM data is not currently "
+                               "supported, aborting.\n"));
+             return 0;
+         }
+     }
+     else {
++        free(buf);
+         fprintf(stderr, _("Internal error: attempt to read unsupported "
+                           "bitdepth %d\n"), f->samplesize);
+         return 0;
+     }
+ 
++    free(buf);
+     return realsamples;
+ }
+ 
+@@ -811,9 +818,14 @@
+     wavfile *f = (wavfile *)in;
+     int realsamples = f->totalsamples > 0 && samples > (f->totalsamples - f->samplesread)
+         ? f->totalsamples - f->samplesread : samples;
+-    float *buf = alloca(realsamples*4*f->channels); /* de-interleave buffer */
++    float *buf = malloc(realsamples*4*f->channels); /* de-interleave buffer */
+     int i,j;
+ 
++    if(buf == NULL){
++        fprintf(stderr, "allocation failure\n");
++        return 0;
++    }
++
+     realsamples = fread(buf, 4*f->channels, realsamples, f->f);
+     f->samplesread += realsamples;
+ 
+@@ -821,6 +833,7 @@
+         for(j=0; j < f->channels; j++)
+             buffer[i*f->channels+j] = buf[i*f->channels + f->channel_permute[j]];
+ 
++    free(buf);
+     return realsamples;
+ }
+ 
+@@ -914,11 +927,16 @@
+       if(d->lpc_ptr<0){
+         d->lpc_out=calloc(d->channels * *d->extra_samples, sizeof(*d->lpc_out));
+         if(in_samples>lpc_order*2){
+-          float *lpc=alloca(lpc_order*sizeof(*lpc));
++          float *lpc=malloc(lpc_order*sizeof(*lpc));
++          if(lpc == NULL){
++            fprintf(stderr, "allocation failure\n");
++            return 0;
++          }
+           for(i=0;i<d->channels;i++){
+             vorbis_lpc_from_data(buffer+i,lpc,in_samples,lpc_order,d->channels);
+             vorbis_lpc_predict(lpc,buffer+i+(in_samples-lpc_order)*d->channels,
+                                lpc_order,d->lpc_out+i,*d->extra_samples,d->channels);
++          free(lpc);
+           }
+         }
+         d->lpc_ptr=0;
+--- a/src/opusdec.c	Fri Sep  7 10:46:11 2018
++++ b/src/opusdec.c	Fri Sep  7 10:47:50 2018
+@@ -567,8 +567,12 @@
+    short *out;
+    float *buf;
+    float *output;
+-   out=alloca(sizeof(short)*MAX_FRAME_SIZE*channels);
+-   buf=alloca(sizeof(float)*MAX_FRAME_SIZE*channels);
++   out=malloc(sizeof(short)*MAX_FRAME_SIZE*channels);
++   buf=malloc(sizeof(float)*MAX_FRAME_SIZE*channels);
++   if(out == NULL || buf == NULL){
++      fprintf(stderr, "allocation failure\n");
++      return 0;
++   }
+    maxout=maxout<0?0:maxout;
+    do {
+      if (skip){
+@@ -626,6 +630,8 @@
+        maxout-=ret;
+      }
+    } while (frame_size>0 && maxout>0);
++   free(buf);
++   free(out);
+    return sampout;
+ }
+ 
