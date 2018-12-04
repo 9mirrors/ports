@@ -1,10 +1,10 @@
 </$objtype/mkfile
 
-OWNER='Nick Owens <mischief@offblast.org'
+OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='GNU Unifont'
 VERSION=11.0.02
 
-WEBSOURCE=https://ftp.gnu.org/gnu/unifont/unifont-11.0.02/unifont-$VERSION.ttf
+WEBSOURCE=https://ftp.gnu.org/gnu/unifont/unifont-$VERSION/unifont-$VERSION.ttf
 BUILDCOMMAND=echo -n
 INSTALLCOMMAND=cp unifont-$VERSION.ttf /lib/font/ttf/unifont.ttf
 CLEANCOMMAND=echo -n
