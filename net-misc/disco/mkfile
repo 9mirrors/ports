@@ -1,13 +1,13 @@
 </$objtype/mkfile
 
 OWNER='Sean Hinchee <henesy.dev@gmail.com>'
-DESCRIPTION='go Discord client'
-VERSION=0
+DESCRIPTION='Go Discord client'
+VERSION=2.1
 DEPS=dev-lang/go
 
-HGSOURCE=https://bitbucket.org/henesy/disco
+WEBSOURCE=https://bitbucket.org/henesy/disco/get/2.1.tar.gz
 BUILDPATH=work/disco
-BUILDCOMMAND=mk
+BUILDCOMMAND=getdeps.rc && mk
 CLEANCOMMAND=rm work/disco/disco
 INSTALLCOMMAND=cp work/disco/disco /$objtype/bin/disco
 UNINSTALLCOMMAND=rm /$objtype/bin/disco
