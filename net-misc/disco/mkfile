@@ -6,10 +6,10 @@ VERSION=2.1
 DEPS=dev-lang/go
 
 WEBSOURCE=https://bitbucket.org/henesy/disco/get/2.1.tar.gz
-BUILDPATH=work/disco
-BUILDCOMMAND=getdeps.rc && mk
-CLEANCOMMAND=rm work/disco/disco
-INSTALLCOMMAND=cp work/disco/disco /$objtype/bin/disco
+BUILDPATH=work/henesy-disco-ad91578eda4b
+BUILDCOMMAND='GOPATH=$home/go; mkdir -p $GOPATH/src/bitbucket.org/henesy/disco && bind ../henesy-disco-ad91578eda4b $GOPATH/src/bitbucket.org/henesy/disco && ./getdeps.rc && go build'
+CLEANCOMMAND=rm henesy-disco-ad91578eda4b
+INSTALLCOMMAND=cp henesy-disco-ad91578eda4b /$objtype/bin/disco
 UNINSTALLCOMMAND=rm /$objtype/bin/disco
 
 </sys/ports/Mk/mkfile
