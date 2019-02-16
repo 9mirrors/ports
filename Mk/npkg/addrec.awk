@@ -4,8 +4,8 @@ BEGIN {
 }
 
 {
-	if($NAME == $1) {
-		printf("%s:%s:%s:%s", $NAME, $VERSION, $DATE, $ARCHSTR)
+	if(NAME == $1) {
+		printf("%s:%s:%s:%s\n", NAME, VERSION, DATE, ARCHSTR)
 		ADDED = 1
 	} else {
 		print $0
@@ -14,5 +14,5 @@ BEGIN {
 
 END {
 	if(ADDED == 0)
-		printf("%s:%s:%s:%s", $NAME, $VERSION, $DATE, $ARCHSTR)
+		printf("%s:%s:%s:%s\n", NAME, VERSION, DATE, ARCHSTR)
 }

@@ -23,11 +23,11 @@ info:VQE:
 	echo 'Complain to: ' $OWNER
 
 check:VQE:
-	. $PORTS/Mk/pkg.rc
+	. $PORTS/Mk/lib.rc
 	qa
 
 fetch:VQ:
-	. $PORTS/Mk/pkg.rc
+	. $PORTS/Mk/lib.rc
 	# setup our own webfs/ua, mainly for sourceforge
 	rfork n
 	unmount /mnt/web || status=''
@@ -40,7 +40,7 @@ fetch:VQ:
 		status=''
 	} && exit
 	
-	echo fetching distfiles for $PORTNAME
+	echo 'fetching distfiles for '^$PORTNAME
 	# avoid a bug in mk, which executes prereqs when mtimes are equal.
 	test -e $target && exit
 	test -e patch && rm patch
@@ -104,7 +104,7 @@ fetch:VQ:
 	status=''
 
 distfiles:Q:
-	. $PORTS/Mk/pkg.rc
+	. $PORTS/Mk/lib.rc
 	distfiles
 
 distclean:Q:	nuke
@@ -112,13 +112,13 @@ distclean:Q:	nuke
 	rm -rf $DISTFILES/$PORTNAME
 
 manifest:QD:	fetch
-	. /sys/ports/Mk/pkg.rc
+	. /sys/ports/Mk/lib.rc
 	test -e manifest && exit 'manifest already exists'
 	echo creating manifest
 	distfiles | @{ cd $DISTFILES/$PORTNAME; xargs sha1sum -2 256 } > manifest
 
 verify:DQ:	fetch
-	. /sys/ports/Mk/pkg.rc
+	. /sys/ports/Mk/lib.rc
 	test -e manifest || exit 'missing manifest'
 	test -e $target && exit
 	
@@ -138,7 +138,7 @@ _extract:VQ:
 
 
 extract:DQ:	verify
-	. /sys/ports/Mk/pkg.rc
+	. /sys/ports/Mk/lib.rc
 	test -e $target && exit
 	test -e patch && rm patch
 	mkdir -p work
@@ -156,7 +156,7 @@ extract:DQ:	verify
 	touch $target
 
 patch:QE:	extract
-	. /sys/ports/Mk/pkg.rc
+	. /sys/ports/Mk/lib.rc
 	# avoid a bug in mk, which executes prereqs when mtimes are equal.
 	test -e $target && exit
 	echo patching $PORTNAME
@@ -169,7 +169,7 @@ patch:QE:	extract
 	touch $target
 
 unpatch:VQE:	$BUILDPATH
-	. /sys/ports/Mk/pkg.rc
+	. /sys/ports/Mk/lib.rc
 	test -e patch || exit 'not patched'
 	for(p in `{ls $files/*.patch >[2]/dev/null}){
 		@{ cd $BUILDPATH && unapply $p } || exit 'unapplying '^$p^' failed'
@@ -177,7 +177,7 @@ unpatch:VQE:	$BUILDPATH
 	rm -f patch
 
 build:QE:	patch
-	. /sys/ports/Mk/pkg.rc
+	. /sys/ports/Mk/lib.rc
 	if(! ~ $#archmask 0){
 		if(! ~ $#IGNOREMASKS 0){
 			for(i in $archmask){
@@ -222,7 +222,7 @@ build:QE:	patch
 	touch build
 
 test:VQE:	build
-	. /sys/ports/Mk/pkg.rc
+	. /sys/ports/Mk/lib.rc
 	if(! ~ $#archmask 0){
 		for(i in $archmask){
 			if(~ $i $objtype){
@@ -252,7 +252,7 @@ test:VQE:	build
 	exit ''
 
 install:QE:	build
-	. /sys/ports/Mk/pkg.rc
+	. /sys/ports/Mk/lib.rc
 	if(! ~ $#BUILDONLY 0){
 		for(i in $BUILDONLY){
 			if(~ $i $objtype){
@@ -286,7 +286,7 @@ install:QE:	build
 	}
 
 reinstall:VQE:	build
-	. /sys/ports/Mk/pkg.rc
+	. /sys/ports/Mk/lib.rc
 	cd $BUILDPATH
 	@{
 		rfork ne
@@ -301,7 +301,7 @@ reinstall:VQE:	build
 	}
 
 testinstall:VQE:
-	. /sys/ports/Mk/pkg.rc
+	. /sys/ports/Mk/lib.rc
 	cd $BUILDPATH
 	@{
 		rfork ne
@@ -335,7 +335,7 @@ nuke:VQ:
 	rm -f fetch verify extract patch build install
 
 uninstall:VQE:
-	. /sys/ports/Mk/pkg.rc
+	. /sys/ports/Mk/lib.rc
 	if(! checkport $PORTNAME){
 		echo $PORTNAME is not installed
 		exit notinstalled

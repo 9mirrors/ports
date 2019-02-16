@@ -1,0 +1,149 @@
+# subprocess to avoid triggering rc flag e killing us
+# (rc -e is set by mk targets without E attribute)
+@{
+	# setup some sane defaults.
+	if(~ $#BUILDPATH 0){
+		BUILDPATH=work
+	}
+	status=''
+}
+
+fn V {
+	if(! ~ $#V 0)
+		echo $*
+	$*
+}
+
+. $PORTS/Mk/pkg.rc			# uncomment for old pkg
+#. $PORTS/Mk/npkg/npkg.rc	# uncomment for npkg
+
+fn wantvars {
+	for(v)
+		if(~ $#$v 0)
+			errors=($errors $v^' is missing')
+}
+
+fn notwantvars {
+	for(v)
+		if(! ~ $#$v 0)
+			errors=($errors $v^' is deprecated')
+}
+
+# check various problems in port mkfiles
+fn qa {
+	errors=()
+	wantvars OWNER DESCRIPTION VERSION
+	notwantvars WORKFILE EXTRACTCOMMAND PATCHES
+
+	if(! test -r manifest)
+		errors=($errors 'manifest file is missing')
+
+	if(! ~ $#errors 0){
+		echo `{pwd}^/mkfile has $#errors problems
+		for(e in $errors)
+			echo - $e
+	}
+	~ $#errors 0 || status=`''{echo $#errors qa errors}
+}
+
+fn apply {
+	file=$1
+	echo applying `{basename $file}
+	ape/patch -p1 < $file
+}
+
+fn unapply {
+	file=$1
+	echo unapplying `{basename $file}
+	ape/patch -R -p1 < $file
+}
+
+# given a string like 'http://example.com/src.tar.gz local.tar.gz',
+# put the uri in $remote and the local file name in $local.
+# if the local file name is missing, attempt to extract it from the
+# uri.  this function should be called in the context of eval to set
+# $remote and $local.
+fn uriextract {
+	t=`{eval echo $1}	# expand variables
+	r=$t(1)		# uri
+	l=$t(2)		# local name
+	if(~ $l '')
+		l=`{echo $r | awk -F'/' '{ print $NF }' }
+	echo 'local='^$l
+	echo 'remote='^$r
+	rm -f /env/^(t r l)
+}
+
+fn extract {
+	file=$1
+	switch($1){
+	case *.tar *.tar.gz *.tgz *.tar.bz2 *.tbz
+		v=''
+		if(~ $V 2)
+			v='v'
+		V tar $v^xf $file
+	case *.zip
+		v=()
+		if(~ $V 2)
+			v='-v'
+		V unzip $v -f $file
+	case *
+		if(test -f $file)
+			fcp $file .
+		if not
+		if(test -d $file){
+			base=`{basename $file}
+			mkdir $base
+			dircp $file $base
+		}
+		if not
+			exit 'dont know what to do with '^$file
+	}
+	rm -f /env/^(file v base)
+}
+
+# lsd - ls directories
+fn lsd {
+	for(d in `{ls -F $1}) if(~ $f */) echo $d
+}
+
+fn lsr {
+	l = `{ls -F $*}
+	for(i in $l){
+		if(~ $i */)
+			lsr $i
+		if not
+			echo $i
+	} | sed 's,\*$,,g'
+}
+
+# print dist files derived from source uris
+fn distfiles {
+	if(! ~ $#WEBSOURCE 0){
+		for(s in $WEBSOURCE){
+			eval `{uriextract $"s}
+			echo $local
+			rm -f /env/^(local remote)
+		}
+	}
+	
+	if(! ~ $#9PFILE 0){
+		for(s in $9PFILE){
+			eval `{uriextract $"s}
+			echo $local
+			rm -f /env/^(local remote)
+		}
+	}
+	
+	if(! ~ $#9PDIR 0){
+		for(s in $9PDIR){
+			eval `{uriextract $"s}
+			ddir=$DISTFILES/$PORTNAME/
+			if(test -d $ddir){
+				@{cd $ddir; lsr $local }
+			}
+			rm -f /env/^(local remote ddir)
+		}
+	}
+	status=''
+}

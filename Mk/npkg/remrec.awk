@@ -3,7 +3,7 @@ BEGIN {
 }
 
 {
-	if($NAME != $1){
+	if(NAME != $1){
 		print $0
 	}
 }

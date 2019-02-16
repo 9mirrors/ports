@@ -1,24 +1,22 @@
 #!/bin/rc
 
-. $PORTS/Config/ports.conf
+# . $PORTS/Config/ports.conf
 . $PORTS/Mk/npkg/npkg.conf
-if(test -r $PORTS/Config/npkg.conf){
-	. $PORTS/Config/npkg.conf
+
+@{
+	if(test -r $PORTS/Config/npkg.conf){
+		. $PORTS/Config/npkg.conf
+	}
+
+	if(! test -f $ndbfile){
+		echo 'creating new db...'
+		touch $ndbfile
+	}
+	status=''
 }
+
 . $ndbbin/records.rc
 . $ndbbin/arch.rc
-
-fn apply {
-	file=$1
-	echo applying `{basename $file}
-	ape/patch -p1 < $file
-}
-
-fn unapply {
-	file=$1
-	echo unapplying `{basename $file}
-	ape/patch -R -p1 < $file
-}
 
 fn checkport {
 	s = ''
@@ -35,11 +33,13 @@ fn checkport {
 		s = 'checkport: not installed'
 	}
 	if not {
-		_fmtrec `{ fmtrecord $rec }
-		if(! checkarch $objtype $rec){
+		_fmtrec = `{ fmtrecord $rec }
+		# echo 'checking arch'
+		if(checkarch $objtype $rec){
 			s = 'checkport: arch '^$objtype^' not installed'
 		}
 		if not {
+			# echo 'checking version'
 			if(! ~ $_vers 'none'){
 			if(! ~ $_fmtrec(2) $_vers){
 				s = 'checkport: old version '^$_vers^' installed'
