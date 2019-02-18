@@ -1,0 +1,21 @@
+#!/bin/rc
+
+rfork ne
+
+if(! ~ $#* 2){
+	echo 'usage: migrate.rc [old db] [new db]'
+}
+
+if(~ $#PORTS 0){
+	PORTS='/sys/ports'
+}
+
+if(test -f $2){
+	echo 'ports already migrated to new database'
+	exit 'already done'
+}
+
+awk -f $PORTS/Mk/npkg/migrate.awk \
+	-v 'DATE='^`{ date -i } \
+	-v 'ARCHSTR='^$objtype \
+	$1 > $2

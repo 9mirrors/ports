@@ -49,3 +49,10 @@ update:VQE:
 	}
 
 portinstall:VQE: update
+
+migrate:VQE:
+	@{
+		rfork ne
+		echo 'migrating database to new database'
+		rc $PORTS/Mk/npkg/migrate.rc $PORTS/Config/ports.db $PORTS/Config/ports.ndb
+	}
