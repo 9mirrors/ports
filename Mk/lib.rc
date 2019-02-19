@@ -14,8 +14,8 @@ fn V {
 	$*
 }
 
-. $PORTS/Mk/pkg.rc			# uncomment for old pkg
-#. $PORTS/Mk/npkg/npkg.rc	# uncomment for npkg
+#. $PORTS/Mk/pkg.rc			# uncomment for old pkg
+. $PORTS/Mk/npkg/npkg.rc	# uncomment for npkg
 
 fn wantvars {
 	for(v)

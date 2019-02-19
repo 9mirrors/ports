@@ -1,0 +1,22 @@
+This file documents changes that may cause problems for you when
+updating the ports tree or individual ports.  We try our best to avoid
+or minimize problems when we make changes, but sometimes they are
+unavoidable.
+
+You should be in the habit of checking this file after updating and
+before using the ports tree.
+
+2019-02-19:
+    Affects: Entire ports tree
+    Author: Matthew Veety <mveety@gmail.com>
+    
+    I migrated the ports tree to the new database that tracks whether
+    a package is installed, when it was installed, what version was
+    installed, and what architectures it was installed for.  If you're
+    updating from an older version of the ports tree, be sure to run
+    'mk migrate' in the root of the ports tree prior to using it.
+    This will migrate your current db to the new version.  If you have
+    ports installed on multiple architectures, you must update those
+    packages immediately after migrating to make sure your database
+    reflects your system's state.
+
