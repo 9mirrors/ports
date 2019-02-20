@@ -31,6 +31,8 @@ info:V: ${CATEGORY:%=sub.%}
 
 check fetch build clean install reinstall uninstall nuke:V: ${CATEGORY:%=sub.%}
 
+distclean manifest verify:V: ${CATEGORY:%=sub.%}
+
 update:VQE:
 	@{
 		rfork ne
