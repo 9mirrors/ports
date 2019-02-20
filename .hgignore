@@ -2,4 +2,4 @@
 ^Config/ports.ndb
 ^Config/ports.ndb.old
 ^dist
-^.*/.*/(build|extract|install|patch|verify|work)
+^.*/.*/(build|extract|install|reinstall|patch|verify|work)

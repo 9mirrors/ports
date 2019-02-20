@@ -287,18 +287,18 @@ install:QE:	build
 
 reinstall:VQE:	build
 	. /sys/ports/Mk/lib.rc
-	cd $BUILDPATH
-	@{
-		rfork ne
-		if(~ $#INSTALLCOMMAND 0)
-			INSTALLCOMMAND=mk install
-		eval $INSTALLCOMMAND
-	}
-	if(! ~ $*MESSAGE 0){
+	if(~ $#INSTALLCOMMAND 0)
+		INSTALLCOMMAND=mk install
+	@{ rfork ne; cd $BUILDPATH && eval $INSTALLCOMMAND } || exit $status
+	if(! ~ $#MESSAGE 0){
 		for(i in $MESSAGE){
 			echo $i
 		}
 	}
+	if(! ~ $#MSGFILE 0){
+		cat $MSGFILE
+	}
+	touch $target
 
 testinstall:VQE:
 	. /sys/ports/Mk/lib.rc
@@ -332,7 +332,7 @@ clean:VQE:	$BUILDPATH
 
 nuke:VQ:
 	rm -rf work/
-	rm -f fetch verify extract patch build install
+	rm -f fetch verify extract patch build install reinstall
 
 uninstall:VQE:
 	. /sys/ports/Mk/lib.rc
