@@ -1,0 +1,14 @@
+</$objtype/mkfile
+
+OWNER='Matthew Veety <mveety@gmail.com>'
+DESCRIPTION='Ports management utilities'
+VERSION=1
+
+HGSOURCE=http://bitbucket.org/mveety/dopeports
+BUILDPATH=work/dopeports
+BUILDCOMMAND=fortune /lib/uriel
+CLEANCOMMAND=fortune /lib/uriel
+INSTALLCOMMAND=./dpinstaller
+UNINSTALLCOMMAND=rm -r /rc/bin/dopeports
+
+</sys/ports/Mk/mkfile
