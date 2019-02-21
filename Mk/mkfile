@@ -262,7 +262,7 @@ install:QE:	build
 	}
 	if(! checkport $PORTNAME){
 		if(~ $#INSTALLCOMMAND 0)
-			INSTALLCOMMAND=mk install
+			INSTALLCOMMAND='mk install'
 		@{ rfork ne; cd $BUILDPATH && eval $INSTALLCOMMAND } || exit $status
 		if(! ~ $#VERSION 0){
 			register $PORTNAME $VERSION
