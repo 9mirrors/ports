@@ -5,7 +5,7 @@
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Google Go language'
 VERSION=1.12
-BOOSTRAP=1.11.5
+BOOTSTRAP=1.11.5
 DEPS=app-misc/ca-certificates dev-lang/gobootstrap
 
 # local variables
