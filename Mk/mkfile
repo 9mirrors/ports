@@ -113,9 +113,8 @@ distclean:Q:	nuke
 
 manifest:QD:	fetch
 	. /sys/ports/Mk/lib.rc
-	test -e manifest && exit 'manifest already exists'
 	echo creating manifest
-	distfiles | @{ cd $DISTFILES/$PORTNAME; xargs sha1sum -2 256 } > manifest
+	distfiles | @{ cd $DISTFILES/$PORTNAME; xargs sha1sum -2 256 } >> manifest
 
 verify:DQ:	fetch
 	. /sys/ports/Mk/lib.rc
@@ -123,15 +122,18 @@ verify:DQ:	fetch
 	test -e $target && exit
 	
 	echo verifying manifest
-	distfiles | @{ cd $DISTFILES/$PORTNAME; xargs sha1sum -2 256 } > verify
+	distfiles | @{
+		cd $DISTFILES/$PORTNAME
+		xargs sha1sum -2 256
+	} > verify
 	
-	if(cmp -s manifest verify)
+	if(cmp -s <{grep -f <{distfiles} manifest} verify)
 		exit
 	
 	s='MANIFEST VERFICATION FAILED'
 	echo $s
 	echo file sums changed:
-	ape/diff -u manifest verify
+	ape/diff -u <{grep -f <{distfiles} manifest} verify
 	exit $s
 
 _extract:VQ:
