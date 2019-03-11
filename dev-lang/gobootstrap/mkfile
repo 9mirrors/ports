@@ -2,7 +2,7 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Google Go language'
-VERSION=1.10.3
+VERSION=1.11.5
 
 # local variables
 bootstrapdest=/sys/lib/go/$objtype-$VERSION-bootstrap

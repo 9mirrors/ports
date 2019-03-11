@@ -4,12 +4,13 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='Google Go language'
-VERSION=1.11.1
+VERSION=1.12
+BOOSTRAP=1.11.5
 DEPS=app-misc/ca-certificates dev-lang/gobootstrap
 
 # local variables
 # keep bootstrap in sync with dev-lang/gobootstrap
-GOROOT_BOOTSTRAP=/sys/lib/go/$objtype-1.10.3-bootstrap
+GOROOT_BOOTSTRAP=/sys/lib/go/$objtype-$BOOTSTRAP-bootstrap
 GOROOT_FINAL=/sys/lib/go/$objtype-$VERSION
 
 WEBSOURCE=https://dl.google.com/go/go$VERSION.src.tar.gz
