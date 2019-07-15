@@ -4,7 +4,7 @@ OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='quake 1 port by qwx'
 VERSION=1
 
-WEBSOURCE=http://9.postnix.us/code/ports/qk1.tgz
+WEBSOURCE=http://9.postnix.pw/code/ports/qk1.tgz
 BUILDPATH=work/qk1
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install

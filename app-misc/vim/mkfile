@@ -4,7 +4,7 @@ OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='stefanha''s vim'
 VERSION=1
 
-WEBSOURCE=http://9.postnix.us/code/ports/vim.tgz
+WEBSOURCE=http://9.postnix.pw/code/ports/vim.tgz
 BUILDPATH=work/vim
 BUILDCOMMAND=mk all
 INSTALLCOMMAND=mk install

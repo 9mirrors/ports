@@ -4,7 +4,7 @@ OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='fgb''s snake/nibbles clone'
 VERSION=1
 
-WEBSOURCE=http://9.postnix.us/code/ports/snake.tgz
+WEBSOURCE=http://9.postnix.pw/code/ports/snake.tgz
 BUILDPATH=work/snake
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install

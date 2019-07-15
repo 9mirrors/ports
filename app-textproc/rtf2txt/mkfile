@@ -4,7 +4,7 @@ OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='steve''s rtf2txt'
 VERSION=1
 
-WEBSOURCE=http://sources.postnix.us/contrib/steve/rtf2txt.tbz
+WEBSOURCE=http://sources.postnix.pw/contrib/steve/rtf2txt.tbz
 BUILDPATH=work/sys/src/cmd/rtf2txt
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install

@@ -4,7 +4,7 @@ OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='Kenji update of 2e ktrans'
 VERSION=2
 
-WEBSOURCE=http://9.postnix.us/code/ports/ktrans.tgz
+WEBSOURCE=http://9.postnix.pw/code/ports/ktrans.tgz
 BUILDPATH=work/ktrans
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk installfull

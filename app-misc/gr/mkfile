@@ -4,7 +4,7 @@ OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='Recursive grep(1) by stallion'
 VERSION=1
 
-WEBSOURCE=http://9.postnix.us/code/ports/gr
+WEBSOURCE=http://9.postnix.pw/code/ports/gr
 EXTRACTCOMMAND=
 BUILDPATH=work
 BUILDCOMMAND=cp gr /rc/bin/gr

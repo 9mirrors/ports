@@ -4,7 +4,7 @@ OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='Gopher server by Sean Caron (scaron@umich.edu)'
 VERSION=0
 
-WEBSOURCE=http://9.postnix.us/code/ports/gophers.tgz
+WEBSOURCE=http://9.postnix.pw/code/ports/gophers.tgz
 BUILDPATH=work/gophers
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install

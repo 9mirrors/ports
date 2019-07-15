@@ -4,7 +4,7 @@ OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='steve''s C beautifier, more aggressive with messy source than cb(1)'
 VERSION=1
 
-WEBSOURCE=http://sources.postnix.us/contrib/steve/indent.tbz
+WEBSOURCE=http://sources.postnix.pw/contrib/steve/indent.tbz
 BUILDPATH=work/sys/src/cmd/indent
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install

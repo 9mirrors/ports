@@ -4,7 +4,7 @@ OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='tex(1) from Plan 9 2e'
 VERSION=1
 
-WEBSOURCE=http://9.postnix.us/code/ports/tex.tgz
+WEBSOURCE=http://9.postnix.pw/code/ports/tex.tgz
 BUILDPATH=work/tex
 BUILDCOMMAND=prep; mk all
 INSTALLCOMMAND=mk install; cp man/tex /sys/man/1/tex; echo Commands installed to /sys/lib/texmf/bin

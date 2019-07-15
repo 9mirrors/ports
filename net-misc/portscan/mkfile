@@ -4,7 +4,7 @@ OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='portscan is a tcp port scanner for Plan 9 by Sean Caron (scaron@umich.edu)'
 VERSION=0
 
-WEBSOURCE=http://9.postnix.us/code/ports/portscan.tgz
+WEBSOURCE=http://9.postnix.pw/code/ports/portscan.tgz
 BUILDPATH=work/portscan
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install

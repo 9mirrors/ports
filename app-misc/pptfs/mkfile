@@ -4,7 +4,7 @@ OWNER='Sean Hinchee <henesy.dev@gmail.com>'
 DESCRIPTION='steve''s pptfs'
 VERSION=1
 
-WEBSOURCE=http://9.postnix.us/code/ports/pptfs.tgz
+WEBSOURCE=http://9.postnix.pw/code/ports/pptfs.tgz
 BUILDPATH=work/pptfs
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
