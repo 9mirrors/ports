@@ -2,10 +2,10 @@
 
 OWNER='kvik <vp@kvik.link>'
 DESCRIPTION='copy files and directories, fast'
-VERSION=0.1
+VERSION=0.2
 
-WEBSOURCE=https://bitbucket.org/k-vik/clone/downloads/clone.v0.1.tgz
-BUILDPATH=work
+WEBSOURCE=http://code.a-b.xyz/clone/snapshot/clone-0.2.1.tar
+BUILDPATH=work/clone-0.2.1
 BUILDCOMMAND=mk
 INSTALLCOMMAND=mk install
 CLEANCOMMAND=mk clean
