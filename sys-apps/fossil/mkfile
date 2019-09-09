@@ -8,7 +8,7 @@ HGSOURCE=https://bitbucket.org/mycroftiv/fossilnewventi
 BUILDPATH=work/fossilnewventi
 BUILDCOMMAND=mk
 CLEANCOMMAND=mk clean
-INSTALLCOMMAND=/bin/rc -c '''mkdir /$objtype/bin/fossil && mk install && cp manpages/fossil.4 /sys/man/4/fossil && cp manpages/fossilcons.8 /sys/man/8/fossilcons && cp manpages/loadfossil.8 /sys/man/8/loadfossil'''
+INSTALLCOMMAND=/bin/rc -c '''mkdir -p /$objtype/bin/fossil && mk install && cp manpages/fossil.4 /sys/man/4/fossil && cp manpages/fossilcons.8 /sys/man/8/fossilcons && cp manpages/loadfossil.8 /sys/man/8/loadfossil'''
 UNINSTALLCOMMAND=/bin/rc -c 'rm -r /$objtype/bin/fossil /sys/man/4/fossil /sys/man/8/fossilcons /sys/man/8/loadfossil'
 
 </sys/ports/Mk/mkfile
