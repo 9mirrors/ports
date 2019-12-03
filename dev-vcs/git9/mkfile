@@ -4,7 +4,7 @@ OWNER='Aaron Bieber <aaron@bolddaemon.com>'
 DESCRIPTION='Git for Plan9'
 VERSION=20191115
 
-COMMIT=65b772ed948f2841733f44eefc1f1f7df413c68a
+COMMIT=4d43ed79a82c470f0b6a2b1a1b159e6749523b4f
 
 WEBSOURCE=https://github.com/oridb/git9/archive/$COMMIT.tar.gz
 
