@@ -2,10 +2,9 @@
 
 OWNER='Nick Owens <mischief@offblast.org>'
 DESCRIPTION='A Pure Go Git Implementation'
-VERSION=20181013
+VERSION=20191115
 DEPS=dev-lang/go
-
-COMMIT=49625dcca1eed1cae4ccd3eb750df6024f074bc8
+COMMIT=bd1b53f27a5fbda45f054a748d0ced1022c34a0e
 
 WEBSOURCE=https://github.com/driusan/dgit/archive/$COMMIT.tar.gz
 BUILDPATH=work/dgit-$COMMIT
