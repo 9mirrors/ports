@@ -106,6 +106,7 @@ install:V:
 	cp jerror.h /sys/include/ape/
 	cp jmorecfg.h /sys/include/ape/
 	cp jpeglib.h /sys/include/ape/
+	cp jconfig.h /sys/include/ape/
 	mk -f mkfile.djpeg install
 	mk clean
 #	mk -f mkfile.cjpeg install
